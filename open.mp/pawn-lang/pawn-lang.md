@@ -52,7 +52,7 @@ Copyright  c  1997–2006, ITB CompuPhase
 Eerste Industriestraat  19–21, 1401VL Bussum The Netherlands (Pays Bas)
 telephone: (+31)-(0)35 6939 261
 
-e-mail: info@compuphase.com, www:http://www.compuphase.com
+e-mail: info@compuphase.com, http://www.compuphase.com
 
 The information in this manual and the associated software are provided “as
 is”.  There are no guarantees, explicit  or implied, that the software and the
