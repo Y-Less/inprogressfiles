@@ -3,7 +3,7 @@ This repository is about the files that I'm currently editing / creating.
 
 ## Associated github repositories
 
-      ./open.mp/                                                        • https://github.com/openmultiplayer
+      ./open.mp/                                                         • https://github.com/openmultiplayer
 
 ### Statuses
 
