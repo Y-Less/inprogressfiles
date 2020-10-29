@@ -420,4 +420,67 @@ to assign a value to the variable already at the moment of its creation.
 ##### 8 ♙ A tutorial introduction
 ***
 
-will continue...
+Variables must be declared before they are used in an expression.
+The getvalue function (also common predefined  function)
+reads in a value from the keyboard and returns the result. Note that pawn
+is a typeless language, all variables are numeric
+cells that can hold a signed integral value.
+
+The getvalue function name is followed by a pair of parentheses.  These are
+required  because the value that getvalue returns is stored in a variable. Nor-
+mally,  the  function’s  arguments  (or  parameters)  would  appear  between  
+the parentheses, but  getvalue (as used  in  this program)  does  not  take any
+explicit  arguments.  If you do not  assign the result of a function to a variable
+or use it in a expression in another way, the parentheses are optional. For
+example, the result of the print and printf statements are not used. You
+may still use parentheses around the arguments, but it is not required.
+
+Loop instructions, like “while”, repeat a single instruction as long as the loop
+condition  (the  expression  between  parentheses)  is  “true”.   One  can  
+execute multiple instructions in a loop by grouping them in a  compound statement.
+The if–else instruction has one instruction for the “true” clause and one for the “false”.
+
+Observe  that  some  statements,  like  while  and  if–else,  contain  (or  
+“fold around”) another instruction —in the case of if–else even two  other instructions.
+The complete bundle is, again, a single instruction. That is:
+
+* the assignment statements “a  =  a  -  b” below the if and “b  =  b  -  a” below the else are statements;
+
+* the if–else statement folds around these two assignment statements and forms a single statement of itself;
+
+* the while statement folds around the if–else statement and forms, again, a single statement.
+
+It is common to make the nesting of the statements explicit by indenting any
+sub-statements below a statement in the source text.  In the “Greatest Com-
+mon Divisor” example, the left margin indent increases by four space characters
+after the while statement, and again after the if and else keywords.  State-
+ments that belong to the same level, such as both printf invocations and the
+while loop, have the same indentation.
+
+The loop condition  for the while loop is “(a  !=  b)”;  the symbol != is the
+“not equal  to”  operator.   That is, the  if–else instruction is repeated  
+until “a” equals “b”.  It is good practice to indent the instructions that run under
+control of another statement, as is done in the preceding example.
+
+
+The call to printf, near the bottom of the example, differs from the print call
+right below the opening brace (“{”). The “f” in printf stands for “formatted”,
+which means that the function can format and print numeric values and other
+data (in a user-specified format), as well as literal text. The %d symbol in the
+string is a token that indicates the position and the format that the subsequent
+argument to function printf should be printed.  At run time, the token %d is
+replaced by the value of variable “a” (the second argument of printf).
+
+Function print can only print text; it is quicker than printf.  If you want to
+print a literal “%” at the display, you have to use print, or you have to double
+it in the string that you give to printf.  That is:
+
+    print  "20%  of  the  personnel  accounts  for  80%  of  the  costs\n"
+
+and
+
+    printf  "20%%  of  the  personnel  accounts  for  80%%  of  the  costs\n"
+
+print the same string.
+
+</div>
