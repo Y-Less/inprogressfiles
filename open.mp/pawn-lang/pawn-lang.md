@@ -244,7 +244,6 @@ Listing: hello.p
 ```c
 
 main()
-
 	printf  "Hello  world\n"
 
 ```
@@ -305,9 +304,7 @@ Listing: hello.p —  C  style
 #include  <console>
 
 main()
-
 {
-
 	printf("Hello  world\n");
 
 }
@@ -380,15 +377,14 @@ algorithm  */
 
 main()
 {
-
 	print  "Input  two  values\n"
 	new  a  =  getvalue()
 	new  b  =  getvalue()
 	while  (a  !=  b)
-		if  (a  >  b)
-			a  =  a  -  b
-		else
-			b  =  b  -  a
+	if  (a  >  b)
+		a  =  a  -  b
+	else
+		b  =  b  -  a
 	printf  "The  greatest  common  divisor  is  %d\n",  a
 }
 
@@ -515,18 +511,18 @@ Listing: sieve.p
 /*  Print  all  primes  below  100,  using  the  "Sieve  of  Eratosthenes"  */
 
 main()
-	{
+{
 	const  max_primes  =  100
 	new  series[max_primes]  =  {  true,  ...  }
 	for  (new  i  =  2;  i  <  max_primes;  ++i)
-		if  (series[i])
-		{
+	if  (series[i])
+	{
 		printf  "%d  ",  i
 		/*  filter  all  multiples  of  this  "prime"  from  the  list  */
 		for  (new  j  =  2  *  i;  j  <  max_primes;  j  +=  i)
-			series[j]  =  false
-		}
+		series[j]  =  false
 	}
+}
 
 ```
 
@@ -604,27 +600,26 @@ Listing: fib.p
 /*  Calculation  of  Fibonacci  numbers  by  iteration  */
 
 main()
-	{
+{
 	print  "Enter  a  value:  "
 	new  v  =  getvalue()
 	if  (v  >  0)
-		printf  "The  value  of  Fibonacci  number  %d  is  %d\n",
-			v,  fibonacci(v)
+		printf  "The  value  of  Fibonacci  number  %d  is  %d\n", v,  fibonacci(v)
 	else
 		printf  "The  Fibonacci  number  %d  does  not  exist\n",  v
-	}
+}
 fibonacci(n)
-	{
+{
 	assert  n  >  0
 	new  a  =  0,  b  =  1
 	(new  i  =  2;  i  <  n;  i++)
-		{
+	{
 		new  c  =  a  +  b
 		a  =  b
 		b  =  c
-		}
-	return  a  +  b
 	}
+	return  a  +  b
+}
 
 ```
 
@@ -728,53 +723,70 @@ Listing: julian.p
 /*  calculate  Julian  Day  number  from  a  date,  and  vice  versa  */
 
 main()
-	{
+{
 	new  d,  m,  y,  jdn
 	print  "Give  a  date  (dd-mm-yyyy):  "
+	
 	d  =  getvalue(_,  ’-’,  ’/’)
 	m  =  getvalue(_,  ’-’,  ’/’)
 	y  =  getvalue()
 	jdn  =  DateToJulian(d,  m,  y)
+	
 	printf("Date  %d/%d/%d  =  %d  JD\n",  d,  m,  y,  jdn)
 	print  "Give  a  Julian  Day  Number:  "
+	
 	jdn  =  getvalue()
 	JulianToDate  jdn,  d,  m,  y
+	
 	printf  "%d  JD  =  %d/%d/%d\n",  jdn,  d,  m,  y
-	}
+}
 DateToJulian(day,  month,  year)
-	{
+{
 	/*  The  first  year  is  1.  Year  0  does  not  exist:  it  is  1  BC  (or  -1)  */
+	
 	assert  year  !=  0
 	if  (year  <  0)
 	year++
+	
 	/*  move  January  and  February  to  the  end  of  the  previous  year  */
+	
 	if  (month  <=  2)
 	year--,  month  +=  12
 	new  jdn  =  365*year  +  year/4  -  year/100  +  year/400
 	+  (153*month  -  457)  /  5
 	+  day  +  1721119
+	
 	return  jdn
-	}
+}
 JulianToDate(jdn,  &day,  &month,  &year)
-	{
+{
 	jdn  -=  1721119
+	
 	/*  approximate  year,  then  adjust  in  a  loop  */
+	
 	year  =  (400  *  jdn)  /  146097
 	while  (365*year  +  year/4  -  year/100  +  year/400  <  jdn)
 	year++
 	year--
 	/*  determine  month  */
+	
 	jdn  -=  365*year  +  year/4  -  year/100  +  year/400
 	month  =  (5*jdn  +  457)  /  153
+	
 	/*  determine  day  */
+	
 	day  =  jdn  -  (153*month  -  457)  /  5
+	
 	/*  move  January  and  February  to  start  of  the  year  */
+	
 	if  (month  >  12)
 		month  -=  12,  year++
+		
 	/*  adjust  negative  years  (year  0  must  become  1  BC,  or  -1)  */
+	
 	if  (year  <=  0)
 		year--
-	}
+}
 
 ```
 
@@ -884,17 +896,17 @@ Listing: c2f.p
 ```c
 
 main()
-	{
+{
 	new  Rational:  Celsius
 	new  Rational:  Fahrenheit
 
 	print  "Celsius\t  Fahrenheit\n"
 	for  (Celsius  =  5;  Celsius  <=  25;  Celsius++)
-		{
+	{
 		Fahrenheit  =  (Celsius  *  1.8)  +  32
 		printf  "%r  \t  %r\n",  Celsius,  Fahrenheit
-		}
 	}
+}
 
 ```
 
@@ -982,7 +994,7 @@ Listing: rot13.p
 /*  Simple  encryption,  using  ROT13  */
 
 main()
-	{
+{
 	printf  "Please  type  the  string  to  mangle:  "
 
 	new  str[100]
@@ -990,16 +1002,16 @@ main()
 	rot13  str
 
 	printf  "After  mangling,  the  string  is:  \"%s\"\n",  str
-	}
+}
 
 rot13(string[])
-	{
+{
 	for  (new  index  =  0;  string[index];  index++)
 	if  (’a’  <=  string[index]  <=  ’z’)
 		string[index]  =  (string[index]  -  ’a’  +  13)  %  26  +  ’a’
 	else  if  (’A’  <=  string[index]  <=  ’Z’)
 		string[index]  =  (string[index]  -  ’A’  +  13)  %  26  +  ’A’
-	}
+}
 
 ```
 
