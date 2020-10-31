@@ -7,4 +7,10 @@ This repository is about the files that I'm currently editing / creating.
 
 ### Statuses
 
-🔃 **./open.mp/pawn-lang/pawn-lang.md**  /  12%
+🔃 **./open.mp/pawn-lang/pawn-lang.md**               /  25%
+
+   └ chapter 00 - "Contents"                       /  100%
+      
+   └ chapter 01 - "Foreword"                       /  100%
+      
+   └ chapter 02 - "A-tutorial-introduction"        /  100%
