@@ -1820,8 +1820,7 @@ gettoken(const  string[],  &index)
 ```
 
 ##### 31 ♙ A tutorial introduction
-
----
+***
 
 The rpn calculator uses rational number support and rpnparse.inc includes
 the “rational” file for that purpose. Almost all of the operations on rational
@@ -1860,78 +1859,76 @@ where the format code %s expects a string —a zero-terminated array.
 // came to here
 
 <div align="left">
+	
+##### 32 ♙ A tutorial introduction
+***
 
-                                  If you know C/C⁺⁺  or Java, you may want to
-
-look at the switch statement.
-
-“switch” statement:
-
-page 115
-
+If you know C/C⁺⁺  or Java, you may want to look at the switch statement.
 The switch statement differs in a number of ways from the other languages
 that provide it. The cases are not fall-through, for example, which in
-turn
-means that the break statement for the case EndOfExpr breaks out of the
+turn means that the break statement for the case EndOfExpr breaks out of the
 enclosing loop, instead of out of the switch.
 
 On the top of the for loop in function rpncalc, you will find the  
-instruc-
-tion “field = gettoken(string, index)”. As already exemplified in the
+instruction “field = gettoken(string, index)”. As already exemplified in the
 wcount.p (“word count”) program on page 19, functions may return arrays.
 It gets more interesting for a similar line in function gettoken:
 
 field[t_word] = word
 
 where word is an array of 20 cells and field is an array of 22 cells.  
-How-
-ever, as the t_word enumeration field is declared as having a size of 20 cells,
+However, as the t_word enumeration field is declared as having a size of 20 cells,
 “field[t_word]” is considered a sub-array of 20 cells, precisely matching the
 array size of word.
 
 Listing: strtok.inc
 
-/_ extract words from a string (words must be separated by white  
-space) _/
+```c
+
+/* extract words from a string (words must be separated by white space) */
 #include <string>
 
 strtok(const string[], &index)
-
 {
+	new length = strlen(string)
 
-new length = strlen(string)
+	/* skip leading white space */
+	while (index < length && string[index] <= ’ ’)
+		index++
 
-/_ skip leading white space _/
+	/* store the word letter for letter */
+	new offset = index 	/* save start position of token */
+	new result[20] 		/* string to store the word in */
+	while (index < length
+		&& string[index] > ’ ’
+		&& index - offset < sizeof result - 1)
+		{
+			result[index - offset] = string[index]
+			index++
+		}
+	result[index - offset] = EOS /* zero-terminate the string */
 
-while (index < length && string[index] <= ’ ’)
-index++
-
-/_ store the word letter for letter _/
-
-new offset = index /_ save start  
-position of token _/
-
-new result[20] /_ string to  
-store the word in _/
-while (index < length
-
-&& string[index] > ’ ’
-
-&& index - offset < sizeof result - 1)
-
-{
-
-result[index - offset] = string[index]
-index++
-
+	return result
 }
 
-result[index - offset] = EOS /_ zero-terminate the  
-string _/
+```
 
-return result
+</div>
 
-}
+<hr>
+
+<div align="right">
+	
+`“switch” statement: page 115`
+
+</div>
+
+<hr>
+
+<div align="left">
+	
+##### 33 ♙ A tutorial introduction
+***
 
 Function strtok is the same as the one used in the wcount.p example. It is
 implemented in a separate file for the rpn calculator program. Note that the
@@ -1941,75 +1938,74 @@ characters —the 20th character is the zero terminator. A truly general purpose
 re-usable implementation of an strtok function would pass the destination
 array as a parameter, so that it could handle words of any size. Supporting
 both packed and unpack strings would also be a useful feature of a  
-general
-purpose function.
+general purpose function.
 
 When discussing the merits of Reverse Polish Notation, I mentioned that a
 stack is both an aid in “visualizing” the algorithm as well as a  
-convenient
-method to implement an rpn parser. This example rpn calculator, uses
-a
-stack with the ubiquitous functions push and pop. For error checking  
-and
-
-resetting the stack, there is a third function that clears the stack.
+convenient method to implement an rpn parser. This example rpn calculator, uses
+a stack with the ubiquitous functions push and pop. For error checking  
+and resetting the stack, there is a third function that clears the stack.
 
 Listing: stack.inc
 
-/_ stack functions, part of the RPN calculator _/
+```c
+
+/* stack functions, part of the RPN calculator */
 #include <rational>
 
 static Rational: stack[50]
 static stackidx = 0
 
 push(Rational: value)
-
 {
-
-assert stackidx < sizeof stack
-stack[stackidx++] = value
-
+	assert stackidx < sizeof stack
+	stack[stackidx++] = value
 }
 
 Rational: pop()
-
 {
-
-assert stackidx > 0
-return stack[--stackidx]
-
+	assert stackidx > 0
+	return stack[--stackidx]
 }
 
 clearstack()
-
 {
-
-assert stackidx >= 0
-if (stackidx == 0)
-
-return false
-stackidx = 0
-
-wcount.p: page 19
-
-return true
-
+	assert stackidx >= 0
+	if (stackidx == 0)
+		return false
+	stackidx = 0
+	return true
 }
+
+```
+
+</div>
+
+<hr>
+
+<div align="right">
+	
+`wcount.p: page 19`
+
+</div>
+
+<hr>
+
+<div align="left">
+
+##### 34 ♙ A tutorial introduction
+***
 
 The file stack.inc includes the file rational again. This is technically not
 necessary (rpnparse.inc already included the definitions for rational number
 support), but it does not do any harm either and, for the sake of code re-use,
-it
-is better to make any file include the definitions of the libraries that it
-depends
-on.
+it is better to make any file include the definitions of the libraries that it
+depends on.
 
 Notice how the two global variables stack and stackidx are declared  
-as
-“static” variables; using the keyword static instead of new. Doing this makes
+as “static” variables; using the keyword static instead of new. Doing this makes
 the global variables “visible” in that file only. For all other files in a  
-larger
-project, the symbols stack and stackidx are invisible and they cannot (ac-
+larger project, the symbols stack and stackidx are invisible and they cannot (ac-
 cidentally) modify the variables. It also allows the other modules to declare
 their own private variables with these names, so it avoids name clashing.
 
@@ -2018,7 +2014,7 @@ up as if it were a larger program. It was also designed to demonstrate a set
 of elements of the pawn language and the example program could have been
 implemented more compactly.
 
-• Event-driven programming
+### • Event-driven programming
 
 All of the example programs that were developed in this chapter so far, have
 used a “lineal” programming model: they start with main and the code deter-
@@ -2032,12 +2028,16 @@ time, regardless of what it was doing at the moment.
 
 The above description suggests that a program should therefore be able to in-
 terrupt its work and do other things before picking up the original task. In
-early
-implementations, this was indeed how such functionality was implemented: a
+early implementations, this was indeed how such functionality was implemented: a
 multi-tasking system where one task (or thread) managed the background tasks
 and a second task/thread that sits in a loop continuously requesting user input.
 This is a heavy-weight solution, however. A more light-weight implementation
 of a responsive system is what is called the “event-driven” programming model.
+
+<hr>
+
+##### 35 ♙ A tutorial introduction
+***
 
 In the event-driven programming model, a program or script decomposes any
 lengthy (background) task into short manageable blocks and in between, it is
@@ -2089,60 +2089,66 @@ programming visual by having a small robot, the “turtle”, drive over the flo
 under control of a simple program. This concept was then copied to moving
 a (usually triangular) cursor of the computer display, again under control of a
 program. A novelty was that the turtle now left a trail behind it, allowing you
-to create drawings by properly programming the turtle —it became known as
+to create drawings by properly programming the turtle —it became known as turtle graphics.
 
-Public functions: 83
+<hr>
 
-turtle graphics. The term “turtle graphics” was also used for drawing inter-
+</div>
+
+<div align="right">
+	
+`Public functions: 83`
+	
+</div>
+
+<hr>
+
+<div align="left">
+
+##### 36 ♙ A tutorial introduction
+***
+
+The term “turtle graphics” was also used for drawing inter-
 actively with the arrow keys on the keyboard and a “turtle” for the current
 position. This method of drawing pictures on the computer was briefly popular
 before the advent of the mouse.
 
 Listing: turtle.p
 
+```c
+
 @keypressed(key)
-
 {
+	/_ get current position _/
+	new x, y
+	wherexy x, y
 
-/_ get current position _/
-new x, y
-
-wherexy x, y
-
-/_ determine how the update the current position _/
-switch (key)
-
-{
-
-case ’u’: y-- /_ up _/
-case ’d’: y++ /_ down _/
-case ’l’: x-- /_ left _/
-case ’r’: x++ /_ right _/
-
-case ’\e’: exit /_ Escape = exit _/
-
-}
-
-/_ adjust the cursor position and draw something _/
-moveturtle x, y
-
+	/_ determine how the update the current position _/
+	switch (key)
+	{
+		case ’u’: y-- /_ up _/
+		case ’d’: y++ /_ down _/
+		case ’l’: x-- /_ left _/
+		case ’r’: x++ /_ right _/
+		case ’\e’: exit /_ Escape = exit _/
+	}
+	
+	/_ adjust the cursor position and draw something _/
+	moveturtle x, y
 }
 
 moveturtle(x, y)
-
 {
-
-gotoxy x, y
-print ’\*’
-gotoxy x, y
-
+	gotoxy x, y
+	print ’\*’
+	gotoxy x, y
 }
 
-The entry point of the above program is @keypressed —it is called on
-a
+```
+
+The entry point of the above program is @keypressed —it is called on a
 key press. If you run the program and do not type any key, the  
-function
-@keypressed never runs; if you type ten keys, @keypressed runs ten times.
+function @keypressed never runs; if you type ten keys, @keypressed runs ten times.
 Contrast this behaviour with main: function main runs immediately after you
 start the script and it runs only once.
 
@@ -2155,32 +2161,32 @@ to the centre.
 
 Support for function keys and other special keys (e.g. the arrow keys) is highly
 system-dependent. On ANSI terminals, these keys produce different codes
-than in a Windows “DOS box”. In the spirit of keeping the example program
+than in a Windows “DOS box”.
 
+<hr>
+
+##### 37 ♙ A tutorial introduction
+***
+
+In the spirit of keeping the example program
 portable, I have used common letters (“u” for up, “l” for left, etc.). This
-does
-not mean, however, that special keys are beyond pawn’s capabilities.
+does not mean, however, that special keys are beyond pawn’s capabilities.
 
 In the “turtle” script, the “Escape” key terminates the host application through
 the instruction exit. For a simple pawn run-time host, this will indeed work.
 With host applications where the script is an add-on, or  
 host-applications
 
-that are embedded in a device, the script usually cannot terminate the host
-application.
+that are embedded in a device, the script usually cannot terminate the host application.
 
-• Multiple events
+### • Multiple events
 
 The advantages of the event-driven programming model, for building reactive
 programs, become apparent in the presence of multiple events. In fact,
-the
-event-driven model is only useful if you have more that one entry  
-point; if
-your script just handles a single event, it might as well enter a polling
-loop
-for that single event. The more events need to be handled, the  
-harder the
-lineal programming model becomes. The script below implements a bare-bones
+the event-driven model is only useful if you have more that one entry  
+point; if your script just handles a single event, it might as well enter a polling
+loop for that single event. The more events need to be handled, the  
+harder the lineal programming model becomes. The script below implements a bare-bones
 “chat” program, using only two events: one for sending and one for receiving.
 The script allows users on a network (or perhaps over another connection) to
 exchange single-line messages.
@@ -2191,10 +2197,16 @@ that are typed in. How the host application sends its messages, over a serial
 line or using TCP/IP, the host application may decide itself. The tools in the
 
 standard pawn distribution push the messages over the TCP/IP network, and
-allow for a “broadcast” mode so that more than two people can chat with each
-other.
+allow for a “broadcast” mode so that more than two people can chat with each other.
+
+<hr>
+
+##### 38 ♙ A tutorial introduction
+***
 
 Listing: chat.p
+
+```c
 
 #include <datagram>
 
@@ -2202,56 +2214,43 @@ Listing: chat.p
 printf "[%s] says: %s\n", source, message
 
 @keypressed(key)
-
 {
+	static string[100 char]
+	static index
 
-static string[100 char]
-static index
+	if (key == ’\e’)
+		exit /* quit on ’Esc’ key */
 
-if (key == ’\e’)
+	echo key
 
-exit /_ quit on ’Esc’ key _/
+	if (key == ’\r’ || key == ’\n’ || index char == sizeof string)
+	{
+		string{index} = ’\0’ /* terminate string */
+		sendstring string
 
-echo key
-
-if (key == ’\r’ || key == ’\n’ || index char == sizeof string)
-
-{
-
-string{index} = ’\0’ /_ terminate string _/
-sendstring string
-
-index = 0
-string[index] = ’\0’
-
-}
-
-else
-
-string{index++} = key
-
+		index = 0
+		string[index] = ’\0’
+	}
+	else
+		string{index++} = key
 }
 
 echo(key)
-
 {
-
-new string[2 char] = { 0 }
-
-string{0} = key == ’\r’ ? ’\n’ : key
-printf string
-
+	new string[2 char] = { 0 }
+	string{0} = key == ’\r’ ? ’\n’ : key
+	printf string
 }
 
+```
+
 The bulk of the above script handles gathering received key-presses  
-into a
-string and sending that string after seeing the enter key. The “Escape” key
+into a string and sending that string after seeing the enter key. The “Escape” key
 ends the program. The function echo serves to give visual feedback of what
 the user types: it builds a zero-terminated string from the key and prints it.
 
 Despite its simplicity, this script has the interesting property that there is
-no
-fixed or prescribed order in which the messages are to be sent or received —
+no fixed or prescribed order in which the messages are to be sent or received —
 there is no query–reply scheme where each host takes its turn in talking &
 listening. A new message may even be received while the user is typing its
 own message.∗
@@ -2263,37 +2262,31 @@ they are also responded to individually. On occasion, though, an event is part
 of a sequential flow, that must be handled in order. Examples are data transfer
 protocols over, for example, a serial line. Each event may carry a command,
 a snippet of data that is part of a larger file, an acknowledgement, or
-other
-signals that take part in the protocol. For the stream of events (and the data
+other signals that take part in the protocol. 
 
-∗ As this script makes no attempt to separate received messages  
-from typed messages (for
-example, in two different scrollable regions), the terminal/console  
-will look confusing when
-this happens. With an improved user-interface, this simple script  
-could indeed be a nice
-message-base chat program.
+---
 
-packets that they carry) to make sense, the event-driven program must follow
-a precise hand-shaking protocol.
+###### ∗ As this script makes no attempt to separate received messages from typed messages (for example, in two different scrollable regions), the terminal/console will look confusing when this happens. With an improved user-interface, this simple script could indeed be a nice message-base chat program. 
+
+<hr>
+
+##### 39 ♙ A tutorial introduction
+***
+
+For the stream of events (and the data packets that they carry) to make sense,
+the event-driven program must follow a precise hand-shaking protocol.
 
 To adhere to a protocol, an event-driven program must respond to each event in
 compliance with the (recent) history of events received earlier and the
-responses
-to those events. In other words, the handling of one event may set
-up a
-“condition” or “environment” for the handling any one or more subsequent
-events.
+responses to those events. In other words, the handling of one event may set
+up a “condition” or “environment” for the handling any one or more subsequent events.
 
 A simple, but quite effective, abstraction for constructing reactive systems
-that
-need to follow (partially) sequential protocols, is that of the “automaton” or
+that need to follow (partially) sequential protocols, is that of the “automaton” or
 state machine. As the number of states are usually finite, the theory often
-refers
-to such automatons as Finite State Automatons or Finite State Machines. In
+refers to such automatons as Finite State Automatons or Finite State Machines. In
 an automaton, the context (or condition) of an event is its state. An event
-that
-arrives may be handled differently depending on the state of the automaton,
+that arrives may be handled differently depending on the state of the automaton,
 and in response to an event, the automaton may switch to another state —
 this is called a transition. A transition, in other words, as a response of the
 automaton to an event in the context of its state.
@@ -2301,23 +2294,33 @@ automaton to an event in the context of its state.
 Automatons are very common in software as well as in mechanical devices (you
 may see the Jacquard Loom as an early state machine). Automatons, with a
 finite number of states, are deterministic (i.e. predictable in behaviour)
-and
-their relatively simple design allows a straightforward implementation from a
-“state diagram”.
+and their relatively simple design allows a straightforward
+implementation from a “state diagram”.
+
+</div>
+
+<div align="center">
+
+![State diagram](https://i.ibb.co/k3kWVvy/image.png)
+
+</div>
+
+<div align="left">
 
 In a state diagram, the states are usually represented as circles or  
-rounded
-rectangles and the arrows represent the transitions. As transitions are
-the
-response of the automaton to events, an arrow may also be seen as an event
+rounded rectangles and the arrows represent the transitions. As transitions are
+the response of the automaton to events, an arrow may also be seen as an event “that does something”.
 
-“that does something”. An event/transition that is not defined in a particular
+<hr>
+
+##### 40 ♙ A tutorial introduction
+***
+
+An event/transition that is not defined in a particular
 state is assumed to have no effect —it is silently ignored. A filled dot
-represents
-the entry state, which your program (or the host application) must set in start-
+represents the entry state, which your program (or the host application) must set in start-
 up. It is common to omit in a state diagram all event arrows that drop back
-into the same state, but here I have chosen to make the response to all events
-explicit.
+into the same state, but here I have chosen to make the response to all events explicit.
 
 This state diagram is for “parsing” comments that start with “/_” and end
 with “_/”. There are states for plain text and for text inside a comment, plus
@@ -2325,8 +2328,7 @@ two states for tentative entry into or exit from a comment. The automaton
 is intended to parse the comments interactively, from characters that the user
 types on the keyboard. Therefore, the only events that the automaton reacts
 on are key presses. Actually, there is only one event (“key-press”) and  
-the
-state switches are determined by event’s parameter: the key.
+the state switches are determined by event’s parameter: the key.
 
 pawn supports automatons and states directly in the language. Every func-
 tion∗ may optionally have one or more states assigned to it. pawn also supports
@@ -2338,81 +2340,68 @@ in a different colour.
 
 Listing: comment.p
 
-/_ parse C comments interactively, using events and a state machine  
-_/
+```c
+
+/* parse C comments interactively, using events and a state machine */
 
 main()
-
-state plain
+	state plain
 
 @keypressed(key) <plain>
-
 {
-
-state (key == ’/’) slash
-if (key != ’/’)
-
-echo key
-
+	state (key == ’/’) slash
+	if (key != ’/’)
+		echo key
 }
 
 @keypressed(key) <slash>
-
 {
-
-state (key != ’/’) plain
-state (key == ’\*’) comment
-
-echo ’/’ /_ print ’/’ held back from previous state _/
-if (key != ’/’)
-
-echo key
-
+	state (key != ’/’) plain
+	state (key == ’\*’) comment
+	echo ’/’	/* print ’/’ held back from previous state */
+	if (key != ’/’)
+		echo key
 }
 
-∗ With the exception of “native functions” and user-defined operators.
-
 @keypressed(key) <comment>
-
 {
-
-echo key
-
-state (key == ’\*’) star
-
+	echo key
+	state (key == ’\*’) star
 }
 
 @keypressed(key) <star>
-
 {
-
-echo key
-
-state (key != ’\*’) comment
-state (key == ’/’) plain
-
+	echo key
+	state (key != ’\*’) comment
+	state (key == ’/’) plain
 }
 
 echo(key) <plain, slash>
-printchar key, yellow
+	printchar key, yellow
 
 echo(key) <comment, star>
-printchar key, green
+	printchar key, green
 
 printchar(ch, colour)
-
 {
-
-setattr .foreground = colour
-printf "%c", ch
-
+	setattr .foreground = colour
+	printf "%c", ch
 }
 
+```
+
+<hr>
+
+###### ∗ With the exception of “native functions” and user-defined operators.
+
+<hr>
+
+##### 41 ♙ A tutorial introduction
+***
+
 Function main sets the starting state to main and exits; all logic  
-is event-
-driven. when a key arrives in state plain, the program checks for  
-a slash
-and conditionally prints the received key. The interaction between the states
+is eventdriven. when a key arrives in state plain, the program checks for  
+a slash and conditionally prints the received key. The interaction between the states
 plain and slash demonstrates a complexity that is typical for automatons:
 you must decide how to respond to an event when it arrives, without being
 able to “peek ahead” or undo responses to earlier events. This is usually the
@@ -2422,24 +2411,23 @@ event, there is a good chance that you cannot erase it on a future event and
 pretend that it never happened.
 
 In our particular case, when a slash arrives, this might be the start of a
-comment
-sequence (“/\*”), but it is not necessarily so. By inference, we cannot decide
+comment sequence (“/\*”), but it is not necessarily so. By inference, we cannot decide
 on reception of the slash character what colour to print it in. Hence, we hold
 it back. However, there is no global variable in the script that says
-that a
-character is held back —in fact, apart from function parameters, no variable
+that a character is held back —in fact, apart from function parameters, no variable
 is declared at all in this script. The information about a character being held
 back is “hidden” in the state of the automaton.
 
 As is apparent in the script, state changes may be conditional. The condition
-is optional, and you can also use the common if–else construct to change
-states.
+is optional, and you can also use the common if–else construct to change states.
+
+##### 42 ♙ A tutorial introduction
+***
 
 Being state-dependent is not reserved for the event functions. Other functions
 may have state declarations as well, as the echo function demonstrates. When
 a function would have the same implementation for several states, you
-just
-need to write a single implementation and mention all applicable states. For
+just need to write a single implementation and mention all applicable states. For
 function echo there are two implementations to handle the four states.†
 
 That said, an automaton must be prepared to handle all events in any state.
@@ -2451,14 +2439,12 @@ cedure in all other cases. The function for handling the event in such “error�
 condition might then hold a lot of state names, if you were to mention them
 explicitly. There is a shorter way: by not mentioning any name between the
 angle brackets, the function matches all states that have not explicit imple-
-mentation elsewhere. So, for example, you could use the signature “echo(key)
-
-<>” for either of the two implementations (but not for both).
+mentation elsewhere. So, for example, you could use the signature “echo(key) <>”
+for either of the two implementations (but not for both).
 
 A single anonymous automaton is pre-defined. If a program contains more
 than one automaton, the others must be explicitly mentioned, both in  
-the
-state classifier of the function and in the state instruction. To do so, add the
+the state classifier of the function and in the state instruction. To do so, add the
 name of the automaton in front of the state name and separate the names of
 the automaton and the state with a colon. That is, “parser:slash” stands
 for the state slash of the automaton parser. A function can only be part of a
@@ -2466,126 +2452,137 @@ single automaton; you can share one implementation of a function for several
 states of the same automaton, but you cannot share that function for states
 of different automatons.
 
-• Entry functions and automata theory
+### • Entry functions and automata theory
 
 State machines, and the foundation of “automata theory”, originate from me-
 chanical design and pneumatic/electric switching circuits (using relays rather
 than transistors). Typical examples are coin acceptors, traffic light control
-and
-communication switching circuits. In these applications, robustness and pre-
+and communication switching circuits. In these applications, robustness and pre-
 dictability are paramount, and it was found that these goals were best achieved
-when actions (output) were tied to the states rather than to the events  
-(input).
+when actions (output) were tied to the states rather than to the events (input).
 
-† A function that has the same implementation for all states, does not need
-a state classifierat
-all —see printchar.
+<hr>
 
-Figure 1: Pedestrian crossing lights
+###### * A function that has the same implementation for all states, does not need a state classifierat all —see printchar.
+
+<hr>
+
+##### 43 ♙ A tutorial introduction
+***
+
+</div>
+
+<div align="center">
+	
+![pcl](https://i.ibb.co/PYnBGS9/image.png)
+	
+</div>
+
+<div align="left">
+
+###### Figure 1: Pedestrian crossing lights
+
+<hr>
 
 Entering a state (optionally) causes activity; events cause state changes, but
 do not carry out other operations.
 
 In a pedestrian crossing lights system, the lights for the vehicles and the
-pedes-
-trians must be synchronized. Obviously, the combination of a green light for
+pedestrians must be synchronized. Obviously, the combination of a green light for
 the traffic and a “walk” sign for the pedestrians is recipe for disaster. We
-can
-also immediately dismiss the combination of yellow /walk as too  
-dangerous.
-Thus, four combinations remain to be handled. The figure below is a  
-state
-diagram for the pedestrian crossing lights. The entire process is activated with
+can also immediately dismiss the combination of yellow /walk as too  
+dangerous. Thus, four combinations remain to be handled. The figure below is a  
+state diagram for the pedestrian crossing lights. The entire process is activated with
 a button, and operates on a timer.
 
-When the state red /walk times out, the state cannot immediately go back to
-green/wait, because the pedestrians that are busy crossing the road at  
-that
-moment need some time to clear the road —the state red /wait allows
-for
+</div>
 
-this. For purpose of demonstration, this pedestrian crossing has the  
-added
+<div align="center">
+	
+![pcl](https://i.ibb.co/9wNR3ry/image.png)
+	
+</div>
+
+<div align="left">
+
+When the state red/walk times out, the state cannot immediately go back to
+green/wait, because the pedestrians that are busy crossing the road at  
+that moment need some time to clear the road —the state red/wait
+allows for this.
+
+<hr>
+
+##### 44 ♙ A tutorial introduction
+***
+
+For purpose of demonstration, this pedestrian crossing has the added
 functionality that when a pedestrian pushes the button while the light for the
-traffic is already red, the time that the pedestrian has for crossing is
-lengthened.
-If the state is red /wait and the button is pressed, it switches back to red
-/walk.
-The englobing box around the states red /walk and red /wait for handling the
+traffic is already red, the time that the pedestrian has for crossing is lengthened.
+If the state is red/wait and the button is pressed, it switches back to red/walk.
+The englobing box around the states red/walk and red/wait for handling the
 button event is just a notational convenience: I could also have  
-drawn two
-arrows from either state back to red /walk. The script source code  
-(which
-follows below) reflects this same notational convenience, though.
+drawn two arrows from either state back to red/walk. The script source code  
+(which follows below) reflects this same notational convenience, though.
 
 In the implementation in the pawn language, the event functions now always
 have a single statement, which is either a state change or an empty statement.
 Events that do not cause a state change are absent in the diagram, but they
-must be handled in the script; hence, the “fall-back” event functions that do
+must be handled in the script; hence, the “fall-back” event functions that do nothing.
 
-nothing. The output, in this example program only messages printed on the
+The output, in this example program only messages printed on the
 console, is all done in the special functions entry. The function entry may
 be seen as a main for a state: it is implicitly called when the  
-state that it
-is attached to is entered. Note that the entry function is also called  
-when
-“switching” to the state that the automaton is already in: when the state is
+state that it is attached to is entered. Note that the entry function is also called  
+when “switching” to the state that the automaton is already in: when the state is
 red_walk an invocation of the @keypressed sets the state to red_walk (which
 it is already in) and causes the entry function of red_walk to run —this is a
 re-entry of the state.
 
 Listing: traffic.p
 
-/_ traffic light synchronizer, using states in an event-driven model  
-_/
+```c
+
+/* traffic light synchronizer, using states in an event-driven model */
 #include <time>
 
-main() state  
-green_wait
+main() 					state green_wait
 
-@keypressed(key) <green_wait> state yellow_wait
-@keypressed(key) <red_walk, red_wait> state red_walk
-@keypressed(key) <> {} /_ fallback  
-_/
+@keypressed(key) <green_wait> 		state yellow_wait
+@keypressed(key) <red_walk, red_wait> 	state red_walk
+@keypressed(key) <> 			{} /* fallback */
 
-@timer() <yellow_wait> state red_walk
-@timer() <red_walk> state red_wait
-
-@timer() <red_wait> state green_wait
-
-@timer() <> {} /_  
-fallback _/
+@timer() <yellow_wait>			state red_walk
+@timer() <red_walk> 			state red_wait
+@timer() <red_wait> 			state green_wait
+@timer() <> 				{} /* fallback */
 
 entry() <green_wait>
-
-print "Green / Don’t walk\n"
+	print "Green / Don’t walk\n"
 
 entry() <yellow_wait>
-
 {
-
-print "Yellow / Don’t walk\n"
-settimer 2000
-
+	print "Yellow / Don’t walk\n"
+	settimer 2000
 }
 
 entry() <red_walk>
-
 {
-
-print "Red / Walk\n"
-settimer 5000
-
+	print "Red / Walk\n"
+	settimer 5000
 }
 
 entry() <red_wait>
-
 {
-
-print "Red / Don’t walk\n"
-settimer 2000
-
+	print "Red / Don’t walk\n"
+	settimer 2000
 }
+
+```
+
+<hr>
+
+##### 45 ♙ A tutorial introduction
+***
 
 This example program has an additional dependency on the host application/
 environment: in addition to the “@keypressed” event function, the host must
@@ -2593,18 +2590,14 @@ also provide an adjustable “@timer” event. Because of the timing functions,
 the script includes the system file time.inc near the top of the script.
 
 The event functions with the state changes are all on the top part of the
-script.
-The functions are laid out to take a single line each, to suggest a  
-table-like
-structure. All state changes are unconditional in this example, but conditional
+script. The functions are laid out to take a single line each, to suggest a  
+table-like structure. All state changes are unconditional in this example, but conditional
 state changes may be used with entry functions too. The bottom part are the
 event functions.
 
 Two transitions to the state red_walk exist —or three if you consider  
-the
-affection of multiple states to a single event function as a mere  
-notational
-convenience: from yellow_wait and from the combination of red_walk and
+the affection of multiple states to a single event function as a mere  
+notational convenience: from yellow_wait and from the combination of red_walk and
 red_wait. These transitions all pass through the same entry function, thereby
 reducing and simplifying the code.
 
@@ -2621,23 +2614,23 @@ models are often mixed, with an overall “Moore automaton” design, and a few
 • State variables
 
 The previous example was crafted to demonstrate a few properties of  
-state
-programming with pawn, but its model of a pedestrian crossing light is not
+state programming with pawn, but its model of a pedestrian crossing light is not
 
-very realistic. The first thing that is lacking is a degree of fairness :
-pedestrians
+very realistic. The first thing that is lacking is a degree of fairness : pedestrians
 should not be able to block car traffic indefinitly. The car traffic should
-see a
-green light for a period of some minimum duration after pedestrians have had
+see a green light for a period of some minimum duration after pedestrians have had
 their time slot for crossing the road. Secondly, many traffic lights have a kind
-of remote control ability, so that emergency traffic (ambulance, firetruck, . .
-. )
-can force green lights on their path. A well-known example of such  
-remote
+of remote control ability, so that emergency traffic (ambulance, firetruck, . . . )
+can force green lights on their path. A well-known example of such remote
 
 control is the mirt system (Mobile Infra-Red Transmitter) but not de facto
 standard exists —the Netherlands use a radiographic system called vetag for
 instance.
+
+<hr>
+
+##### 46 ♙ A tutorial introduction
+***
 
 The new state diagram for the pedestrian crossing light has two more states,
 but more importantly: it needs to save data across events and share it between
@@ -2648,156 +2641,126 @@ state green_wait_interim regardless of the button press, but memorize the
 press for a decision made at the point of leaving state green_wait_interim.
 
 Automatons excel in modelling control flow in reactive/interactive
-systems,
-but data flow has traditionally been a weak point. To see why, consider that
+systems, but data flow has traditionally been a weak point. To see why, consider that
 each event is handled individually by a function and that the local variables in
 that function disappear when the function returns. Local variables can, hence,
 not be used to pass data from one event to the next. Global variables, while
 providing a work-around, have drawbacks: global scope and and  
-“eternal”
-lifespan. If a variable is used only in the event handlers of a single state,
-it is
-desirable to hide it from the other states, in order to protect it from
-accidental
-modification. Likewise, shortening the lifespan to the state(s) that the
-variable
-is active in, reduces the memory footprint. “State variables” provide
-this mix
-
-of variable scope and variable lifespan that are tied to a series of states,
-rather
-than to functions or modules.
+“eternal” lifespan. If a variable is used only in the event handlers of a single state,
+it is desirable to hide it from the other states, in order to protect it from
+accidental modification. Likewise, shortening the lifespan to the state(s) that the
+variable is active in, reduces the memory footprint. “State variables” provide
+this mix of variable scope and variable lifespan that are tied to a series of states,
+rather than to functions or modules.
 
 pawn enriches the standard finite state machine (or automaton) with variables
 that are declared with a state classifier. These variables are only
-accessible
-from the listed states and the memory these variable hold may be  
-reused
-by other purposes while the automaton is in a different state (different than
-the ones listed). Apart from the state classifier, the declaration  
-of a state
+accessible from the listed states and the memory these variable hold may be  
+reused by other purposes while the automaton is in a different state (different than
+the ones listed). Apart from the state classifier, the declaration of a state
 
 variable is similar to that of a global variable. The declaration of the
-variable
+variable button_memo in the next listing illustrates the concept.
 
-button_memo in the next listing illustrates the concept.
+<hr>
+
+##### 47 ♙ A tutorial introduction
+***
 
 Listing: traffic2.p
 
-/\* a more realistic traffic light synchronizer, including an
+```c
 
-- "override" for emergency vehicles
-
-\*/
+/* a more realistic traffic light synchronizer, including an
+ * "override" for emergency vehicles
+ */
 
 #include <time>
 
 main()
-
-state green_wait_interim
+	state green_wait_interim
 
 new bool: button_memo <red_wait, green_wait_interim, yellow_wait>
+
 @keypressed(key)
-
 {
-
-switch (key)
-
-{
-
-case ’ ’: button_press
-case ’\*’: mirt_detect
-
-}
-
+	switch (key)
+	{
+		case ’ ’: button_press
+		case ’\*’: mirt_detect
+	}
 }
 
 button_press() <green_wait>
-state yellow_wait
+	state yellow_wait
 
 button_press() <red_wait, green_wait_interim>
-button_memo = true
+	button_memo = true
 
-button_press() <> /_ fallback _/
-
-{}
+button_press() <> 		/* fallback */
+	{}
 
 mirt_detect()
-
-state mirt_override
+	state mirt_override
 
 @timer() <yellow_wait>
-state red_walk
+	state red_walk
 
 @timer() <red_walk>
-state red_wait
+	state red_wait
 
 @timer() <red_wait>
-
-state green_wait_interim
+	state green_wait_interim
 
 @timer() <green_wait_interim>
-
 {
-
-state (!button_memo) green_wait
-state (button_memo) yellow_wait
-
+	state (!button_memo) green_wait
+	state (button_memo) yellow_wait
 }
 
 @timer() <mirt_override>
-state green_wait
+	state green_wait
 
-@timer() <> /_ fallback _/
-
-{}
+@timer() <> 			/* fallback */
+	{}
 
 entry() <green_wait_interim>
-
 {
-
-print "Green / Don’t walk\n"
-settimer 5000
-
+	print "Green / Don’t walk\n"
+	settimer 5000
 }
 
 entry() <yellow_wait>
-
 {
-
-print "Yellow / Don’t walk\n"
-button_memo = false
-
-settimer 2000
-
+	print "Yellow / Don’t walk\n"
+	button_memo = false
+	settimer 2000
 }
 
 entry() <red_walk>
-
 {
-
-print "Red / Walk\n"
-settimer 5000
-
+	print "Red / Walk\n"
+	settimer 5000
 }
 
 entry() <red_wait>
-
 {
-
-print "Red / Don’t walk\n"
-settimer 2000
-
+	print "Red / Don’t walk\n"
+	settimer 2000
 }
 
 entry() <mirt_override>
-
 {
-
-print "Green / Don’t walk\n"
-settimer 5000
-
+	print "Green / Don’t walk\n"
+	settimer 5000
 }
+
+```
+
+<hr>
+
+##### 48 ♙ A tutorial introduction
+***
 
 If a pedestrian pushes the button during mirt activity, that button press
 is
@@ -2817,13 +2780,15 @@ abound in web programs, because the browser and the web-site scripting host
 have only a weak link, but the state machine in web applications is typically
 implemented in an ad-hoc manner.
 
-States can also be recognized in common problems and riddles. In the
-well
-known riddle of the man that must move a cabbage, a sheep and a wolf across
-a river,∗ the states are obvious —the trick of the riddle is to avoid the
-forbidden
-states. But now that we are seeing states everywhere, the task is not to overdo
-it.
+States can also be recognized in common problems and riddles. In the well
+known riddle of the man that must move a cabbage, a sheep and a wolf across a river,
+∗ the states are obvious —the trick of the riddle is to avoid the forbidden
+states. But now that we are seeing states everywhere, the task is not to overdo it.
+
+<hr>
+
+##### 49 ♙ A tutorial introduction
+***
 
 For example, in the second implementation of a pedestrian crossing light, see
 page 47, I used a variable (button_memo) to hold a criterion for a decision made
@@ -2837,28 +2802,22 @@ Although automata provide a good abstraction to model reactive and interac-
 tive systems, coming to a correct diagram is not straightforward —and some-
 times just outright hard. Too often, the “sunny day scenario” of states and
 events is plotted out first, and everything straying from this path is then
-added
-on an impromptu basis. This approach carries the risk that some combinations
+added on an impromptu basis. This approach carries the risk that some combinations
 of events & states are forgotten, and indeed I have encountered two comment
 parser diagrams (like the one at page 40) by different book/magazine authors
 that were flawed in such way. Instead, I advise to focus on the
-events and
-on the responses for individual events. For every state, every event should be
-considered; do not route events through a general purpose fall-back too
-eagerly.
+events and on the responses for individual events. For every state, every event should be
+considered; do not route events through a general purpose fall-back too eagerly.
 
 It has become common practice, unfortunately, to introduce automata theory
 with applications for which better solutions exist. One, oft repeated, example
 is that of an automaton that accumulates the value of a series of  
-coins, or
-that “calculates” the remainder after division by 3 of a binary number. These
+coins, or that “calculates” the remainder after division by 3 of a binary number. These
 applications may have made sense in mechanical/pneumatic design where “the
 
 ∗ A man has to ferry a wolf, a sheep and a cabbage across a  
-river in a boat, that just fits 2
-things: the man and something else. If left alone the wolf will eat
-the sheep and the sheep
-will eat the cabbage. How can the man ferry them across the river?
+river in a boat, that just fits 2 things: the man and something else. If left alone the wolf will eat
+the sheep and the sheep will eat the cabbage. How can the man ferry them across the river?
 
 state” is the only memory that the automaton has, but in software, using vari-
 ables and arithmetic operations is the better choice. Another typical example
@@ -2870,27 +2829,25 @@ of reserved words, such automatons become unwieldy, and no one will design
 them by hand. In addition, there is no reason why a lexical scanner cannot
 peek ahead in the text or jump back to a mark that it set earlier —which is
 one of the criterions for choosing a state implementation in the first place,
-and
-finally, solutions like trie lookups are likely simpler to design and implement
+and finally, solutions like trie lookups are likely simpler to design and implement
 while being at least as quick.
 
 What I have side-stepped in this book is a formal description for the notation
 in the state diagrams —in part because it is in line with the usual notation.
 For a state, the rounded rectangle holds the name of the state and optionally
 a brief description of what the state entry function does. The  
-arrow for
-a transition contains the name of the event (or pseudo-event), an  
-optional
-condition between square brackets and an optional action behind a slash (“/”).
+arrow for a transition contains the name of the event (or pseudo-event), an  
+optional condition between square brackets and an optional action behind a slash (“/”).
+
+##### 50 ♙ A tutorial introduction
+***
 
 • Program verification
 
 Should the compiler/interpreter not catch all bugs? This rhetorical question
 has both technical and philosophical sides. I will forego all  
-non-technical
-aspects and only mention that, in practice, there is a tradeoff
-between the
-“expressiveness” of a computer language and the “enforced correctness” (or
+non-technical aspects and only mention that, in practice, there is a tradeoff
+between the “expressiveness” of a computer language and the “enforced correctness” (or
 “provable correctness’) of programs in that language. Making a language very
 “strict” is not a solution if work needs to be done that exceeds the size of a
 toy program. A too strict language leaves the programmer struggling with the
@@ -2901,13 +2858,11 @@ The goal of the pawn language is to provide the developer with an informal,
 and convenient to use, mechanism to test whether the program behaves as was
 intended. This mechanism is called “assertions” and, although the concept of
 assertions predates the idea of “design by contract”, it is most easily
-explained
-through the idea of design by contract.
+explained through the idea of design by contract.
 
 The “design by contract” paradigm provides an alternative approach for deal-
 ing with erroneous conditions. The premise is that the programmer  
-knows
-the task at hand, the conditions under which the software must operate and
+knows the task at hand, the conditions under which the software must operate and
 
 the environment. In such an environment, each function specifies the specific
 conditions, in the form of assertions , that must hold true before a client may
@@ -2915,73 +2870,70 @@ execute the function. In addition, the function may also specify any conditions
 that hold true after it completes its operation. This is the “contract” of the
 function.
 
+<hr>
+
+##### 51 ♙ A tutorial introduction
+***
+
 The name “design by contract” was coined by Bertrand Meyer and its princi-
 ples trace back to predicate logic and algorithmic analysis.
 
-Preconditions specify the valid values of the input parameters and environ-
-mental attributes;
+   • Preconditions specify the valid values of the input parameters and environmental attributes;
 
-Postconditions specify the output and the (possibly modified) environment;
+   • Postconditions specify the output and the (possibly modified) environment;
 
-Invariants indicate the conditions that must hold true at key points  
-in a
-function, regardless of the path taken through the function.
+   • Invariants indicate the conditions that must hold true at key points in a function, regardless of the path taken through the function.
 
 For example, a function that computes a square root of a number may specify
 that its input parameter be non-negative. This is a precondition. It may also
-
 specify that its output, when squared, is the input value 0.01%. This is a
-
 postcondition; it verifies that the routine operated correctly. A convenient
-way
-
-to calculate a square root is via “bisection”. At each iteration, this algorithm
+way to calculate a square root is via “bisection”. At each iteration, this algorithm
 gives at least one extra bit (binary digit) of accuracy. This is an invariant
-(it
-might be an invariant that is hard to check, though).
+(it might be an invariant that is hard to check, though).
 
 Preconditions, postconditions and invariants are similar in the sense that they
 all consist of a test and that a failed test indicates an error in  
-the imple-
-mentation. As a result, you can implement preconditions, postconditions and
-invariants with a single construct: the “assertion”. For preconditions,  
-write
-assertions at the very start of the routine; for invariants, write an
-assertion
+the implementation. As a result, you can implement preconditions, postconditions and
+invariants with a single construct: the “assertion”. For preconditions, write
+assertions at the very start of the routine; for invariants, write an assertion
 where the invariant should hold; for post conditions, write an assertion before
 each “return” statement or at the end of the function.
 
 In pawn, the instruction is called assert; it is a simple statement that
-contains
-a test. If the test outcome is ”true”, nothing happens. If the outcome is
-”false”,
-the assert instruction terminates the program with a message containing the
+contains a test. If the test outcome is ”true”, nothing happens. If the outcome is
+”false”, the assert instruction terminates the program with a message containing the
 details of the assertion that failed.
 
 Assertions are checks that should never fail. Genuine errors, such  
-as user
-input errors, should be handled with explicit tests in the program, and  
-not
-with assertions. As a rule, the expressions contained in assertions should be
+as user input errors, should be handled with explicit tests in the program, and  
+not with assertions. As a rule, the expressions contained in assertions should be
 free of side effects: an assertion should never contain code that your
-application
-requires for correct operation.
+application requires for correct operation.
 
-Example square root
+</div>
 
-function (using bi-
-section): 79
+<hr>
+
+<div align="right">
+	
+`Example square root funczion (usin bisection): 79`
+	
+</div>
+	
+<hr>
+
+<div align="left">
+
+##### 52 ♙ A tutorial introduction
+***
 
 This does have the effect, however, that assertions never fire in a  
-bug-free
-program: they just make the code fatter and slower, without any user-visible
+bug-free program: they just make the code fatter and slower, without any user-visible
 benefit. It is not this bad, though. An additional feature of assertions is
-that
-you can build the source code without assertions simply using a flag or option
+that you can build the source code without assertions simply using a flag or option
 to the pawn parser. The idea is that you enable assertions during development
-
 and build the “retail version” of the code without assertions. This is a better
-
 approach than removing the assertions, because all assertions are automatically
 “back” when recompiling the program —e.g. for maintenance.
 
@@ -2996,23 +2948,17 @@ this, the code will gradually become sturdier and more reliable.
 When programs become larger, documenting the program and the functions
 becomes vital for its maintenance, especially when working in a team. The
 pawn language tools have some features to assist you in documenting  
-the
-code in comments. Documenting a program or library in its comments has a
+thecode in comments. Documenting a program or library in its comments has a
 few advantages —for example: documentation is more easily kept up to date
-
 with the program, it is efficient in the sense that programming comments now
 double as documentation, and the parser helps your documentation efforts in
 generating syntax descriptions and cross references.
 
-                                  Every comment that starts with three slashes
-
-(“/// ”) followed by white-space,
-Comment syntax: 97 or that starts with a slash and two stars (“/\*\* ”)
+Every comment that starts with three slashes
+(“/// ”) followed by white-space, or that starts with a slash and two stars (“/\*\* ”)
 followed by white-space is a
 special documentation comment. The pawn compiler extracts documentation
-
 comments and optionally writes these to a “report” file. See the application
-
 documentation, or appendix B, how to enable the report generation.
 
 As an aside, comments that start with “/\*_” must still be closed with “_/”.
@@ -3024,6 +2970,21 @@ create printed documentation. The syntax of the report file is compatible with
 that of the “.Net” developer products —except that the pawn compiler stores
 more information in the report than just the extracted documentation strings.
 The report file contains a reference to the “smalldoc.xsl” stylesheet.
+
+</div>
+
+<hr>
+
+<div align="right">
+	
+`Comment syntax: 97`
+
+</div>
+
+<hr>
+
+##### 53-56 ♙ A tutorial introduction
+***
 
 The example below illustrates documentation comments in a simple script that
 has a few functions. You may write documentation comments for a function
@@ -3039,15 +3000,17 @@ XSLT transformation file.
 
 Listing: weekday.p
 
-/\*\*
+```c
+
+/**
 
 - This program illustrates Zeller’s congruence algorithm to calculate
 
 - the day of the week given a date.
 
-\*/
+*/
 
-/\*\*
+/**
 
 - <summary>
 
@@ -3059,59 +3022,38 @@ Listing: weekday.p
 
 - </summary>
 
-\*/
+*/
 main()
-
 {
-
-new day, month, year
-
-if (readdate(day, month, year))
-
-{
-
-new wkday = weekday(day, month, year)
-
-printf "The date %d-%d-%d falls on a ", day, month, year
-switch (wkday)
-
-{
-
-case 0:
-
-print "Saturday"
-case 1:
-
-print "Sunday"
-case 2:
-
-print "Monday"
-case 3:
-
-print "Tuesday"
-case 4:
-
-print "Wednesday"
-case 5:
-
-print "Thursday"
-case 6:
-
-print "Friday"
-
+    new day, month, year
+    if (readdate(day, month, year))
+    {
+        new wkday = weekday(day, month, year)
+        printf "The date %d-%d-%d falls on a ", day, month, year
+        switch (wkday)
+        {
+            case 0:
+            print "Saturday"
+            case 1:
+            print "Sunday"
+            case 2:
+            print "Monday"
+            case 3:
+            print "Tuesday"
+            case 4:
+            print "Wednesday"
+            case 5:
+            print "Thursday"
+            case 6:
+            print "Friday"
+        }
+    }
+    else   
+        print "Invalid date"
+    print "\n"
 }
 
-}
-
-else
-
-print "Invalid date"
-
-print "\n"
-
-}
-
-/\*\*
+/**
 
 - <summary>
 
@@ -3181,13 +3123,11 @@ print "\n"
 
 - </remarks>
 
-\*/
+*/
 
 weekday(day, month, year)
-
 {
-
-/\*\*
+/**
 
 - <remarks>
 
@@ -3201,20 +3141,17 @@ weekday(day, month, year)
 
 - </remarks>
 
-\*/
+*/
 
-if (month <= 2)
+    if (month <= 2)
+        month += 12, --year
 
-month += 12, --year
-
-new j = year % 100
-new e = year / 100
-
-return (day + (month+1)*26/10 + j + j/4 + e/4 - 2*e) % 7
-
+    new j = year % 100
+    new e = year / 100
+    return (day + (month+1)*26/10 + j + j/4 + e/4 - 2*e) % 7
 }
 
-/\*\*
+/**
 
 - <summary>
 
@@ -3256,23 +3193,18 @@ return (day + (month+1)*26/10 + j + j/4 + e/4 - 2*e) % 7
 
 - </returns>
 
-\*/
+*/
 
 bool: readdate(&day, &month, &year)
-
 {
-
-print "Give a date (dd-mm-yyyy): "
-day = getvalue(\_,’-’,’/’)
-
-month = getvalue(\_,’-’,’/’)
-year = getvalue()
-
-return 1 <= month <= 12 && 1 <= day <= daysinmonth(month,year)
-
+    print "Give a date (dd-mm-yyyy): "
+    day = getvalue(\_,’-’,’/’)
+    month = getvalue(\_,’-’,’/’)
+    year = getvalue()
+    return 1 <= month <= 12 && 1 <= day <= daysinmonth(month,year)
 }
 
-/\*\*
+/**
 
 - <summary>
 
@@ -3310,13 +3242,13 @@ return 1 <= month <= 12 && 1 <= day <= daysinmonth(month,year)
 
 - </remarks>
 
-\*/
+*/
 
 bool: isleapyear(year)
 
 return year % 400 == 0 || year % 100 != 0 && year % 4 == 0
 
-/\*\*
+/**
 
 - <summary>
 
@@ -3346,83 +3278,59 @@ return year % 400 == 0 || year % 100 != 0 && year % 4 == 0
 
 - </param>
 
-\*/
+*/
 
 daysinmonth(month, year)
-
 {
-
-static daylist[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30,  
-31 }
-
-assert 1 <= month <= 12
-
-return daylist[month-1] + \_:(month == 2 && isleapyear(year))
-
+    static daylist[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }
+    assert 1 <= month <= 12
+    return daylist[month-1] + \_:(month == 2 && isleapyear(year))
 }
 
-The format of the XML file created by “.Net” developer products is  
-docu-
-mented in the Microsoft documentation. The pawn parser creates a mini-
-mal description of each function or global variable or constant that is used  
-in
+```
 
-a project, regardless of whether you used documentation comments on that
+The format of the XML file created by “.Net” developer products is  
+documented in the Microsoft documentation. The pawn parser creates a mini-
+mal description of each function or global variable or constant that is used  
+in a project, regardless of whether you used documentation comments on that
 function/variable/constant. The parser also generates few tags of its own:
 
-attribute Attributes for a function, such as “native” or “stock”.
-automaton The automaton that the function belongs to (if any).
-dependency The names of the symbols (other functions, global variables
-and/
+| name       | info                                                                                                                                                                                                                               |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| attribute  | Attributes for a function, such as “native” or “stock”.                                                                                                                                                                            |
+| automaton  | The automaton that the function belongs to (if any).                                                                                                                                                                               |
+| dependency | The names of the symbols (other functions, global variables and/global constants) that the function requires. If desired, a call tree can be constructed from the dependencies.                                                    |
+| param      | Function parameters. When you add a parameter description in a documentation comment, this description is combined with the auto-generated content for the parameter.                                                              |
+| paraminfo  | Tags and array or reference information on a parameter.                                                                                                                                                                            |
+| referrer   | All functions that refer to this symbol; i.e., all functions that use or call this variable/function. This information is sufficient to serve as a “cross-reference” —the “referrer” tree is the inverse of the “dependency” tree. |
 
-global constants) that the function requires. If desired, a call tree
-can be constructed from the dependencies.
+<hr>
 
-param Function parameters. When you add a parameter description in
-a documentation comment, this description is combined with the
-auto-generated content for the parameter.
+##### 57 ♙ A tutorial introduction
+***
 
-paraminfo Tags and array or reference information on a parameter.
+</div>
 
-referrer All functions that refer to this symbol; i.e., all functions
-that use
-or call this variable/function. This information is sufficient to
-serve as a “cross-reference” —the “referrer” tree is the inverse of
-the “dependency” tree.
+<div align="center">
+	
+![fig2](https://i.ibb.co/VmQS0fL/image.png)
 
-Figure 2: Documentation generated from the source code
+</div>
 
-stacksize The estimated number of cells that the function will allocate
-on
-the stack and heap. This stack usage estimate excludes the stack
-requirements of any functions that are “called” from the func-
-tion to which the documentation applies. For example, function
-readdate is documented as taking 6 cells on the stack, but it
-also calls daysinmonth which takes 4 additional cells —and in
-turn calls isleapyear. To calculate the total stack requirements
-for function readdate, the call tree should be considered.
+<div align="left">
 
-In addition to the local variables and function parameters, the
-compiler also uses the stack for storing intermediate results in
-complex expressions. The stack space needed for these interme-
-diate results are also excluded from this report. In general, the
-required overhead for the intermediate results is not cumulative
+###### Figure 2: Documentation generated from the source code
 
-(over all functions), which is why it would be inaccurate to add a
-“safety margin” to every function. For the program as a whole,
-a safety margin would be highly advised. See appendix B (page
+| name       | info                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| stacksize  | The estimated number of cells that the function will allocate on the stack and heap. This stack usage estimate excludes the stack requirements of any functions that are “called” from the function to which the documentation applies. For example, function readdate is documented as taking 6 cells on the stack, but it also calls daysinmonth which takes 4 additional cells —and in turn calls isleapyear. To calculate the total stack requirements for function readdate, the call tree should be considered. In addition to the local variables and function parameters, the compiler also uses the stack for storing intermediate results in complex expressions. The stack space needed for these intermediate results are also excluded from this report. In general, the required overhead for the intermediate results is not cumulative (over all functions), which is why it would be inaccurate to add a “safety margin” to every function. For the program as a whole, a safety margin would be highly advised. See appendix B (page 168. for the -v option which can tell you the maximum estimate stack usage, based on the call tree. |
+| tagname    | The tag of the constant, variable, function result or function parameter(s).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| transition | The transitions that the function provokes and their conditions —see the section of automatons on page 38.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
-168. for the -v option which can tell you the maximum estimate
-     stack usage, based on the call tree.
+<hr>
 
-tagname The tag of the constant, variable, function result or  
-function
-parameter(s).
-
-transition The transitions that the function provokes and their
-conditions
-
-—see the section of automatons on page 38.
+##### 58 ♙ A tutorial introduction
+***
 
 All text in the documentation comment(s) is also copied to each  
 function,
@@ -3437,73 +3345,48 @@ processors usually do. The pawn toolkit comes with an example XSLT file
 
 (with a matching style sheet) which supports the following XML/HTML tags:
 
-<code> </code> Preformatted source code in a monospaced
-font; although the “&”, “<” and “>” must
-be typed as “&amp;”, “&lt;” and “&rt;” re-
-spectively.
+| name                         | info                                                                                                                                               |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <code> </code>               | Preformatted source code in a monospaced font; although the “&”, “<” and “>” must be typed as “&amp;”, “&lt;” and “&rt;” respectively.             |
+| <example> </example>         | Text set under the sub-header “Example”.                                                                                                           |
+| <param  name="..."> </param> | A parameter description, with the parameter name appearing inside the opening tag (the “name=” option) and the parameter description following it. |
+| <paramref  name="..."  />    | A reference to a parameter, with the parameter name appearing inside the opening tag (the “name=” option).                                         |
+| <remarks> </remarks>         | Text set under the sub-header "Remarks”.                                                                                                           |
+| <returns> </returns>         | Text set under the sub-header “Returns”.                                                                                                           |
+| <seealso> </seealso>         | Text set under the sub-header “See also”.                                                                                                          |
+| <summary> </summary>         | Text set immediately below the header of the symbol.                                                                                               |
+| <section> </section>         | Sets the text in a header. This should only be used in documentation that is not attached to a function or a variable.                             |
+| <subsection> </subsection>   | Sets the text in a sub-header. This should only be used in documentation that is not attached to a function or a variable.                         |
 
-<example> </example> Text set under the sub-header “Example”.
+<hr>
 
-<param  name="...">  </param>   A parameter description,  with the parame-
+##### 58 ♙ A tutorial introduction
+***
 
-ter name appearing inside the opening tag
-(the “name=” option) and the parameter de-
-scription following it.
+The following additional HTML tags are supported for general purpose formatting text inside any of the above sections:
 
-<paramref  name="..."  /> A reference to a parameter, with the param-
+| name           | info                                                                                                                                                                 |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <c> </c>       | Text set in a monospaced font.                                                                                                                                       |
+| <em> </em>     | Text set emphasized, usually in italics.                                                                                                                             |
+| <p> </p>       | Text set in a new paragraph. Instead of wrapping <p> and </p> around every paragraph, inserting <p/> as a separator between two paragraphs produces the same effect. |
+| <para> </para> | An alternative for <p> </p>.                                                                                                                                         |
+| <ul> </ul>     | An unordered (bulleted) list.                                                                                                                                        |
+| <ol> </ol>     | An ordered (numbered) list.                                                                                                                                          |
+| <li> </li>     | An item in an ordered or unordered list.                                                                                                                             |
 
-eter name appearing inside the opening tag
-(the “name=” option).
+<hr>
 
-<remarks> </remarks> Text set under the sub-header “Remarks”.
-
-<returns> </returns> Text set under the sub-header “Returns”.
-
-<seealso> </seealso> Text set under the sub-header “See also”.
-
-<summary>  </summary>              Text  set  immediately below  the  header  
-of
-
-the symbol.
-
-<section>  </section>              Sets the text in a header.  This should only
-
-be used in documentation that is not at-
-tached to a function or a variable.
-
-<subsection> </subsection> Sets the text in a sub-header. This should
-
-only be used in documentation that is not
-attached to a function or a variable.
-
-The following additional HTML tags are supported for general purpose for-
-matting text inside any of the above sections:
-
-<c> </c> Text set in a monospaced font.
-
-<em> </em> Text set emphasized, usually in italics.
-
-<p>  </p>                  Text set in a new paragraph.  Instead of wrapping <p>
-and </p> around every paragraph,  inserting <p/> as a
-separator between  two paragraphs  produces  the same
-effect.
-
-<para> </para> An alternative for <p> </p>
-
-<ul>  </ul>               An unordered (bulleted) list.
-
-<ol>  </ol>               An ordered (numbered) list.
-
-<li>  </li>               An item in an ordered or unordered list.
+##### 59 ♙ A tutorial introduction
+***
 
 As stated, there is one exception in the processing of documentation  
-com-
-ments: if your documentation comment contains a <param ...> tag (and a
+comments: if your documentation comment contains a <param ...> tag (and a
 matching </param>), the pawn parser looks up the parameter and combines
 your description of the parameter with the contents that it has automatically
 generated.
 
-• Warnings and errors
+### • Warnings and errors
 
 The big hurdle that I have stepped over is how to actually compile the code
 snippets presented in this chapter. The reason is that the procedure depends
@@ -3511,58 +3394,41 @@ on the system that you are using: in some applications there is a “Make” or
 “Compile script” command button or menu option, while in other environments
 you have to type a command like “sc myscript” on a command prompt. If
 you are using the standard pawn toolset, you will find instructions of how to
-
 use the compiler and run-time in the companion booklet “The pawn booklet
-
 — Implementor’s Guide”.
 
 Regardless of the differences in launching the compile, the phenomenon that
 results from launching the compile are likely to be very similar  
-between all
-systems:
+between all systems:
 
-either the compile succeeds and produces an executable program —that may
-or may not run automatically after the compile;
+   • either the compile succeeds and produces an executable program —that may or may not run automatically after the compile;
 
-or the compile gives a list of warning and error messages.
+   • or the compile gives a list of warning and error messages.
 
-Mistakes happen and the pawn parser tries to catch as many of them as it
+<hr>
+
+##### 60 ♙ A tutorial introduction
+***
+
+   • Mistakes happen and the pawn parser tries to catch as many of them as it
 can. When you inspect the code that the pawn parser complains about, it
 may on occasion be rather difficult for you to see why the code is erroneous
 (or suspicious). The following hints may help:
 
-Each error or warning number is numbered. You can look up the error
-message with this number in appendix A, along with a brief description on
-what the message really means.
+   • Each error or warning number is numbered. You can look up the error message with this number in appendix A, along with a brief description on what the message really means.
 
-If the pawn parser produces a list of errors, the first error in this list
-is a
-true error, but the diagnostic messages below it may not be errors at all.
+   • If the pawn parser produces a list of errors, the first error in this list is a true error, but the diagnostic messages below it may not be errors at all. After the pawn parser sees an error, it tries to step over it and complete the compilation. However, the stumbling on the error may have confused the pawn parser so that subsequent legitimate statements are misinterpreted and reported as errors too. When in doubt, fix the first error and recompile.
 
-After the pawn parser sees an error, it tries to step over it and complete the
-compilation. However, the stumbling on the error may have confused the
-pawn parser so that subsequent legitimate statements are misinterpreted
-and reported as errors too.
+   • The pawn parser checks only the syntax (spelling/grammar), not the semantics (i.e. the “meaning”) of the code. When it detects code that does not comply to the syntactical rules, there may actually be different ways in which the code can be changed to be “correct”, in the syntactical sense of the word —even though many of these “corrections” would lead to nonsensical code. The result is, though, that the pawn parser may have difficulty to precisely locate the error: it does not know what you meant to write. Hence, the parser often outputs two line numbers and the error is somewhere in the range (between the line numbers).
 
-When in doubt, fix the first error and recompile.
+   • Remember that a program that has no syntactical errors (the pawn parser accepts it without error & warning messages) may still have semantical and logical errors which the pawn parser cannot catch. The assert instruction (page 112) is meant to help you catch these “run-time” errors.
 
-The pawn parser checks only the syntax (spelling/grammar), not the se-
-mantics (i.e. the “meaning”) of the code. When it detects code that does
-not comply to the syntactical rules, there may actually be different ways in
-which the code can be changed to be “correct”, in the syntactical sense of
-the word —even though many of these “corrections” would lead to nonsensi-
+<hr>
 
-cal code. The result is, though, that the pawn parser may have difficulty to
-precisely locate the error: it does not know what you meant to write. Hence,
-the parser often outputs two line numbers and the error is somewhere in the
-range (between the line numbers).
+##### 61 ♙ A tutorial introduction
+***
 
-Remember that a program that has no syntactical errors (the pawn parser
-accepts it without error & warning messages) may still have semantical and
-logical errors which the pawn parser cannot catch. The assert instruction
-(page 112) is meant to help you catch these “run-time” errors.
-
-• In closing
+### • In closing
 
 If you know the C programming language, you will have seen many concepts
 that you are familiar with, and a few new ones. If you don’t know C, the pace
@@ -3575,18 +3441,20 @@ chapter “Pitfalls” (page 134) first.
 This booklet attempts to be both an informal introduction and a (more formal)
 language specification at the same time, perhaps succeeding at neither. Since
 it is also the standard book on pawn,∗ the focus of this booklet is on
-being
-accurate and complete, rather than being easy to grasp.
+being accurate and complete, rather than being easy to grasp.
 
 The double nature of this booklet shows through in the order in  
-which it
-presents the subjects. The larger conceptual parts of the language, variables
-and functions, are covered first. The operators, the statements and
-general
+which it presents the subjects. The larger conceptual parts of the language, variables
+and functions, are covered first. The operators, the statements and general
 syntax rules follow later —not that they are less important, but they are easier
 to learn, to look up, or to take for granted.
 
-∗ It is no longer the only book on Pawn.
+_______
+###### ∗ It is no longer the only book on Pawn.
+
+
+# SECOND CHAPTER FINISHED
+
 
 62
 
