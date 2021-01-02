@@ -18,3 +18,7 @@ This repository is about the files that I'm currently editing / creating.
    └ chapter 03 - "Data-and-declarations"          /  100%
    
    └ chapter 04 - "Functions"                      /  100%
+   
+   └ chapter 05 - "The-preprocessor"               /  100%
+   
+   └ chapter 06 - "General-syntax"                 /  100%
