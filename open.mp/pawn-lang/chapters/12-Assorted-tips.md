@@ -584,4 +584,3 @@ Listing: quine.p
 
 </div>
 
-<hr>
