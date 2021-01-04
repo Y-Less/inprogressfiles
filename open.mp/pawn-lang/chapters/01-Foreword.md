@@ -1,4 +1,3 @@
-<div align="right">3</div>
 <div align="center">
 
 # Foreword
