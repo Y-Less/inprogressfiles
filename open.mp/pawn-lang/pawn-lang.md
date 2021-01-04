@@ -30,125 +30,119 @@
 <div align="left">
 
 ##### ii
+***
 
----
+“Java” is  a  trademark  of  Sun Microsystems,  Inc.
 
-“Java” is a trademark of Sun Microsystems, Inc.
-
-“Microsoft” and “Microsoft Windows” are registered trademarks of  
+“Microsoft”  and “Microsoft  Windows”  are  registered  trademarks  of  
 Microsoft Corporation.
 
-“Linux” is a registered trademark of Linus Torvalds.
+“Linux”  is a  registered  trademark  of  Linus  Torvalds.
 
-“CompuPhase” is a registered trademark of ITB CompuPhase.
+“CompuPhase”  is  a registered  trademark  of ITB  CompuPhase.
 
-“Unicode” is a registered trademark of Unicode, Inc.
+“Unicode”  is  a registered  trademark  of  Unicode,  Inc.
 
 <br/><br/>
 <br/><br/>
 <br/><br/>
 
-Copyright c 1997–2006, ITB CompuPhase
+Copyright  c  1997–2006, ITB CompuPhase
 
-Eerste Industriestraat 19–21, 1401VL Bussum The Netherlands (Pays Bas)
+Eerste Industriestraat  19–21, 1401VL Bussum The Netherlands (Pays Bas)
 telephone: (+31)-(0)35 6939 261
 
 e-mail: info@compuphase.com, http://www.compuphase.com
 
 The information in this manual and the associated software are provided “as
-is”. There are no guarantees, explicit or implied, that the software and the
+is”.  There are no guarantees, explicit  or implied, that the software and the
 manual are accurate.
 
 Requests for corrections and additions to the manual and the software can be
 directed to ITB CompuPhase at the above address.
 
-Typeset with TEX in the “Computer Modern” and “Palatino” typefaces at a base
+Typeset with TEX in the “Computer Modern” and “Palatino” typefaces  at a base 
 size of 11 points.
 
 <br/><br/>
-
 <hr>
 <hr>
-<div align="right">1-2</div>
 <div align="center">
 
 # Table of contents
 
----
+***
 
 </div>
 <div align="left">
+      
+[Foreword](01-Foreword.md) - Page 3-5
 
-      Foreword........................................................................................................................3
+[A tutorial introduction](02-A-tutorial-introduction.md) - Page 5-62
 
-      A tutorial introduction.........................................................................................................5
+[Data and declarations](03-Data-and-declarations.md) - Page 62-70
 
-      Data and declarations..........................................................................................................62
+[Functions](04-Functions.md) - Page 70-93
 
-      Functions......................................................................................................................70
+[The preprocessor](05-The-preprocessor.md) - Page 93-97
 
-      The preprocessor...............................................................................................................93
+[General syntax](06-General-syntax.md) - Page 97-104
 
-      General syntax.................................................................................................................97
+[Operators and expressions](07-Operators-and-expressions.md) - Page 104-112
 
-      Operators and expressions.....................................................................................................104
+[Statements](08-Statements.md) - Page 112-117
 
-      Statements....................................................................................................................112
+[Directives](09-Directives.md) - Page 117-124
 
-      Directives....................................................................................................................117
+[Proposed function  library](10-Proposed-function-library.md) - Page 124-134
 
-      Proposed function  library....................................................................................................124
+[Pitfalls:  differences  from  C](11-Pitfalls-differences-from-C.md) - Page 134-137
 
-      Pitfalls:  differences  from  C...............................................................................................134
+[Assorted tips](12-Assorted-tips.md) - Page 137-148
 
-      Assorted tips.................................................................................................................137
+[Appendices](13-Appendices.md) - Page 148-183
 
-      Appendices....................................................................................................................148
-
-            A: Error and warning messages...........................................................................................148
-
-            B: The compiler.........................................................................................................168
-
-            C: Rationale............................................................................................................174
-
-            D: License..............................................................................................................181
-
-      Index.........................................................................................................................183
+   ∟ [Error and warning messages](12-Appendices.md#error-and-warning-messages) - Page 148-168
+   
+   ∟ [The compiler](13-Appendices.md#the-compiler) - Page 168-174
+   
+   ∟ [Rationale](13-Appendices.md#rationale) - Page 174-181
+   
+   ∟ [License](13-Appendices.md#license) - Page 181-183
 
 </div>
-<br/><br/>
+
 <hr>
-<hr>
-<div align="right">3</div>
+
 <div align="center">
 
 # Foreword
 
----
+***
 
 </div>
 <div align="left">
 
 “pawn” is a simple, typeless, 32-bit “scripting” language with a C-like syntax.
-Execution speed, stability, simplicity and a small footprint were essential
+Execution speed, stability, simplicity and a small footprint were essential 
 design
 criterions for both the language and the interpreter/abstract machine that a
 pawn program runs on.
 
-An application or tool cannot do or be everything for all users.  
-This not
-only justifies the diversity of editors, compilers, operating systems and many
+An  application or  tool  cannot  do  or  be  everything   for  all   users.   
+This  not
+only justifies the diversity of editors, compilers,  operating systems and many
 other software systems, it also explains the presence of extensive configuration
 options and macro or scripting languages in applications. My own applications
 have contained a variety of little languages; most were very simple, some were
-extensive. . . and most needs could have been solved by a general  
+extensive. . .   and  most  needs  could  have  been  solved  by  a  general  
 purpose
 language with a special purpose library. Hence, pawn.
 
 The pawn language was designed as a flexible language for manipulating ob-
-jects in a host application. The tool set (compiler, abstract machine)  
+jects  in  a  host  application.  The  tool  set  (compiler, abstract machine)  
 were
-written so that they were easily extensible and would run on different  
+written so  that they were  easily  extensible  and  would run  on  different  
 soft-
 ware/hardware architectures.
 
@@ -161,22 +155,22 @@ ware/hardware architectures.
 <div align="left">
 
 pawn is a descendent of the original Small C by Ron Cain and James Hendrix,
-which at its turn was a subset of C. Some of the modifications that I did to
+which at its turn was a subset of C. Some of the modifications  that I did to
 Small C, e.g. the removal of the type system and the substitution of pointers by
 references, were so fundamental that I could hardly call my language a “subset
 
 of C” or a “C dialect” anymore. Therefore, I stripped off the “C” from the title
 and used the name “Small” for the name of the language in my publication in
 Dr. Dobb’s Journal and the years since. During development and maintenance
-of the product, I received many requests for changes. One of the frequently
-requested changes was to use a different name for the language —searching
+of the product,  I received many requests for changes.  One of the frequently
+requested changes  was to  use  a  different  name  for  the language —searching
 for information on the Small scripting language on the Internet was hindered
-by “small” being such a common word. The name change occurred together
-with a significant change in the language: the support of “states” (and state
+by “small” being such a common word.  The name change occurred together
+with a significant change in the language:  the support of “states” (and state
 machines).
 
-I am indebted to Ron Cain and James Hendrix (and more recently, Andy
-Yuen), and to Dr. Dobb’s Journal to get this ball rolling. Although I must
+I  am  indebted to  Ron  Cain  and  James  Hendrix  (and  more  recently,  Andy
+Yuen),  and to  Dr. Dobb’s Journal  to  get this ball  rolling.  Although I must
 have touched nearly every line of the original code multiple times, the Small
 C origins are still clearly visible.
 
@@ -189,42 +183,48 @@ C origins are still clearly visible.
 <div align="left">
 
 ##### 4 ♙ Foreword
-
----
+***
 
 A detailed treatise of the design goals and compromises is in appendix C; here
-I would like to summarize a few key points. As written in the previous para-
+I would like to summarize a few key points.  As written in the previous para-
 graphs, pawn is for customizing applications (by writing scripts), not for writ-
-ing applications. pawn is weak on data structuring because pawn programs
-are intended to manipulate objects (text, sprites, streams, queries, . . . ) in
+ing applications.  pawn  is weak on data structuring because pawn  programs
+are intended to manipulate objects (text, sprites, streams, queries, . . . ) in 
 the
-host application, but the pawn program is, by intent, denied direct access to
-any data outside its abstract machine. The only means that a pawn program
+host application, but the pawn program is, by  intent, denied direct access to
+any data outside its abstract machine.  The only means that a pawn program
 has to manipulate objects in the host application is by calling subroutines, so
 called “native functions”, that the host application provides.
 
 pawn is flexible in that key area: calling functions. pawn supports default val-
-ues for any of the arguments of a function (not just the last),
+ues for any of the arguments of a function (not just the last), 
 call-by-reference
-as well as call-by-value, and “named” as well as “positional” function argu-
-ments. pawn does not have a “type checking” mechanism, by virtue of being
-a typeless language, but it does offer in replacement a “classification
+as well as call-by-value, and  “named” as well as “positional” function argu-
+ments.  pawn does not have a “type checking” mechanism, by virtue of being
+a typeless language, but it does  offer in replacement a “classification 
 checking”
 mechanism, called “tags”. The tag system is especially convenient for function
 arguments because each argument may specify multiple acceptable tags.
 
 For any language, the power (or weakness) lies not in the individual features,
-but in their combination. For pawn, I feel that the combination of named ar-
+but in their combination.  For pawn, I feel that the combination of named ar-
 guments —which lets you specify function arguments in any order, and default
 values —which allows you to skip specifying arguments that you are not inter-
 ested in, blend together to a convenient and “descriptive” way to call (native)
 functions to manipulate objects in the host application.
 
 </div>
-<br/><br/>
+
 <hr>
+
+<div align="right">
+
+[Go Back to Contents](00-Contents.md)
+
+</div>
+
 <hr>
-<div align="right">5</div>
+
 <div align="center">
 
 # A tutorial introduction
@@ -286,8 +286,6 @@ the string, because a string may not wrap over multiple lines.
 
 </div>
 <div align="left">
-
-##### 6 ♙ A tutorial introduction
 
 ---
 
@@ -351,8 +349,6 @@ available by the host application and be “declared” to the pawn parser.
 <hr>
 
 <div align="left">
-
-##### 7 ♙ A tutorial introduction
 
 ---
 
@@ -419,8 +415,6 @@ to assign a value to the variable already at the moment of its creation.
 
 <div align="left">
 
-##### 8 ♙ A tutorial introduction
-
 ---
 
 Variables must be declared before they are used in an expression.
@@ -464,8 +458,6 @@ The loop condition for the while loop is “(a != b)”; the symbol != is the
 “not equal to” operator. That is, the if–else instruction is repeated  
 until “a” equals “b”. It is good practice to indent the instructions that run under
 control of another statement, as is done in the preceding example.
-
-##### 9 ♙ A tutorial introduction
 
 ---
 
@@ -534,8 +526,6 @@ main()
 
 ```
 
-##### 10 ♙ A tutorial introduction
-
 ---
 
 When a program or sub-program has some fixed limit built-in, it is good prac-
@@ -600,8 +590,6 @@ the sequence was to describe the growth of a population of (idealized) rabbits;
 and the sequence is 1, 1, 2, 3, 5, 8, 13, 21,. . .
 (every next value is the sum of its two predecessors).
 
-##### 11 ♙ A tutorial introduction
-
 Listing: fib.p
 
 ```c
@@ -662,8 +650,6 @@ It need not appear at the very end of the function; early exits are permitted.
 
 <div align="left">
 
-##### 12 ♙ A tutorial introduction
-
 ---
 
 The main function of the Fibonacci example calls predefined “native” functions,
@@ -713,8 +699,6 @@ embraced it to calculate intervals between two events more easily.
 </div>
 
 <div align="left">
-
-##### 13 ♙ A tutorial introduction
 
 ---
 
@@ -802,8 +786,6 @@ JulianToDate(jdn,  &day,  &month,  &year)
 
 ```
 
-##### 14 ♙ A tutorial introduction
-
 ---
 
 Function main starts with creating variables to hold the day, month and year,
@@ -839,8 +821,6 @@ perfectly valid in pawn.
 </div>
 
 <div align="left">
-
-##### 15 ♙ A tutorial introduction
 
 ---
 
@@ -878,11 +858,7 @@ output via a reference argument and an error code in its return value.
 
 As an aside, many desktop application use conversions to and from  
 Julian Day numbers (or varieties of it) to conveniently calculate the number of days
-between to dates or to calculate the date that is 90 days from now —for example.
-
-##### 16 ♙ A tutorial introduction
-
----
+between to dates or to calculate the date that is 90 days from now —for example.---
 
 ### • Rational numbers
 
@@ -950,9 +926,6 @@ case for rational numbers, its memory lay-out.
 <hr>
 
 <div align="left">
-
-##### 17 ♙ A tutorial introduction
-
 ---
 
 The Rational: tag tells the pawn parser that the variables Celsius and Fahrenheit
@@ -1000,9 +973,6 @@ is most widely used in public electronic forums (BBSes, Usenet) to hide texts
 from casual reading, such as the solution to puzzles or riddles. ROT13 simply
 “rotates” the alphabet by half its length, i.e. 13 characters. It is a symmetric
 operation: applying it twice on the same text reveals the original.
-
-##### 18 ♙ A tutorial introduction
-
 ---
 
 Listing: rot13.p
@@ -1071,9 +1041,6 @@ them by value requires a copy of this data structure to be made, taking both mem
 </div>
 
 <div align="left">
-
-##### 19 ♙ A tutorial introduction
-
 ---
 
 Due to this rule, function rot13 can modify its function
@@ -1158,9 +1125,6 @@ strtok(const  string[],  &index)
 </div>
 
 <div align="left">
-
-##### 20 ♙ A tutorial introduction
-
 ---
 
 Function main first displays a message and retrieves a string that  
@@ -1194,9 +1158,6 @@ the same name from C/C++, but it does not modify the source string. Instead
 
 it copies characters from the source string, word for word, into a local array,
 which it then returns.
-
-##### 21 ♙ A tutorial introduction
-
 ---
 
 ### • Arrays and enumerations (structured data)
@@ -1209,9 +1170,6 @@ other languages implement with “structures” or “records”.
 The example to illustrate enumerations and arrays is longer than  
 previous pawn programs, and it also displays a few other features, such as global
 variables and named parameters.
-
-##### 22 ♙ A tutorial introduction
-
 Listing: queue.p
 
 ```c
@@ -1311,9 +1269,6 @@ extract(item[message])
 </div>
 
 <div align="left">
-
-##### 23 ♙ A tutorial introduction
-
 ---
 
 Near the top of the program listing is the declaration of the enumeration mes-
@@ -1379,9 +1334,6 @@ declared
 outside the scope of any function. Variables must still be declared before they
 are used, so main cannot access variables queue and queueitems, but both
 insert and extract can.
-
-##### 24 ♙ A tutorial introduction
-
 ---
 
 Function extract returns the messages with the highest priority via its func-
@@ -1428,9 +1380,6 @@ setting the result set equal to the next_step set for the departure point. Now
 we have in the result set all points that one can reach in one step. Then, for
 every point in our result set, we create a union of the result set and the
 next_step set for that point. This process is iterated for a specified number of loops.
-
-##### 25 ♙ A tutorial introduction
-
 ---
 
 An example may clarify the procedure outlined above. When the departure
@@ -1469,9 +1418,6 @@ lower case letter for an element from that set.
 | complement   | A                     | ~A              |
 | empty set    | ε                     | 0               |
 | membership   | x ∈ A                 | (1 << x ) & A   |
-
-##### 26 ♙ A tutorial introduction
-
 ---
 
 To test for membership —that is, to query whether a set holds a particular
@@ -1538,9 +1484,6 @@ findtargets(source,  steps,  nextstep[],  numpoints  =  sizeof  nextstep)
 }
 
 ```
-
-##### 27 ♙ A tutorial introduction
-
 ---
 
 The enum statement just below the header of the main function declares the
@@ -1616,9 +1559,6 @@ bitcount(set)
 <hr>
 
 <div align="left">
-
-##### 28 ♙ A tutorial introduction
-
 ---
 
 ### • A simple RPN calculator
@@ -1671,7 +1611,7 @@ proposed later to put operators behind the operands, calling it the “Reverse P
 
 <div align="left">
 	
-##### 29 ♙ A tutorial introduction
+
 ***
 
 The advantage of reversing the order is that the operators
@@ -1724,9 +1664,6 @@ main()
 }
 
 ```
-
-##### 30 ♙ A tutorial introduction
-
 ---
 
 The main program contains very little code itself; instead it includes the re-
@@ -1817,10 +1754,7 @@ gettoken(const  string[],  &index)
 
 }
 
-```
-
-##### 31 ♙ A tutorial introduction
-***
+```***
 
 The rpn calculator uses rational number support and rpnparse.inc includes
 the “rational” file for that purpose. Almost all of the operations on rational
@@ -1860,7 +1794,7 @@ where the format code %s expects a string —a zero-terminated array.
 
 <div align="left">
 	
-##### 32 ♙ A tutorial introduction
+
 ***
 
 If you know C/C⁺⁺  or Java, you may want to look at the switch statement.
@@ -1927,7 +1861,7 @@ strtok(const string[], &index)
 
 <div align="left">
 	
-##### 33 ♙ A tutorial introduction
+
 ***
 
 Function strtok is the same as the one used in the wcount.p example. It is
@@ -1991,10 +1925,7 @@ clearstack()
 
 <hr>
 
-<div align="left">
-
-##### 34 ♙ A tutorial introduction
-***
+<div align="left">***
 
 The file stack.inc includes the file rational again. This is technically not
 necessary (rpnparse.inc already included the definitions for rational number
@@ -2034,10 +1965,7 @@ and a second task/thread that sits in a loop continuously requesting user input.
 This is a heavy-weight solution, however. A more light-weight implementation
 of a responsive system is what is called the “event-driven” programming model.
 
-<hr>
-
-##### 35 ♙ A tutorial introduction
-***
+<hr>***
 
 In the event-driven programming model, a program or script decomposes any
 lengthy (background) task into short manageable blocks and in between, it is
@@ -2103,10 +2031,7 @@ to create drawings by properly programming the turtle —it became known as turt
 
 <hr>
 
-<div align="left">
-
-##### 36 ♙ A tutorial introduction
-***
+<div align="left">***
 
 The term “turtle graphics” was also used for drawing inter-
 actively with the arrow keys on the keyboard and a “turtle” for the current
@@ -2163,10 +2088,7 @@ Support for function keys and other special keys (e.g. the arrow keys) is highly
 system-dependent. On ANSI terminals, these keys produce different codes
 than in a Windows “DOS box”.
 
-<hr>
-
-##### 37 ♙ A tutorial introduction
-***
+<hr>***
 
 In the spirit of keeping the example program
 portable, I have used common letters (“u” for up, “l” for left, etc.). This
@@ -2199,10 +2121,7 @@ line or using TCP/IP, the host application may decide itself. The tools in the
 standard pawn distribution push the messages over the TCP/IP network, and
 allow for a “broadcast” mode so that more than two people can chat with each other.
 
-<hr>
-
-##### 38 ♙ A tutorial introduction
-***
+<hr>***
 
 Listing: chat.p
 
@@ -2268,10 +2187,7 @@ other signals that take part in the protocol.
 
 ###### ∗ As this script makes no attempt to separate received messages from typed messages (for example, in two different scrollable regions), the terminal/console will look confusing when this happens. With an improved user-interface, this simple script could indeed be a nice message-base chat program. 
 
-<hr>
-
-##### 39 ♙ A tutorial introduction
-***
+<hr>***
 
 For the stream of events (and the data packets that they carry) to make sense,
 the event-driven program must follow a precise hand-shaking protocol.
@@ -2311,10 +2227,7 @@ In a state diagram, the states are usually represented as circles or
 rounded rectangles and the arrows represent the transitions. As transitions are
 the response of the automaton to events, an arrow may also be seen as an event “that does something”.
 
-<hr>
-
-##### 40 ♙ A tutorial introduction
-***
+<hr>***
 
 An event/transition that is not defined in a particular
 state is assumed to have no effect —it is silently ignored. A filled dot
@@ -2394,10 +2307,7 @@ printchar(ch, colour)
 
 ###### ∗ With the exception of “native functions” and user-defined operators.
 
-<hr>
-
-##### 41 ♙ A tutorial introduction
-***
+<hr>***
 
 Function main sets the starting state to main and exits; all logic  
 is eventdriven. when a key arrives in state plain, the program checks for  
@@ -2419,10 +2329,7 @@ is declared at all in this script. The information about a character being held
 back is “hidden” in the state of the automaton.
 
 As is apparent in the script, state changes may be conditional. The condition
-is optional, and you can also use the common if–else construct to change states.
-
-##### 42 ♙ A tutorial introduction
-***
+is optional, and you can also use the common if–else construct to change states.***
 
 Being state-dependent is not reserved for the event functions. Other functions
 may have state declarations as well, as the echo function demonstrates. When
@@ -2465,10 +2372,7 @@ when actions (output) were tied to the states rather than to the events (input).
 
 ###### * A function that has the same implementation for all states, does not need a state classifierat all —see printchar.
 
-<hr>
-
-##### 43 ♙ A tutorial introduction
-***
+<hr>***
 
 </div>
 
@@ -2510,10 +2414,7 @@ green/wait, because the pedestrians that are busy crossing the road at
 that moment need some time to clear the road —the state red/wait
 allows for this.
 
-<hr>
-
-##### 44 ♙ A tutorial introduction
-***
+<hr>***
 
 For purpose of demonstration, this pedestrian crossing has the added
 functionality that when a pedestrian pushes the button while the light for the
@@ -2579,10 +2480,7 @@ entry() <red_wait>
 
 ```
 
-<hr>
-
-##### 45 ♙ A tutorial introduction
-***
+<hr>***
 
 This example program has an additional dependency on the host application/
 environment: in addition to the “@keypressed” event function, the host must
@@ -2627,10 +2525,7 @@ control is the mirt system (Mobile Infra-Red Transmitter) but not de facto
 standard exists —the Netherlands use a radiographic system called vetag for
 instance.
 
-<hr>
-
-##### 46 ♙ A tutorial introduction
-***
+<hr>***
 
 The new state diagram for the pedestrian crossing light has two more states,
 but more importantly: it needs to save data across events and share it between
@@ -2662,10 +2557,7 @@ the ones listed). Apart from the state classifier, the declaration of a state
 variable is similar to that of a global variable. The declaration of the
 variable button_memo in the next listing illustrates the concept.
 
-<hr>
-
-##### 47 ♙ A tutorial introduction
-***
+<hr>***
 
 Listing: traffic2.p
 
@@ -2757,10 +2649,7 @@ entry() <mirt_override>
 
 ```
 
-<hr>
-
-##### 48 ♙ A tutorial introduction
-***
+<hr>***
 
 If a pedestrian pushes the button during mirt activity, that button press
 is
@@ -2785,10 +2674,7 @@ known riddle of the man that must move a cabbage, a sheep and a wolf across a ri
 ∗ the states are obvious —the trick of the riddle is to avoid the forbidden
 states. But now that we are seeing states everywhere, the task is not to overdo it.
 
-<hr>
-
-##### 49 ♙ A tutorial introduction
-***
+<hr>***
 
 For example, in the second implementation of a pedestrian crossing light, see
 page 47, I used a variable (button_memo) to hold a criterion for a decision made
@@ -2837,10 +2723,7 @@ in the state diagrams —in part because it is in line with the usual notation.
 For a state, the rounded rectangle holds the name of the state and optionally
 a brief description of what the state entry function does. The  
 arrow for a transition contains the name of the event (or pseudo-event), an  
-optional condition between square brackets and an optional action behind a slash (“/”).
-
-##### 50 ♙ A tutorial introduction
-***
+optional condition between square brackets and an optional action behind a slash (“/”).***
 
 • Program verification
 
@@ -2870,10 +2753,7 @@ execute the function. In addition, the function may also specify any conditions
 that hold true after it completes its operation. This is the “contract” of the
 function.
 
-<hr>
-
-##### 51 ♙ A tutorial introduction
-***
+<hr>***
 
 The name “design by contract” was coined by Bertrand Meyer and its princi-
 ples trace back to predicate logic and algorithmic analysis.
@@ -2923,10 +2803,7 @@ application requires for correct operation.
 	
 <hr>
 
-<div align="left">
-
-##### 52 ♙ A tutorial introduction
-***
+<div align="left">***
 
 This does have the effect, however, that assertions never fire in a  
 bug-free program: they just make the code fatter and slower, without any user-visible
@@ -2983,7 +2860,6 @@ The report file contains a reference to the “smalldoc.xsl” stylesheet.
 
 <hr>
 
-##### 53-56 ♙ A tutorial introduction
 ***
 
 The example below illustrates documentation comments in a simple script that
@@ -3306,7 +3182,6 @@ function/variable/constant. The parser also generates few tags of its own:
 
 <hr>
 
-##### 57 ♙ A tutorial introduction
 ***
 
 </div>
@@ -3329,7 +3204,6 @@ function/variable/constant. The parser also generates few tags of its own:
 
 <hr>
 
-##### 58 ♙ A tutorial introduction
 ***
 
 All text in the documentation comment(s) is also copied to each  
@@ -3360,7 +3234,6 @@ processors usually do. The pawn toolkit comes with an example XSLT file
 
 <hr>
 
-##### 58 ♙ A tutorial introduction
 ***
 
 The following additional HTML tags are supported for general purpose formatting text inside any of the above sections:
@@ -3377,7 +3250,6 @@ The following additional HTML tags are supported for general purpose formatting 
 
 <hr>
 
-##### 59 ♙ A tutorial introduction
 ***
 
 As stated, there is one exception in the processing of documentation  
@@ -3407,7 +3279,6 @@ between all systems:
 
 <hr>
 
-##### 60 ♙ A tutorial introduction
 ***
 
    • Mistakes happen and the pawn parser tries to catch as many of them as it
@@ -3425,7 +3296,6 @@ may on occasion be rather difficult for you to see why the code is erroneous
 
 <hr>
 
-##### 61 ♙ A tutorial introduction
 ***
 
 ### • In closing
@@ -3452,22 +3322,21 @@ to learn, to look up, or to take for granted.
 _______
 ###### ∗ It is no longer the only book on Pawn.
 
+</div>
 
-# SECOND CHAPTER FINISHED
+<hr>
 
+<div align="center">
 
-62
+# Data and declarations
 
-Data and declarations
+---
 
-“for” loop: 113
+</div>
+<div align="left">
 
-Compound state-
-ment: 112
-
-pawn is a typeless language. All data elements are of type “cell”, and a cell
+PAWN is a typeless language. All data elements are of type “cell”, and a cell
 can hold an integral number. The size of a cell (in bytes) is system dependent
-
 —usually, a cell is 32-bits.
 
 The keyword new declares a new variable. For special declarations, the keyword
@@ -3477,103 +3346,112 @@ it is explicitly initialized, the value of the new variable is zero.
 
 A variable declaration may occur:
 
-at any position where a statement would be valid —local variables;
+- at any position where a statement would be valid —local variables;
 
-at any position where a function declaration (native function declarations)
-or a function implementation would be valid —global variables;
+- at any position where a function declaration (native function declarations) or a function implementation would be valid —global variables;
 
-in the first expression of a for loop instruction —also local variables.
+- in the first expression of a for loop instruction —also local variables.
 
-Local declarations
+**Local declarations**
 
-A local declaration appears inside a compound statement. A local
-variable can only be accessed from within the compound statement,
-and from nested compound statements. A declaration in the first ex-
-pression of a for loop instruction is also a local declaration.
+`A local declaration appears inside a compound statement. A local variable can only be accessed from within the compound statement, and from nested compound statements. A declaration in the first expression of a for loop instruction is also a local declaration.`
 
-Global declarations
+**Global declarations**
 
-A global declaration appears outside a function and a global variable is
-accessible to any function. Global data objects can only be initialized
-with constant expressions.
+`A global declaration appears outside a function and a global variable is accessible to any function. Global data objects can only be initialized with constant expressions.`
 
-• State variable declarations
+</div>
 
-A state variable is a global variable with a state classifier appended at the
-end.
+<hr>
+
+<div align="right">
+
+`“for” loop: 113`
+
+`Compound statement: 112`
+
+</div>
+
+<hr>
+
+<div align="left">
+
+### • State variable declarations
+
+A state variable is a global variable with a state classifier appended at the end.
 The scope and the lifespan of the variable are restricted to the states that are
 listed in the classifier.
 
 State variables may not be initialized. In contrast to normal variables (which
 are zero after declaration —unless explicitly initialized), state variables
-hold
-an indeterminate value after declaration and after first entering a state in its
+hold an indeterminate value after declaration and after first entering a state in its
 classifier. Typically, one uses the state entry function(s) to properly
-initialize
-the state variable.
+initialize the state variable.
 
-• Static local declarations
+### • Static local declarations
 
 A local variable is destroyed when the execution leaves the compound block
 in which the variable was created. Local variables in a function  
-only exist
-during the run time of that function. Each new run of the function creates
+only exist during the run time of that function. Each new run of the function creates
 and initializes new local variables. When a local variable is  
-declared with
-the keyword static rather than new, the variable remains in existence after
+declared with the keyword static rather than new, the variable remains in existence after
 the end of a function. This means that static local variables provide private,
 permanent storage that is accessible only from a single function (or compound
 block). Like global variables, static local variables can only be initialized
-with
-constant expressions.
+with constant expressions.
 
-• Static global declarations
+### • Static global declarations
 
 A static global variable behaves the same as a normal global variable, except
 that its scope is restricted to the file that the declaration resides in. To
-declare
-a global variable as static, replace the keyword new by static.
+declare a global variable as static, replace the keyword new by static.
 
-• Stock declarations
+### • Stock declarations
 
 A global variable may be declared as “stock”. A stock declaration is one that
-the parser may remove or ignore if the variable turns out not to be used in the
-program.
+the parser may remove or ignore if the variable turns out not to be used in the program.
 
 Stock variables are useful in combination with stock functions. A public vari-
 able may be declared as “stock” as well —declaring public variables as “public
 stock” enables you to declare al public variables that a host application pro-
 vides in an include file, with only those variables that the script actually
-uses
-winding up in the P-code file.
+uses winding up in the P-code file.
 
-• Public declarations
+### • Public declarations
 
 Global “simple” variables (no arrays) may be declared “public” in two ways:
 
-declare the variable using the keyword public instead of new;
+- declare the variable using the keyword public instead of new;
 
-start the variable name with the “@” symbol.
+- start the variable name with the “@” symbol.
 
 Public variables behave like global variables, with the addition that the host
 program can also read and write public variables. A (normal) global variable
 can only be accessed by the functions in your script —the host  
-program is
-unaware of them. As such, a host program may require that you declare a
-
-Stock functions: 84
-
+program is unaware of them. As such, a host program may require that you declare a
 variable with a specific name as “public” for special purposes —such as the
 most recent error number, or the general program state.
 
-Symbolic constants:
-101
+</div>
+
+<hr>
+
+<div align="right">
+
+`Symbolic constants: 101`
+
+`Stock functions: 84`
+
+</div>
+
+<hr>
+
+<div align="left">
 
 • Constant variables
 
 It is sometimes convenient to be able to create a variable that is initialized
-once
-and that may not be modified. Such a variable behaves much like a symbolic
+once and that may not be modified. Such a variable behaves much like a symbolic
 constant, but it still is a variable.
 
 To declare a constant variable, insert the keyword const between the keyword
@@ -3582,115 +3460,122 @@ variable name.
 
 Examples:
 
+```c
+
 new const address[4] = { 192, 0, 168, 66 }
 
-public const status /_ initialized to zero  
-_/
+public const status           /* initialized to zero */
+
+```
 
 Three typical situations where one may use a constant variable are:
 
-To create an “array” constant; symbolic constants cannot be indexed.
+- To create an “array” constant; symbolic constants cannot be indexed.
 
-For a public variable that should be set by the host application, and only by
-the host application. See the preceding section for public variables.
+- For a public variable that should be set by the host application, and only by the host application. See the preceding section for public variables.
 
-A special case is to mark array arguments to functions as const.  
-Array
-arguments are always passed by reference, declaring them as const guards
-against unintentional modification. Refer to page 72 for an example of const
-function arguments.
+- A special case is to mark array arguments to functions as const. Array arguments are always passed by reference, declaring them as const guards against unintentional modification. Refer to page 72 for an example of const function arguments.
 
-See also “multi-
-dimensional arrays”,
-page 66
+</div>
 
-• Arrays (single dimension)
+<hr>
+
+<div align="right">
+
+`See also “multidimensional arrays”, page 66`
+
+</div>
+
+<hr>
+
+<div align="left">
+
+### • Arrays (single dimension)
 
 The syntax name[constant] declares name to be an array of “constant” el-
 ements, where each element is a single cell. The name is a placeholder of an
 identifier name of your choosing and constant is a positive non-zero value;
 constant may be absent. If there is no value between the brackets, the num-
-ber of elements is set equal to the number of initiallers —see the  
-example
-below.
+ber of elements is set equal to the number of initiallers
+—see the example below.
 
 The array index range is “zero based” which means that the first element is at
-
 name[0] and the last element is name[constant-1].
 
-• Initialization
+### • Initialization
 
 Data objects can be initialized at their declaration. The initialler of a
-global
-data object must be a constant. Arrays, global or local, must also be
-initialized
-with constants.
+global data object must be a constant. Arrays, global or local, must also be
+initialized with constants.
 
 Uninitialized data defaults to zero.
 Examples:
 
 Listing: good declaration
 
+```c
+
 new i = 1
+new j                                   /* j is zero */
+new k = ’a’                             /* k has character code for letter ’a’ */
 
-new j /_ j is  
-zero _/
+new a[] = {1,4,9,16,25}                 /* a has 5 elements */
+new s1[20] = {’a’,’b’}                  /* the other 18 elements are 0 */
 
-new k = ’a’ /_ k has  
-character code for letter ’a’ _/
+new s2[] = "Hello world..."             /* a unpacked string */
 
-new a[] = {1,4,9,16,25} /_ a has 5 elements _/
-
-new s1[20] = {’a’,’b’} /_ the other 18 elements  
-are 0 _/
-new s2[] = "Hello world..." /_ a unpacked string _/
-
-Constants: 98
+```
 
 Examples of invalid declarations:
 
 Listing: bad declarations
 
-new c[3] = 4 /_ an array  
-cannot be set to a value _/
+```c
 
-new i = "Good-bye" /_ only an array can  
-hold a string _/
+new c[3] = 4                            /* an array cannot be set to a value */
+new i = "Good-bye"                      /* only an array can hold a string */
+new q[]                                 /* unknown size of array */
+new p[2] = { i + j, k - 3 }             /* array initiallers must be constants */
 
-new q[] /_ unknown  
-size of array _/
+```
 
-new p[2] = { i + j, k - 3 } /_ array initiallers  
-must be constants _/
+</div>
 
-• Progressive initiallers for arrays
+<hr>
+
+<div align="right">
+
+`Constants: 98`
+
+</div>
+
+<hr>
+
+<div align="left">
+
+### • Progressive initiallers for arrays
 
 The ellipsis operator continues the progression of the initialisation
-constants
-for an array, based on the last two initialized elements. The ellipsis operator
+constants for an array, based on the last two initialized elements. The ellipsis operator
 (three dots, or “...”) initializes the array up to its declared size.
 
 Examples:
 
 Listing: array initializers
 
-new a[10] = { 1, ... } /_ sets all ten  
-elements to 1 _/
+```c
 
-new b[10] = { 1, 2, ... } /_ sets: 1, 2, 3, 4,  
-5, 6, 7, 8, 9, 10 _/
+new a[10] = { 1, ... }                  /* sets all ten elements to 1 */
+new b[10] = { 1, 2, ... }               /* sets: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 */
+new c[8] = { 1, 2, 40, 50, ... }        /* sets: 1, 2, 40, 50, 60, 70, 80, 90 */
+new d[10] = { 10, 9, ... }              /* sets: 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 */
 
-new c[8] = { 1, 2, 40, 50, ... } /_ sets: 1, 2, 40, 50, 60,  
-70, 80, 90 _/
+```
 
-new d[10] = { 10, 9, ... } /_ sets: 10, 9, 8, 7,  
-6, 5, 4, 3, 2, 1 _/
-
-• array initialization and enumerations
+### • array initialization and enumerations
 
 The array size may be set with a constant that represents an  
-enumeration:
-an example of this is the “priority queue” sample program at page 21. When
+enumeration: an example of this is the “priority queue” sample program at page 21. When
 individual fields of the enumeration have a size, the associated array elements
 are interpreted as sub-arrays, on occasion. For an example of this behaviour,
 see the rpn calculator program at page 30.
@@ -3701,22 +3586,22 @@ array. Referring again to the “priority queue” sample program, to initialize
 
 Listing: array initializers
 
-enum message /_ declaration copied from "QUEUE.P" _/
+```c
 
-{
-
-text[40 char],
-priority
-
-}
+enum message /* declaration copied from "QUEUE.P" */
+    {
+        text[40 char],
+        priority
+    }
 
 new msg[message] = { !"new message", 1 }
 
-The initialler consists of a string (a literal array) and a value; these go
-into the
-fields “text” and “priority” respectively.
+```
 
-• Multi-dimensional arrays
+The initialler consists of a string (a literal array) and a value; these go
+into the fields “text” and “priority” respectively.
+
+### • Multi-dimensional arrays
 
 Multi-dimensional arrays are arrays that contain references to the sub-arrays.∗
 That is, a two-dimensional array is an “array of single-dimensional arrays”.
@@ -3724,21 +3609,22 @@ Below are a few examples of declarations of two-dimensional arrays.
 
 Listing: Two-dimensional arrays
 
+```c
+
 new a[4][3]
-
 new b[3][2] = { { 1, 2 }, { 3, 4 }, { 5, 6 } }
-
 new c[3][3] = { { 1 }, { 2, ...}, { 3, 4, ... } }
-
 new d[2][5] = { !"agreement", !"dispute" }
-
 new e[2][] = { "OK", "Cancel" }
-
 new f[][] = { "OK", "Cancel" }
 
-∗ The current implementation of the Pawn compiler supports only  
-arrays with up to two
-dimensions.
+```
+
+---
+
+###### ∗ The current implementation of the Pawn compiler supports only arrays with up to two dimensions.
+
+---
 
 As the last two declarations (variable “e” en “f”) show, the final dimension
 of an array may have an unspecified length, in which case the length of each
@@ -3752,7 +3638,7 @@ The difference between the declarations for arrays “e” and “f” is that i
 let the compiler count the number of initializers for the major dimension —
 “sizeof f” is 2, like “sizeof e” (see the next section on the sizeof operator).
 
-• Arrays and the sizeof operator
+### • Arrays and the sizeof operator
 
 The sizeof operator returns the size of a variable in “elements”. For a simple
 (non-compound) variable, the result of sizeof is always 1, because an element
@@ -3760,125 +3646,128 @@ is a cell for a simple variable.
 
 An array with one dimension holds a number of cells and the sizeof operator
 returns that number. The snippet below would therefore print “5” at  
-the
-display, because the array “msg” holds four characters (each in one cell) plus
-a zero-terminator:
+the display, because the array “msg” holds four characters (each in one cell) plus a zero-terminator:
 
 Listing: sizeof operator
+
+```c
 
 new msg[] = "Help"
 printf("%d", sizeof msg);
 
+```
+
 With multi-dimensional arrays, the sizeof operator can return the number
 of elements in each dimension. For the last (minor) dimension, an  
-element
-will again be a cell, but for the major dimension(s), an element is a sub-array.
+element will again be a cell, but for the major dimension(s), an element is a sub-array.
 In the following code snippet, observe that the syntax sizeof matrix refers
 to the major dimension of the two-dimensional array and the syntax sizeof
 matrix[] refers to the minor dimension of the array. The values that
-this
-snippet prints are 3 and 2 (for the major and minor dimensions respectively):
+this snippet prints are 3 and 2 (for the major and minor dimensions respectively):
 
 Listing: sizeof operator and multidimensional arrays
 
-new matrix[3][2] = { { 1, 2 }, { 3, 4 }, { 5, 6 } }
+```c
 
+new matrix[3][2] = { { 1, 2 }, { 3, 4 }, { 5, 6 } }
 printf("%d %d", sizeof matrix, sizeof matrix[]);
 
-The application of the sizeof operator on multi-dimensional arrays is espe-  
-Default function ar-
+```
 
-cially convenient when used as a default value for function arguments.
+The application of the sizeof operator on multi-dimensional arrays is especially convenient when used as a default value for function arguments.
 
-guments and sizeof:
+</div>
 
-77
+<hr>
 
-• Tag names
+<div align="right>
+
+`Default function arguments and sizeof: 77`
+
+</div>
+
+<hr>
+
+<div align="left">
+
+### • Tag names
 
 A tag is a label that denotes the objective of —or the meaning of— a variable,
 a constant or a function result. Tags are optional, their only purpose is to
-allow
-a stronger compile-time error checking of operands in expressions, of function
+allow a stronger compile-time error checking of operands in expressions, of function
 arguments and of array indices.
 
-A tag consists of a symbol name followed by a colon; it has the same syntax as
-
-Label syntax: 112 a label. A tag precedes the symbol name of a
-variable, constant or function.
+A tag consists of a symbol name followed by a colon; it has the same syntax as a label. A tag precedes
+the symbol name of a variable, constant or function.
 
 In an assignment, only the right hand of the “=” sign may be tagged.
 Examples of valid tagged variable and constant definitions are:
 
 Listing: tag names
 
-new bool:flag = true /_ "flag" can only hold "true" or
-"false" _/
+```c
+
+new bool:flag = true            /* "flag" can only hold "true" or "false" */
 
 const error:success = 0
 const error:fatal= 1
 const error:nonfatal = 2
 
-“enum” statement:
-101
-
 error:errno = fatal
+
+```
 
 The sequence of the constants success, fatal and nonfatal could more con-
 veniently be declared using an enum instruction, as illustrated below.  
-The
-enumeration instruction below creates four constants, success, fatal, non-
+The enumeration instruction below creates four constants, success, fatal, non-
 fatal and error, all with the tag error.
 
 Listing: enumerations
 
+```c
+
 enum error {
-
-success,
-fatal,
-nonfatal,
-
+    success,
+    fatal,
+    nonfatal,
 }
 
+```
+
 A typical use of “tagged” enum’s is in conjunction with arrays. If every field
-of
-an array has a distinct purpose, you can use a tagged enum to declare the size
+of an array has a distinct purpose, you can use a tagged enum to declare the size
 of an array and to add tag checking to the array usage in a single step:
 
 Listing: enumerations and arrays
 
+```c
+
 enum rectangle
-
 {
-
-left,
-top,
-right,
-bottom
-
+    left,
+    top,
+    right,
+    bottom
 }
 
-new my_rect[rectangle] /_ array is declared as having
-4 cells _/
+new my_rect[rectangle] /* array is declared as having 4 cells */
 
 my_rect[left] = 10
-
 my_rect[top] = 5
-
 my_rect[right] = 30
-
 my_rect[bottom] = 12
 
 for (new i = 0; rectangle:i < rectangle; ++i)
-my_rect[rectangle:i] \*= 2
+    my_rect[rectangle:i] *= 2
+
+```
 
 After the declaration of “my_rect” above, you can access the second field of
 my_rect with “my_rect[top]”, but saying “my_rect[1]” will give a parser
 diagnostic (a warning or error message). A tag override (or a tag cast) adjusts
 a function, constant or variable to the desired tag name. The for loop at the
 last two lines in the preceding example depicts this: the loop variable i
-is a
-plain, untagged cell, an it must be cast to the tag rectangle before using it
+is a plain, untagged cell, an it must be cast to the tag rectangle before using it
 as an index in the array my_rect. Note that the enum construct has created
 both a constant and a tag with the name “rectangle”.
 
@@ -3886,49 +3775,41 @@ Tag names introduced so far started with a lower case letter; these are “weak�
 tags. Tag names that start with an upper case letter are “strong” tags. The
 difference between weak and strong tags is that weak tags may, in a few circum-
 stances, be dropped implicitly by the pawn parser —so that a weakly tagged
-expression becomes an untagged expression. The tag checking mechanism ver-
+expression becomes an untagged expression. The tag checking mechanism verifies the following situations:
 
-ifies the following situations:
+- When the expressions on both sides of a binary operator have a different tag, or when one of the expressions is tagged and the other is not, the compiler issues a “tag mismatch” diagnostic. There is no difference between weak and strong tags in this situation.
 
-When the expressions on both sides of a binary operator have a different tag,
-or when one of the expressions is tagged and the other is not, the compiler
-issues a “tag mismatch” diagnostic. There is no difference between weak
-and strong tags in this situation.
+- There is a special case for the assignment operator: the compiler issues diagnostic if the variable on the left side of an assignment operator has a tag, and the expression on the right side either has a different tag or is untagged. However, if the variable on the left of the assignment operator is untagged, it accepts an expression (on the right side) with a weak tag. In other words, a weak tag is dropped in an assignment when the lvalue is untagged.
 
-There is a special case for the assignment operator: the compiler issues
-a “lvalue”: the vari-
+- Passing arguments to functions follows the rule for assignments. The compiler issues a diagnostic when the formal parameter (in a function definition) has a tag and the actual parameter (in the function call) either is untagged or has a different tag. However, if the formal parameter is untagged, it also accepts a parameter with any weak tag.
 
-diagnostic if the variable on the left side of an assignment operator has a tag,
-and the expression on the right side either has a different tag or is untagged.
-However, if the variable on the left of the assignment operator is untagged,
-it accepts an expression (on the right side) with a weak tag. In other words,
-a weak tag is dropped in an assignment when the lvalue is untagged.
+- An array may specify a tag for every dimension, see the “my_rect” example above. Tag checking array indices follows the rule of binary operator tag checking: there is no difference between weak and strong tags.
 
-Passing arguments to functions follows the rule for assignments. The com-
-piler issues a diagnostic when the formal parameter (in a function definition)
-has a tag and the actual parameter (in the function call) either is untagged
-or has a different tag. However, if the formal parameter is untagged, it also
-accepts a parameter with any weak tag.
+</div>
 
-An array may specify a tag for every dimension, see the “my_rect” example
-above. Tag checking array indices follows the rule of binary operator tag
-checking: there is no difference between weak and strong tags.
+<hr>
 
-able on the left side
-in an assignment,
-see page 104
+<div align="right">
 
-70
+`Label syntax: 112` 
 
-Functions
+`“enum” statement: 101`
 
-The preferred way
-to declare forward
-functions is at page
-82
+`“lvalue”: the variable on the left side in an assignment, see page 104`
 
-“assert” statement:
-112
+<hr>
+
+</div>
+
+<div align="center">
+
+# Functions
+
+---
+
+</div>
+
+<div align="left">
 
 A function declaration specifies the name of the function and, between paren-
 theses, its formal parameters. A function may also return a value. A function
@@ -3938,29 +3819,34 @@ is globally accessible.
 If a semicolon follows the function declaration (rather than a statement), the
 declaration denotes a forward declaration of the function.
 
-The return statement sets the function result. For example, function sum (see
-below) has as its result the value of both its arguments added together. The
+The return statement sets the function result. For example, function sum (see below)
+has as its result the value of both its arguments added together. The
 return expression is optional for a function, but one cannot use the value of
 a function that does not return a value.
 
 Listing: sum function
 
-sum(a, b)
+```c
 
+sum(a, b)
 return a + b
 
-Arguments of a function are (implicitly declared) local variables for that func-
-tion. The function call determines the values of the arguments.
+```
+
+Arguments of a function are (implicitly declared) local variables for that function.
+The function call determines the values of the arguments.
 
 Another example of a complete definition of the function leapyear
-(which
-returns true for a leap year and false for a non-leap year):
+(which returns true for a leap year and false for a non-leap year):
 
 Listing: leapyear function
 
-leapyear(y)
+```c
 
+leapyear(y)
 return y % 4 == 0 && y % 100 != 0 || y % 400 == 0
+
+```
 
 The logical and arithmetic operators used in the leapyear example are covered
 on pages 108 and 104 respectively.
@@ -3971,28 +3857,40 @@ guard against negative values for the exponent.
 
 Listing: power function (raise to a power)
 
+```c
+
 power(x, y)
-
 {
-
-/_ returns x raised to the power of y _/
-assert y >= 0
-
-new r = 1
-
-for (new i = 0; i < y; i++)
-r \*= x
-
-return r
-
+    /* returns x raised to the power of y */
+    assert y >= 0
+    new r = 1
+    for (new i = 0; i < y; i++)
+        r *= x
+    return r
 }
+
+```
 
 A function may contain multiple return statements —one usually does this
 to quickly exit a function on a parameter error or when it turns  
-out that
-the function has nothing to do. If a function returns an array,  
-all return
-statements must specify an array with the same size and the same dimensions.
+out that the function has nothing to do. If a function returns an array,  
+all return statements must specify an array with the same size and the same dimensions.
+
+</div>
+
+<hr>
+
+<div align="right">
+
+`The preferred way to declare forward functions is at page 82`
+
+`“assert” statement: 112`
+
+</div>
+
+<hr>
+
+<div align="left">
 
 • Function arguments (call-by-value versus call-by-reference)
 
@@ -4002,43 +3900,33 @@ that the function modifies its argument.
 
 Listing: faculty.p
 
-/_ Calculation of the faculty of a value _/
+```c
+
+/* Calculation of the faculty of a value */
 
 main()
-
 {
-
-print "Enter a value: "
-new v = getvalue()
-
-new f = faculty(v)
-
-printf "The faculty of %d is %d\n", v, f
-
+    print "Enter a value: "
+    new v = getvalue()
+    new f = faculty(v)
+    printf "The faculty of %d is %d\n", v, f
 }
 
 faculty(n)
-
 {
+    assert n >= 0
 
-assert n >= 0
+    new result = 1
+    while (n > 0)
+        result *= n--
 
-new result = 1
-while (n > 0)
-
-result \*= n--
-
-return result
-
+    return result
 }
 
-Another example is
-function JulianTo-
-Date at page 13
+```
 
 Whatever (positive) value that “n” had at the entry of the while
-loop in
-function faculty, “n” will be zero at the end of the loop. In the case of the
+loop in function faculty, “n” will be zero at the end of the loop. In the case of the
 faculty function, the parameter is passed “by value”, so the change of “n”
 is local to the faculty function. In other words, function main passes “v” as
 input to function faculty, but upon return of faculty, “v” still has the same
@@ -4052,37 +3940,34 @@ Example:
 
 Listing: swap function
 
+```c
+
 swap(&a, &b)
-
 {
-
-new temp = b
-b = a
-
-a = temp
-
+    new temp = b
+    b = a
+    a = temp
 }
 
+```
+
 To pass an array to a function, append a pair of brackets to the  
-argument
-name. You may optionally indicate the size of the array; doing so improves
+argument name. You may optionally indicate the size of the array; doing so improves
 error checking of the parser.
 
 Example:
 
 Listing: addvector function
 
+```c
+
 addvector(a[], const b[], size)
-
 {
-
-for (new i = 0; i < size; i++)
-a[i] += b[i]
-
+    for (new i = 0; i < size; i++)
+        a[i] += b[i]
 }
 
-Constant variables:
-64
+```
 
 Arrays are always passed by reference. As a side note, array b in the above
 example does not change in the body of the function. The function argument
@@ -4090,104 +3975,101 @@ has been declared as const to make this explicit. In addition to improving
 error checking, it also allows the pawn parser to generate more efficient code.
 
 To pass an array of literals to a function, use the same syntax as for  
-array
-initiallers: a literal string or the series of array indices enclosed in braces
-(see
-page 99; the ellipsis for progressive initiallers cannot be used). Literal
-arrays
-can only have a single dimension.
+array initiallers: a literal string or the series of array indices enclosed in braces
+(see page 99; the ellipsis for progressive initiallers cannot be used). Literal
+arrays can only have a single dimension.
 
-The following snippet calls addvector to add five to every element of the array
-“vect”:
+The following snippet calls addvector to add five to every element of the array “vect”:
 
 Listing: addvector usage
+
+```c
 
 new vect[3] = { 1, 2, 3 }
 
 addvector(vect, {5, 5, 5}, 3)
 
-/_ vect[] now holds the values 6, 7 and 8 _/
+/* vect[] now holds the values 6, 7 and 8 */
 
-“Hello world” pro-
-gram: 5
+```
 
 The invocation of function printf with the string "Hello world\n" in the first
 ubiquitous program is another example of passing a literal array to a function.
 
-• Calling functions
+</div>
+
+<hr>
+
+<div align="right">
+
+`Another example is function JulianToDate at page 13`
+
+`Constant variables: 64`
+
+`“Hello world” program: 5`
+
+</div>
+
+<hr>
+
+<div align="left">
+
+### • Calling functions
 
 When inserting a function name with its parameters in a statement or  
-ex-
-pression, the function will get executed in that statement/expression.  
- The
-statement that refers to the function is the “caller” and the function itself,
-at
-that point, is the “callee”: the one being called.
+expression, the function will get executed in that statement/expression.  
+The statement that refers to the function is the “caller” and the function itself,
+at that point, is the “callee”: the one being called.
 
 The standard syntax for calling a function is to write the  
-function’s name,
-followed by a list with all explicitly passed parameters between parentheses.
+function’s name, followed by a list with all explicitly passed parameters between parentheses.
 If no parameters are passed, or if the function does not have any, the pair of
 parentheses behind the function name are still present. For example, to try
 out the power function, the following program calls it thus:
 
 Listing: example program for the power function
 
+```c
+
 main()
-
 {
+    print "Please give the base value and the power to raise it to:"
+    new base = getvalue()
+    new power = getvalue()
 
-print "Please give the base value and the power to raise it to:"
-new base = getvalue()
-
-new power = getvalue()
-
-new result = power(base, power)
-
-printf "%d raised to the power %d is %d", base, power, result
-
+    new result = power(base, power)
+    printf "%d raised to the power %d is %d", base, power, result
 }
+
+```
 
 A function may optionally return a value. The sum, leapyear and power
 functions all return a value, but the swap function does not. Even if a
-function
-returns a value, the caller may ignore it.
+function returns a value, the caller may ignore it.
 
 For the situation that the caller ignores the function’s return value, there is
 an alternative syntax to call the function, which is also illustrated
-by the
-preceding example program calls the power function. The parentheses around
-all function arguments are optional if the caller does not use the return
-value.
+by the preceding example program calls the power function. The parentheses around
+all function arguments are optional if the caller does not use the return value.
 
 In the last statement, the example program reads
 
-printf "%d raised to the power %d is %d", base, power, result
+`printf "%d raised to the power %d is %d", base, power, result`
 
 rather than
 
-printf("%d raised to the power %d is %d", base, power, result)
+`printf("%d raised to the power %d is %d", base, power, result)`
 
 which does the same thing.
 
 The syntax without parentheses around the parameter list is called the “pro-
 cedure call” syntax. You can use it only if:
 
-the caller does not assign the function’s result to a variable and does not
-use it in an expression, or as the “test expression” of an if statement for
-example;
+- the caller does not assign the function’s result to a variable and does not use it in an expression, or as the “test expression” of an if statement for example;
 
-the first parameter does not start with an opening paranthesis;
+- the first parameter does not start with an opening paranthesis;
 
-Function power: 70
-
-Functions sum &
-leapyear: 70
-
-Function swap: 71
-
-the first parameter is on the same line as the function name, unless you use
-named parameters (see the next section).
+- the first parameter is on the same line as the function name, unless you use named parameters (see the next section).
 
 As you may observe, the procedure call syntax applies to cases where a function
 call behaves rather as a statement, like in the calls to print and printf in the
@@ -4196,69 +4078,82 @@ cryptic and friendlier to read, but not that the use of the syntax is optional.
 
 As a side note, all parentheses in the example program presented in this section
 are required: the return values of the calls to getvalue are stored  
-in two
-variables, and therefore an empty pair of parentheses must follow the function
-name. Function getvalue has optional parameters, but none are passed in
-this example program.
+in two variables, and therefore an empty pair of parentheses must follow the function
+name. Function getvalue has optional parameters, but none are passed in this example program.
 
-• Named parameters versus positional parameters
+</div>
+
+<hr>
+
+<div align="right">
+
+`Function power: 70`
+
+`Functions sum & leapyear: 70`
+
+`Function swap: 71`
+
+</div>
+
+<hr>
+
+<div align="left">
+
+### • Named parameters versus positional parameters
 
 In the previous examples, the order of parameters of a function call was im-
 portant, because each parameter is copied to the function argument with the
 same sequential position. For example, with the function weekday (which
 uses Zeller’s congruence algorithm) defined as below, you would call  
-week-
-day(12,31,1999) to get the week day of the last day of the preceding century.
+weekday(12,31,1999) to get the week day of the last day of the preceding century.
 
 Listing: weekday function
 
+```c
+
 weekday(month, day, year)
-
 {
-
-/_ returns the day of the week: 0=Saturday, 1=Sunday, etc. _/
-if (month <= 2)
-
-month += 12, --year
-new j = year % 100
-
-new e = year / 100
-
-return (day + (month+1)*26/10 + j + j/4 + e/4 - 2*e) % 7
-
+    /* returns the day of the week: 0=Saturday, 1=Sunday, etc. */
+    if (month <= 2)
+        month += 12, --year
+    new j = year % 100
+    new e = year / 100
+    return (day + (month+1)*26/10 + j + j/4 + e/4 - 2*e) % 7
 }
+
+```
 
 Date formats vary according to culture and nation. While the format month/
 day/year is common in the United States of America, European  
-countries
-often use the day/month/year format, and technical publications sometimes
+countries often use the day/month/year format, and technical publications sometimes
 standardize on the year/month/day format (ISO/IEC 8824). In other words,
 no order of arguments in the weekday function is “logical” or “conventional”.
 That being the case, the alternative way to pass parameters to a function is
-to use “named parameters”, as in the next examples (the three function calls
-are equivalent):
+to use “named parameters”, as in the next examples (the three function calls are equivalent):
 
 Listing: weekday usage —positional parameters
+
+```c
 
 new wkday1 = weekday( .month = 12, .day = 31, .year = 1999)
 
 new wkday2 = weekday( .day = 31, .month = 12, .year = 1999)
+
 new wkday3 = weekday( .year = 1999, .month = 12, .day = 31)
 
+```
+
 With named parameters, a period (“.”) precedes the name of the  
-function
-argument. The function argument can be set to any expression that is valid
+function argument. The function argument can be set to any expression that is valid
 for the argument. The equal sign (“=”) does in the case of a named
-parameter
-not indicate an assignment; rather it links the expression that follows the
-equal
-sign to one of the function arguments.
+parameter not indicate an assignment; rather it links the expression that follows the
+equal sign to one of the function arguments.
 
 One may mix positional parameters and named parameters in a function call
 with the restriction that all positional parameters must precede any named
 parameters.
 
-• Default values of function arguments
+### • Default values of function arguments
 
 A function argument may have a default value. The default value for a function
 argument must be a constant. To specify a default value, append the equal
@@ -4266,7 +4161,7 @@ sign (“=”) and the value to the argument name.
 
 When the function call specifies an argument placeholder instead of a valid ar-
 gument, the default value applies. The argument placeholder is the underscore
-character (“\_”). The argument placeholder is only valid for function arguments
+character (“_”). The argument placeholder is only valid for function arguments
 that have a default value.
 
 The rightmost argument placeholders may simply be stripped from the function
@@ -4274,88 +4169,108 @@ argument list. For example, if function increment is defined as:
 
 Listing: increment function —default values
 
+```c
+
 increment(&value, incr=1) value += incr
+
+```
 
 the following function calls are all equivalent:
 
 Listing: increment usage
 
+```c
+
 increment(a)
 increment(a, \_)
 increment(a, 1)
+
+```
 
 Default argument values for passed-by-reference arguments are useful to make
 the input argument optional. For example, if the function divmod is designed
 to return both the quotient and the remainder of a division operation through
 its arguments, default values make these arguments optional:
 
-Public functions do
-not support default
-argument values; see
-page 83
-
 Listing: divmod function —default values for reference parameters
 
+```c
+
 divmod(a, b, &quotient=0, &remainder=0)
-
 {
-
-quotient = a / b
-remainder = a % b
-
+    quotient = a / b
+    remainder = a % b
 }
+
+```
 
 With the preceding definition of function divmod, the following function calls
 are now all valid:
 
 Listing: divmod usage
 
+```c
+
 new p, q
 
 divmod(10, 3, p, q)
-
 divmod(10, 3, p, \_)
-
 divmod(10, 3, \_, q)
 divmod(10, 3, p)
-
 divmod 10, 3, p, q
+
+```
 
 Default arguments for array arguments are often convenient to set a default
 string or prompt to a function that receives a string argument. For example:
 
 Listing: print error function
 
+```c
+
 print_error(const message[], const title[] = "Error: ")
-
 {
-
-print title
-print message
-print "\n"
-
+    print title
+    print message
+    print "\n"
 }
+
+```
 
 The next example adds the fields of one array to another array, and by default
 increments the first three elements of the destination array by one:
 
 Listing: addvector function, revised
 
+```c
+
 addvector(a[], const b[] = {1, 1, 1}, size = 3)
-
 {
-
-for (new i = 0; i < size; i++)
-a[i] += b[i]
-
+    for (new i = 0; i < size; i++)
+    a[i] += b[i]
 }
 
-• sizeof operator & default function arguments
+```
+
+</div>
+
+<hr>
+
+<div align="right">
+
+`Public functions do not support default argument values; see page 83`
+
+</div>
+
+<hr>
+
+<div align="left">
+
+### • sizeof operator & default function arguments
 
 A default value of a function argument must be a constant, and its value is
 determined at the point of the function’s declaration. Using the  
-“sizeof”
-operator to set the default value of a function argument is a special case: the
+“sizeof” operator to set the default value of a function argument is a special case: the
 calculation of the value of the sizeof expression is delayed to the point of the
 function call and it takes the size of the actual argument rather than that of
 the formal argument. When the function is used several times in a program,
@@ -4368,381 +4283,338 @@ Below is an example program that draws ten random numbers in the range of
 numbers without duplicates is in card games —those ten numbers could repre-
 sent the cards for two “hands” in a poker game. The virtues of the algorithm
 used in this program, invented by Robert W. Floyd, are that it is efficient and
-unbiased —provided that the pseudo-random number generator is unbiased as
-well.
+unbiased —provided that the pseudo-random number generator is unbiased as well.
 
 Listing: randlist.p
 
+```c
+
 main()
-
 {
+    new HandOfCards[10]
+    FillRandom(HandOfCards, 52)
 
-new HandOfCards[10]
-FillRandom(HandOfCards, 52)
-
-print "A draw of 10 numbers from a range of 0 to 51 \
-(inclusive) without duplicates:\n"
-
-for (new i = 0; i < sizeof HandOfCards; i++)
-printf "%d ", HandOfCards[i]
-
-“sizeof ” operator
-109
-
+    print "A draw of 10 numbers from a range of 0 to 51 \
+        (inclusive) without duplicates:\n"
+    for (new i = 0; i < sizeof HandOfCards; i++)
+        printf "%d ", HandOfCards[i]
 }
 
 FillRandom(Series[], Range, Number = sizeof Series)
-
 {
-
-assert Range >= Number /\* cannot select 50 values
-
-- without duplicates in the
-
-- range 0..40, for example \*/
-
-new Index = 0
-
-for (new Seq = Range - Number; Seq < Range; Seq++)
-
-{
-
-new Val = random(Seq + 1)
-
-new Pos = InSeries(Series, Val, Index)
-if (Pos >= 0)
-
-{
-
-Series[Index] = Series[Pos]
-Series[Pos] = Seq
-
-}
-
-else
-
-“random” is a pro-
-posed core function,
-see page 124
-
-78 Functions
-
-Series[Index] = Val
-Index++
-
-}
-
+    assert Range >= Number          /* cannot select 50 values
+                                     * without duplicates in the
+                                     * range 0..40, for example */
+    new Index = 0
+    for (new Seq = Range - Number; Seq < Range; Seq++)
+    {
+        new Val = random(Seq + 1)
+        new Pos = InSeries(Series, Val, Index)
+        if (Pos >= 0)
+        {
+            Series[Index] = Series[Pos]
+            Series[Pos] = Seq
+        }
+        else
+            Series[Index] = Val
+        Index++
+    }
 }
 
 InSeries(Series[], Value, Top = sizeof Series)
-
 {
-
-for (new i = 0; i < Top; i++)
-if (Series[i] == Value)
-
-return i
-return -1
-
+    for (new i = 0; i < Top; i++)
+        if (Series[i] == Value)
+            return i
+    return -1
 }
 
-Array declarations:
-64
+```
 
 Function main declares the array HandOfCards with a size of ten cells and then
 calls function FillRandom with the purpose that it draws ten positive random
 numbers below 52. Observe, however, that the only two parameters that main
 passes into the call to FillRandom are the array HandsOfCards, where  
-the
-random numbers should be stored, and the upper bound “52”. The number of
+the random numbers should be stored, and the upper bound “52”. The number of
 random numbers to draw (“10”) is passed implicitly to FillRandom.
 
 The definition of function FillRandom below main specifies for its third param-
 eter “Number = sizeof Series”, where “Series” refers to the first parameter
 of the function. Due to the special case of a “sizeof default value”, the
-default
-value of the Number argument is not the size of the formal argument Series,
+default value of the Number argument is not the size of the formal argument Series,
 but that of the actual argument at the point of the function call: HandOfCards.
 
 Note that inside function FillRandom, asking the “sizeof” the function ar-
 gument Series would (still) evaluate in zero, because the Series array  
-is
-declared with unspecified length (see page 109 for the behaviour of sizeof).
+is declared with unspecified length (see page 109 for the behaviour of sizeof).
 Using sizeof as a default value for a function argument is a specific case. If
 the formal parameter Series were declared with an explicit size, as in
-Se-
-ries[10], it would be redundant to add a Number argument with the array
+Series[10], it would be redundant to add a Number argument with the array
 size of the actual argument, because the parser would then enforce that both
 formal and actual arguments have the size and dimensions.
 
-• Arguments with tag names
+</div>
+
+<hr>
+
+<div align="right">
+
+`“sizeof ” operator 109`
+
+`“random” is a proposed core function, see page 124`
+
+`Array declarations: 64`
+
+`Tag names: 68`
+
+</div>
+
+<hr>
+
+<div align="left">
+
+
+### • Arguments with tag names
 
 A tag optionally precedes a function argument. Using tags improves  
-the
-Tag names: 68 compile-time error checking of the script and it
+the compile-time error checking of the script and it
 serves as “implicit documenta-
 tion” of the function. For example, a function that computes the square root
 
 of an input value in fixed point precision may require that the input parameter
-is a fixed point value and that the result is fixed point as well. The
-function
-
+is a fixed point value and that the result is fixed point as well. The function
 below uses the fixed point extension module, and an approximation algorithm
 known as “bisection” to calculate the square root. Note the use of tag overrides
 on numeric literals and expression results.
 
 Listing: sqroot function —strong tags
 
+```c
+
 Fixed: sqroot(Fixed: value)
-
 {
-
-new Fixed: low = 0.0
-new Fixed: high = value
-
-while (high - low > Fixed: 1)
-
-{
-
-new Fixed: mid = (low + high) >> 1
-if (fmul(mid, mid) < value)
-
-low = mid
-
-Fixed point arith-
-metic: 90;
-
-see also the appli-
-cation note “Fixed
-Point Support Li-
-brary”
-
-else
-
+    new Fixed: low = 0.0
+    new Fixed: high = value
+    while (high - low > Fixed: 1)
+    {
+        new Fixed: mid = (low + high) >> 1
+        if (fmul(mid, mid) < value)
+            low = mid
+        else
+            high = mid
+    }
+    return low
 }
 
-high = mid
-
-return low
-
-}
+```
 
 With the above definition, the pawn parser issues a diagnostic if one calls the
 sqroot function with a parameter with a tag different from “Fixed:”, or when
 it tries to store the function result in a variable with a “non-Fixed:” tag.
 
 The bisection algorithm is related to binary search, in the sense that it
-contin-
-uously halves the interval in which the result must lie. A “successive substi-
+continuously halves the interval in which the result must lie. A “successive substi-
 tution” algorithm like Newton-Raphson, that takes the slope of the function’s
 curve into account, achieves precise results more quickly, but at the cost that
 a stopping criterion is more difficult to state. State of the art algorithms
-for
-computing square roots combine bisection and Newton-Raphson algorithms.
+for computing square roots combine bisection and Newton-Raphson algorithms.
 
 In the case of an array, the array indices can be tagged as well. For example,
 a function that creates the intersection of two rectangles may be written as:
 
 Listing: intersection function
 
+```c
+
 intersection(dest[rectangle], const src1[rectangle], const src2[rectangle])
-
 {
+    if (src1[right] > src2[left] && src1[left] < src2[right]
+    && src1[bottom] > src2[top] && src1[top] < src2[bottom])
+    {
+        \* there is an intersection, calculate it using the "min" and
+         *"max" functions from the "core" library, see page 124. */
 
-if (src1[right] > src2[left] && src1[left] < src2[right]
-
-&& src1[bottom] > src2[top] && src1[top] < src2[bottom])
-
-{
-
-/\* there is an intersection, calculate it using the "min" and
-
-- "max" functions from the "core" library, see page 124.
-
-\*/
-
-dest[left] = max(src1[left], src2[left])
-dest[right] = min(src1[right], src2[right])
-dest[top] = max(src1[top], src2[top])
-dest[bottom] = min(src1[bottom], src2[bottom])
-
-For the “rectangle”
-tag, see page 68
-
-return true
-
+        dest[left] = max(src1[left], src2[left])
+        dest[right] = min(src1[right], src2[right])
+        dest[top] = max(src1[top], src2[top])
+        dest[bottom] = min(src1[bottom], src2[bottom])
+        return true
+    }
+    else
+    {
+        /* "src1" and "src2" do not intersect */
+        dest = { 0, 0, 0, 0 }
+        return false
+    }
 }
 
-else
+```
 
-{
+</div>
 
-/_ "src1" and "src2" do not intersect _/
-dest = { 0, 0, 0, 0 }
+<hr>
 
-return false
+<div align="right">
 
-}
+`Fixed point arithmetic: 90; see also the application note “Fixed Point Support Library”`
 
-}
+`For the “rectangle” tag, see page 68`
 
-• Variable arguments
+</div>
+
+<hr>
+
+<div align="left">
+
+### • Variable arguments
 
 A function that takes a variable number of arguments, uses the “ellipsis” oper-
 ator (“...”) in the function header to denote the position of the first variable
 argument. The function can access the arguments with the predefined func-
 tions numargs, getarg and setarg (see page 124).
 
-Function sum returns the summation of all of its parameters. It uses a variable
-length parameter list.
+Function sum returns the summation of all of its parameters.
+It uses a variable length parameter list.
 
 Listing: sum function, revised
 
+```c
+
 sum(...)
-
 {
-
-new result = 0
-
-for (new i = 0; i < numargs(); ++i)
-result += getarg(i)
-
-return result
-
+    new result = 0
+    for (new i = 0; i < numargs(); ++i)
+        result += getarg(i)
+    return result
 }
+
+```
 
 This function could be used in:
 
 Listing: sum function usage
 
+```c
+
 new v = sum(1, 2, 3, 4, 5)
 
-A tag may precede the ellipsis to enforce that all subsequent parameters have
+```
 
-Tag names: 68 the same tag, but otherwise there is no error
-checking with a variable argument
-list and this feature should therefore be used with caution.
+A tag may precede the ellipsis to enforce that all subsequent parameters have the same tag, but otherwise there is no error
+checking with a variable argument list and this feature should therefore be used with caution.
 
 The functions getarg and setarg assume that the argument is passed “by
 reference”. When using getarg on normal function parameters (instead of
 variable arguments) one should be cautious of this, as neither the compiler nor
 the abstract machine can check this. Actual parameters that are passed
-as
-part of a “variable argument list” are always passed by reference.
+as part of a “variable argument list” are always passed by reference.
 
-• Coercion rules
+</div>
+
+<hr>
+
+<div align="right">
+
+`Tag names: 68`
+
+</div>
+
+<hr>
+
+<div align="left">
+
+### • Coercion rules
 
 If the function argument, as per the function definition (or its declaration),
-is
-a “value parameter”, the caller can pass as a parameter to the function:
+is a “value parameter”, the caller can pass as a parameter to the function:
 
-a value, which is passed by value;
+- a value, which is passed by value;
 
-a reference, whose dereferenced value is passed;
+- a reference, whose dereferenced value is passed;
 
-an (indexed) array element, which is a value.
+- an (indexed) array element, which is a value.
 
 If the function argument is a reference, the caller can pass to the function:
 
-a value, whose address is passed;
+- a value, whose address is passed;
 
-a reference, which is passed by value because it has the type that the function
-expects;
+- a reference, which is passed by value because it has the type that the function expects;
 
-an (indexed) array element, which is a value.
+- an (indexed) array element, which is a value.
 
 If the function argument is an array, the caller can pass to the function:
 
-an array with the same dimensions, whose starting address is passed;
+- an array with the same dimensions, whose starting address is passed;
 
-an (indexed) array element, in which case the address of the element
-is
-passed.
+- an (indexed) array element, in which case the address of the element is passed.
 
-• Recursion
+### • Recursion
 
 A faculty example function earlier in this chapter used a simple loop. An
 example function that calculated a number from the Fibonacci series also used
 a loop and an extra variable to do the trick. These two functions are the most
 popular routines to illustrate recursive functions, so by implementing  
-these
-as iterative procedures, you might be inclined to think that pawn does not
-
-support recursion.
+these as iterative procedures, you might be inclined to think that pawn does not support recursion.
 
 Well, pawn does support recursion, but the calculation of faculties and of Fi-
 bonacci numbers happen to be good examples of when not to use recursion.
 Faculty is easier to understand with a loop than it is with recursion.  
-Solv-
-ing Fibonacci numbers by recursion indeed simplifies the problem, but at the
-
+Solving Fibonacci numbers by recursion indeed simplifies the problem, but at the
 cost of being extremely inefficient: the recursive Fibonacci calculates the same
 values over and over again.
 
-The program below is an implementation of the famous “Towers of Hanoi”
-game in a recursive function:
+The program below is an implementation of the famous “Towers of Hanoi” game in a recursive function:
 
 Listing: hanoi.p
 
-/_ The Towers of Hanoi, a game solved through recursion _/
+```c
 
-“faculty”: 71
-
-“fibonacci”: 11
-
-There exists an in-
-triguing iterative so-
-lution to the Towers
-of Hanoi.
+/* The Towers of Hanoi, a game solved through recursion */
 
 main()
-
 {
-
-print "How many disks: "
-new disks = getvalue()
-move 1, 3, 2, disks
-
+    print "How many disks: "
+    new disks = getvalue()
+    move 1, 3, 2, disks
 }
 
 move(from, to, spare, numdisks)
-
 {
-
-if (numdisks > 1)
-
-move from, spare, to, numdisks-1
-
-printf "Move disk from pillar %d to pillar %d\n", from, to
-if (numdisks > 1)
-
-move spare, to, from, numdisks-1
-
+    if (numdisks > 1)
+        move from, spare, to, numdisks-1
+    printf "Move disk from pillar %d to pillar %d\n", from, to
+    if (numdisks > 1)
+        move spare, to, from, numdisks-1
 }
 
-• Forward declarations
+```
+
+</div>
+
+<hr>
+
+<div align="right">
+
+`“faculty”: 71`
+
+`“fibonacci”: 11`
+
+`There exists an intriguing iterative solution to the Towers of Hanoi.`
+
+</div>
+
+<hr>
+
+<div align="left">
+
+### • Forward declarations
 
 For standard functions, the current “reference implementation” of the pawn
-
 compiler does not require functions to be declared before their first use.∗  
-User-
-
-defined operators are special functions, and unlike standard functions  
-they
-must be declared before use. In many cases it is convenient to put the
-im-
-plementation of a user-defined operator in an include file, so that the imple-
-
-                                  mentation and declaration  precedes  any
-
-call/invocation. Sometimes, it may
-
-Forbidden user-
-
-defined operators:
-92
-
-however be required (or convenient) to declare a user- defined operator first
+Userdefined operators are special functions, and unlike standard functions  
+theymust be declared before use. In many cases it is convenient to put the
+implementation of a user-defined operator in an include file, so that the implementation and declaration precedes any
+call/invocation. Sometimes, it may however be required (or convenient) to declare a user- defined operator first
 and implement it elsewhere. A particular use of this technique is to implement
 “forbidden” user-defined operators.
 
@@ -4753,16 +4625,29 @@ a function is by typing the function header and terminating it with a semicolon
 (which follows the closing parenthesis of the parameter list).
 
 The full definition of the function, with a non-empty body, is
-implemented
-elsewhere in the source file (except for forbidden user-defined operators).
+implemented elsewhere in the source file (except for forbidden user-defined operators).
 
 State classifiers are ignored on forward declarations.
 
-∗ Other implementations of the Pawn language (if they exist) may  
-use “single pass” parsers,
-requiring functions to be defined before use.
+<hr>
 
-• State classifiers
+###### ∗ Other implementations of the Pawn language (if they exist) may use “single pass” parsers, requiring functions to be defined before use.
+
+</div>
+
+<hr>
+
+<div align="right">
+
+`Forbidden userdefined operators: 92`
+
+</div>
+
+<hr>
+
+<div align="left">
+
+### • State classifiers
 
 All functions except native functions may optionally have a state attribute.
 This consists of a list of state (and automata) names between angle brackets
@@ -4771,28 +4656,23 @@ state is part of a non-default automaton, the name of the automaton and a
 colon separator must precede the state; for example, “parser:slash” stands
 for the state slash of the automaton parser.
 
-If a function has states, there must be several “implementations” of the func-
-tion in the source code. All functions must have the same function  
-header
-(excluding the state classifier list).
+If a function has states, there must be several “implementations” of the function in the source code.
+All functions must have the same function header (excluding the state classifier list).
 
 As a special syntax, when there are no names between the angle brackets, the
 function is linked to all states that are not attributed to other
-implementations
-of the function. The function that handles “all states not handled elsewhere”
+implementations of the function. The function that handles “all states not handled elsewhere”
 is the so-called fall-back function.
 
-• Public functions, function main
+### • Public functions, function main
 
 A stand-alone program must have the function main. This function is  
-the
-starting point of the program. The function main may not have arguments.
+the starting point of the program. The function main may not have arguments.
 
 A function library need not to have a main function, but it must have it either
 a main function, or at least one public function. Function main is the primary
 entry point into the compiled program; the public functions are  
-alternative
-entry points to the program. The virtual machine can start execution with
+alternative entry points to the program. The virtual machine can start execution with
 one of the public functions. A function library may have a main function to
 perform one-time initialization at startup.
 
@@ -4804,38 +4684,43 @@ Latin-1 character set) by the “hard space” code in the ANSI character table:
 
 Listing: onkey function
 
+```c
+
 public onkey(keycode)
-
 {
-
-if (key==’~’)
-
-return 160 /_ replace ~ by hard space (code 160 in  
-Latin-1) _/
-else
-
-return key /_ leave other keys unaltered _/
-
-Example: 40
-
+    if (key==’~’)
+        return 160 /* replace ~ by hard space (code 160 in Latin-1) */
+    else
+        return key /* leave other keys unaltered */
 }
 
-Default values of
-function arguments:
-75
+```
 
-Public variables can
-be declared “stock”
+</div>
+
+<hr>
+
+<div align="right">
+
+`Example: 40`
+
+</div>
+
+<hr>
+
+<div align="left">
 
 Functions whose name starts with the “@” symbol are also public. So
-an
-alternative way to write the public function onkey function is:
+an alternative way to write the public function onkey function is:
 
 Listing: @onkey function
 
-@onkey(keycode)
+```c
 
-return key==’~’ ? 160 : key
+@onkey(keycode)
+    return key==’~’ ? 160 : key
+
+```
 
 The “@” character, when used, becomes part of the function name; that is, in
 the last example, the function is called “@onkey”. The host application decides
@@ -4847,460 +4732,395 @@ passed to the public function originate from the host application, and the host
 application cannot know what “default values” the script writer plugged for
 function arguments —which is why the pawn parser flags the use of default
 values for arguments of public functions as an error. The issue of default
-values
-in public function arguments only pops up in the case that you wish to call
+values in public function arguments only pops up in the case that you wish to call public functions from the script itself.
 
-public functions from the script itself.
-
-• Static functions
+### • Static functions
 
 When the function name is prefixed with the keyword static, the scope of the
 function is restricted to the file that the function resides in.
 
 The static attribute can be combined with the “stock” attribute.
 
-• Stock functions
+### • Stock functions
 
 A “stock” function is a function that the pawn parser must “plug into” the
 program when it is used, and that it may simply “remove” from the program
 (without warning) when it is not used. Stock functions allow a compiler or
 interpreter to optimize the memory footprint and the file size of a (compiled)
-
-pawn program: any stock function that is not referred to, is completely
-skipped
-
+pawn program: any stock function that is not referred to, is completely skipped
 —as if it were lacking from the source file.
 
 A typical use of stock functions, hence, is in the creation of a set of
-“library”
-functions. A collection of general purpose functions, all marked as “stock” may
+“library” functions. A collection of general purpose functions, all marked as “stock” may
 be put in a separate include file, which is then included in any pawn  
-script.
-Only the library functions that are actually used get “linked” in.
+script. Only the library functions that are actually used get “linked” in.
 
 To declare a stock function, prefix the function name with the keyword stock.
 Public functions and native functions cannot be declared “stock”.
 
 When a stock function calls other functions, it is usually a good practice to
 declare those other functions as “stock” too —with the exception of  
-native
-functions. Similarly, any global variables that are used by a stock
-function
-should in most cases also be defined “stock”. The removal of unused (stock)
+native functions. Similarly, any global variables that are used by a stock
+function should in most cases also be defined “stock”. The removal of unused (stock)
 functions can cause a chain reaction in which other functions and global vari-
 ables are not longer accessed either. Those functions are then removed as well,
 thereby continuing the chain reaction until only the functions that are used,
 directly or indirectly, remain.
 
-• Native functions
+</div>
 
-A pawn program can call application-specific functions through a “native func-
-tion”. The native function must be declared in the pawn program by means
-of a function prototype. The function name must be preceded by the keyword
-native.
+<hr>
+
+<div align="right">
+
+`Default values of function arguments: 75`
+
+`Public variables can be declared “stock”`
+
+`Stock variables: 63`
+
+</div>
+
+<hr>
+
+<div align="left">
+
+### • Native functions
+
+A pawn program can call application-specific functions through a “native function”.
+The native function must be declared in the pawn program by means
+of a function prototype. The function name must be preceded by the keyword native.
 
 Examples:
 
-Stock variables: 63
+```c
 
 native getparam(a[], b[], size)
 
 native multiply_matrix(a[], b[], size)
+
 native openfile(const name[])
+
+```
 
 The names “getparam”, “multiply_matrix” and “openfile” are the internal
 names of the native functions; these are the names by which the  
-functions
-are known in the pawn program. Optionally, you may also set an external
-name for the native function, which is the name of the function as the “host
+functions are known in the pawn program. Optionally, you may also set an external
+name for the native function, which is the name of the function as the “host application” knows it.
+To do so, affix an equal sign to the function prototype followed by the external name. For example:
 
-application” knows it. To do so, affix an equal sign to the function prototype
-followed by the external name. For example:
+```c
 
 native getparam(a[], b[], size) = host_getparam
+
 native multiply_matrix(a[], b[], size) = mtx_mul
+
+```
 
 When a native function returns an array, the dimensions and size of the ar-
 ray must be explicitly declared. The array specification occurs between  
-the
-function name and the parameter list. For example:
+the function name and the parameter list. For example:
+
+```c
 
 enum rect { left, top, right, bottom }
-
 native intersect[rect](src1[rect], src2[rect])
 
-An example of a
-native user-defined
-operator is on page
-89
+```
 
 Unless specified explicitly, the external name is equal to the internal name of
-a
-native function. One typical use for explicit external names is to set a
-symbolic
-name for a user-defined operator that is implemented as a native function.
+a native function. One typical use for explicit external names is to set a
+symbolic name for a user-defined operator that is implemented as a native function.
 
-See the “Implementor’s Guide” for implementing native functions in C/C++
-(on the “host application” side).
+See the “Implementor’s Guide” for implementing native functions in C/C++(on the “host application” side).
 
 Native functions may not have state specifiers.
 
-• User-defined operators
+</div>
+
+<hr>
+
+<div align="right">
+
+`An example of a native user-defined operator is on page 89`
+
+</div>
+
+<hr>
+
+<div align="left">
+
+### • User-defined operators
 
 The only data type of pawn is a “cell”, typically a 32-bit number or bit
 pattern.
 
-Tags: 68 The meaning of a value in a cell depends on
-the particular application —it need
-not always be a signed integer value. pawn allows to attach a “meaning” to a
-cell with its “tag” mechanism.
+Tags: 68 The meaning of a value in a cell depends on the particular application —it need
+not always be a signed integer value. pawn allows to attach a “meaning” to a cell with its “tag” mechanism.
 
 Based on tags, pawn also allows you to redefine operators for cells  
-with a
-specific purpose. The example below defines a tag “ones” and an  
-operator
-to add two “ones” values together (the example also implements  
-operators
-for subtraction and negation). The example was inspired by the  
-checksum
-
+with a specific purpose. The example below defines a tag “ones” and an  
+operator to add two “ones” values together (the example also implements  
+operators for subtraction and negation). The example was inspired by the checksum
 algorithm of several protocols in the TCP/IP protocol suite: it simulates one’s
 complement arithmetic by adding the carry bit of an arithmetic overflow back
 to the least significant bit of the value.
 
 Listing: ones.p
 
+```c
+
 forward ones: operator+(ones: a, ones: b)
 forward ones: operator-(ones: a, ones: b)
 forward ones: operator-(ones: a)
 
 main()
-
 {
+    new ones: chksum = ones: 0xffffffff
+    print "Input values in hexadecimal, zero to exit\n"
 
-new ones: chksum = ones: 0xffffffff
-
-print "Input values in hexadecimal, zero to exit\n"
-
-new ones: value
-do
-
-{
-
-print ">> "
-
-value = ones: getvalue(.base=16)
-chksum = chksum + value
-
-printf "Checksum = %x\n", chksum
-
-}
-
-while (value)
-
+    new ones: value
+    do
+    {
+        print ">> "
+        value = ones: getvalue(.base=16)
+        chksum = chksum + value
+        printf "Checksum = %x\n", chksum
+    }
+    while (value)
 }
 
 stock ones: operator+(ones: a, ones: b)
-
 {
+    const ones: mask = ones: 0xffff                 /* word mask */
+    const ones: shift = ones: 16                    /* word shift */
 
-const ones: mask = ones: 0xffff /_ word mask _/
-const ones: shift = ones: 16 /_ word shift _/
+    /* add low words and high words separately */
+    new ones: r1 = (a & mask) + (b & mask)
+    new ones: r2 = (a >>> shift) + (b >>> shift)
 
-/_ add low words and high words separately _/
-new ones: r1 = (a & mask) + (b & mask)
+    new ones: carry
+    restart:                                        /* code label (goto target) */
 
-new ones: r2 = (a >>> shift) + (b >>> shift)
+    \* add carry of the new low word to the high word, then
+    * strip it from the low word */
 
-new ones: carry
+    carry = (r1 >>> shift)
+    r2 += carry
+    r1 &= mask
 
-restart: /_ code label (goto target) _/
+    \* add the carry from the new high word back to the low
+    * word, then strip it from the high word */
 
-/\* add carry of the new low word to the high word, then
+    carry = (r2 >>> shift)
+    r1 += carry
+    r2 &= mask
 
-- strip it from the low word
+    \* a carry from the high word injected back into the low
+    * word may cause the new low to overflow, so restart in that case */
 
-\*/
-
-carry = (r1 >>> shift)
-r2 += carry
-
-r1 &= mask
-
-/\* add the carry from the new high word back to the low
-
-- word, then strip it from the high word
-
-\*/
-
-carry = (r2 >>> shift)
-r1 += carry
-
-r2 &= mask
-
-/\* a carry from the high word injected back into the low
-
-- word may cause the new low to overflow, so restart in
-
-- that case
-
-\*/
-
-if (carry)
-
-goto restart
-
-return (r2 << shift) | r1
-
+    if (carry)
+        goto restart
+    return (r2 << shift) | r1
 }
 
 stock ones: operator-(ones: a)
-
-return (a == ones: 0xffffffff) ? a : ~a
+    return (a == ones: 0xffffffff) ? a : ~a
 
 stock ones: operator-(ones: a, ones: b)
-return a + -b
+    return a + -b
+
+```
 
 The notable line in the example is the line “chksum = chksum + value” in
 the loop in function main. Since both the variables chksum and value have
 the tag ones, the “+” operator refers to the user-defined operator  
-(instead
-of the default “+” operator). User-defined operators are merely a notational
+(instead of the default “+” operator). User-defined operators are merely a notational
 convenience. The same effect is achieved by calling functions explicitly.
 
 The definition of an operator is similar to the definition of a function, with
-the
-difference that the name of the operator is composed by the keyword “opera-
+the difference that the name of the operator is composed by the keyword “opera-
 tor” and the character of the operator itself. In the above example, both the
 unary “-” and the binary “-” operators are redefined. An operator function
 for a binary operator must have two arguments, one for an unary  
-operator
-must have one argument. Note that the binary “-” operator adds the two val-
+operator must have one argument. Note that the binary “-” operator adds the two val-
 ues together after inverting the sign of the second operand. The subtraction
 
-Forward declaration:
-
-operator thereby refers to both the user-defined “negation” (unary “-”) and
-addition operators.
+operator thereby refers to both the user-defined “negation” (unary “-”) and addition operators.
 
 A redefined operator must adhere to the following restrictions:
 
-A user-defined operator must be declared before use (this is in  
-contrast
+- A user-defined operator must be declared before use (this is in contrast to “normal” functions): either put the implementation of the user-defined operator above the functions that use it, or add a forward declaration near the top of the file.
 
-82 to “normal” functions): either put
-the implementation of the user-defined
-operator above the functions that use it, or add a forward declaration near
-the top of the file.
+- Only the following operators may be redefined: +, -, \*, /, %, ++, --, ==, !=, <, > , <=, >=, ! and =. That is, the sets of arithmetic and relational operators can be overloaded, but the bitwise operators and the logical operators cannot. The = and ! operators are a special case.
 
-Only the following operators may be redefined: +, -, \*, /, %, ++, --, ==, !=,
-<,
+- You cannot invent new operators; you cannot define operator “#” for example.
 
-> , <=, >=, ! and =. That is, the sets of arithmetic and relational operators can
-> be overloaded, but the bitwise operators and the logical operators cannot.
-> The = and ! operators are a special case.
+- The precedence level and associativity of the operators, as well as their “arity” remain as defined. You cannot make an unary “+” operator, for example.
 
-You cannot invent new operators; you cannot define operator “#” for exam-
-ple.
+- The return tag of the relational operators and of the “!” operator must be “bool:”.
 
-The precedence level and associativity of the operators, as well as  
-their
-“arity” remain as defined. You cannot make an unary “+” operator,  
-for
-example.
+- The return tag of the arithmetic operators is at your choosing, but you cannot redefine an operator that is identical to another operator except for its return tag. For example, you cannot make both `alpha: operator+(alpha: a, alpha: b)` and `beta: operator+(alpha: a, alpha: b)` (The assignment operator is an exception to this rule.)
 
-The return tag of the relational operators and of the “!” operator must be
-“bool:”.
+- PAWN already defines operators to work on untagged cells, you cannot redefine the operators with only arguments without tags.
 
-The return tag of the arithmetic operators is at your choosing, but  
-you
-cannot redefine an operator that is identical to another operator except for
-its return tag. For example, you cannot make both
-
-alpha: operator+(alpha: a, alpha: b)
-
-and
-
-beta: operator+(alpha: a, alpha: b)
-
-(The assignment operator is an exception to this rule.)
-
-pawn already defines operators to work on untagged cells, you cannot rede-
-fine the operators with only arguments without tags.
-
-The arguments of the operator function must be non-arrays passed by value.
-You cannot make an operator work on arrays.
+- The arguments of the operator function must be non-arrays passed by value. You cannot make an operator work on arrays.
 
 In the example given above, both arguments of the binary operators have the
 same tag. This is not required; you may, for example, define a  
-binary “+”
-operator that adds an integer value to a “ones:” number.
+binary “+” operator that adds an integer value to a “ones:” number.
 
 Au fond, the operation of the pawn parser is to look up the tag(s)
-of the
-operand(s) that the operator works on and to look up whether a user-defined
+of the operand(s) that the operator works on and to look up whether a user-defined
 operator exists for the combination of the operator and the tag(s). However,
 the parser recognizes special situations and provides the following features:
 
 The parser recognizes operators like “+=” as a sequence of “+” and  
-“=”
-and it will call a user-defined operator “+” if available and/or a user-defined
+“=” and it will call a user-defined operator “+” if available and/or a user-defined
 operator “=”. In the example program, the line “chksum = chksum + value”
 might have been abbreviated to “chksum += value”.
 
 The parser recognizes commutative operators (“+”, “\*”, “==”, and “!=”)
 and it will swap the operands of a commutative operator if that produces
-a fit with a user-defined operator. For example, there is usually no need to
-implement both
+a fit with a user-defined operator. For example, there is usually no need to implement both 
 
-ones:operator+(ones:a, b)
+`ones:operator+(ones:a, b)`
 
 and
 
-ones:operator+(a, ones:b)
+`ones:operator+(a, ones:b)`
 
 (implementing both functions is valid, and it is useful in case the user-defined
 operator should not be commutative).
 
-Prefix and postfix operators are handled automatically. You only need to
-define one user operator for the “++” and “--” operators for a tag.
+- Prefix and postfix operators are handled automatically. You only need to define one user operator for the “++” and “--” operators for a tag.
 
-The parser calls the “!” operator implicitly in case of a test without explicit
-comparison. For example, in the statement “if (var) ...” when “var” has
-tag “ones:”, the user-defined operator “!” will be called for var. The “!”
-operator thus doubles as a “test for zero” operator. (In one’s complement
-arithmetic, both the “all-ones” and the “all-zeros” bit patterns  
-represent
-zero.)
+- The parser calls the “!” operator implicitly in case of a test without explicit comparison. For example, in the statement “if (var) ...” when “var” has tag “ones:”, the user-defined operator “!” will be called for var. The “!” operator thus doubles as a “test for zero” operator. (In one’s complement arithmetic, both the “all-ones” and the “all-zeros” bit patterns represent zero.)
 
-The user-defined assignment operator is implicitly called for a function ar-
-“Call by value” ver-
+- The user-defined assignment operator is implicitly called for a function argument that is passed “by value” when the tag names of the formal and the actual arguments match the tag names of the left and right hand sides of the operator. In other words, the pawn parser simulates that “pass by value” happens through assignment. The user-defined operator is not called for function arguments that are passed “by reference”.
 
-gument that is passed “by value” when the tag names of the formal and
-the actual arguments match the tag names of the left and right hand sides
-of the operator. In other words, the pawn parser simulates that “pass by
-value” happens through assignment. The user-defined operator is not called
+- If you wish to forbid an operation, you can “forward declare” the operator without ever defining it (see page 82). This will flag an error when the user-defined operator is invoked. For example, to forbid the “%” operator (remainder after division) on floating point values, you can add the line: `forward Float: operator%(Float: a, Float: b)`
 
-for function arguments that are passed “by reference”.
-
-If you wish to forbid an operation, you can “forward declare” the operator
-without ever defining it (see page 82). This will flag an error  
-when the
-user-defined operator is invoked. For example, to forbid the “%” operator
-(remainder after division) on floating point values, you can add the line:
-
-forward Float: operator%(Float: a, Float: b)
-
-User-defined operators can optionally be declared “stock” or “native”. In the
-case of a native operator function, the definition should include an  
-external
-name. For example (when, on the host’s side, the native function is
-called
-float_add):
+User-defined operators can optionally be declared “stock” or “native”. In the case of a native operator function, the definition should include an external name. For example (when, on the host’s side, the native function is called float_add):
 
 Listing: native operator+ function
 
+```c
+
 native Float: operator+(Float: val, Float: val) = float_add
 
-sus “call by refer-
-ence”: 71
-
-Native functions: 85
-
-Rational literals: 98
-#pragma rational:
-121
+```
 
 The user-defined assignment operator is a special case, because it is an
-operator
-that has a side effect. Although the operator has the appearance of a binary
+operator that has a side effect. Although the operator has the appearance of a binary
 operator, its “expression result” is the value at the right hand —the assignment
 operator would be a “null”-operator if it weren’t for its side-effect. In pawn
-a
-user-defined assignment operator is declared as:
+a user-defined assignment operator is declared as:
 
 Listing: operator= function
+
+```c
 
 ones: operator=(a)
 
 return ones: ( (a >= 0) ? a : ~(-a) )
 
-The user-defined “=” operator looks like a unary operator in this
-definition,
-but it is a special case nevertheless. In contrast to the other
-operators, the
-tag of the return value for the user-defined operator is important: the pawn
-parser uses the tags of the argument and the return value to find a matching
+```
 
-user-defined operator.
+The user-defined “=” operator looks like a unary operator in this
+definition, but it is a special case nevertheless. In contrast to the other
+operators, the tag of the return value for the user-defined operator is important: the pawn
+parser uses the tags of the argument and the return value to find a matching user-defined operator.
 
 The example function above is a typical application for a user-defined assign-
 ment operator: to automatically coerce/convert an untagged value to a tagged
 value, and to optionally change the memory representation of the value in the
 process. Specifically, the statement “new ones:A = -5” causes the user-defined
-operator to run, and for the constant -5 the operator will return “~(- -5)”,
-or ~5, or −6.∗
+operator to run, and for the constant -5 the operator will return “~(- -5)”, or ~5, or −6.∗
 
-• Floating point and fixed point arithmetic
+</div>
+
+<hr>
+
+<div align="right">
+
+`Tags: 68`
+
+`Forward declaration: 82`
+
+`“Call by value” versus “call by reference”: 71`
+
+`Native functions: 85`
+
+`Rational literals: 98`
+
+`#pragma rational: 121`
+
+</div>
+
+<hr>
+
+<div align="left">
+
+### • Floating point and fixed point arithmetic
 
 pawn only has intrinsic support for integer arithmetic (the -domain: “whole
 numbers”, both positive and negative). Support for floating point arithmetic
-or fixed point arithmetic must be implemented through (native)  
-functions.
-User operators, then, allow a more natural notation of expressions with fixed
-
-or floating point numbers.
+or fixed point arithmetic must be implemented through (native) functions.
+User operators, then, allow a more natural notation of expressions with fixed or floating point numbers.
 
 The pawn parser has support for literal values with a fractional part, which it
 calls “rational numbers”. Support for rational literals must be enabled explic-
 itly with a #pragma. The #pragma indicates how the rational numbers must
-
 be stored —floating point or fixed point. For fixed point rational values, the
-#pragma also specifies the precision in decimals. Two examples for the #pragma
-are:
+#pragma also specifies the precision in decimals. Two examples for the #pragma are:
 
-∗ Modern CPUs use two’s complement integer arithmetic. For positive
-values, the bitwise
-representation of a value is the same in one’s complement and two’s  
-complement, but the
-representations differ for negative values. For instance, the same bit
-pattern that means -5
-in one’s complement stands for -6 in two’s  
-complement.
+```c
 
-#pragma rational Float /_ floating point format _/
-#pragma rational Fixed(3) /_ fixed point, with 3 decimals _/
+#pragma rational Float /* floating point format */
+#pragma rational Fixed(3) /* fixed point, with 3 decimals */
+
+```
+
+<hr>
+
+###### ∗ Modern CPUs use two’s complement integer arithmetic. For positive values, the bitwise representation of a value is the same in one’s complement and two’s complement, but the representations differ for negative values. For instance, the same bit pattern that means -5 in one’s complement stands for -6 in two’s complement.
+
+<hr>
 
 Since a fixed point value must still fit in a cell, the number of decimals
-has
-a direct influence of the range of a fixed point value. For a fixed point value
+has a direct influence of the range of a fixed point value. For a fixed point value
 with 3 decimals, the range would be −2, 147, 482 . . . + 2, 147, 482.
 
 The format for a rational number may only be specified once for the entire
 pawn program. In an implementation one typically chooses either  
-floating
-point support or fixed point support. As stated above, for the actual imple-
+floating point support or fixed point support. As stated above, for the actual imple-
 mentation of the floating point or fixed point arithmetic, pawn requires the
 help of (native) functions and user-defined operators. A good place to put
-the
-#pragma for rational number support would be in the include file that  
-also
-defines the functions and operators.
+the #pragma for rational number support would be in the include file that  
+also defines the functions and operators.
 
 The include file † for fixed point arithmetic contains definitions like:
+
+```c
 
 native Fixed: operator\*(Fixed: val1, Fixed: val2) = fmul
 native Fixed: operator/(Fixed: val1, Fixed: val2) = fdiv
 
+```
+
 The user-defined operators for multiplication and division of two fixed
-point
-numbers are aliased directly to the native functions fmul and fdiv. The host
+point numbers are aliased directly to the native functions fmul and fdiv. The host
 application must, then, provide these native functions.
 
 Another native user-defined operator is convenient to transform an integer to
 fixed point automatically, if it is assigned to a variable tagged as “Fixed:”:
 
+```c
+
 native Fixed: operator=(oper) = fixed
+
+```
 
 With this definition, you can say “new Fixed: fract = 3” and the value
 will be transformed to 3.000 when it is stored in variable fract. As explained
@@ -5314,22 +5134,22 @@ cient, and the same goes for subtraction. Adding a normal (integer) number
 to a fixed point number is different: the normal value must be scaled before
 adding it. Hence, the include file implements operators for that purpose too:
 
-User-defined opera-
-tors: 86
-
-† See the application note “Fixed Point Support Library” for where to
-obtain the include file.
+###### † See the application note “Fixed Point Support Library” for where to obtain the include file.
 
 Listing: additive operators, commutative and non-commutative
 
+```c
+
 stock Fixed: operator+(Fixed: val1, val2)
-return val1 + fixed(val2)
+    return val1 + fixed(val2)
 
 stock Fixed: operator-(Fixed: val1, val2)
-return val1 - fixed(val2)
+    return val1 - fixed(val2)
 
 stock Fixed: operator-(val1, Fixed: val2)
-return fixed(val1) - val2
+    return fixed(val1) - val2
+
+```
 
 The “+” operator is commutative, so one implementation handles both cases.
 For the “-” operator, both cases must be implemented separately.
@@ -5338,31 +5158,47 @@ Finally, the include file forbids the use of the modulus operator (“%”) on f
 point values: the modulus is only applicable to integer values:
 
 Listing: forbidden operators on fixed point values
+
+```c
+
 forward Fixed: operator%(Fixed: val1, Fixed: val2)
 forward Fixed: operator%(Fixed: val1, val2)
-
 forward Fixed: operator%(val1, Fixed: val2)
+
+```
 
 Because of the presence of the (forward) declaration of the operator, the pawn
 parser will attempt to use the user-defined operator rather than the default
-“%” operator. By not implementing the operator, the parser will subsequently
-issue an error message.
+“%” operator. By not implementing the operator, the parser will subsequently issue an error message.
 
-93
+</div>
 
-The preprocessor
+<hr>
+
+<div align="right">
+
+`User-defined operators: 86`
+
+<hr>
+
+</div>
+
+<div align="center">
+
+# The preprocessor
+
+---
+
+</div>
+
+<div align="left">
 
 The first phase of compiling a pawn source file to the executable  
-P-code is
-“preprocessing”: a general purpose text filter that modifies/cleans up the text
+P-code is “preprocessing”: a general purpose text filter that modifies/cleans up the text
 before it is fed into the parser. The preprocessing phase removes comments,
-strips out “conditionally compiled” blocks, processes the compiler  
-directives
-
-and performs find-&-replace operations on the text of the source  
-file. The
-compiler directives are summarized on page 117 and the text  
-substitution
+strips out “conditionally compiled” blocks, processes the compiler directives
+and performs find-&-replace operations on the text of the source file. The
+compiler directives are summarized on page 117 and the text substitution
 (“find-&-replace”) is the topic of this chapter.
 
 The preprocessor is a process that is invoked on all source lines immediately
@@ -5371,55 +5207,59 @@ tions. While the preprocessor allows powerful tricks in the pawn language, it
 is also easy to shoot yourself in the foot with it.
 
 In this chapter, I will refer to the C/C⁺⁺ language on several occasions because
-pawn’s preprocessor is similar to the one in C/C++. That said, the  
-pawn
+pawn’s preprocessor is similar to the one in C/C++. That said, the pawn
 preprocessor is incompatible with the C/C⁺⁺ preprocessor.
 
 The #define directive defines the preprocessor macros. Simple macros are:
 
-#define maxsprites 25
+```c
 
-#define CopyRightString "(c) Copyright 2004 by me"
+#define maxsprites          25
+#define CopyRightString     "(c) Copyright 2004 by me"
+
+```
 
 In the pawn script, you can then use them as you would use constants. For
 example:
 
-#define maxsprites 25
+```c
 
-#define CopyRightString "(c) Copyright 2004 by me"
+#define maxsprites          25
+#define CopyRightString     "(c) Copyright 2004 by me"
 main()
-
 {
-
-print( Copyright )
-
-new sprites[maxsprites]
-
+    print( Copyright )
+    new sprites[maxsprites]
 }
 
+```
+
 By the way, for these simple macros there are equivalent pawn constructs:
+
+```c
 
 const maxsprites = 25
 
 stock const CopyRightString[] = "(c) Copyright 2004 by me"
 
+```
+
 These constant declarations have the advantage of better error checking and
 the ability to create tagged constants. The syntax for a string  
-constant is
-an array variable that is declared both “const” and “stock”. The  
-const
-attribute prohibits any change to the string and the stock attribute makes
+constant is an array variable that is declared both “const” and “stock”. The  
+const attribute prohibits any change to the string and the stock attribute makes
 the declaration “disappear” if it is never referred to.
 
 Substitution macros can take up to 10 parameters. A typical use for parame-
 terized macros is to simulate tiny functions:
 
-Operator prece-
-dence: 110
-
 Listing: the “min” macro
 
+```c
+
 #define min(%1,%2) ((%1) < (%2) ? (%1) : (%2))
+
+```
 
 If you know C/C⁺⁺, you will recognize the habit of enclosing each argument
 and the whole substitution expression in parentheses.
@@ -5428,15 +5268,21 @@ If you use the above macro in a script in the following way:
 
 Listing: bad usage of the “min” macro
 
-new a = 1, b = 4
+```c
 
+new a = 1, b = 4
 new min = min(++a,b)
+
+```
 
 the preprocessor translates it to:
 
-new a = 1, b = 4
+```c
 
+new a = 1, b = 4
 new min = ((++a) < (b) ? (++a) : (b))
+
+```
 
 which causes “a” to possibly be incremented twice. This is one of the traps
 that you can trip into when using substitution macros (this particular problem
@@ -5447,530 +5293,472 @@ common practice to write preprocessor macros in all upper case.
 To show why enclosing macro arguments in parentheses is a good idea, consider
 the macro:
 
+```c
+
 #define ceil_div(%1,%2) (%1 + %2 - 1) / %2
+
+```
 
 This macro divides the first argument by the second argument, but rounding
 upwards to the nearest integer (the divide operator, “/”, rounds downwards).
 If you use it as follows:
 
-new a = 5
+```c
 
+new a = 5
 new b = ceil_div(8, a - 2)
 
-the second line expands to “new b = (8 + a - 2 - 1) / a - 2”,
-which,
-considering the precedence levels of the pawn operators, leads to “b”  
-being
-set to zero (if “a” is 5). What you would have expected from looking at the
+```
 
+the second line expands to “new b = (8 + a - 2 - 1) / a - 2”,
+which, considering the precedence levels of the pawn operators, leads to “b”  
+being set to zero (if “a” is 5). What you would have expected from looking at the
 macro invocation is eight divided by three (“a - 2”), rounded upwards —
 hence, that “b” would be set to the value 3. Changing the macro to enclose
 each parameter in parentheses solves the problem. For similar reasons, it is
 also advised to enclose the complete replacement text in parentheses. Below
 is the ceil_div macro modified accordingly:
 
+```c
+
 #define ceil_div(%1,%2) ( ((%1) + (%2) - 1) / (%2) )
+
+```
 
 The pattern matching is subtler than matching strings that look like function
 calls. The pattern matches text literally, but accepts arbitrary text where the
 pattern specifies a parameter. You can create patterns like:
 
-The preprocessor 95
+Listing: macro that translates a syntax for array access to a function call
 
-Listing: macro that translates a syntax for array access to a  
-function call
+```c
 
 #define Object[%1] CallObject(%1)
 
+```
+
 When the expansion of a macro contains text that matches other macros, the
-expansion is performed at invocation time, not at definition time. Thus the
-code:
+expansion is performed at invocation time, not at definition time. Thus the code:
 
-#define a(%1) (1+b(%1))
+```c
 
-#define b(%1) (2\*(%1))
+#define a(%1)       (1+b(%1))
+#define b(%1)       (2\*(%1))
 new c = a(8)
+
+```
 
 will evaluate to “new c = (1+(2\*(8)))”, even though the macro “b” was not
 defined at the time of the definition of “a”.
 
 The pattern matching is constrained to the following rules:
 
-There may be no space characters in the pattern. If you must match a space,
-you need to use the “\32;” escape sequence. The substitution text, on the
-other hand, may contain space characters. Due to the matching rules of
-the macro pattern (explained below), matching a space character is rarely
-needed.
+- There may be no space characters in the pattern. If you must match a space, you need to use the “\32;” escape sequence. The substitution text, on the other hand, may contain space characters. Due to the matching rules of the macro pattern (explained below), matching a space character is rarely needed.
 
-As evidenced in the preceding line, escape sequences may appear in  
-the
-pattern (they are not very useful, though, except perhaps for matching a
-literal “%” character).
+- As evidenced in the preceding line, escape sequences may appear in the pattern (they are not very useful, though, except perhaps for matching a literal “%” character).
 
-The pattern may not end with a parameter; a pattern like “set:%1=%2” is
-illegal. If you wish to match with the end of a statement, you can add a
-semicolon at the end of the pattern. If semicolons are optional at the end of
-each statement, the semicolon will also match a newline in the source.
+- The pattern may not end with a parameter; a pattern like “set:%1=%2” is illegal. If you wish to match with the end of a statement, you can add a semicolon at the end of the pattern. If semicolons are optional at the end of each statement, the semicolon will also match a newline in the source.
 
-The pattern must start with a letter, an underscore, or an “@” character The
-first part of the pattern that consists of alphanumeric characters (plus the
-“\_” and/“@”) is the “name” or the “prefix” of the macro. On the defined
-operator and the #undef directive, you specify the macro prefix.
+- The pattern must start with a letter, an underscore, or an “@” character The first part of the pattern that consists of alphanumeric characters (plus the “_” and/“@”) is the “name” or the “prefix” of the macro. On the defined operator and the #undef directive, you specify the macro prefix.
 
-When matching a pattern, the preprocessor ignores white space between non-
-alphanumeric symbols and white space between an alphanumeric symbol and
-a non-alphanumeric one, with one exception: between two identical symbols,
-white space is not ignored. Therefore:
+- When matching a pattern, the preprocessor ignores white space between nonalphanumeric symbols and white space between an alphanumeric symbol and a non-alphanumeric one, with one exception: between two identical symbols, white space is not ignored. Therefore: `the pattern abc(+-) matches “abc ( + - )”    the pattern abc(--) matches “abc ( -- )”` but does not match `“abc(- -)”`
 
-the pattern abc(+-) matches “abc ( + - )”
+- There are up to 10 parameters, denoted with a “%” and a single digit (1 to 9 and 0). The order of the parameters in a pattern is not important.
 
-the pattern abc(--) matches “abc ( -- )” but does not match
-“abc(- -)”
-
-There are up to 10 parameters, denoted with a “%” and a single digit (1 to
-9 and 0). The order of the parameters in a pattern is not important.
-
-The #define symbol is a parser directive. As with all parser directives, the
-pattern definition must fit on a single line. You can circumvent this with a
-“\” on the end of the line. The text to match must also fit on a single line.
+- The #define symbol is a parser directive. As with all parser directives, the pattern definition must fit on a single line. You can circumvent this with a “\” on the end of the line. The text to match must also fit on a single line.
 
 Note that in the presence of (parameterized) macros, lines of source code may
-not be what they appear: what looks like an array access may be “prepro-
+not be what they appear: what looks like an array access may be “prepro
 cessed” to a function call, and vice versa.
 
 A host application that embeds the pawn parser may provide an option to let
 you check the result of text substitution through macros. If you are using the
 standard pawn toolset, you will find instructions of how to use the compiler
-and run-time in the companion booklet “The pawn booklet — Implementor’s
-Guide”.
+and run-time in the companion booklet “The pawn booklet — Implementor’s Guide”.
 
-97
+</div>
 
-General syntax
+<hr>
 
-Format
+<div align="right">
 
-Identifiers, numbers and tokens are separated by spaces, tabs, carriage
-returns and “form feeds”. Series of one or more of these separators are
-called white space.
+`Operator precedence: 110`
 
-Optional semicolons
+`Directives: 117`
 
-Semicolons (to end a statement) are optional if they occur at the end
+<hr>
 
-of a line. Semicolons are required to separate multiple statements on
-a single line. An expression may still wrap over multiple lines, but
-postfix operators (++, -- and char) must appear on the same line as
-their operand.
+</div>
 
-Comments
+<div align="center">
 
-Text between the tokens /_ and _/ (both tokens may be at the same
-line or at different lines) and text behind // (up to the end of the line)
-is a programming comment. The parser treats a comment as white
-space. Comments may not be nested.
+# General syntax
 
-A comment that starts with “/\*_ ” (two stars and white-space behind
-the second star) and ends with “_/” is a documentation comment.
-A comment that starts with “/// ” (three slashes and white-space
-behind the third slash) is also a documentation comment. The parser
-may treat documentation comments in a special way; for example, it
-may construct on-line help from it.
+---
 
-Identifiers
+</div>
 
-Names of variables, functions and constants. Identifiers consist of the
-characters a. . . z, A. . . Z, 0. . . 9, _ or @; the first character may not be
-a digit. The characters @ and _ by themselves are not valid identifiers,
+<div align="left">
 
-i.e. “_Up” is a valid identifier, but “_” is not.
+**Format**
 
-pawn is case sensitive.
+    Identifiers, numbers and tokens are separated by spaces, tabs, carriage
+    returns and “form feeds”. Series of one or more of these separators are
+    called white space.
 
-A parser may truncate an identifier after a maximum length. The
-number of significant characters is implementation defined, but should
-be at least 16 characters.
+**Optional semicolons**
 
-Reserved words (keywords)
+    Semicolons (to end a statement) are optional if they occur at the end
+    of a line. Semicolons are required to separate multiple statements on
+    a single line. An expression may still wrap over multiple lines, but
+    postfix operators (++, -- and char) must appear on the same line as their operand.
 
-Statements Operators Directives Other
-assert char #assert const
+**Comments**
 
-Optional semicolons:
+    Text between the tokens /_ and _/ (both tokens may be at the same
+    line or at different lines) and text behind // (up to the end of the line)
+    is a programming comment. The parser treats a comment as white
+    space. Comments may not be nested.
 
-122
+    A comment that starts with “/\*_ ” (two stars and white-space behind
+    the second star) and ends with “_/” is a documentation comment.
+    A comment that starts with “/// ” (three slashes and white-space
+    behind the third slash) is also a documentation comment. The parser
+    may treat documentation comments in a special way; for example, it
+    may construct on-line help from it.
 
-Predefined con-
-stants: 102
+**Identifiers**
 
-break defined #define enum
-case sizeof #else forward
-continue state #elseif native
-default tagof #emit new
+    Names of variables, functions and constants. Identifiers consist of the
+    characters a. . . z, A. . . Z, 0. . . 9, _ or @; the first character may not be
+    a digit. The characters @ and _ by themselves are not valid identifiers,
 
-do #endif operator
+    i.e. “_Up” is a valid identifier, but “_” is not.
 
-else #endinput public
+    pawn is case sensitive.
 
-exit #endscript static
+    A parser may truncate an identifier after a maximum length. The
+    number of significant characters is implementation defined, but should
+    be at least 16 characters.
 
-for #error stock
+**Reserved words (keywords)**
 
-goto #file
 
-if #if
-
-return #include
-
-sleep #line
-
-state #pragma
-
-switch #section
-
-while #tryinclude
-
-#undef
+| Statements | Operators | Directives  | Other    |
+|------------|-----------|-------------|----------|
+| assert     | char      | #assert     | const    |
+| break      | defined   | #define     | enum     |
+| case       | sizeof    | #else       | forward  |
+| continue   | state     | #elseif     | native   |
+| default    | tagof     | #emit       | new      |
+| do         |           | #endif      | operator |
+| else       |           | #endinput   | public   |
+| exit       |           | #endscript  | static   |
+| for        |           | #error      | stock    |
+| goto       |           | #file       |          |
+| if         |           | #if         |          |
+| return     |           | #include    |          |
+| sleep      |           | #line       |          |
+| state      |           | #pragma     |          |
+| switch     |           | #section    |          |
+| while      |           | #tryinclude |          |
+|            |           | #undef      |          |
 
 Next to reserved words, pawn also has several predefined constants,
 you cannot use the symbol names of the predefined constants for vari-
 able or function names.
 
-Constants (literals)
-
-Integer numeric constants
-binary
-
-Rational numbers
-are also called “real
-numbers” or “float-
-ing point numbers”
-
-0b followed by a series of the digits 0 and 1.
-
-decimal
-
-a series of digits between 0 and 9.
-
-hexadecimal
-
-0x followed by a series of digits between 0 and 9 and
-the letters a to f.
-
-In all number radices, an underscore may be used to sepa-
-rate groups of (hexa-)decimal digits. Underscore characters
-between the digits are ignored.
-
-Rational number constants
-
-A rational number is a number with a fractional part. A ra-
-tional number starts with one or more digits, contains a dec-
-imal point and has at least one digit following the decimal
-point. For example, “12.0” and “0.75” are valid rational num-
-bers. Optionally, an exponent may be appended to the rational
-
-number; the exponent notation is the letter “e” (lower case)
-followed by a signed integer numeric constant. For example,
-“3.12e4” is a valid rational number with an exponent.
-
-Support for rational numbers must be enabled with #pragma
-rational directive. Depending on the options set with this
-directive, the rational number represents a floating point or a
-fixed point number.
-
-Character constants
-
-A single ASCII character surrounded by single quotes is a char-
-acter constant (for example: ’a’, ’7’, ’\$’). Character con-
-stants are assumed to be numeric constants.
-
-Escape sequences
-
-’\a’ Audible alarm (beep)
-
-’\b’ Backspace
-
-’\e’ Escape
-
-’\f’ Formfeed
-
-’\n’ Newline
-
-’\r’ Carriage Return
-
-’\t’ Horizontal tab
-
-’\v’ Vertical tab
-
-’\\’ \ the escape character
-
-’\’’ ’ single quote
-
-’\"’ " double quote
-
-’\% % percent sign
-
-’\ddd;’ character code with decimal code “ddd ”
-
-’\xhhh;’ character code with hexadecimal code “hhh”
-
-The semicolon after the ddd; and xhhh; codes is optional.
-Its purpose is to give the escape sequence sequence an explicit
-termination symbol when it is used in a string constant.
-
-The backslash (“\”) is the default “escape” character. You can
-set a different escape character with the #pragma ctrlchar
-directive (page 120).
-
-String constants
-
-String constants are assumed to be arrays with a size that is
-sufficient to hold all characters plus a terminating ’\0’. Each
-
-#pragma rational:
-121
-
-The syntaxes for
-packed literal strings
-and unpacked lit-
-eral strings can be
-swapped with the
-“#pragma pack”
-directive, see page
-121
-
-string is stored at a unique position in memory; there is no
-elimination of duplicate strings.
-
-An unpacked string is a series of zero or more ASCII characters
-surrounded by double quotes. Each array element contains a
-single character. An unpacked string can hold characters in a
-multi-byte character set, such as Unicode or UCS-4.
-
-unpacked string constant:
-
-"the quick brown fox..."
-
-A packed string literal follows the syntax for an unpacked
-string, but a “!” precedes the first double quote.
-
-packed string constant:
-
-!"...packed and sacked the lazy dog"
-
-In the case of a packed string, the parser packs as many char-
-acters in a cell as will fit. A character is not addressable as a
-single unit, instead each element of the array contains multiple
-characters. The first character in a “pack” occupies the highest
-bits of the array element. In environments that store memory
-words with the high byte at the lower address (Big Endian,
-or Motorola format), the individual characters are stored in
-the memory cells in the same order as they are in the string.
-A packed string ends with a zero character and the string is
-padded (with zero bytes) to a multiple of cells.
-
-A packed string can only hold characters from a single-byte
-character set, such as ascii or one of the extended ascii sets
-from the ISO 8859 norm.
-
-Escape sequences may be used within strings. See the section
-on character constants (page 99) for a list of escape sequences.
-
-There is an alternative syntax for “plain strings”. In a plain
-string, every character is taken as-is and escape sequences
-are not recognized. Plain strings are convenient to store file/
-resource names, especially in the case where the escape charac-
-ter is also used as a special character by the operating system
-or host application.
-
-The syntax for a plain string is the escape character followed by
-the string in double quotes. The backslash (“\”) is the default
-
-“escape” character. You cannot enter escape sequences in a
-plain string: all characters will be taken literally.
-
-plain string constant:
-
-\"C:\all my work\novel.rtf"
-
-In the above example, the occurrences of “\a” and “\n” do
-not indicate escape sequences, but rather the literal character
-pairs “\” and “a”, and “\” and “n”.
-
-A packed plain string has both the “!” and the escape character
-prefixing the opening double quote. Both strings below are
-packed plain strings:
-
-!\"C:\all my work\novel.rtf"
-
-\!"C:\all my work\novel.rtf"
-
-Array constants
-
-A series of numeric constants between braces is an array con-
-stant. Array constants can be used to initialize array variables
-with (see page 65) and they can be passed as function argu-
-ments (see page 71).
-
-Symbolic constants
-
-A source file declares symbolic constants with the const and the enum
-instructions. The const keyword declares a single constant and the
-enum defines a list of —usually— sequential constants sharing the same
-tag name.
-
-const identifier = constant expression
-
-Creates a symbolic constant with the value of the constant
-expression on the right hand of the assignment operator. The
-constant can be used at any place where a literal number is
-valid (for example: in expressions, in array declarations and in
-directives like “#if” and “#assert”).
-
-enum name (increment) constant list
-
-The enum instruction creates a series of constants with incre-
-menting values. The constant list is a series of identifiers sep-
-arated by commas. Unless overruled, the first constant of an
-enum list has the value 0 and every subsequent constant has
-the value of its predecessor plus 1.
-
-Examples: 9, 21
-
-Identifiers: 97
-
-Both the value of a constant and the increment value can be Examples: 21, 26
-
-See page 68 for
-examples of the
-“enum” constant
-declarations
-
-See page 26 for an
-example of a custom
-increment rule
-
-set by appending the value to the constant’s identifier. To set
-a value, use
-
-name = value
-
-in the constant list. To set the increment, use:
-
-name [ increment ]
-
-The increment value is reset to 1 after every constant symbol
-declaration in the constant list.
-
-If both an increment and a value should be set for a constant,
-the increment (“[. . . ]” notation) should precede the value (“=”
-notation.
-
-The symbols in the constant list may have an explicit tag,
-which should precede the symbol name.
-
-The name token that follows the enum keyword is optional. If it
-is included, and if the symbol names does not have an explicit
-tag, this name is used as the tag name for every symbol in the
-constant list. In addition, the enum command creates an extra
-constant with name for the constant name and the tag name.
-The value of the last constant is the value of the last symbol in
-the constant list plus the increment value of that last constant.
-
-The increment token that follows the optional name token is
-also optional. If included, it specifies a different post-increment
-rule. By default, an enum increments the value of every succe-
-sive constant with 1, but you may specify a different rule with
-the syntax “(operator constant)”, where operator must be +=,
-
-\*= or <<=. The += operator creates an additive increment, the
-
-\*= and <<= create a multiplicative increment. The constant
-may be a literal value or a symbolic constant. The increment
-rule must be enclosed in parentheses. If no increment rule is
-specified, the parenthese may be omitted as well.
-
-A symbolic constant that is defined locally, is valid throughout the
-block. A local symbolic constant may not have the same name as
-a variable (local or global), a function, or another constant (local or
-global).
-
-Predefined constants
-
-cellbits The size of a cell in bits; usually 32.
-
-cellmax The largest valid positive value that a cell can hold; usually 2147483647.
-
-cellmin The largest valid negative value that a cell can hold; usually
-
--2147483648.
-
-charbits The size of a packed character in bits; usually 8.
-
-charmax The largest valid packed character value; usually a packed
-character is 8-bit and the maximum valid value is thus 255.
-
-charmin The smallest valid character value, for both packed and
-unpacked values; currently set to zero (0).
-
-debug The debug level: 2 if the parser creates full symbolic infor-
-mation plus run-time bounds checking, 1 if the parser gen-
-erates run-time checking only (assertions and array bounds
-checks), and 0 (zero) if all debug support and run-time
-checking was turned off.
-
-false 0 (this constant is tagged as bool:)
-
-Pawn The version number of the pawn compiler in Binary Coded
-Decimals (BCD) —that is, for version 2.8.1 the constant is
-“0x281”.
-
-true 1 (this constant is tagged as bool:)
-
-ucharmax The largest unpacked character value, its value depends
-on the size of a cell. A typical use for this constant is in
-checking whether a string is packed or unpacked, see page 137.
-
-Tag names
-
-A tag consists of an identifier followed by a colon. There may be no
-white space between the identifier and the colon.
-
-Predefined tag names
-
-bool: For “true/false” flags. The predefined constants true and
-
-false have this tag.
-
-Fixed: Rational numbers typically have this tag when fixed point
-support is enabled (page 121).
-
-Float: Rational numbers typically have this tag when floating
-point support is enabled (page 121).
-
-Identifiers: 97
-
-104
-
-Operators and expressions
-
-• Notational conventions
+**Constants (literals)**
+
+  **Integer numeric constants**
+  .  **binary**
+    0b followed by a series of the digits 0 and 1.
+  .  **decimal**
+    a series of digits between 0 and 9.
+  .  **hexadecimal**
+    0x followed by a series of digits between 0 and 9 and the letters a to f.
+
+    In all number radices, an underscore may be used to sepa-
+    rate groups of (hexa-)decimal digits. Underscore characters
+    between the digits are ignored.
+
+  **Rational number constants**
+
+  A rational number is a number with a fractional part. A ra-
+  tional number starts with one or more digits, contains a dec-
+  imal point and has at least one digit following the decimal
+  point. For example, “12.0” and “0.75” are valid rational num-
+  bers. Optionally, an exponent may be appended to the rational
+  number; the exponent notation is the letter “e” (lower case)
+  followed by a signed integer numeric constant. For example,
+  “3.12e4” is a valid rational number with an exponent.
+  
+  Support for rational numbers must be enabled with #pragma
+  rational directive. Depending on the options set with this
+  directive, the rational number represents a floating point or a
+  fixed point number.
+
+**Character constants**
+
+  A single ASCII character surrounded by single quotes is a char-
+  acter constant (for example: ’a’, ’7’, ’\$’). Character con-
+  stants are assumed to be numeric constants.
+
+  | Escape sequences |   |                                            |
+  |------------------|---|--------------------------------------------|
+  | ’\a’             |   | Audible alarm (beep)                       |
+  | ’\b’             |   | Backspace                                  |
+  | ’\e’             |   | Escape                                     |
+  | ’\f’             |   | Formfeed                                   |
+  | ’\n’             |   | Newline                                    |
+  | ’\r’             |   | Carriage Return                            |
+  | ’\t’             |   | Horizontal tab                             |
+  | ’\v’             |   | Vertical tab                               |
+  | ’\\’             | \ | the escape character                       |
+  | ’\’’             | ’ | single quote                               |
+  | ’\"’             | " | double quote                               |
+  | ’\%              | % | percent sign                               |
+  | ’\ddd;’          |   | character code with decimal code “ddd”     |
+  | ’\xhhh;’         |   | character code with hexadecimal code “hhh” |
+
+  The semicolon after the ddd; and xhhh; codes is optional.
+  Its purpose is to give the escape sequence sequence an explicit
+  termination symbol when it is used in a string constant.
+  
+  The backslash (“\”) is the default “escape” character. You can
+  set a different escape character with the #pragma ctrlchar
+  directive (page 120).
+
+**String constants**
+
+  String constants are assumed to be arrays with a size that is
+  sufficient to hold all characters plus a terminating ’\0’.
+  Each string is stored at a unique position in memory; there is no
+  elimination of duplicate strings.
+  
+  An unpacked string is a series of zero or more ASCII characters
+  surrounded by double quotes. Each array element contains a
+  single character. An unpacked string can hold characters in a
+  multi-byte character set, such as Unicode or UCS-4.
+  
+  **unpacked string constant:**
+  
+    "the quick brown fox..."
+  
+  A packed string literal follows the syntax for an unpacked
+  string, but a “!” precedes the first double quote.
+  
+  **packed string constant:**
+  
+    !"...packed and sacked the lazy dog"
+  
+  In the case of a packed string, the parser packs as many char-
+  acters in a cell as will fit. A character is not addressable as a
+  single unit, instead each element of the array contains multiple
+  characters. The first character in a “pack” occupies the highest
+  bits of the array element. In environments that store memory
+  words with the high byte at the lower address (Big Endian,
+  or Motorola format), the individual characters are stored in
+  the memory cells in the same order as they are in the string.
+  A packed string ends with a zero character and the string is
+  padded (with zero bytes) to a multiple of cells.
+  
+  A packed string can only hold characters from a single-byte
+  character set, such as ascii or one of the extended ascii sets
+  from the ISO 8859 norm.
+  
+  Escape sequences may be used within strings. See the section
+  on character constants (page 99) for a list of escape sequences.
+  
+  There is an alternative syntax for “plain strings”. In a plain
+  string, every character is taken as-is and escape sequences
+  are not recognized. Plain strings are convenient to store file/
+  resource names, especially in the case where the escape charac-
+  ter is also used as a special character by the operating system
+  or host application.
+  
+  The syntax for a plain string is the escape character followed by
+  the string in double quotes. The backslash (“\”) is the default
+  
+  “escape” character. You cannot enter escape sequences in a
+  plain string: all characters will be taken literally.
+  
+  **plain string constant:**
+  
+    \"C:\all my work\novel.rtf"
+  
+  In the above example, the occurrences of “\a” and “\n” do
+  not indicate escape sequences, but rather the literal character
+  pairs “\” and “a”, and “\” and “n”.
+  
+  A packed plain string has both the “!” and the escape character
+  prefixing the opening double quote. Both strings below are
+
+  **packed plain strings:**
+  
+    !\"C:\all my work\novel.rtf"
+  
+    \!"C:\all my work\novel.rtf"
+
+**Array constants**
+
+  A series of numeric constants between braces is an array con-
+  stant. Array constants can be used to initialize array variables
+  with (see page 65) and they can be passed as function argu-
+  ments (see page 71).
+
+**Symbolic constants**
+
+  A source file declares symbolic constants with the const and the enum
+  instructions. The const keyword declares a single constant and the
+  enum defines a list of —usually— sequential constants sharing the same tag name.
+
+  **const** *identifier = constant expression*
+  
+  Creates a symbolic constant with the value of the constant
+  expression on the right hand of the assignment operator. The
+  constant can be used at any place where a literal number is
+  valid (for example: in expressions, in array declarations and in
+  directives like “#if” and “#assert”).
+  
+  **enum** *name (increment) { constant list }*
+  
+  The enum instruction creates a series of constants with incre-
+  menting values. The constant list is a series of identifiers sep-
+  arated by commas. Unless overruled, the first constant of an
+  enum list has the value 0 and every subsequent constant has
+  the value of its predecessor plus 1.
+  
+  Both the value of a constant and the increment value can be
+  set by appending the value to the constant’s identifier. To set
+  a value, use
+  
+  name = value
+  
+  in the constant list. To set the increment, use:
+  
+  name [ increment ]
+  
+  The increment value is reset to 1 after every constant symbol
+  declaration in the constant list.
+  
+  If both an increment and a value should be set for a constant,
+  the increment (“[. . . ]” notation) should precede the value (“=”
+  notation.
+  
+  The symbols in the constant list may have an explicit tag,
+  which should precede the symbol name.
+  
+  The name token that follows the enum keyword is optional. If it
+  is included, and if the symbol names does not have an explicit
+  tag, this name is used as the tag name for every symbol in the
+  constant list. In addition, the enum command creates an extra
+  constant with name for the constant name and the tag name.
+  The value of the last constant is the value of the last symbol in
+  the constant list plus the increment value of that last constant.
+  
+  The increment token that follows the optional name token is
+  also optional. If included, it specifies a different post-increment
+  rule. By default, an enum increments the value of every succe-
+  sive constant with 1, but you may specify a different rule with
+  the syntax “(operator constant)”, where operator must be +=,
+  
+  \*= or <<=. The += operator creates an additive increment, the
+  
+  \*= and <<= create a multiplicative increment. The constant
+  may be a literal value or a symbolic constant. The increment
+  rule must be enclosed in parentheses. If no increment rule is
+  specified, the parenthese may be omitted as well.
+  
+  A symbolic constant that is defined locally, is valid throughout the
+  block. A local symbolic constant may not have the same name as
+  a variable (local or global), a function, or another constant (local or
+  global).
+
+**Predefined constants**
+
+| Name     	| Description                                                                                                                                                                                                                                                      	|
+|----------	|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
+| cellbits 	| The size of a cell in bits; usually 32.                                                                                                                                                                                                                          	|
+| cellmax  	| The largest valid positive value that a cell can hold; usually 2147483647.                                                                                                                                                                                       	|
+| cellmin  	| The largest valid negative value that a cell can hold; usually -2147483648.                                                                                                                                                                                      	|
+| charbits 	| The size of a packed character in bits; usually 8.                                                                                                                                                                                                               	|
+| charmax  	| The largest valid packed character value; usually a packed character is 8-bit and the maximum valid value is thus 255.                                                                                                                                           	|
+| charmin  	| The smallest valid character value, for both packed and unpacked values; currently set to zero (0).                                                                                                                                                              	|
+| debug    	| The debug level: 2 if the parser creates full symbolic information plus run-time bounds checking, 1 if the parser generates run-time checking only (assertions and array bounds checks), and 0 (zero) if all debug support and run-time checking was turned off. 	|
+| false    	| 0 (this constant is tagged as bool:)                                                                                                                                                                                                                             	|
+| __Pawn   	| The version number of the pawn compiler in Binary Coded Decimals (BCD) —that is, for version 2.8.1 the constant is “0x281”.                                                                                                                                      	|
+| true     	| 1 (this constant is tagged as bool:)                                                                                                                                                                                                                             	|
+| ucharmax 	| The largest unpacked character value, its value depends on the size of a cell. A typical use for this constant is in checking whether a string is packed or unpacked, see page 137.                                                                              	|
+
+**Tag names**
+
+  A tag consists of an identifier followed by a colon. There may be no white space between the identifier and the colon.
+
+**Predefined tag names**
+
+  | Name   | Description                                                                                 |
+  |--------|---------------------------------------------------------------------------------------------|
+  | bool:  | For “true/false” flags. The predefined constants true and false have this tag.              |
+  | Fixed: | Rational numbers typically have this tag when fixed point support is enabled (page 121).    |
+  | Float: | Rational numbers typically have this tag when floating point support is enabled (page 121). |
+
+</div>
+
+<hr>
+
+<div align="right">
+
+`Optional semicolons: 122`
+
+`Predefined constants: 102`
+
+`Rational numbers are also called “real numbers” or “floating point numbers”`
+
+`#pragma rational: 121`
+
+`The syntaxes for packed literal strings and unpacked literal strings can be swapped with the “#pragma pack” directive, see page 121`
+
+`Examples: 21, 26`
+
+`Examples: 9, 21`
+
+`Identifiers: 97`
+
+`See page 68 for examples of the “enum” constant declarations`
+
+`See page 26 for an example of a custom increment rule`
+
+`Identifiers: 97`
+
+<hr>
+
+</div>
+
+<div align="center">
+
+# Operators and expressions
+
+---
+
+</div>
+
+<div align="left">
+
+### • Notational conventions
 
 The operation of some operators depends on the specific kinds of operands.
 Therefore, operands are notated thus:
 
-e any expression;
+| Operators | Usage                                                                   |
+|-----------|-------------------------------------------------------------------------|
+| e         | any expression;                                                         |
+| v         | any expression to which a value can be assigned (“lvalue” expressions); |
+| a         | an array;                                                               |
+| f         | a function;                                                             |
+| s         | a symbol —which is a variable, a constant or a function.                |
 
-v any expression to which a value can be assigned (“lvalue”
-expressions);
-
-a an array;
-
-f a function;
-
-s a symbol —which is a variable, a constant or a function.
-
-• Expressions
+### • Expressions
 
 An expression consists of one or more operands with an operator. The operand
 can be a variable, a constant or another expression. An expression followed by
@@ -5978,1197 +5766,937 @@ a semicolon is a statement.
 
 Listing: examples of expressions
 
+```c
+
 v++
-
 f(a1, a2)
-
-v = (ia1 \* ia2) / ia3
-
-Arithmetic
-
--           e1  +  e2
-
-Results in the addition of e1 and e2.
-
--           e1  -  e2
-
-Results in the subtraction of e1 and e2.
-
--e
-
-Results in the arithmetic negation of a (two’s complement).
-
--           e1  *  e2
-
-Results in the multiplication of e1 and e2.
-
-/ e1 / e2
-
-Results in the division of e1 by e2. The result is truncated
-to the nearest integral value that is less than or equal to the
-quotient. Both negative and positive values are rounded down,
-
-i.e. towards −∞.
-
-% e1 % e2
-
-Results in the modulus (remainder of the division) of e1 by
-e2. The modulus is always a positive value.
-
-++ v++
-
-increments v by 1; the result if the expression is the value of
-v before it is incremented.
-
-++v
-
-increments v by 1; the result if the expression is the value of
-v after it is incremented.
-
--- v--
-
-decrements v by 1; the result if the expression is the value of
-v before it is decremented.
-
---v
-
-decrements v by 1; the result if the expression is the value of
-v after it is decremented.
-
-Notes: The unary + is not defined in pawn.
-
-The operators ++ and -- modify the operand. The operand
-
-must be an lvalue.
-
-• Bit manipulation
-
-~ ~e
-
-results in the one’s complement of e.
-
-> >         e1  >>  e2
-
-results in the arithmetic shift to the right of e1 by e2 bits.
-The shift operation is signed: the leftmost bit of e1 is copied
-to vacant bits in the result.
-
-> > >        e1  >>>  e2
-
-results in the logical shift to the right of e1 by e2 bits. The
-shift operation is unsigned: the vacant bits of the result are
-filled with zeros.
-
-<< e1 << e2
-
-results in the value of e1 shifted to the left by e2 bits; the
-rightmost bits are set to zero. There is no distinction between
-an arithmetic and a logical left shift
-
-& e1 & e2
-
-results in the bitwise logical “and” of e1 and e2.
-
-| e1 | e2
-
-results in the bitwise logical “or” of e1 and e2.
-
-^ e1 ^ e2
-
-results in the bitwise “exclusive or” of e1 and e2.
-
-• Assignment
-
-                                  The result of an assignment expression  is
-
-the value of the left operand after
-
-Tag names: 68
-
-the assignment. The left operand may not be tagged.
-
-= v = e
-
-assigns the value of e to variable v.
-
-If “v” is an array, it must have an explicit size and “e” must
-be an array of the same size; “e” may be a string or a literal
-array.
-
-Note: the following operators combine an assignment with an arith-
-metic or a bitwise operation; the result of the expression is
-the value of the left operand after the arithmetic or bitwise
-operation.
-
-+= v += e
-
-increments v with a.
-
--= v -= e
-
-decrements v with e
-
-_= v _= e
-
-multiplies v with e
-
-/= v /= e
-
-divides v by e.
-
-%= v %= e
-
-assigns the remainder of the division of v by e to v.
-
-> > = v >>= e
-
-shifts v arithmetically to the right by e bits.
-
-> > > = v >>>= e
-
-shifts v logically to the right by e bits.
-
-<<= v <<= e
-
-shifts v to the left by e bits.
-
-&= v &= e
-
-applies a bitwise “and” to v and e and assigns the result to v.
-
-|= v |= e
-
-applies a bitwise “or” to v and e and assigns the result to v.
-
-^= v ^= e
-
-applies a bitwise “exclusive or” to v and e and assigns the
-
-result to v.
-
-• Relational
-
-A logical “false” is represented by an integer value of 0; a logical
-“true” is
-represented by any value other than 0. Value results of relational expressions
-are either 0 or 1, and their tag is set to “bool:”.
-
-== e1 == e2
-
-results in a logical “true” if e1 is equal to e2.
-
-!= e1 != e2
-
-results in a logical “true” if e1 differs from e2.
-
-Note: the following operators may be “chained”, as in the expression
-“e1 <= e2 <= e3”, with the semantics that the result is “1”
-if all individual comparisons hold and “0” otherwise.
-
-< e1 < e2
-
-results in a logical “true” if e1 is smaller than e2.
-
-<= e1 <= e2
-
-results in a logical “true” if e1 is smaller than or equal to e2.
-
->           e1  >  e2
-
-results in a logical “true” if e1 is greater than e2.
-
-> = e1 >= e2
-
-results in a logical “true” if e1 is greater than or equal to e2.
-
-• Boolean
-
-A logical “false” is represented by an integer value of 0; a logical
-“true” is
-represented by any value other than 0. Value results of Boolean expressions
-are either 0 or 1, and their tag is set to “bool”.
-
-! !e
-
-results to a logical “true” if e was logically “false”.
-
-|| e1 || e2
-
-results to a logical “true” if either e1 or e2 (or both) are log-
-ically “true”. The expression e2 is only evaluated if e1 is
-logically “false”.
-
-&& e1 && e2
-
-results to a logical “true” if both e1 and e2 are logically “true”.
-The expression e2 is only evaluated if e1 is logically “true”.
-
-Miscellaneous
-
-[ ] a[e]
-
-array index: results to cell e from array a.
-
-{ } a{e}
-
-array index: results to character e from “packed” array a.
-
-( ) f(e1,e2,...eN)
-
-results to the value returned by the function f. The function
-is called with the arguments e1, e2, . . . eN. The order of eval-
-uation of the arguments is undefined (an implementation may
-choose to evaluate function arguments in reversed order).
-
-? : e1 ? e2 : e3
-
-results in either e2 or e3, depending on the value of e1. The
-conditional expression is a compound expression with a two
-part operator, “?” and “:”. Expression e2 is evaluated if e1
-is logically “true”, e3 is evaluated if e1 is logically “false”.
-
-: tagname: e
-
-tag override; the value of the expression e does not change,
-but its tag changes. See page 68 for more information.
-
-, e1, e2
-
-results in e2, e1 is evaluated before e2. If used in function
-argument lists or a conditional expression, the comma expres-
-sion must be surrounded by parentheses.
-
-defined defined s
-
-results in the value 1 if the symbol is defined. The symbol
-may be a constant (page 98), or a global or local variable.
-
-The tag of this expression is bool:.
-
-sizeof sizeof s
-
-results in the size in “elements” of the specified variable. For
-simple variables and for arrays with a single dimension, an
-element is a cell. For multi-dimensional arrays, the result is
-the number of array elements in that dimension —append []
-to the array name to indicate a lower/more minor dimension.
-If the size of a variable is unknown, the result is zero.
-
-When used in a default value for a function argument, the ex-
-pression is evaluation at the point of the function call, instead
-of in the function definition.
-
-Example: 77
-
-state state s
-
-where “s” is the name of a state that is optionally prefixed
-with the automaton name, this operator results in the value 1
-if the automatons is in the indicated state and in 0 otherwise.
-The tag of this expression is bool:.
-
-tagof tagof s
-
-results in the a unique number that represents the tag of the
-variable, the constant, the function result or the tag label.
-
-When used in a default value for a function argument, the ex-
-pression is evaluation at the point of the function call, instead
-of in the function definition.
-
-See also page 114
-for state specifiers
-
-char e char
-
-results the number of cells that are needed to hold a packed
-array of e characters.
-
-• Operator precedence
+v = (ia1 * ia2) / ia3
+
+```
+
+### • Arithmetic
+
+| Sign   | Description                                                                                                                                                                                                 |
+|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| +      | e1 + e2                                                                                                                                                                                                     |
+|        | Results in the addition of e1 and e2                                                                                                                                                                        |
+| -      | e1 - e2                                                                                                                                                                                                     |
+|        | Results in sthe subtraction of e1 and e2                                                                                                                                                                    |
+|        | -e                                                                                                                                                                                                          |
+|        | Results in the arithmetic negation of a (two’s complement).                                                                                                                                                 |
+| *      | e1 * e2                                                                                                                                                                                                     |
+|        | Results in the multiplication of e1 and e2.                                                                                                                                                                 |
+| /      | e1 / e2                                                                                                                                                                                                     |
+|        | Results in the division of e1 by e2. The result is truncated to the nearest integral value that is less than or equal to the quotient. Both negative and positive values are rounded down, i.e. towards −∞. |
+| %      | e1 % e2                                                                                                                                                                                                     |
+|        | Results in the modulus (remainder of the division) of e1 by e2. The modulus is always a positive value.                                                                                                     |
+| ++     | v++                                                                                                                                                                                                         |
+|        | increments v by 1; the result if the expression is the value of v before it is incremented.                                                                                                                 |
+|        | ++v                                                                                                                                                                                                         |
+|        | increments v by 1; the result if the expression is the value of v after it is incremented.                                                                                                                  |
+| --     | v--                                                                                                                                                                                                         |
+|        | decrements v by 1; the result if the expression is the value of v before it is decremented.                                                                                                                 |
+|        | --v                                                                                                                                                                                                         |
+|        | decrements v by 1; the result if the expression is the value of v after it is decremented.                                                                                                                  |
+| Notes: | The unary + is not defined in pawn                                                                                                                                                                          |
+|        | The operators ++ and -- modify the operand. The operand must be an lvalue.                                                                                                                                  |
+
+### • Bit manipulation
+
+| Sign | Description                                                                                                                                                           |
+|------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ~    | ~e                                                                                                                                                                    |
+|      | results in the one’s complement of e.                                                                                                                                 |
+| >>   | e1 >> e2                                                                                                                                                              |
+|      | results in the arithmetic shift to the right of e1 by e2 bits. The shift operation is signed: the leftmost bit of e1 is copied to vacant bits in the result.          |
+| >>>  | e1 >>> e2                                                                                                                                                             |
+|      | results in the logical shift to the right of e1 by e2 bits. The shift operation is unsigned: the vacant bits of the result are filled with zeros.                     |
+| <<   | e1 << e2                                                                                                                                                              |
+|      | results in the value of e1 shifted to the left by e2 bits; the rightmost bits are set to zero. There is no distinction between an arithmetic and a logical left shift |
+| &    | eq & e2                                                                                                                                                               |
+|      | results in the bitwise logical “and” of e1 and e2.                                                                                                                    |
+| |    | e1 | e2                                                                                                                                                              |
+|      | results in the bitwise logical “or” of e1 and e2.                                                                                                                     |
+| ^    | e1 ^ e2                                                                                                                                                               |
+|      | results in the bitwise “exclusive or” of e1 and e2.                                                                                                                   |
+
+### • Assignment
+
+The result of an assignment expression is the value of the left operand after the assignment. The left operand may not be tagged.
+
+| Sign | Description                                                                                                                                                                                       |
+|------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| =    | v = e                                                                                                                                                                                             |
+|      | assigns the value of e to variable v.                                                                                                                                                             |
+|      | If “v” is an array, it must have an explicit size and “e” must be an array of the same size; “e” may be a string or a literal array.                                                              |
+| Note | the following operators combine an assignment with an arithmetic or a bitwise operation; the result of the expression is the value of the left operand after the arithmetic or bitwise operation. |
+| +=   | v += e                                                                                                                                                                                            |
+|      | increments v with a.                                                                                                                                                                              |
+| -=   | v -= e                                                                                                                                                                                            |
+|      | decrements v with e                                                                                                                                                                               |
+| *=   | v *= e                                                                                                                                                                                            |
+|      | multiplies v with e                                                                                                                                                                               |
+| /=   | v /= e                                                                                                                                                                                            |
+|      | divides v by e.                                                                                                                                                                                   |
+| %=   | v %= e                                                                                                                                                                                            |
+|      | assigns the remainder of the division of v by e to v.                                                                                                                                             |
+| >>=  | v >>= e                                                                                                                                                                                           |
+|      | shifts v arithmetically to the right by e bits.                                                                                                                                                   |
+| >>>= | v >>>= e                                                                                                                                                                                          |
+|      | shifts v logically to the right by e bits.                                                                                                                                                        |
+| <<=  | v <<= e                                                                                                                                                                                           |
+|      | shifts v to the left by e bits.                                                                                                                                                                   |
+| &=   | v &= e                                                                                                                                                                                            |
+|      | applies a bitwise “and” to v and e and assigns the result to v.                                                                                                                                   |
+| |=   | v  |= e                                                                                                                                                                                           |
+|      | applies a bitwise “or” to v and e and assigns the result to v.                                                                                                                                    |
+| ^=   | v ^= e                                                                                                                                                                                            |
+|      | applies a bitwise “exclusive or” to v and e and assigns the                                                                                                                                       |
+|      | result to v.                                                                                                                                                                                      |
+
+### • Relational
+
+A logical “false” is represented by an integer value of 0; a logical “true” is represented by any value other than 0. Value results of relational expressions are either 0 or 1, and their tag is set to “bool:”.
+
+| Sign  | Description                                                                                                                                                                      |
+|-------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ==    | e1 == e2                                                                                                                                                                         |
+|       | results in a logical “true” if e1 is equal to e2.                                                                                                                                |
+| !=    | e1 != e2                                                                                                                                                                         |
+|       | results in a logical “true” if e1 differs from e2.                                                                                                                               |
+| Note: | the following operators may be “chained”, as in the expression “e1 <= e2 <= e3”, with the semantics that the result is “1” if all individual comparisons hold and “0” otherwise. |
+| <     | e1 < e2                                                                                                                                                                          |
+|       | results in a logical “true” if e1 is smaller than e2.                                                                                                                            |
+| <=    | e1 <= e2                                                                                                                                                                         |
+|       | results in a logical “true” if e1 is smaller than or equal to e2.                                                                                                                |
+| >     | e1 > e2                                                                                                                                                                          |
+|       | results in a logical “true” if e1 is greater than e2.                                                                                                                            |
+| >=    | e1 >= e2                                                                                                                                                                         |
+|       | results in a logical “true” if e1 is greater than or equal to e2.                                                                                                                |
+
+### • Boolean
+
+A logical “false” is represented by an integer value of 0; a logical “true” is represented by any value other than 0. Value results of Boolean expressions are either 0 or 1, and their tag is set to “bool”.
+
+| Sign | Description                                                                                                                                    |
+|------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| !    | !e                                                                                                                                             |
+|      | results to a logical “true” if e was logically “false”.                                                                                        |
+| ||   | e1 || e2                                                                                                                                     |
+|      | results to a logical “true” if either e1 or e2 (or both) are logically “true”. The expression e2 is only evaluated if e1 is logically “false”. |
+| &&   | e1 && e2                                                                                                                                       |
+|      | results to a logical “true” if both e1 and e2 are logically “true”.                                                                            |
+|      | The expression e2 is only evaluated if e1 is logically “true”.                                                                                 |
+
+### • Miscellaneous
+
+| Sign    | Description                                                                                                                                                                                                                                                                                                                                                                 |
+|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| []      | a[e]                                                                                                                                                                                                                                                                                                                                                                        |
+|         | array index: results to cell e from array a.                                                                                                                                                                                                                                                                                                                                |
+| {}      | a{e}                                                                                                                                                                                                                                                                                                                                                                        |
+|         | array index: results to character e from “packed” array a.                                                                                                                                                                                                                                                                                                                  |
+| ()      | f(e1,e2,...eN)                                                                                                                                                                                                                                                                                                                                                              |
+|         | results to the value returned by the function f. The function is called with the arguments e1, e2, . . . eN. The order of evaluation of the arguments is undefined (an implementation may choose to evaluate function arguments in reversed order).                                                                                                                         |
+| ? :     | e1 ? e2 : e3                                                                                                                                                                                                                                                                                                                                                                |
+|         | results in either e2 or e3, depending on the value of e1. The conditional expression is a compound expression with a two part operator, “?” and “:”. Expression e2 is evaluated if e1 is logically “true”, e3 is evaluated if e1 is logically “false”.                                                                                                                      |
+| :       | tagname: e                                                                                                                                                                                                                                                                                                                                                                  |
+|         | tag override; the value of the expression e does not change, but its tag changes. See page 68 for more information.                                                                                                                                                                                                                                                         |
+| ,       | e1, e2                                                                                                                                                                                                                                                                                                                                                                      |
+|         | results in e2, e1 is evaluated before e2. If used in function argument lists or a conditional expression, the comma expression must be surrounded by parentheses.                                                                                                                                                                                                           |
+| defined | defined s                                                                                                                                                                                                                                                                                                                                                                   |
+|         | results in the value 1 if the symbol is defined. The symbol may be a constant (page 98), or a global or local variable.                                                                                                                                                                                                                                                     |
+|         | The tag of this expression is bool:.                                                                                                                                                                                                                                                                                                                                        |
+| sizeof  | sizeof s                                                                                                                                                                                                                                                                                                                                                                    |
+|         | results in the size in “elements” of the specified variable. For simple variables and for arrays with a single dimension, an element is a cell. For multi-dimensional arrays, the result is the number of array elements in that dimension —append [] to the array name to indicate a lower/more minor dimension. If the size of a variable is unknown, the result is zero. |
+|         | When used in a default value for a function argument, the expression is evaluation at the point of the function call, instead of in the function definition.                                                                                                                                                                                                                |
+| state   | state s                                                                                                                                                                                                                                                                                                                                                                     |
+|         | where “s” is the name of a state that is optionally prefixed with the automaton name, this operator results in the value 1 if the automatons is in the indicated state and in 0 otherwise.                                                                                                                                                                                  |
+|         | The tag of this expression is bool:.                                                                                                                                                                                                                                                                                                                                        |
+| tagof   | tagof s                                                                                                                                                                                                                                                                                                                                                                     |
+|         | results in the a unique number that represents the tag of the variable, the constant, the function result or the tag label.                                                                                                                                                                                                                                                 |
+|         | When used in a default value for a function argument, the expression is evaluation at the point of the function call, instead of in the function definition.                                                                                                                                                                                                                |
+| char    | e char                                                                                                                                                                                                                                                                                                                                                                      |
+|         | results the number of cells that are needed to hold a packed array of e characters.                                                                                                                                                                                                                                                                                         |
+
+### • Operator precedence
 
 The table beneath groups operators with equal precedence, starting with the
 operator group with the highest precedence at the top of the table.
 
 If the expression evaluation order is not explicitly established by parentheses,
 it is determined by the association rules. For example: a*b/c is
-equivalent
-with (a*b)/c because of the left-to-right association, and a=b=c is equivalent
-with a=(b=c).
+equivalent with (a*b)/c because of the left-to-right association, and a=b=c is equivalent with a=(b=c).
 
-() function call  
- left-to-right
+| Sign                                  | Description                                  |               |
+|---------------------------------------|----------------------------------------------|---------------|
+| ()                                    | function call                                | left-to-right |
+| []                                    | array index (cell)                           |               |
+| {}                                    | array index (character)                      |               |
+| !                                     | logical not                                  | right-to-left |
+| ~                                     | one's complement                             |               |
+| -                                     | two's complement                             |               |
+| ++                                    | increment                                    |               |
+| --                                    | decrement                                    |               |
+| :                                     | tag override                                 |               |
+| char                                  | convert number of packed characters to cells |               |
+| defined                               | symbol definition status                     |               |
+| sizeof                                | symbol size in "elements"                    |               |
+| state                                 | automaton/state condition                    |               |
+| tagof                                 | unique number for the tag                    |               |
+| *                                     | multiplication                               | left-to-right |
+| /                                     | division                                     |               |
+| %                                     | modulus                                      |               |
+| +                                     | addition                                     | left-to-right |
+| -                                     | subtraction                                  |               |
+| >>                                    | shift right                                  | left-to-right |
+| >>>                                   | logical shift right                          |               |
+| <<                                    | shift left                                   |               |
+| &                                     | bitwise and                                  | left-to-right |
+| ^                                     | bitwise exclusive or                         | left-to-right |
+| |                                     | bitwise or                                   | left-to-right |
+| <                                     | smaller than                                 | left-to-right |
+| <=                                    | smaller than or eaqual to                    |               |
+| >                                     | greater than                                 |               |
+| >=                                    | greater than or eaqual to                    |               |
+| ==                                    | equality                                     | left-to-right |
+| !=                                    | inequality                                   |               |
+| &&                                    | logical and                                  | left-to-right |
+| ||                                    | logical or                                   | left-to-right |
+| ? :                                   | conditional                                  | right-to-left |
+| =                                     | assignment                                   | right-to-left |
+| *= /= %= += -= >>= >>>= <<= &= ^= |=  |                                              |               |
+| ,                                     | comma                                        | left-to-right |
 
-[] array index (cell)
+</div>
 
-{} array index (character)
+<hr>
 
-! logical not  
- right-to-left
+<div align="right">
 
-~ one’s complement
+`Tag names: 68`
 
--                  two’s  complement  (unary  minus)
+`Example: 77`
 
-++ increment
+`See also page 114 for state specifiers`
 
--- decrement
+<hr>
 
-: tag override
+</div>
 
-char convert number of packed characters to cells
+<div align="center">
 
-defined symbol definition status
+# Statements
 
-sizeof symbol size in “elements”
+---
 
-state automaton/state condition
+</div>
 
-tagof unique number for the tag
-
--                  multiplication
-                                        left-to-right
-
-/ division
-
-% modulus
-
--                  addition
-                                             left-to-right
-
-*                  subtraction
-
-> >                arithmetic  shift  right
-
-                                   left-to-right
-
-> > >               logical  shift  right
-
-<< shift left
-
-& bitwise and  
- left-to-right
-
-^ bitwise exclusive or  
- left-to-right
-
-| bitwise or  
- left-to-right
-
-< smaller than  
- left-to-right
-
-<= smaller than or equal to
-
->                  greater  than
-
-> = greater than or equal to
-
-== equality  
- left-to-right
-
-!= inequality
-
-&& logical and  
- left-to-right
-
-|| logical or  
- left-to-right
-
-? : conditional  
- right-to-left
-
-= assignment  
- right-to-left
-
-\*= /= %= += -= >>= >>>= <<= &= ^= |=
-
-, comma  
- left-to-right
-
-112
-
-                                      Statements
-
+<div align="left">
 
 A statement may take one or more lines, whereas one line may contain two or
 more statements.
 
-Control flow statements (if, if–else, for, while, do–while and switch) may
-be nested.
+Control flow statements (if, if–else, for, while, do–while and switch) may be nested.
 
-Statement label
+**Statement label**
 
-A label consists of an identifier followed by a colon (“:”). A label is a
+    A label consists of an identifier followed by a colon (“:”).
+    A label is a “jump target” of the goto statement.
 
-Identifiers: 97 “jump target” of the goto
-statement.
+    Each statement may be preceded by a label.
+    There must be a statement after the label; an empty statement is allowed.
 
-Each statement may be preceded by a label. There must be a statement
-after the label; an empty statement is allowed.
+    The scope of a label is the function in which it is declared
+    (a goto statement cannot therefore jump out off the current function to another function).
 
-The scope of a label is the function in which it is declared (a goto
-statement cannot therefore jump out off the current function to another
-function).
+**Compound statement**
 
-Compound statement
+    A compound statement is a series of zero or more statements
+    surrounded by braces ({ and }). The final brace (}) should not be followed by a semicolon.
+    Any statement may be replaced by a compound statement.
+    A compound statement is also called a block.
+    A compound statement with zero statements is a special case,
+    and it is called an “empty statement”.
 
-A compound statement is a series of zero or more statements sur-
-rounded by braces ({ and }). The final brace (}) should not be fol-
-lowed by a semicolon. Any statement may be replaced by a compound
-statement. A compound statement is also called a block. A compound
-statement with zero statements is a special case, and it is called an
-“empty statement”.
+**Expression statement**
 
-Expression statement
+    Any expression becomes a statement when a semicolon (“;”) is appended to it.
+    An expression also becomes a statement when only white space
+    follows it on the line and the expression cannot be extended over the next line.
 
-Any expression becomes a statement when a semicolon (“;”) is ap-
-pended to it. An expression also becomes a statement when only white
-space follows it on the line and the expression cannot be extended over
-the next line.
+**Empty statement**
 
-Empty statement
+    An empty statement performs no operation and consists of a
+    compound block with zero statements; that is, it consists of the tokens “{ }”.
+    Empty statements are used in control flow statements
+    if there is no action (e.g. while (!iskey()) {}) or when defining a label just
+    before the closing brace of a compound statement.
+    An empty statement does not end with a semicolon.
 
-An empty statement performs no operation and consists of a compound
-block with zero statements; that is, it consists of the tokens “{ }”.
-Empty statements are used in control flow statements if there is no
-action (e.g. while (!iskey()) {}) or when defining a label just before
-the closing brace of a compound statement. An empty statement does
-not end with a semicolon.
+**assert** *expression*
 
-assert expression
+    Aborts the program with a run-time error
+    if the expression evaluates to logically “false”.
 
-Aborts the program with a run-time error if the expression evaluates
+**break**
 
-Example: 11 to logically “false”.
+    Terminates and exits the smallest enclosing do,
+    for or while statement from any point within the loop
+    other than the logical end. The break statement moves program control
+    to the next statement outside the loop.
 
-break
+**continue**
 
-Terminates and exits the smallest enclosing do, for or while statement
-from any point within the loop other than the logical end. The break
-statement moves program control to the next statement outside the
-loop.
+    Terminates the current iteration of the smallest enclosing do,
+    for or while statement and moves program control to the condition part of the loop.
+    If the looping statement is a for statement,
+    control moves to the third expression in the for statement
+    (and thereafter to the second expression).
 
-Example: 21
+**do** *statement* **while** ( *expression* )
 
-continue
+    Executes a statement before the condition part (the while clause) is evaluated.
+    The statement is repeated while the condition is logically “true”.
+    The statement is at least executed once.
 
-Terminates the current iteration of the smallest enclosing do, for or
-while statement and moves program control to the condition part of
-the loop. If the looping statement is a for statement, control moves to
-the third expression in the for statement (and thereafter to the second
-expression).
+**exit** *expression*
 
-do statement while ( expression )
+    Abort the program. The expression is optional, but it must start
+    on the same line as the exit statement if it is present.
+    The exit instruction returns the expression value (plus the expression tag)
+    to the host application, or zero if no exit expression is present.
+    The significance and purpose of exit codes is implementation defined.
 
-Executes a statement before the condition part (the while clause) is
+**for** ( *expression 1* ; *expression 2* ; *expression 3* ) *statement*
 
-evaluated. The statement is repeated while the condition is logically
-“true”. The statement is at least executed once.
+    All three expressions are optional.
 
-exit expression
+    *expression 1*
+        Evaluated only once, and before entering the loop.
+        This expression may be used to initialize a variable.
+        This expression may also hold a variable declaration, using the new syntax.
+        A variable declared in this expression exists only in the for loop.
 
-Abort the program. The expression is optional, but it must start
-on the same line as the exit statement if it is present. The exit
-instruction returns the expression value (plus the expression tag) to
-the host application, or zero if no exit expression is present.  
-The
-significance and purpose of exit codes is implementation defined.
+    *expression 2*
+        Evaluated before each iteration of the loop and
+        ends the loop if the expression results to logically “false”.
+        If omitted, the result of expression 2 is assumed to be logically “true”.
 
-for ( expression 1 ; expression 2 ; expression 3 ) statement
+    *expression 3*
+        Evaluated after each execution of the statement.
+        Program control moves from expression 3 to expression 2
+        for the next (conditional) iteration of the loop.
+        The statement for( ; ; ) is equivalent with while (true).
 
-Example: 27
+**goto** *label*
 
-All three expressions are optional.  
- Examples: 9, 11, 21
+    Moves program control (unconditionally) to the statement that follows the specified label.
+    The label must be within the same function as the
+    goto statement (a goto statement cannot jump out of a function).
 
-expression 1 Evaluated only once, and before entering the loop. This
-expression may be used to initialize a variable. This
+**if** ( *expression* ) *statement 1* **else** *statement 2*
 
-expression may also hold a variable declaration, using
-the new syntax. A variable declared in this expression
-exists only in the for loop.
+    Executes statement 1 if the expression results to logically “true”.
+    The else clause of the if statement is optional.
+    If the expression results to logically “false” and an else clause exists,
+    the statement associated with the else clause (statement 2) executes.
 
-expression 2 Evaluated before each iteration of the loop and ends the
-loop if the expression results to logically “false”. If omit-
-ted, the result of expression 2 is assumed to be logically
-“true”.
+    When if statements are nested and else clauses are present,
+    a given else is associated with the closest preceding if statement in the same block.
 
-expression 3 Evaluated after each execution of the statement. Pro-
-gram control moves from expression 3 to expression 2 for
-the next (conditional) iteration of the loop.
+**return** *expression*
 
-Variable declara-
+    Terminates the current function and moves program control
+    to the statement following the calling statement.
+    The value of the expression is returned as the function result.
+    The expression may be an array variable or a literal array.
 
-tions: 62
+    The expression is optional, but it must start on the same line
+    as the return statement if it is present.
+    If absent, the value of the function is zero.
 
-The statement for( ; ; ) is equivalent with while (true).
+**sleep** *expression*
 
-goto label
+    Abort the program, but leave it in a re-startable state.
+    The expression is optional. If included, the sleep instruction
+    returns the expression value (plus the expression tag)
+    to the host application. The significance and purpose
+    of exit codes/tags is implementation defined;
+    typically, an application uses the sleep instruction to allow for
+    light-weight multitasking of several concurrent pawn programs,
+    or to implement “latent” functions.
 
-Moves program control (unconditionally) to the statement that follows
-the specified label. The label must be within the same function as the
-goto statement (a goto statement cannot jump out of a function).
+**state** ( *expression* ) **automaton** :*name*
 
-if ( expression ) statement 1 else statement 2
+    Changes the current state in the specified automaton.
+    The expression between parentheses is optional; if it is absent,
+    the parentheses must be omitted as well.
+    The name of the automaton is optional as well,
+    when changing the state of the default, anonymous, automaton;
+    if the automaton name is absent, the colon (“:”) must be omitted as well.
 
-Executes statement 1 if the expression results to logically “true”. The
-Example: 7 else clause of the if statement
-is optional. If the expression results
-to logically “false” and an else clause exists, the statement associated
+    Below are two examples of unconditional state changes. The first is for the default automaton:
 
-with the else clause (statement 2) executes.
-
-When if statements are nested and else clauses are present, a given
-else is associated with the closest preceding if statement in the same
-block.
-
-return expression
-
-Terminates the current function and moves program control to the
-Examples: 11, 21 statement following the calling
-statement. The value of the expression
-is returned as the function result. The expression may be an array
-
-variable or a literal array.
-
-The expression is optional, but it must start on the same line as the
-return statement if it is present. If absent, the value of the function
-is zero.
-
-sleep expression
-
-Abort the program, but leave it in a re-startable state. The expression
-is optional. If included, the sleep instruction returns the expression
-value (plus the expression tag) to the host application. The significance
-and purpose of exit codes/tags is implementation defined; typically, an
-application uses the sleep instruction to allow for light-weight multi-
-tasking of several concurrent pawn programs, or to implement “latent”
-
-functions.
-
-state ( expression ) automaton :name
-
-Changes the current state in the specified automaton. The expression
-between parentheses is optional; if it is absent, the parentheses must
-be omitted as well. The name of the automaton is optional as well,
-when changing the state of the default, anonymous, automaton; if the
-automaton name is absent, the colon (“:”) must be omitted as well.
-
-Below are two examples of unconditional state changes. The first is
-for the default automaton:
+```
 
 state handshake
 
-and the second for a specific automaton:
+```
+
+    and the second for a specific automaton:
+
+```
 
 state gps:handshake
 
-Often, whether or not a state changes depends on parameters of the
-event or the condition of the automaton as a whole. Since conditional
-state changes are so frequent, the condition may be in the state in-
+```
 
-struction itself.∗ The condition follows the keyword state, between
-parentheses. The state will only change if the condition is logically
-“true”.
+    Often, whether or not a state changes depends on parameters of the event or the condition of the automaton as a whole.
+    Since conditional state changes are so frequent,
+    the condition may be in the state instruction itself.
+    ∗ The condition follows the keyword state, between parentheses.
+    The state will only change if the condition is logically “true”.
 
-The state instruction causes an implied call to the entry function for
-the indicated state —if such entry function exists.
+    The state instruction causes an implied call to the
+    entry function for the indicated state —if such entry function exists.
 
-switch ( expression ) case list
+**switch** ( *expression* ) { *case list* }
 
-Transfers control to different statements within the switch body de-
-pending on the value of the switch expression. The body of the switch
-statement is a compound statement, which contains a series of “case
-clauses”.
+    Transfers control to different statements within the switch body depending
+    on the value of the switch expression.
+    The body of the switch statement is a compound statement,
+    which contains a series of “case clauses”.
 
-Each “case clause” starts with the keyword case followed by a constant
-list and one statement. The constant list is a series of expressions,
-separated by comma’s, that each evaluates to a constant value. The
-constant list ends with a colon. To specify a “range” in the constant
-list, separate the lower and upper bounds of the range with a double
-period (“..”). An example of a range is: “case 1..9:”.
+    Each “case clause” starts with the keyword case followed by a constant list and one statement.
+    The constant list is a series of expressions, separated by comma’s,
+    that each evaluates to a constant value.
+    The constant list ends with a colon. To specify a “range” in the constant list,
+    separate the lower and upper bounds of the range with a double period (“..”).
+    An example of a range is: “case 1..9:”.
 
-The switch statement moves control to a “case clause” if the value
-of one of the expressions in the constant list is equal to the switch
-expression result.
+    The switch statement moves control to a “case clause” if the value of one of the
+    expressions in the constant list is equal to the switch expression result.
 
-The “default clause” consists of the keyword default and a colon.
-The default clause is optional, but if it is included, it must be the last
-clause in the switch body. The switch statement moves control to
-the “default clause” is executed if none of the case clauses match the
-expression result.
+    The “default clause” consists of the keyword default and a colon.
+    The default clause is optional, but if it is included, it must be the last clause in the switch body.
+    The switch statement moves control to the “default clause” is executed
+    if none of the case clauses match the expression result.
 
-Example:
+    Example:
 
-∗ The alternative is to fold unconditional state changes in the common
-if–else construct.
+<hr>
 
-See page 40 for ex-
-amples of condi-
-tional state changes
+###### ∗ The alternative is to fold unconditional state changes in the common if–else construct.
 
-“entry” functions:
-44
+<hr>
+
+```c
 
 switch (weekday(12,31,1999))
-
 {
-
-case 0, 1: /_ 0 == Saturday, 1 == Sunday _/
-print("weekend")
-
-case 2:
-
-print("Monday")
-case 3:
-
-print("Tuesday")
-case 4:
-
-print("Wednesday")
-case 5:
-
-print("Thursday")
-case 6:
-
-print("Friday")
-default:
-
-print("invalid week day")
-
+    case 0, 1:              /* 0 == Saturday, 1 == Sunday */
+        print("weekend")
+    case 2:
+        print("Monday")
+    case 3:
+        print("Tuesday")
+    case 4:
+        print("Wednesday")
+    case 5:
+        print("Thursday")
+    case 6:
+        print("Friday")
+    default:
+        print("invalid week day")
 }
 
-while ( expression ) statement
+```
 
-Evaluates the expression and executes the statement if the expression
-Examples: 7, 21, 26 result yields logically “true”.  
-After the statement has executed, pro-
-gram control returns to the expression again. The statement is thus
+**while** ( *expression* ) *statement*
 
-executed while the expression is true.
+    Evaluates the expression and executes the statement
+    if the expression result yields logically “true”.
+    After the statement has executed, program control returns to the expression again.
+    The statement is thus executed while the expression is true.
 
-Directives
+</div>
 
-117
+<hr>
+
+<div align="right">
+
+`Identifiers: 97`
+
+`Example: 11 (assert)`
+
+`Example: 21 (break)`
+
+`Example: 27 (do while)`
+
+`Examples: 9, 11, 21 (for)`
+
+`Variable declarations: 62 (for)`
+
+`Example: 7 (if else)`
+
+`Examples: 11, 21 (return)`
+
+`See page 40 for examples of conditional state changes (state automaton)`
+
+`“entry” functions: 44 (state automaton)`
+
+`Examples: 7, 21, 26 (while)`
+
+<hr>
+
+</div>
+
+<div align="center">
+
+# Directives
+
+---
+
+</div>
+
+<div align="left">
 
 All directives must appear first on a line (they may be preceded by white space,
 but not by any other characters). All directives start with the character # and
 the complete instruction may not span more than one line.
 
-#assert constant expression
+**#assert** *constant expression*
 
-Issues a compile time error if the supplied constant expression evalu-
-ates to zero. The #assert directive is most useful to guard against
-implementation defined constructs on which a program may depend,
-such as the cell size in bits, or the number of packed characters per
-cell.
+    Issues a compile time error if the supplied constant expression evalu-
+    ates to zero. The #assert directive is most useful to guard against
+    implementation defined constructs on which a program may depend,
+    such as the cell size in bits, or the number of packed characters per cell.
 
-#define pattern replacement
+**#define** *pattern replacement*
 
-Defines a text substitution macro. The pattern is matched to all lines
-read from the source files; the sections that match are replaced by
-the replacement texts. The pattern and the replacement texts may
-contain parameters, denoted by “%0” to “%9”. See page 93 for details
-and examples on text substitution.
+    Defines a text substitution macro. The pattern is matched to all lines
+    read from the source files; the sections that match are replaced by
+    the replacement texts. The pattern and the replacement texts may
+    contain parameters, denoted by “%0” to “%9”. See page 93 for details
+    and examples on text substitution.
 
-#emit opcode, parameters
+**#emit** *opcode, parameters*
 
-The #emit directive serves as an inline assembler. It is currently used
-only for testing the abstract machine.
+    The #emit directive serves as an inline assembler. It is currently used
+    only for testing the abstract machine.
+
+**#endinput & #endscript**
+
+    Closes the current file and thereby ignores
+    all the text below the #endinput directive.
+    The directive #endscript is a synonym for #endinput.
+
+**#error**
+
+    message: Signals a “user error” with the specified message. User er-
+    rors are fatal errors and they serve a similar purpose as the #assert
+    directive.
+
+**#file** *name*
+
+    Adjusts the name for the current file. This directive is used implicitly
+    by the text preprocessor; there is usually no need to set a filename
+    explicitly.
+
+**#if** *constant expression*, #elseif, #else, #endif
 
-#endinput & #endscript
+    Portions of a program may be parsed or be ignored depending on cer-
+    tain conditions. The pawn parser (compiler or interpreter) generates
+    code only for those portions for which the condition is true.
+
+    The directive #if must be followed by a constant expression. To check
+    whether a variable or constant is defined, use the defined operator.
+
+    Zero or more #elseif directives may follow the initial #if directive.
+    These blocks are skipped if any of the preceding #if or #elseif blocks
+    were parsed (i.e. not skipped). As with the #if directive, a constant
+    expression must follow the #elseif expression.
 
-Closes the current file and thereby ignores all the text below the #end-
-input directive. The directive #endscript is a synonym for #endin-
-put.
-
-#error
-
-message: Signals a “user error” with the specified message. User er-
-rors are fatal errors and they serve a similar purpose as the #assert
-directive.
+    The #else causes the parser to skip all lines up to #endif if the pre-
+    ceding #if or any of the preceding #elseif directives were “true”, and
+    the parses these lines if all preceding blocks were skipped. The #else
+    directive may be omitted; if present, there may be only be one #else
+    associated with each #if.
 
-#file name
-
-Adjusts the name for the current file. This directive is used implicitly
-by the text preprocessor; there is usually no need to set a filename
-explicitly.
-
-#if constant expression, #elseif, #else, #endif
+    The #endif directive terminates a program portion that is parsed con-
+    ditionally. Conditional directives can be nested and each #if directive
+    must be ended by an #endif directive.
 
-Portions of a program may be parsed or be ignored depending on cer-
-tain conditions. The pawn parser (compiler or interpreter) generates
-code only for those portions for which the condition is true.
+**#include** *filename* or *< filename >*
 
-See also “Predefined
-constants” on page
-102
+    Inserts the contents of the specified file at the current position within
+    the current file. A filename between angle brackets (“<” and “>”)
+    refers to a system file; the pawn parser (compiler or interpreter) will
+    search for such files only in a preset list of directories and not in the
+    “current” directory. Filenames that are unquoted or that appear in
+    double quotes are normal include files, for which a pawn parser will
+    look in the currect directory first.
 
-The directive #if must be followed by a constant expression. To check
-whether a variable or constant is defined, use the defined operator.
+    The pawn parser first attempts to open the file with the specified
+    name. If that fails, it tries appending the extensions “.inc”, “.p”
+    and “.pawn” to the filename (in that order). The proposed default
+    extension of include files is “.inc”.
 
-Zero or more #elseif directives may follow the initial #if directive.
-These blocks are skipped if any of the preceding #if or #elseif blocks
-were parsed (i.e. not skipped). As with the #if directive, a constant
-expression must follow the #elseif expression.
+    When the file can be opened successfully, the #include directive de-
+    fines a constant with the name “_inc_” plus the base name of the
+    file (the filename without path and extension) and the value 1. If
+    the constant already exists, the #include directive skips opening and
+    including the file, thus preventing a double inclusion. To force a dou-
+    ble include, remove the constant definition with the #undef directive
+    before the second inclusion of the file.
 
-The #else causes the parser to skip all lines up to #endif if the pre-
-ceding #if or any of the preceding #elseif directives were “true”, and
-the parses these lines if all preceding blocks were skipped. The #else
-directive may be omitted; if present, there may be only be one #else
-associated with each #if.
+**#line** *number*
 
-The #endif directive terminates a program portion that is parsed con-
-ditionally. Conditional directives can be nested and each #if directive
-must be ended by an #endif directive.
+    The current line number (in the current file). This directive is used
+    implicitly by the text preprocessor; there is usually no need to set the
+    line number explicitly.
 
-#include filename or <filename>
+**#pragma** *extra information*
 
-Inserts the contents of the specified file at the current position within
-the current file. A filename between angle brackets (“<” and “>”)
-refers to a system file; the pawn parser (compiler or interpreter) will
-search for such files only in a preset list of directories and not in the
-“current” directory. Filenames that are unquoted or that appear in
-double quotes are normal include files, for which a pawn parser will
-look in the currect directory first.
+    A “pragma” is a hook for a parser to specify additional settings, such
+    as warning levels or extra capabilities. Common #pragmas are:
 
-The pawn parser first attempts to open the file with the specified
-name. If that fails, it tries appending the extensions “.inc”, “.p”
-and “.pawn” to the filename (in that order). The proposed default
-extension of include files is “.inc”.
+    **#pragma** align
 
-When the file can be opened successfully, the #include directive de-
-fines a constant with the name “_inc_” plus the base name of the
-file (the filename without path and extension) and the value 1. If
-the constant already exists, the #include directive skips opening and
-including the file, thus preventing a double inclusion. To force a dou-
-ble include, remove the constant definition with the #undef directive
-before the second inclusion of the file.
+        Aligns the next declaration to the offset set with the alignment
+        compiler option. Some (native) functions may perform better
+        with parameters that are passed by reference when these are on
+        boundaries of 8, 16, or even 32 bytes. Alignment requirements
+        are dependent of the host applications.
 
-#line number
+        Putting the #pragma align line in front of a declaration of a
+        global or a static variable aligns this variable to the bound-
+        ary set with the compiler option. Note that this #pragma
+        aligns only the variable that immediately follows the #pragma.
+        The alignment of subsequent variables depends on the size and
+        alignment of the variables that precede it. For example, if a
+        global array variable of 2 cells is aligned on a 16-byte boundary
+        and a cell is 4 bytes, the next global variable is located 8 bytes
+        further.
+
+        Putting the #pragma align line in front of a declaration of
+        a function will align the stack frame of that function to the
+        boundary specified earlier, with the result that the first local,
+        non-“static”, variable is aligned to that boundary. The align-
+        ment of subsequent variables depends on the size and align-
+        ment of the variables that precede it. In practice, to align a
+        local non-static variable, you must align the function’s stack
+        frame and declare that variable before any other variables.
+
+    **#pragma** amxlimit *value*
 
-The current line number (in the current file). This directive is used
+        Sets the maximum size, in bytes, that the compiled script may
+        grow to. This pragma is useful for (embedded) environments
+        where the maximum size of a script is bound to a hard upper
+        limit.
+
+        If there is no setting for the amount of RAM for the data and
+        stack (see the pragma amxram), this refers to the total memory
+        requirements; if the amount of RAM is explicitly set, this value
+
+        only goves the amount of memory needed for the code and the
+        static data.
+
+    **#pragma** amxram *value*
+
+        Sets the maximum memory requirements, in bytes, for data
+        and stack that a compiled script may have. This value is is
+        useful for (embedded) environments where the maximum data
+        size of a script is bound to a hard upper limit. Especially in
+
+        the case where the pawn script runs from ROM, the sizes for
+        the code and data sections need both to be set.
+
+    **#pragma** codepage *name/value*
+
+        The pawn parser can translate characters in unpacked strings
+        and character constants to Unicode/UCS-4 “wide” characters.
+        This #pragma indicates the codepage that must be used for
+        the translation. See the section “Internationalization” on page
+
+        139 for details and required extra resources for the codepage
+        translation.
+
+    **#pragma** compress *value*
+
+        The pawn parser may write the generated P-code in compact
+        or plain (“non-compact”) encoding. The default depends on
+        the parser configuration (and, perhaps, user settings). This
+        #pragma allows the script writer to override the default and
+
+        force compact encoding (when value is non-zero) or to force
+        plain encoding (when value is zero). Especially toggling com-
+        pact encoding off (forcing plain encoding) is useful, because
+
+        the pawn parser may be unable to compile a particular script
+        in “compact encoding” mode.
+
+    **#pragma** ctrlchar *character*
 
-implicitly by the text preprocessor; there is usually no need to set the
-line number explicitly.
+        Defines the character to use to indicate the start of a “escape sequence”.
+        By default, the control character is “\”.
+
+        For example
+
+        `#pragma ctrlchar ’\$’**`
 
-#pragma extra information
+        You may give the new value for the control character as a char-
+        acter constant (between single quotes) or as a decimal or hex-
+        adecimal value. When you omit the value of the new control
+        character, the parser reverts to the default control character.
 
-A “pragma” is a hook for a parser to specify additional settings, such
-as warning levels or extra capabilities. Common #pragmas are:
+    **#pragma dynamic** *value*
 
-#pragma align
+        Sets the size, in cells, of the memory block for dynamic data
+        (the stack and the heap) to the value specified by the expres-
+        sion. The default size of the dynamic data block is implemen-
+        tation defined. An implementation may also choose to grow
+        the block on an as-needed basis (see the host program’s docu-
+        mentation, or the “Implementor’s Guide” for details).
 
-Aligns the next declaration to the offset set with the alignment
-compiler option. Some (native) functions may perform better
-with parameters that are passed by reference when these are on
-boundaries of 8, 16, or even 32 bytes. Alignment requirements
-are dependent of the host applications.
+    **#pragma library** *name*
 
-Putting the #pragma align line in front of a declaration of a
-global or a static variable aligns this variable to the bound-
-ary set with the compiler option. Note that this #pragma
-aligns only the variable that immediately follows the #pragma.
-The alignment of subsequent variables depends on the size and
-alignment of the variables that precede it. For example, if a
-global array variable of 2 cells is aligned on a 16-byte boundary
-and a cell is 4 bytes, the next global variable is located 8 bytes
-further.
+        Sets the name of the (dynamically linked) extension module
+        that contains required native functions. This #pragma should
+        appear above native function declarations that are part of the
+        extension module.
 
-Putting the #pragma align line in front of a declaration of
-a function will align the stack frame of that function to the
-boundary specified earlier, with the result that the first local,
-non-“static”, variable is aligned to that boundary. The align-
-ment of subsequent variables depends on the size and align-
-ment of the variables that precede it. In practice, to align a
-local non-static variable, you must align the function’s stack
-frame and declare that variable before any other variables.
+        The library name parameter may be absent, in which case
+        any subsequent native function declarations are not associated
+        with any extension module.
 
-#pragma amxlimit value
+        The scope of this #pragma runs from the line at which it ap-
+        pears until the end of the file in which it appears. In typical
+        usage, a #pragma library line will appear at the top of an
+        include file that declares native functions for an extension mod-
+        ule, and the scope of the library “link” ends at the end of that
+        include file.
 
-Sets the maximum size, in bytes, that the compiled script may
-grow to. This pragma is useful for (embedded) environments
-where the maximum size of a script is bound to a hard upper
-limit.
+    **#pragma pack** *value*
 
-If there is no setting for the amount of RAM for the data and
-stack (see the pragma amxram), this refers to the total memory
-requirements; if the amount of RAM is explicitly set, this value
+        If value is zero, packed literal strings start with “!"” (exclama-
+        tion point + double quote) and unpacked literal strings with
+        only a double quote (“"”), as described in this manual at page 99.
+        If value is non-zero, the syntax for packed and unpacked
+        literal strings is swapped: literal strings that start with a dou-
+        ble quote are packed and literal strings that start with “!"”
+        are unpacked.
 
-only goves the amount of memory needed for the code and the
-static data.
+    **#pragma rational** *tagname(value)*
 
-#pragma amxram value
+        Enables support for rational numbers. The tagname is the
+        name of the tag that rational numbers will have; typically one
+        chooses the names “Float:” or “Fixed:”. The presence of
+        value in parentheses behind tagname is optional: if it is omit-
+        ted, a rational number is stored as a “floating point” value
+        according to the IEEE 754 norm; if it is present, a rational
+        number is a fixed precision number (“scaled integer”) with the
+        specified number of decimals.
 
-Sets the maximum memory requirements, in bytes, for data
-and stack that a compiled script may have. This value is is
-useful for (embedded) environments where the maximum data
-size of a script is bound to a hard upper limit. Especially in
+    **#pragma semicolon** *value*
 
-the case where the pawn script runs from ROM, the sizes for
-the code and data sections need both to be set.
+        If value is zero, no semicolon is required to end a statement if
+        that statement is last on a line. Semicolons are still needed to
+        separate multiple statements on the same line.
 
-#pragma codepage name/value
+        When semicolons are optional (the default), a postfix operator
+        (one of “++”, “--” and “char”) may not be the first token on
+        a line, as they will be interpreted as prefix operators.
 
-The pawn parser can translate characters in unpacked strings
-and character constants to Unicode/UCS-4 “wide” characters.
-This #pragma indicates the codepage that must be used for
-the translation. See the section “Internationalization” on page
+    **#pragma tabsize** *value*
 
-139 for details and required extra resources for the codepage
-translation.
+        The number of characters between two consecutive tab posi-
+        tions. The default value is 8. You may need to set the tab
+        size to avoid warning 217 (loose indentation) if the source code
+        is indented alternately with spaces and with tab characters.
+        Alternatively, by setting the “tabsize” #pragma to zero, the
+        parser will no longer issue warning 217.
 
-#pragma compress value
+    **#pragma unused** *symbol,...*
 
-The pawn parser may write the generated P-code in compact
-or plain (“non-compact”) encoding. The default depends on
-the parser configuration (and, perhaps, user settings). This
-#pragma allows the script writer to override the default and
+        Marks the named symbol as “used”. Normally, the pawn
+        parser warns about unused variables and unused local con-
+        stants. In most situations, these variables and constants are
+        redundant, and it is better to remove them for the sake of code
 
-force compact encoding (when value is non-zero) or to force
-plain encoding (when value is zero). Especially toggling com-
-pact encoding off (forcing plain encoding) is useful, because
+        clarity. Especially in the case of local constants, it may, how-
+        ever, be better (or required) to keep the constant definitions.
+        This #pragma then permits to mark the symbol (variable or
+        constant) as “used”, and avoid a parser warning.
 
-the pawn parser may be unable to compile a particular script
-in “compact encoding” mode.
+        The #pragma must appear after the symbol declaration —but
+        it need not appear immediately after the declaration.
 
-#pragma ctrlchar character
+        Multiple symbol names may appear in a single #pragma; the
+        symbols must be separated by commas.
 
-Defines the character to use to indicate the start of a “escape
+**#section** *name*
 
-Escape character: 99 sequence”. By
-default, the control character is “\”.
+    Starts a new section for the generated code. Any variables and func-
+    tions that are declared “static” are only visible to the section to
+    which they belong. By default, each source file is a separate section
+    and there is only one section per file.
 
-For example
+    With the #section directive, you can create multiple sections in a
 
-#pragma ctrlchar ’\$’
+    source file. The name of a section is optional, if it is not set, a unique
+    identifier for the source file is used for the name of the section.
 
-You may give the new value for the control character as a char-
-acter constant (between single quotes) or as a decimal or hex-
-adecimal value. When you omit the value of the new control
-character, the parser reverts to the default control character.
+    Any declared section ends automatically at the end of the file.
 
-#pragma dynamic value
+**#tryinclude** *filename* or *< filename >*
 
-Sets the size, in cells, of the memory block for dynamic data
-(the stack and the heap) to the value specified by the expres-
-sion. The default size of the dynamic data block is implemen-
-tation defined. An implementation may also choose to grow
-the block on an as-needed basis (see the host program’s docu-
-mentation, or the “Implementor’s Guide” for details).
+    This directive behaves similarly as the #include directive, but it does
+    not give an error when the file to include does not exist —i.e., try to
+    include but fail silently on error.
 
-#pragma library name
+**#undef** *name*
 
-Sets the name of the (dynamically linked) extension module
-that contains required native functions. This #pragma should
-appear above native function declarations that are part of the
-extension module.
+    Removes a text substitution macro or a numeric constant declared
+    with const. The “name” parameter must be the macro “prefix” —the
+    alphanumeric part of the macro. See page 93 for details and examples
+    on text substitution.
 
-The library name parameter may be absent, in which case
-any subsequent native function declarations are not associated
-with any extension module.
+</div>
 
-The scope of this #pragma runs from the line at which it ap-
-pears until the end of the file in which it appears. In typical
-usage, a #pragma library line will appear at the top of an
-include file that declares native functions for an extension mod-
-ule, and the scope of the library “link” ends at the end of that
-include file.
+<hr>
 
-#pragma pack value
+<div align="right">
 
-If value is zero, packed literal strings start with “!"” (exclama-
-tion point + double quote) and unpacked literal strings with
-only a double quote (“"”), as described in this manual at page
+`See also “Predefined constants” on page 102`
 
-99. If value is non-zero, the syntax for packed and unpacked
-    literal strings is swapped: literal strings that start with a dou-
-    ble quote are packed and literal strings that start with “!"”
-    are unpacked.
+`Escape character: 99`
 
-#pragma rational tagname(value)
+`Rational number support: 98`
 
-Enables support for rational numbers. The tagname is the
-name of the tag that rational numbers will have; typically one
-chooses the names “Float:” or “Fixed:”. The presence of
-value in parentheses behind tagname is optional: if it is omit-
-ted, a rational number is stored as a “floating point” value
-according to the IEEE 754 norm; if it is present, a rational
+`Warning messages: 161`
 
-Rational number
-support: 98
+<hr>
 
-Warning messages:
-161
+</div>
 
-number is a fixed precision number (“scaled integer”) with the
-specified number of decimals.
+<div align="center">
 
-#pragma semicolon value
+# Proposed function library
 
-If value is zero, no semicolon is required to end a statement if
-that statement is last on a line. Semicolons are still needed to
-separate multiple statements on the same line.
+---
 
-When semicolons are optional (the default), a postfix operator
-(one of “++”, “--” and “char”) may not be the first token on
-a line, as they will be interpreted as prefix operators.
+</div>
 
-#pragma tabsize value
+<div align="left">
 
-The number of characters between two consecutive tab posi-
-tions. The default value is 8. You may need to set the tab
-size to avoid warning 217 (loose indentation) if the source code
-is indented alternately with spaces and with tab characters.
-Alternatively, by setting the “tabsize” #pragma to zero, the
-parser will no longer issue warning 217.
+Since PAWN is targeted as an application extension language, most of the
+functions that are accessible to PAWN programs will be specific to the  
+host application. Nevertheless, a small set of functions may prove useful  
+to many environments.
 
-#pragma unused symbol,. . .
-
-Marks the named symbol as “used”. Normally, the pawn
-parser warns about unused variables and unused local con-
-stants. In most situations, these variables and constants are
-redundant, and it is better to remove them for the sake of code
-
-clarity. Especially in the case of local constants, it may, how-
-ever, be better (or required) to keep the constant definitions.
-This #pragma then permits to mark the symbol (variable or
-constant) as “used”, and avoid a parser warning.
-
-The #pragma must appear after the symbol declaration —but
-it need not appear immediately after the declaration.
-
-Multiple symbol names may appear in a single #pragma; the
-symbols must be separated by commas.
-
-#section name
-
-Starts a new section for the generated code. Any variables and func-
-tions that are declared “static” are only visible to the section to
-which they belong. By default, each source file is a separate section
-and there is only one section per file.
-
-With the #section directive, you can create multiple sections in a
-
-source file. The name of a section is optional, if it is not set, a unique
-identifier for the source file is used for the name of the section.
-
-Any declared section ends automatically at the end of the file.
-
-#tryinclude filename or <filename>
-
-This directive behaves similarly as the #include directive, but it does
-not give an error when the file to include does not exist —i.e., try to
-include but fail silently on error.
-
-#undef name
-
-Removes a text substitution macro or a numeric constant declared
-with const. The “name” parameter must be the macro “prefix” —the
-alphanumeric part of the macro. See page 93 for details and examples
-on text substitution.
-
-124
-
-Proposed function library
-
-Since pawn is targeted as an application extension language, most of the func-
-tions that are accessible to pawn programs will be specific to the  
-host ap-
-plication. Nevertheless, a small set of functions may prove useful  
-to many
-environments.
-
-• Core functions
+### • Core functions
 
 The “core” module consists of a set of functions that support the  
-language
-itself. Several of the functions are needed to pull arguments out of a variable
+language itself. Several of the functions are needed to pull arguments out of a variable
 argument list (see page 80).
 
-clamp  
- Force a value inside a range
+| clamp    |                                                                                                             |  Force a value inside a range |
+|----------|-------------------------------------------------------------------------------------------------------------|------------------------------:|
+| Syntax   | clamp(value, min=cellmin, max=cellmax)                                                                      |                               |
+|          | value                                                                                                       | The value to force in a range |
+|          | min                                                                                                         | The low bound of the range.   |
+|          | max                                                                                                         | The high bound of the range.  |
+| Returns  | value if it is in the range min – max; min if value is lower than min; and max if value is higher than max. |                               |
+| See also | max, min                                                                                                    |                               |
 
-Syntax: clamp(value, min=cellmin, max=cellmax)
-value The value to force in a range.
-min The low bound of the range.
+| funcidx |                                                                                                                                                                                                                                                           | Return a public funtion index |
+|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------:|
+| Syntax  | funcidx(const name[])                                                                                                                                                                                                                                     |                               |
+| Returns | The index of the named public function. If no public function with the given name exists, funcidx returns −1.                                                                                                                                             |                               |
+| Notes:  | A host application runs a public function from the script by passing the public function’s index to amx_Exec. With this function, the script can query the index of a public function, and thereby return the “next function to call” to the application. |                               |
 
-max The high bound of the range.
+| getarg   |                                                                                                                                                                                                       |                                         Get an argument |
+|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------:|
+| Syntax   | getarg(arg, index=0)                                                                                                                                                                                  |                                                         |
+|          | arg                                                                                                                                                                                                   | The argument sequence number, use 0 for first argument. |
+|          | index                                                                                                                                                                                                 | The index, in case arg refers to an array.              |
+| Returns  | The value of the argument                                                                                                                                                                             |                                                         |
+| Notes:   | This function retrieves an argument from a variable argument list. When the argument is an array, the index parameter specifies the index into the array. The return value is the retrieved argument. |                                                         |
+| See also | numargs, setarg                                                                                                                                                                                       |                                                         |
 
-Returns: value if it is in the range min – max; min if value is lower
-than
+| heapspace |                                                                                                                                                                            | Return free heap space |
+|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------:|
+| Syntax    | heapspace()                                                                                                                                                                |                        |
+| Returns   | The free space on the heap. The stack and the heap occupy a shared memory area, so this value indicates the number of bytes that is left for either the stack or the heap. |                        |
+| Notes:    | In absence of recursion, the pawn parser can also give an estimate of the required stack/heap space.                                                                       |                        |
 
-min; and max if value is higher than max.
+| max      |                                       |                    Return the highest of two numbers |
+|----------|---------------------------------------|-----------------------------------------------------:|
+| Syntax   | max(value1, value2)                   |                                                      |
+|          | value1                                |                                                      |
+|          | value2                                | The two values for which to find the highest number. |
+| Returns  | The higher value of value1 and value2 |                                                      |
+| See also | clamp, min                            |                                                      |
 
-See also: max, min
+| min      |                                       |                    Return the lowest of two numbers |
+|----------|---------------------------------------|----------------------------------------------------:|
+| Syntax   | min(value1, value2)                   |                                                     |
+|          | value1                                |                                                     |
+|          | value2                                | The two values for which to find the lowest number. |
+| Returns  | The lowest value of value1 and value2 |                                                     |
+| See also | clamp, max                            |                                                     |
 
-amx Exec: see the
-“Implementor’s
-Guide”
+| numargs  |                                                                                                                | Return the number of arguments |
+|----------|----------------------------------------------------------------------------------------------------------------|-------------------------------:|
+| Syntax   | numargs()                                                                                                      |                                |
+| Returns  | The number of arguments passed to a function; numargs is useful inside functions with a variable argument list |                                |
+| See also | getarg, setarg                                                                                                 |                                |
 
-funcidx  
-Return a public function index
-Syntax: funcidx(const name[])
+| random  |                                                                                                                                                                                                                                                                                                                                               |   Return a pseudo-random number |
+|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------:|
+| Syntax  | random(max)                                                                                                                                                                                                                                                                                                                                   |                                 |
+|         | max                                                                                                                                                                                                                                                                                                                                           | The limit for the random number |
+| Returns | A pseudo-random number in the range 0 - max-1                                                                                                                                                                                                                                                                                                 |                                 |
+| Notes:  | The standard random number generator of pawn is likely a linear congruential pseudo-random number generator with a range and a period of 2³¹. Linear congruential pseudo-random number generators suffer from serial correlation (especially in the low bits) and it is unsuitable for applications that require high-quality random numbers. |                                 |
 
-Returns: The index of the named public function. If no public function
-with the given name exists, funcidx returns −1.
+| setarg   |                                                                                                                                                                   |                                                        |
+|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------:|
+| Syntax   | setarg(arg, index=0, value)                                                                                                                                       |                                                        |
+|          | arg                                                                                                                                                               | The argument sequence number, use 0 for first argument |
+|          | index                                                                                                                                                             | The index, in case arg refers to an array              |
+|          | value                                                                                                                                                             | The value to set the argument to                       |
+| Returns  | true on success and false if the argument or the index are invalid                                                                                                |                                                        |
+| Notes:   | This function sets the value of an argument from a variable argument list. When the argument is an array, the index parameter specifies the index into the array. |                                                        |
+| See also | getarg, numargs                                                                                                                                                   |                                                        |
 
-Notes: A host application runs a public function from the script by
-pass-
-ing the public function’s index to amx_Exec. With this function,
-the script can query the index of a public function, and thereby
-return the “next function to call” to the application.
+| swapchars |                                                                                                 |                  Swap bytes in a cell |
+|-----------|-------------------------------------------------------------------------------------------------|--------------------------------------:|
+| Syntax    | swapchars(c)                                                                                    |                                       |
+|           | c                                                                                               | The value for which to swap the bytes |
+| Returns   | A value where the bytes in parameter "c" are swapped (the lowest byte becomes the highest byte) |                                       |
 
-max 125
+| tolower  |                                                                                                                                                      |       Convert a character to lower case |
+|----------|------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------:|
+| Syntax   | tolower(c)                                                                                                                                           |                                         |
+|          | c                                                                                                                                                    | The character to convert to lower case. |
+| Returns  | The upper case variant of the input character, if one exists, or the unchanged character code of “c” if the letter “c” has no lower case equivalent. |                                         |
+| Notes:   | Support for accented characters is platform-dependent                                                                                                |                                         |
+| See also | toupper                                                                                                                                              |                                         |
 
-getarg  
- Get an argument
+| toupper  |                                                                                                                                                      |       Convert a character to upper case |
+|----------|------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------:|
+| Syntax   | toupper(c)                                                                                                                                           |                                         |
+|          | c                                                                                                                                                    | The character to convert to upper case. |
+| Returns  | The lower case variant of the input character, if one exists, or the unchanged character code of “c” if the letter “c” has no upper case equivalent. |                                         |
+| Notes:   | Support for accented characters is platform-dependent                                                                                                |                                         |
+| See also | tolower                                                                                                                                              |                                         |
 
-Syntax: getarg(arg, index=0)
-
-arg The argument sequence number, use 0 for first ar-
-gument.
-
-index The index, in case arg refers to an array.
-
-Returns: The value of the argument.
-
-Notes: This function retrieves an argument from a variable  
-argument
-list. When the argument is an array, the index parameter spec-
-ifies the index into the array. The return value is the retrieved
-argument.
-
-See also: numargs, setarg
-
-heapspace  
- Return free heap space
-
-Syntax: heapspace()
-
-Returns: The free space on the heap. The stack and the heap occupy a
-shared memory area, so this value indicates the number of bytes
-that is left for either the stack or the heap.
-
-Notes: In absence of recursion, the pawn parser can also give an
-estimate
-of the required stack/heap space.
-
-max Return
-the highest of two numbers
-Syntax: max(value1, value2)
-
-value1
-
-value2 The two values for which to find the highest num-
-ber.
-
-Returns: The higher value of value1 and value2.
-See also: clamp, min
-
-126 min
-
-min Return
-the lowest of two numbers
-
-Syntax: min(value1, value2)
-value1
-
-value2 The two values for which to find the lowest number.
-
-Returns: The lower value of value1 and value2.
-See also: clamp, max
-
-numargs Return the
-number of arguments
-Syntax: numargs()
-
-Returns: The number of arguments passed to a function; numargs is useful
-inside functions with a variable argument list.
-
-See also: getarg, setarg
-
-random Return a
-pseudo-random number
-Syntax: random(max)
-
-max The limit for the random number.
-
-Returns: A pseudo-random number in the range 0 – max-1.
-
-Notes: The standard random number generator of pawn is likely a
-linear
-congruential pseudo-random number generator with a range and
-a period of 2³¹. Linear congruential pseudo-random number gen-
-erators suffer from serial correlation (especially in the low bits)
-and it is unsuitable for applications that require high-quality ran-
-dom numbers.
-
-setarg
-
-Syntax: setarg(arg, index=0, value)
-
-tolower 127
-
-arg The argument sequence number, use 0 for first ar-
-gument.
-
-index The index, in case arg refers to an array.
-
-value The value to set the argument to.
-
-Returns: true on success and false if the argument or the  
-index are
-invalid.
-
-Notes: This function sets the value of an argument from a variable
-argu-
-ment list. When the argument is an array, the index parameter
-specifies the index into the array.
-
-See also: getarg, numargs
-
-swapchars  
- Swap bytes in a cell
-
-Syntax: swapchars(c)
-
-c The value for which to swap the bytes.
-
-Returns: A value where the bytes in parameter “c” are swapped (the low-
-est byte becomes the highest byte).
-
-tolower Convert a
-character to lower case
-Syntax: tolower(c)
-
-c The character to convert to lower case.
-
-Returns: The upper case variant of the input character, if one exists,
-or
-the unchanged character code of “c” if the letter “c” has no lower
-case equivalent.
-
-Notes: Support for accented characters is platform-dep endent.
-See also: toupper
-
-toupper Convert a
-character to upper case
-Syntax: toupper(c)
-
-c The character to convert to upper case.
-
-Returns: The lower case variant of the input character, if one exists,
-or the
-unchanged character code of “c” if the letter “c” has no upper
-case equivalent.
-
-Notes: Support for accented characters is platform-dep endent.
-See also: tolower
+---
 
 Properties are general purpose names or values. The property list
-routines
-maintain a list of these name/value pairs that is shared among all abstract
+routines maintain a list of these name/value pairs that is shared among all abstract
 machines. The property list is therefore a way for concurrent abstract machines
 to exchange information.
 
@@ -7180,8 +6708,7 @@ a property, the id value that you pass in is matched to the id values of the
 list.
 
 A property is identified with its “abstract machine id” plus either a name or  
-a
-value. The name-based interface allows you to attach a value (e.g. the handle
+a value. The name-based interface allows you to attach a value (e.g. the handle
 of an object) to a name of your choosing. The value-based interface allows you
 to attach a string to a number. The difference between the two is basically the
 search key versus the output parameter.
@@ -7193,381 +6720,352 @@ function reads the string to store from the string argument.
 
 The number of properties that you can add is limited only by available memory.
 
-getproperty(id=0, const name[]=“”, value=cellmin, string[]=“”)
-Returns the value of a property when the name is passed in; fills in the
-string argument when the value is passed in. The name string may
-either be a packed or an unpacked string. If the property does not
-exist, this function returns zero.
+**getproperty(id=0, const name[]=“”, value=cellmin, string[]=“”)**
 
-setproperty(id=0, const name[]=“”, value=cellmin, const string[]=“”)
+    Returns the value of a property when the name is passed in; fills in the
+    string argument when the value is passed in. The name string may
+    either be a packed or an unpacked string. If the property does not
+    exist, this function returns zero.
 
-Add a new property or change an existing property.
+**setproperty(id=0, const name[]=“”, value=cellmin, const string[]=“”)**
 
-deleteproperty(id=0, const name[]=“”, value=cellmin)
+    Add a new property or change an existing property.
 
-Returns the value of the property and subsequently removes it. If the
-property does not exist, the function returns zero.
+**deleteproperty(id=0, const name[]=“”, value=cellmin)**
 
-existproperty(id=0, const name[]=“”, value=cellmin)
+    Returns the value of the property and subsequently removes it. If the
+    property does not exist, the function returns zero.
 
-Returns true if the property exists and false otherwise.
+**existproperty(id=0, const name[]=“”, value=cellmin)**
 
-• Console functions
+    Returns true if the property exists and false otherwise.
+
+### • Console functions
 
 For testing purposes, the console functions that read user input and that out-
 put strings in a scrollable window or on a standard terminal display are often
 convenient. Not all terminal types and implementations may implement all
 functions —especially the functions that clear the screen, set foreground and
-background colours and control the cursor position, require an extended ter-
-minal control.
+background colours and control the cursor position, require an extended terminal control.
 
-getchar(echo=true)
+**getchar(echo=true)**
 
-Read one character from the keyboard and return it. The function can
-optionally echo the character on the console window.
+    Read one character from the keyboard and return it. The function can
+    optionally echo the character on the console window.
 
-getstring(string[], size=sizeof string, bool
+**getstring(string[], size=sizeof string, bool**
 
-pack=false): Read a string from the keyboard. Function getstring
-stops reading when either the enter key is typed, or the maximum
-length is reached. The maximum length is in cells (not characters)
-and it includes a terminating nul character. The function can read
-both packed and unpacked strings; when reading a packed string, the
-function may read more characters than the size parameter specifies,
-because each cell holds multiple characters. The return value is the
-number of characters read, excluding the terminating nul character.
+    pack=false): Read a string from the keyboard. Function getstring
+    stops reading when either the enter key is typed, or the maximum
+    length is reached. The maximum length is in cells (not characters)
+    and it includes a terminating nul character. The function can read
+    both packed and unpacked strings; when reading a packed string, the
+    function may read more characters than the size parameter specifies,
+    because each cell holds multiple characters. The return value is the
+    number of characters read, excluding the terminating nul character.
 
-getvalue(base=10, end=‘ r’, ...)
+**getvalue(base=10, end=‘ r’, ...)**
 
-Read a value (a signed number) from the keyboard. The getvalue
-function allows you to read in a numeric radix from 2 to 36 (the base
-parameter) with decimal radix by default.
+    Read a value (a signed number) from the keyboard. The getvalue
+    function allows you to read in a numeric radix from 2 to 36 (the base
+    parameter) with decimal radix by default.
 
-By default the input ends when the user types the enter key, but
-one or more different keys may be selected (the end parameter and
-subsequent). In the list of terminating keys, a positive number (like
-’\r’) displays the key and terminates input, and a negative number
-terminates input without displaying the terminating key.
+    By default the input ends when the user types the enter key, but
+    one or more different keys may be selected (the end parameter and
+    subsequent). In the list of terminating keys, a positive number (like
+    ’\r’) displays the key and terminates input, and a negative number
+    terminates input without displaying the terminating key.
 
-print(const string[], foreground=-1, background=-1)
+**print(const string[], foreground=-1, background=-1)**
 
-Prints a simple string on the console. The foreground and background
-colours may be optionally set (but note that a terminal or a host
-application may not support colours). See setattr below for a list of
-colours.
+    Prints a simple string on the console. The foreground and background
+    colours may be optionally set (but note that a terminal or a host
+    application may not support colours). See setattr below for a list of
+    colours.
 
-printf(const format[], ...)
+**printf(const format[], ...)**
 
-Prints a string with embedded codes:
+    Prints a string with embedded codes:
 
-%b print a number at this position in binary radix
+    %b   print a number at this position in binary radix
 
-%c print a character at this position
+    %c   a character at this position
 
-%d print a number at this position in decimal radix
+    %d   print a number at this position in decimal radix
 
-%f print a floating point number at this position (assuming floating
-point support is present)
+    %f   print a floating point number at this position (assuming floating
+    point support is present)
 
-%q print a fixed point number at this position (assuming fixed point
-support is present)
+    %q   print a fixed point number at this position (assuming fixed point
+    support is present)
 
-%r print either a floating point number or a fixed point number at this
-position, depending on what is available; if both floating point and
-fixed point support is present, %r is equivalent to %f (i.e. printing
-a floating point number)
+    %r   print either a floating point number or a fixed point number at this
+    position, depending on what is available; if both floating point and
+    fixed point support is present, %r is equivalent to %f (i.e. printing
+    a floating point number)
 
-%s print a character string at this position
+    %s   print a character string at this position
 
-%x print a number at this position in hexadecimal radix
+    %x   print a number at this position in hexadecimal radix
 
-The printf function works similarly to the printf function of the C
-language.
+    The printf function works similarly to the printf function of the C language.
 
-clrscr()
+**clrscr()**
 
-Clears the console and sets the cursor in the upper left corner.
+    Clears the console and sets the cursor in the upper left corner.
 
-clreol()
+**clreol()**
 
-Clears the line at which the cursor is, from the position of the cursor
-to the right margin of the console. This function does not move the
-cursor.
+    Clears the line at which the cursor is, from the position of the cursor
+    to the right margin of the console. This function does not move the
+    cursor.
 
-gotoxy(x=1, y=1)
+**gotoxy(x=1, y=1)**
 
-Sets the cursor position on the console. The upper left corner is at
-(1,1).
+    Sets the cursor position on the console.
+    The upper left corner is at (1,1).
 
-setattr(foreground=-1, background=-1)
+**setattr(foreground=-1, background=-1)**
 
-Sets foreground and background colours for the text written onto the
-console. When either of the two parameters is negative (or absent), the
-respective colour setting will not be changed. The colour value must
-be a value between zero and seven, as per the ANSI Escape sequences,
+    Sets foreground and background colours for the text written onto the
+    console. When either of the two parameters is negative (or absent), the
+    respective colour setting will not be changed. The colour value must
+    be a value between zero and seven, as per the ANSI Escape sequences, ISO 6429.
 
-ISO 6429. Predefined constants for the colours are black (0), red (1),
+    Predefined constants for the colours are black (0), red (1),
+    green (2), yellow (3), blue (4), magenta (5), cyan (6) and white (7).
 
-green (2), yellow (3), blue (4), magenta (5), cyan (6) and white (7).
-
-• Date/time functions
+### • Date/time functions
 
 Functions to get and set the current date and time, as well as a millisecond
 resolution “event” timer are described in an application note entitled “Time
 Functions Library” that is available separately.
 
-• File input/output
+### • File input/output
 
 Functions for handling text and binary files, with direct support for UTF-8 text
 files, is described in an application note entitled “File I/O Support Library”
 that is available separately.
 
-• Fixed point arithmetic
+### • Fixed point arithmetic
 
 The fixed-point decimal arithmetic module for pawn is described in an appli-
 cation note entitled “Fixed Point Support Library” that is available
 separately.
 
-• Floating point arithmetic
+### • Floating point arithmetic
 
 The floating-point arithmetic module for pawn is described in an application
 note entitled “Floating Point Support Library” that is available separately.
 
-• String manipulation
+### • String manipulation
 
 A general set of string manipulation functions, operating on both packed and
 unpacked strings, is described in an application note entitled “String Manipu-
 lation Library” that is available separately.
 
-• DLL call interface
+### • DLL call interface
 
 The version of the abstract machine that is build as a Dynamic Link Library
 for Microsoft Windows has a general purpose function to call a function from
 any DLL in memory. Two companion functions load a DLL from disk into
 memory and unload it. The functions have been set up so that it is possible to
-run the same compiled script in both 16-bit and 32-bit versions of Microsoft
-Windows.
+run the same compiled script in both 16-bit and 32-bit versions of Microsoft Windows.
 
 All string parameters may be in both packed or unpacked form.
 
-calldll(const dllname[], const function[], const typestr[], ...)
-Parameter dllname is the module name of the DLL, typically this is the
-same as the filename. If the DLL cannot be found, calldll tries again
-after appending “16” or “32” to the filename, depending on whether
-you run the 16-bit or the 32-bit version of the abstract machine. For
-example, if you set dllname to “USER”, calldll connects to USER in
-the 16-bit version of the abstract machine and to USER32 in the 32-bit
-version.
+**calldll(const dllname[], const function[], const typestr[], ...)**
 
-Parameter function is the name of the function in the DLL. In the
-16-bit version of, this name is case insensitive, but in the 32-bit version
-of Microsoft Windows, names of exported functions are case sensitive.
-In the 32-bit version of the abstract machine, if function cannot be
-found, calldll appends an upper case “A” to the name and tries again
+    Parameter dllname is the module name of the DLL, typically this is the
+    same as the filename. If the DLL cannot be found, calldll tries again
+    after appending “16” or “32” to the filename, depending on whether
+    you run the 16-bit or the 32-bit version of the abstract machine. For
+    example, if you set dllname to “USER”, calldll connects to USER in
+    the 16-bit version of the abstract machine and to USER32 in the 32-bit
+    version.
 
-—many functions in 32-bit Windows exist in two varieties: ANSI and
-“Wide”, and these functions are suffixed with an “A” or a “W” respec-
-tively. So if function is “MessageBox”, calldll will call MessageBox
-in the 16-bit version of Windows and MessageBoxA in the 32-bit ver-
-sion.
+    Parameter function is the name of the function in the DLL. In the
+    16-bit version of, this name is case insensitive, but in the 32-bit version
+    of Microsoft Windows, names of exported functions are case sensitive.
+    In the 32-bit version of the abstract machine, if function cannot be
+    found, calldll appends an upper case “A” to the name and tries again
 
-The string parameter typestr indicates the number of arguments that
-the function (in the DLL) takes and what the types are. For every
-argument, you add one letter to the typestr string:
+    —many functions in 32-bit Windows exist in two varieties: ANSI and
+    “Wide”, and these functions are suffixed with an “A” or a “W” respec-
+    tively. So if function is “MessageBox”, calldll will call MessageBox
+    in the 16-bit version of Windows and MessageBoxA in the 32-bit ver-
+    sion.
 
-h a Windows “handle” (HWND, HDC, HPALETTE, HMEM, etc.)
+    The string parameter typestr indicates the number of arguments that
+    the function (in the DLL) takes and what the types are. For every
+    argument, you add one letter to the typestr string:
 
-i an integer with a “native size” (16-bit or 32-bit, depending on the
-“bitness” of the abstract machine).
+    h   a Windows “handle” (HWND, HDC, HPALETTE, HMEM, etc.)
 
-l a 32-bit integer
+    i   an integer with a “native size” (16-bit or 32-bit, depending on the
+    “bitness” of the abstract machine).
 
-p a packed string
+    l   a 32-bit integer
 
-s an unpacked string
+    p   a packed string
 
-w a 16-bit unsigned integer
+    s   an unpacked string
 
-When the letter is in lower case, the corresponding parameter is passed
-“by value”; when it is in upper case, it is passed “by reference”. The
-difference between packed and unpacked strings is only relevant when
-the parameter is passed by reference.
+    w   a 16-bit unsigned integer
 
-loaddll(const dllname[])
+    When the letter is in lower case, the corresponding parameter is passed
+    “by value”; when it is in upper case, it is passed “by reference”. The
+    difference between packed and unpacked strings is only relevant when
+    the parameter is passed by reference.
 
-Loads the specified DLL into memory (or increments its usage count
-it were already loaded). The name in parameter dllname may contain
-a full path. If no path is specified, Microsoft Windows searches in its
-system directories for the DLL. Similarly to the calldll function, this
+**loaddll(const dllname[])**
 
-function appends “16” or “32” to the DLL name if the DLL cannot
-be found, and then tries again.
+    Loads the specified DLL into memory (or increments its usage count
+    it were already loaded). The name in parameter dllname may contain
+    a full path. If no path is specified, Microsoft Windows searches in its
+    system directories for the DLL. Similarly to the calldll function, this
 
-freedll(const dllname[])
+    function appends “16” or “32” to the DLL name if the DLL cannot
+    be found, and then tries again.
 
-Decrements the DLL’s usage count and, if the count becomes zero,
-removes the DLL from memory. The name in parameter dllname may
-contain a full path, but the path information is ignored. Similarly to
-the calldll function, this function appends “16” or “32” to the DLL
-name if the DLL cannot be found, and then tries again.
+**freedll(const dllname[])**
 
-iswin32()
+    Decrements the DLL’s usage count and, if the count becomes zero,
+    removes the DLL from memory. The name in parameter dllname may
+    contain a full path, but the path information is ignored. Similarly to
+    the calldll function, this function appends “16” or “32” to the DLL
+    name if the DLL cannot be found, and then tries again.
 
-Returns true if the abstract machine is the 32-bit version (running in
-a 32-bit version of Microsoft Windows); returns false if the abstract
-machine is the 16-bit version (running either on Windows 3.1x or on
-any later version of Microsoft Windows).
+**iswin32()**
 
-134
+    Returns true if the abstract machine is the 32-bit version (running in
+    a 32-bit version of Microsoft Windows); returns false if the abstract
+    machine is the 16-bit version (running either on Windows 3.1x or on
+    any later version of Microsoft Windows).
 
-Pitfalls: differences from C
+</div>
 
-pawn lacks the typing mechanism of C. pawn is an “integer-only” variety
-of C; there are no structures or unions, and floating point support must be
-implemented with user-defined operators and the help of native functions.
+<hr>
 
-The accepted syntax for rational numbers is stricter than that of floating
-point values in C. Values like “.5” and “6.” are acceptable in C,  
-but in
-pawn one must write “0.5” and “6.0” respectively. In C, the decimal period
-is optional if an exponent is included, so one can write “2E8”; pawn does
-not accept the upper case “E” (use a lower case “e”) and it requires
-the
-decimal point: e.g. “2.0e8”. See page 98 for more information.
+<div align="right">
 
-pawn does not provide “pointers”. For the purpose of passing function
-arguments by reference, pawn provides a “reference” argument, (page 71).
-The “placeholder” argument replaces some uses of the NULL pointer (page
-75).
+`amx_Exec: see the “Implementor’s Guide”`
 
-Numbers can have hexadecimal, decimal or binary radix. Octal radix is not
-supported. See “Constants” on page 98. Hexadecimal numbers must start
-with “0x” (a lower case “x”), the prefix “0X” is invalid.
+<hr>
 
-Escape sequences (“\n”, “\t”, etc.) are the same, except for “\ddd” where
-“ddd” represent three decimal digits, instead of the octal digits that C/C++
-uses. The backslash (“\”) may be replaced with another symbol; see #pragma
-ctrlchar on page 120 —notably, previous versions of pawn used the caret
-(“^”) as the escape character.
+</div>
 
-Cases in a switch statement are not “fall through”. Only a single instruction
-may (and must) follow each case label. To execute multiple instructions,
-you must use a compound statement. The default clause of a switch
-statement must be the last clause of the switch statement. More on page
+<div align="center">
 
-115.  In C/C++, switch is a “conditional goto”, akin to Fortran’s calculated
-      labels. In pawn, switch is a structured “if”.
+# Pitfalls: differences from C
 
-A break statement breaks out of loops only. In C/C⁺⁺, the break statement
-also ends a case in a switch statement. Switch statements are implemented
-differently in pawn (see page 115).
+---
 
-pawn supports “array assignment”, with the restriction that both arrays
-must have the same size. For example, if “a” and “b” are both arrays with
-6 cells, the expression “a = b” is valid. Next to literal strings, pawn also
+</div>
 
-Pitfalls: differences from C 135
+<div align="left">
 
-supports literal arrays, allowing the expression “a = {0,1,2,3,4,5}” (where
-“a” is an array variable with 6 elements).
+- PAWN lacks the typing mechanism of C. PAWN is an “integer-only” variety of C; there are no structures or unions, and floating point support must be implemented with user-defined operators and the help of native functions.
 
-char is an operator, not a type. See page 110 and the tips on page 137.
+- The accepted syntax for rational numbers is stricter than that of floating point values in C. Values like “.5” and “6.” are acceptable in C, but in PAWN one must write “0.5” and “6.0” respectively. In C, the decimal period is optional if an exponent is included, so one can write “2E8”; PAWN does not accept the upper case “E” (use a lower case “e”) and it requires the decimal point: e.g. “2.0e8”. See page 98 for more information.
 
-defined is an operator, not a preprocessor directive. The defined operator
-in pawn operates on constants (with const and enum), global variables, local
-variables and functions.
+- PAWN does not provide “pointers”. For the purpose of passing function arguments by reference, PAWN provides a “reference” argument, (page 71). The “placeholder” argument replaces some uses of the NULL pointer (page 75).
 
-The sizeof operator returns the size of a variable in “elements”, not
-in
-“bytes”. An element may be a cell or a sub-array. See page 109 for details.
+- Numbers can have hexadecimal, decimal or binary radix. Octal radix is not supported. See “Constants” on page 98. Hexadecimal numbers must start with “0x” (a lower case “x”), the prefix “0X” is invalid.
 
-The empty instruction is an empty compound block, not a semicolon (page
-112). This modification avoids a frequent error.
+- Escape sequences (“\n”, “\t”, etc.) are the same, except for “\ddd” where “ddd” represent three decimal digits, instead of the octal digits that C/C++ uses. The backslash (“\”) may be replaced with another symbol; see #pragma ctrlchar on page 120 —notably, previous versions of PAWN used the caret (“^”) as the escape character.
 
-The compiler directives differ from C’s preprocessor commands. Notably,
-the #define directive is incompatible with that of C/C⁺⁺, and #ifdef and
-#ifndef are replaced by the more general #if directive (see “Directives” on
+- Cases in a switch statement are not “fall through”. Only a single instruction may (and must) follow each case label. To execute multiple instructions, you must use a compound statement. The default clause of a switch statement must be the last clause of the switch statement. More on page 115. In C/C++, switch is a “conditional goto”, akin to Fortran’s calculated labels. In PAWN, switch is a structured “if”.
 
-page 117). To create numeric constants, see also page 101; to create string
-constants, see also page 93.
+- A break statement breaks out of loops only. In C/C⁺⁺, the break statement also ends a case in a switch statement. Switch statements are implemented differently in PAWN (see page 115).
 
-Text substitutions (preprocessor macros; see the #define directive) are not
-matched across lines. That is, the text that you want to match and replace
-with a #define macro must appear on a single line. The definition  
-of a
-#define macro must also appear on a single line.
+- PAWN supports “array assignment”, with the restriction that both arrays must have the same size. For example, if “a” and “b” are both arrays with 6 cells, the expression “a = b” is valid. Next to literal strings, PAWN also supports literal arrays, allowing the expression “a = {0,1,2,3,4,5}” (where “a” is an array variable with 6 elements).
 
-The direction for truncation for the operator “/” is always towards  
-the
-smaller value, where -2 is smaller than -1. The “%” operator always gives a
-positive result, regardless of the signs of the operands. See page 104.
+- *char* is an operator, not a type. See page 110 and the tips on page 137.
 
-There is no unary “+” operator, which is a “no-operation” operator anyway.
+- *defined* is an operator, not a preprocessor directive. The defined operator in PAWN operates on constants (with const and enum), global variables, local variables and functions.
 
-Three of the bitwise operators have different precedence than in C.  
-The
-precedence levels of the “&”, “^” and | operators is higher than the rela-
-tional operators (Dennis Ritchie explained that these operators got their low
-precedence levels in C because early C compilers did not yet have the logical
-“&&” and || operators, so the bitwise “&” and | were used instead).
+- The *sizeof* operator returns the size of a variable in “elements”, not in “bytes”. An element may be a cell or a sub-array. See page 109 for details.
 
-The “extern” keyword does not exist in pawn; the current implementation
-of the compiler has no “linking phase”. To create a program from several
-source files, add all source files the compilers command line, or create one
-main project script file that “#include’s” all other source files. The pawn
-compiler can optimize out functions and global variables that you do not
-use. See pages 63 and 84 for details.
+- The empty instruction is an empty compound block, not a semicolon (page 112). This modification avoids a frequent error.
 
-136 Pitfalls: differences from C
+- The compiler directives differ from C’s preprocessor commands. Notably, the #define directive is incompatible with that of C/C⁺⁺, and #ifdef and #ifndef are replaced by the more general #if directive (see “Directives” on page 117). To create numeric constants, see also page 101; to create string constants, see also page 93.
 
-In most situations, forward declarations of functions (i.e., prototypes) are
-not necessary. pawn is a two-pass compiler, it will see all functions on the
-first pass and use them in the second pass. User-defined operators must be
-declared before use, however.
+- Text substitutions (preprocessor macros; see the #define directive) are not matched across lines. That is, the text that you want to match and replace with a #define macro must appear on a single line. The definition of a #define macro must also appear on a single line.
+
+- The direction for truncation for the operator “/” is always towards the smaller value, where -2 is smaller than -1. The “%” operator always gives a positive result, regardless of the signs of the operands. See page 104.
+
+- There is no unary “+” operator, which is a “no-operation” operator anyway.
+
+- Three of the bitwise operators have different precedence than in C. The precedence levels of the “&”, “^” and | operators is higher than the rela- tional operators (Dennis Ritchie explained that these operators got their low precedence levels in C because early C compilers did not yet have the logical “&&” and || operators, so the bitwise “&” and | were used instead).
+
+- The “extern” keyword does not exist in PAWN; the current implementation of the compiler has no “linking phase”. To create a program from several source files, add all source files the compilers command line, or create one main project script file that “#include’s” all other source files. The PAWN compiler can optimize out functions and global variables that you do not use. See pages 63 and 84 for details.
+
+- In most situations, forward declarations of functions (i.e., prototypes) are not necessary. PAWN is a two-pass compiler, it will see all functions on the first pass and use them in the second pass. User-defined operators must be declared before use, however.
 
 If provided, forward declarations must match exactly with the function def-
 inition, parameter names may not be omitted from the prototype or differ
-from the function definition. pawn cares about parameter names in pro-
+from the function definition. PAWN cares about parameter names in pro-
 totypes because of the “named parameters” feature. One uses prototypes
 to call forwardly declared functions. When doing so with named param-
-
 eters, the compiler must already know the names of the parameters (and
 their position in the parameter list). As a result, the parameter names in a
 prototype must be equal to the ones in the definition.
 
-Assorted tips
+</div>
 
-137
+<hr>
 
-• Working with characters and strings
+<div align="right">
+
+<hr>
+
+</div>
+
+<div align="center">
+
+# Assorted tips
+
+---
+
+</div>
+
+<div align="left">
+
+### • Working with characters and strings
 
 Strings can be in packed or in unpacked format. In the packed format, each
 cell will typically hold four characters (in common implementations, a cell is
 32-bit and a character is 8 bit). In this configuration, the first character
-in a
-“pack” of four is the highest byte of a cell and the fourth character is in the
+in a “pack” of four is the highest byte of a cell and the fourth character is in the
 lowest byte of each cell.
 
 A string must be stored in an array. For an unpacked string, the array must
 be large enough to hold all characters in the string plus a terminating zero
-cell.
-That is, in the example below, the variable ustring is defined as having five
+cell. That is, in the example below, the variable ustring is defined as having five
 cells, which is just enough to contain the string with which it is initialized:
 
 Listing: unpacked string
 
+```c
+
 new ustring[5] = "test"
 
+```
+
 In a packed string, each cell contains several characters and the string
-ends
-with a zero character. The char operator helps with declaring the array size
+ends with a zero character. The char operator helps with declaring the array size
 to contain the required number of characters . The example below will allocate
 enough cells to hold five packed characters. In a typical implementation, there
 will be two cells in the array.
 
 Listing: packed string
 
+```c
+
 new pstring[5 char] = !"test"
+
+```
 
 In other words, the char operators divides its left operand by the number of
 bytes that fit in a cell and rounds upwards. Again, in a typical implementation,
@@ -7575,137 +7073,108 @@ this means dividing by four and rounding upwards.
 
 You can design routines that work on strings in both packed and unpacked for-
 mats. To find out whether a string is packed or unpacked, look at the first
-cell
-of a string. If its value is either negative or higher than the maximum possible
+cell of a string. If its value is either negative or higher than the maximum possible
 value of an unpacked character, the string is a packed string. Otherwise it
-is
-an unpacked string.
+is an unpacked string.
 
-The code snippet below returns true if the input string is packed and false  
-See the separate
-
-otherwise:
+The code snippet below returns true if the input string is packed and false otherwise:
 
 Listing: ispacked function
 
+```c
+
 bool: ispacked(string[])
+    return !(0 <= string[0] <= ucharmax)
 
-return !(0 <= string[0] <= ucharmax)
-
-application note
-
-for proposed na-
-tive functions that
-operate on both
-packed and un-
-packed strings
-
-EOS: predefined
-constant to mark
-the End Of String; it
-
-has the value ’\0’
+```
 
 An unpacked string ends with a full zero cell. The end of a packed string is
 marked with only a zero character. Since there may be up to four characters
 in a 32-bit cell, this zero character may occur at any of the four positions in
 the “pack”. The { } operator extracts a character from a cell in an
-array.
-Basically, one uses the cell index operator (“[ ]”) for unpacked strings and
+array. Basically, one uses the cell index operator (“[ ]”) for unpacked strings and
 the character index operator (“{ }”) to work on packed strings.
 
 For example, a routine that returns the length in characters of any  
-string
-(packed or unpacked) is:
+string (packed or unpacked) is:
 
 Listing: my strlen function
 
+```c
+
 my_strlen(string[])
-
 {
-
-new len = 0
-
-if (ispacked(string))
-
-while (string{len} != EOS) /_ get character from pack _/
-
-++len
-
-else
-
-while (string[len] != EOS) /_ get cell _/
-
-++len
-return len
-
+    new len = 0
+    if (ispacked(string))
+        while (string{len} != EOS)              /* get character from pack */
+            ++len
+    else
+        while (string[len] != EOS)              /* get cell */
+            ++len
+    return len
 }
+
+```
 
 If you make functions to work exclusively on either packed or unpacked strings,
 it is a good idea to add an assertion to enforce this condition:
 
 Listing: strupper function
 
+```c
+
 strupper(string[])
-
 {
+    assert ispacked(string)
 
-assert ispacked(string)
-
-for (new i=0; string{i} != EOS; ++i)
-string{i} = toupper(string{i})
-
+    for (new i=0; string{i} != EOS; ++i)
+        string{i} = toupper(string{i})
 }
 
-Predefined con-
-stants: 102
+```
 
 Although, in preceding paragraphs we have assumed that a cell is 32  
-bits
-wide and a character is 8 bits, this should not be relied upon. The
-size of
-a cell is implementation defined; the maximum and minimum values are  
-in
-the predefined constants cellmax and cellmin. There are similar predefined
+bits wide and a character is 8 bits, this should not be relied upon. The
+size of a cell is implementation defined; the maximum and minimum values are  
+in the predefined constants cellmax and cellmin. There are similar predefined
 constants for characters. One may safely assume, however, that both the size
-of a character in bytes and the size of a cell in bytes are powers of
-two.
+of a character in bytes and the size of a cell in bytes are powers of two.
 
 The char operator allows you to determine how many packed characters fit in
 a cell. For example:
 
-#if 4 char == 1
+```c
 
-/_ code that assumes 4 packed characters per cell _/
+#if     4 char == 1
+    /* code that assumes 4 packed characters per cell */
 #elseif 4 char == 2
-
-/_ code that assumes 2 packed characters per cell _/
+    /* code that assumes 2 packed characters per cell */
 #elseif 4 char == 4
-
-/_ code that assumes 1 packed character per cell _/
+    /* code that assumes 1 packed character per cell */
 #else
-
-#assert 0 /_ unsupported cell/character size _/
+    #assert 0 /* unsupported cell/character size */
 #endif
 
-• Internationalization
+```
+
+### • Internationalization
 
 Programming examples in this manual have used the English language for
 all output (prompts, messages, . . . ), and a Latin character set. This
-is not
-necessarily so; one can, for example, modify the first “hello world” program on
-page 5 to:
+is not necessarily so; one can, for example, modify the first “hello world” program on page 5 to:
 
 Listing: “hello world” in Greek
 
+```c
+
 main()
+    printf "˙  ˙\n"
 
-printf " ˙ ˙ \n"
+```
 
-pawn has basic support for non-Latin alphabets, but it only accepts non-Latin
-characters in strings and character constants. The pawn language
-requires
-that all keywords and symbols (names of functions, variables, tags and other
+PAWN has basic support for non-Latin alphabets, but it only accepts non-Latin
+characters in strings and character constants. The PAWN language
+requires that all keywords and symbols (names of functions, variables, tags and other
 elements) be encoded in the ascii character set.
 
 For languages whose required character set is relatively small, a common solu-
@@ -7717,54 +7186,44 @@ known character set is “Latin-1”, which is standardized as ISO 8859-1 —the
 same set also goes by the name “codepage 1252”, at least for Microsoft Win-
 dows.∗ Codepages have been defined for many languages; for example, ISO
 8859-2 (“Latin-2”) has glyphs used in Central and Eastern Europe, and ISO
-8859-7 contains the Greek alphabet in the upper half of the extended ascii
-set.
+8859-7 contains the Greek alphabet in the upper half of the extended ascii set.
 
 Unfortunately, codepage selection can by confusing, as vendors of operating
 systems typically created their own codepages irrespective of what  
-already
-existed. As a result, for most character sets there exist multiple
-incompatible
+already existed. As a result, for most character sets there exist multiple incompatible codepages
 
-∗ Codepage 1252 is not exactly the same as Latin-1; Microsoft
-extended the standardized set
-to include glyphs at code positions that Latin-1 marks as “reserved”.
+---
 
-codepages. For example, codepage 1253 for Microsoft Windows also encodes
+###### ∗ Codepage 1252 is not exactly the same as Latin-1; Microsoft extended the standardized set to include glyphs at code positions that Latin-1 marks as “reserved”.
+
+---
+
+For example, codepage 1253 for Microsoft Windows also encodes
 the Greek alphabet, but it is incompatible with ISO 8859-7. When writing
 texts in Greek, it now becomes important to check what encoding is  
-used,
-because many Microsoft Windows applications support both.
+used, because many Microsoft Windows applications support both.
 
 When the character set for a language exceeds 256 glyphs, a codepage does
 not suffice. Traditionally, the codepage technique was extended by reserving
 special “shift” codes in the base character set that switch to a new set of
-glyphs.
-The next character then indicates the specific glyph. In effect, the glyph is
-now
-identified by a 2-byte index. On the other hand, some characters (especially
-
+glyphs. The next character then indicates the specific glyph. In effect, the glyph is
+now identified by a 2-byte index. On the other hand, some characters (especially
 the 7-bit ascii set) can still be indicated by a single byte. The  
-“Shift-JIS”
-standard, for the Japanese character set, is an example for the variable length
-encoding.
+“Shift-JIS” standard, for the Japanese character set, is an example for the variable length encoding.
 
 Codepages become problematic when interchanging documents or data with
 people in regions that use a different codepage, or when using different
-lan-
-guages in the same document. Codepages that use “shift” characters compli-
+languages in the same document. Codepages that use “shift” characters compli-
 cate the matter further, because text processing must now take into account
 that a character may take either one or two bytes. Scanning through a string
 from right to left may even become impossible, as a byte may either indicate a
 glyph from the base set (“unshifted”) or it may be a glyph from a shifted set
-
-—in the latter case the preceding byte indicates the shift set, but the meaning
+-in the latter case the preceding byte indicates the shift set, but the meaning
 of the preceding character depends on the character before that.
 
 The ISO/IEC 10646 “Universal Character Set” (UCS) standard has the ambi-
 tious goal to eventually include all characters used in all the written
-languages
-in the world, using a 31-bit character set. This solves both of the problems
+languages in the world, using a 31-bit character set. This solves both of the problems
 related to codepages and “shifted” character sets. However, the ISO/IEC body
 could not produce a standard in time, and therefore a consortium of mainly
 American software manufacturers started working in parallel on a simplified
@@ -7775,117 +7234,94 @@ be sufficient.† In practice, though, Unicode does encode glyphs and not long
 after it appeared, it became apparent that 65,536 code points would not be
 enough. To counter this, later Unicode versions were extended with multiple
 “planes” and special codes that select a plane. The combination of a  
-plane
-selector and the code pointer inside that plane is called a “surrogate
-pair”.
+plane selector and the code pointer inside that plane is called a “surrogate pair”.
 
-† If Unicode encodes characters, an “Unicode font” is a contradictio
-in terminis —because a
-font encodes glyphs.
+---
+
+###### † If Unicode encodes characters, an “Unicode font” is a contradictio in terminis —because a font encodes glyphs.
+
+---
 
 The first 65,536 code points are in the “Basic Multilingual Plane” (BMP) and
 characters in this set do not need a plane selector.
 
 Essentially, the introduction of surrogate pairs in the Unicode  
-standard is
-equivalent to the shift codes of earlier character sets —and it carries some of
+standard is equivalent to the shift codes of earlier character sets —and it carries some of
 the problems that Unicode was intended to solve. The UCS-4 encoding by
 ISO/IEC 10646 does not have/need surrogate pairs.
 
 Support for Unicode/UCS-4 in (host) applications and operating systems has
 emerged in two different ways: either the internal representation of characters
 is multi-byte (typically 16-bit, or 2-byte), or the application stores strings
-in-
-ternally in UTF-8 format, and these strings are converted to the proper glyphs
+internally in UTF-8 format, and these strings are converted to the proper glyphs
 only when displaying or printing them. Recent versions of Microsoft Windows
 use Unicode internally; The Plan-9 operating system pioneered the UTF-8 en-
 coding approach, which is now widely used in Unix/Linux. The  
-advantage
-of UTF-8 encoding as an internal representation is that it is physically an 8-
+advantage of UTF-8 encoding as an internal representation is that it is physically an 8-
 bit encoding, and therefore compatible with nearly all existing databases, file
 formats and libraries. This circumvents the need for double entry-points for
 functions that take string parameters —as is the case in Microsoft Windows,
-where many functions exist in an “A”nsi and a “W”ide version. A disadvan-
-
-tage of UTF-8 is that it is a variable length encoding, and many in-memory
-
+where many functions exist in an “A”nsi and a “W”ide version. A disadvantage of UTF-8
+is that it is a variable length encoding, and many in-memory
 string operations are therefore clumsy (and inefficient). That said, with the
 appearance of surrogate pairs, Unicode has now also become a variable length
 encoding.
 
-The pawn language requires that its keywords and symbols names are in ascii,
+The PAWN language requires that its keywords and symbols names are in ascii,
 and it allows non-ascii characters in strings. There are five ways that a host
 application could support non-ascii characters in strings and character
 literals:
 
 1 Support codepages: in this strategy the entire complexity of choosing the
-correct glyphs and fonts is delegated to the host application. The codepage
-support is based on codepage mapping files with a file format of the “cross
-mapping tables” distributed by the Unicode consortium.
+  correct glyphs and fonts is delegated to the host application. The codepage
+  support is based on codepage mapping files with a file format of the “cross
+  mapping tables” distributed by the Unicode consortium.
 
-2 Support Unicode or UCS-4 and let the pawn compiler convert scripts that
-were written using a codepage to “wide” characters: for this strategy, you
-need to set #pragma codepage or use the equivalent compiler option. The
-compiler will only correctly translate characters in unpacked strings.
+2 Support Unicode or UCS-4 and let the PAWN compiler convert scripts that
+  were written using a codepage to “wide” characters: for this strategy, you
+  need to set #pragma codepage or use the equivalent compiler option. The
+  compiler will only correctly translate characters in unpacked strings.
 
-3 Support Unicode or UCS-4 and let the pawn compiler convert scripts en-
-coded in UTF-8 to “wide” characters: when the source file for the pawn
-
-Packed & unpacked
-strings: 99
-
-compiler is in UTF-8 encoding, the compiler expands characters to Uni-
-code/UCS-4 in unpacked strings.
+3 Support Unicode or UCS-4 and let the PAWN compiler convert scripts encoded
+  in UTF-8 to “wide” characters: when the source file for the PAWN
+  compiler is in UTF-8 encoding, the compiler expands characters to Unicode/UCS-4 in unpacked strings.
 
 4 Support UTF-8 encoding internally (in the host application) and write the
-source file in UTF-8 too: all strings should now be packed strings to avoid
-the compiler to convert them.
+  source file in UTF-8 too: all strings should now be packed strings to avoid
+  the compiler to convert them.
 
 For most internationalization strategies, as you can see, the host application
-needs to support Unicode or UCS-4. As a side note, the pawn compiler does not
+needs to support Unicode or UCS-4. As a side note, the PAWN compiler does not
 generate Unicode surrogate pairs. If characters outside the BMP are needed
 
 and the host application (or operating system) does not support the full UCS-4
 encoding, the host application must split the 32-bit character cell provided
-by the pawn compiler into a surrogate pair.
+by the PAWN compiler into a surrogate pair.
 
-The pawn compiler accepts a source file as an UTF-8 encoded text file —see
+The PAWN compiler accepts a source file as an UTF-8 encoded text file —see
 page 168. When the source file is in UTF-8 encoding, “wide” characters in
 an unpacked string are stored as multi-byte Unicode/UCS-4 characters; wide
 characters in a packed string remain in UTF-8 encoding. To write  
-source
-
-files in UTF-8 encoding, you need, of course, a (programmer’s) editor  
-that
-supports UTF-8. Codepage translation does not apply for files that  
-are in
-UTF-8 encoding.
+source files in UTF-8 encoding, you need, of course, a (programmer’s) editor  
+that supports UTF-8. Codepage translation does not apply for files that  
+are in UTF-8 encoding.
 
 For an occasional Unicode character in a literal string, an alternative is that
-you
-
-Escape sequence: 99 use an escape sequence. As Unicode character tables
-are usually documented
-
-with hexadecimal glyph indices, the xhhh; sequence is probably the  
-more
-convenient specification of a random Unicode character. For example,  
-the
-escape sequence “\x2209” stands for the “6∈” character.
+you use an escape sequence. As Unicode character tables
+are usually documented with hexadecimal glyph indices, the xhhh; sequence is probably the  
+more convenient specification of a random Unicode character. For example,  
+the escape sequence “\x2209” stands for the “6∈” character.
 
 There is a lot more to internationalization than just basic support for extended
 character sets, such as formatting date & time fields, reading order
-(left-to-
-right or right-to-left) and locale-driven translation of system messages. The
-pawn toolkit delegates these issues to the host application.
+(left-to-right or right-to-left) and locale-driven translation of system messages. The
+PAWN toolkit delegates these issues to the host application.
 
-• Working with tags
+### • Working with tags
 
-The tag name system was invented to add a “usage checking” mechanism to
-Tag names: 68 pawn. A tag denotes a “purpose” of a value or
-variable, and the pawn compiler
+The tag name system was invented to add a “usage checking” mechanism to PAWN.
+A tag denotes a “purpose” of a value or variable, and the PAWN compiler
 issues a diagnostic message when the tag of an expression does not match the
-
 required tag for the context of the expression.
 
 Many modern computer languages offer variable types, where a type specifies
@@ -7893,19 +7329,18 @@ the memory layout and the purpose of the variable. The programming language
 
 then checks the type equivalence; the pascal language is very strict at checking
 type equality, whereas the C programming language is more forgiving. The
-pawn language does not have types: all variables have the size and the layout
+PAWN language does not have types: all variables have the size and the layout
 of a cell, although bit representations in the cell may depend on the purpose
 of the variable. In summary:
 
-a type specifies the memory layout and the range of variables and function
-results
+- a type specifies the memory layout and the range of variables and function results
 
-a tagname labels the purpose of variables, constants and function results
+- a tagname labels the purpose of variables, constants and function results
 
-Tags in pawn are mostly optional. A program that was “fortified” with tag
+Tags in PAWN are mostly optional. A program that was “fortified” with tag
 names on the variable and constant declarations will function identically when
 all tag names are removed. One exception is formed by user-defined operators:
-the pawn compiler uses the tags of the operands to choose between any user-
+the PAWN compiler uses the tags of the operands to choose between any user-
 defined operators and the standard operator.
 
 The snippet below declares three variables and does three assignments, two of
@@ -7913,14 +7348,17 @@ which give a “tag mismatch” diagnostic message:
 
 Listing: comparing apples to oranges
 
-new apple:elstar /_ variable "elstar" with tag "apple" _/
-new orange:valencia /_ variable "valencia" with tag "orange" _/
-new x /_ untagged variable "x" _/
+```c
 
-elstar = valencia /_ tag mismatch _/
-elstar = x /_ tag mismatch _/
+new apple:elstar                /* variable "elstar" with tag "apple" */
+new orange:valencia             /* variable "valencia" with tag "orange" */
+new x                           /* untagged variable "x" */
 
-x = valencia /_ ok _/
+elstar = valencia               /* tag mismatch */
+elstar = x                      /* tag mismatch */
+x = valencia                    /* ok */
+
+```
 
 The first assignment causes a “tag mismatch” diagnostic as it assigns an “or-
 ange” tagged variable to a variable with an “apple” tag. The second assignment
@@ -7940,36 +7378,26 @@ For example, with the declarations of the previous code snippet, if you would
 wish to compare apples with oranges (recent research indicates that comparing
 apples to oranges is not as absurd than popular belief holds), you could use:
 
-User-defined opera-
-tors: 86
-
-More tag name
-rules: 68
-
-lvalue (definition of
-
-~): 104
+```c
 
 if (apple:valencia < elstar)
-valencia = orange:elstar
+    valencia = orange:elstar
+
+``
 
 The test expression of the if statement (between parentheses) compares the
 variable valencia to the variable elstar. To avoid a “tag mismatch” diagnos-
 tic, it puts a tag override apple: on valencia —after that, the expressions
 on the left and the right hands of the > operator have the same tag  
-name:
-“apple:”. The second line, the assignment of elstar to valencia, overrides
+name: “apple:”. The second line, the assignment of elstar to valencia, overrides
 the tag name of elstar or orange: before the assignment. In an assignment,
 you cannot override the tag name of the destination; i.e., the left hand of
-the
-
-= operator. It is an error to write “apple:valencia = elstar”. In the as-
+the = operator. It is an error to write “apple:valencia = elstar”. In the as-
 signment, valencia is an “lvalue” and you cannot override the tag name of an
 lvalue.
 
 As shown earlier, when the left hand of an assignment holds an  
-untagged
-variable, the expression on the right hand may have any weak tag name. When
+untagged variable, the expression on the right hand may have any weak tag name. When
 used as an lvalue, an untagged variable is compatible with all weak tag names.
 Or rather, a weak tag is silently dropped when it is assigned to an untagged
 variable or when it is passed to a function that expects an untagged argument.
@@ -7979,26 +7407,26 @@ immediately obvious:
 
 Listing: bad way of using tags
 
+```c
+
 #pragma rational float
 
 new limit = -5.0
 new value = -1.0
 
 if (value < limit)
-
-printf("Value %f below limit %f\n", value, limit)
-
+    printf("Value %f below limit %f\n", value, limit)
 else
+    printf("Value above limit\n")
 
-printf("Value above limit\n")
+```
 
 Through the “#pragma rational”, all rational numbers receive the “float”
 tag name and these numbers are encoded in the 4-byte IEEE 754 format. The
 snippet declares two variables, limit and value, both of which are untagged
 (this is the error). Although the literal values -5.0 and -1.0 are implicitly
 tagged with float:, this weak tag is silently dropped when the values  
-get
-assigned to the untagged symbols limit and value. Now, the if statement
+get assigned to the untagged symbols limit and value. Now, the if statement
 compares value to limit as integers, using the built-in standard < operator
 (a user-defined operator would be more appropriate to compare two IEEE 754
 encoded values). When run, this code snippet tells us that “Value -1.000000
@@ -8008,10 +7436,11 @@ To avoid such subtle errors to go undetected, one should use strong tags. A
 strong tag is merely a tag name that starts with an upper case letter, such
 as Float: instead of float:. A strong tag is never automatically “dropped”,
 but it may still be explicitly overridden. Below is a modified code snippet
-with
-the proposed adaptations:
+with the proposed adaptations:
 
 Listing: strong tags are safer
+
+```c
 
 #pragma rational Float
 
@@ -8019,39 +7448,35 @@ new Float:limit = -5.0
 new Float:value = -1.0
 
 if (value < limit)
-
-printf("Value %f below limit %f\n", _:value, _:limit)
-
+    printf("Value %f below limit %f\n", _:value, _:limit)
 else
+    printf("Value above limit\n")
 
-printf("Value above limit\n")
+```
 
 Forgetting the Float: tag name in the declaration of the variables  
-limit
-or value immediately gives a “tag mismatch” diagnostic, because the literal
+limit or value immediately gives a “tag mismatch” diagnostic, because the literal
 values -5.0 and -1.0 now have a strong tag name.
 
 printf is a general purpose function that can print strings and values in
-various
-formats. To be general purpose, printf accepts arguments with any weak tag
+various formats. To be general purpose, printf accepts arguments with any weak tag
 name, be it apple:’s, orange:’s, or something else. The printf
-function
-does this by accepting untagged arguments —weak tags are dropped when an
+function does this by accepting untagged arguments —weak tags are dropped when an
 untagged argument is expected. Strong tags, however, are never dropped, and
 in the above snippet (which uses the original definition of printf), I
-needed
-to put an empty tag override, “\_:”, before the variables value and limit in
+needed to put an empty tag override, “\_:”, before the variables value and limit in
 the first printf call.
 
 There is an alternative to untagging expressions with strong tag names in gen-
 eral purpose functions: adjust the definition of the function to accept both
-all
-weak tags and a selective set of strong tag names. The pawn language sup-
-ports multiple tag names for every function arguments. The original definition
+all weak tags and a selective set of strong tag names. The PAWN language supports
+multiple tag names for every function arguments. The original definition of printf (from the file console.inc) is:
 
-of printf (from the file console.inc) is:
+```c
 
 native printf(const format[], ...);
+
+```
 
 By adding both a Float: tag and an empty tag in front of the ellipsis (“...”),
 printf will accept arguments with the Float: tag name, arguments without
@@ -8062,7 +7487,11 @@ add the empty tag specification to the list of tag names, because printf would
 otherwise only accept arguments with a Float: tag name. Below is the new
 definition of the function printf:
 
+```c
+
 native printf(const format[], {Float, \_}: ...);
+
+```
 
 Plural tags allow you to write a single function that accepts cells with a pre-
 cisely specified subset of tags (strong and/or weak). While a function argument
@@ -8078,99 +7507,134 @@ have the first tag in the tag list in the declaration of the function argument.
 You can check the tag of the actual argument by adding an extra argument
 to the function, and set its default value to be the “tagof” of the argument
 in question. Similar to the sizeof operator, the tagof operator has a special
-
-Directives: 77 meaning when it is applied in a default value of
-a function argument: the ex-
-
-pression is evaluated at the point of the function call, instead of at the
-function
-definition. This means that the “default value” of the function argument is
+meaning when it is applied in a default value of
+a function argument: the expression is evaluated at the point of the function call,
+instead of at the function definition.
+This means that the “default value” of the function argument is
 the actual tag of the parameter passed to the function.
 
 Inside the body of the function, you can compare the tag to known tags by,
 again, using the tagof operator.
 
-• Concatenating lines
+### • Concatenating lines
 
-pawn is a free format language, but the parser directives must be on a single
-
-Directives: 117 line. Strings may not run over several lines
-either. When this is inconvenient,
+PAWN is a free format language, but the parser directives must be on a single line.
+Strings may not run over several lines either. When this is inconvenient,
 you can use a backslash character (“\”) at the end of a line to “glue” that
-line
+line with the next line.
 
-with the next line.
 For example:
 
-#define max_path max_drivename + max_directorystring + \
+```c
 
-max_filename + max_extension
+#define             max_path max_drivename + max_directorystring + \
+                    max_filename + max_extension
+
+```
 
 You also use the concatenation character to cut long literal strings over
-multiple
-lines. Note that the “\” eats up all trailing white space that comes after it
+multiple lines. Note that the “\” eats up all trailing white space that comes after it
 and leading white space on the next line. The example below prints “Hello
 world” with one space between the two words (because there is a space between
 ”Hello” and the backslash):
 
+```c
+
 print("Hello \
+      world")
 
-world")
+```
 
-• A program that generates its own source code
+### • A program that generates its own source code
 
 An odd, slightly academic, criterion to quantify the “expressiveness” of a pro-
 gramming language is size of the smallest program that, upon execution, re-
 generates its own source code. The rationale behind this criterion  
-is that
-the shorter the self-generating program, the more flexible and expressive the
+is that the shorter the self-generating program, the more flexible and expressive the
 language must be. Programs of this kind have been created for many program-
 ming languages —sometimes surprisingly small, as for languages that have a
 built-in reflective capabilities.
 
 Self-generating programs are called “quines”, in honour of the  
-philosopher
-Willard Van Orman Quine who wrote self-creating phrases in natural language.
+philosopher Willard Van Orman Quine who wrote self-creating phrases in natural language.
 The work of Van Orman Quine became well known through the books “G¨odel,
 Escher, Bach” and “Metamagical Themas” by Douglas Hofstadter.
 
-The pawn quine is in the example below; it is modelled after the famous “C”
+The PAWN quine is in the example below; it is modelled after the famous “C”
 quine (of which many variations exist). At 77 characters, it is amongst the
 smallest versions for the class of imperative programming languages, and the
-
 size can be reduced to 73 characters by removing four “space” characters that
 were left in for readability.
 
 Listing: quine.p
 
-new s[]="new s[]=%c%s%c; main() printf s,34,s,34"; main() printf  
-s,34,s,34
+```c
 
-148
+    new s[]="new s[]=%c%s%c; main() printf s,34,s,34"; main() printf s,34,s,34
 
-Error and warning messages
+```
 
-appendix a
+</div>
 
-When the compiler finds an error in a file, it outputs a message giving, in this
-order:
+<hr>
 
-the name of the file
+<div align="right">
 
-the line number were the compiler detected the error between parentheses,
-directly behind the filename
+`See the separate application note for proposed native functions that operate on both packed and unpacked strings`
 
-the error class (“error”, “fatal error” or “warning”)
+`EOS: predefined constant to mark the End Of String; it has the value ’\0’`
 
-an error number
+`Predefined constants: 102`
 
-a descriptive error message
+`Packed & unpacked strings: 99`
+
+`Escape sequence: 99`
+
+`Tag names: 68`
+
+`User-defined operators: 86`
+
+`More tag name rules: 68`
+
+`lvalue (definition of ~): 104`
+
+`Directives: 77`
+
+`Directives: 117`
+
+<hr>
+
+</div>
+
+<div align="center">
+
+# APPENDICES
+
+---
+
+# Error and warning messages
+
+---
+
+</div>
+
+<div align="left">
+
+When the compiler finds an error in a file, it outputs a message giving, in this order:
+
+- the name of the file
+
+- the line number were the compiler detected the error between parentheses, directly behind the filename
+
+- the error class (“error”, “fatal error” or “warning”)
+
+- an error number
+
+- a descriptive error message
 
 For example:
 
-demo.p(3) : error 001: expected token: ";", but found
-
-"{"
+    demo.p(3) : error 001: expected token: ";", but found "{"
 
 Note: the line number given by the compiler may specify a position behind the
 actual error, since the compiler cannot always establish an error before having
@@ -8178,1127 +7642,457 @@ analyzed the complete expression.
 
 After termination, the return code of the compiler is:
 
-0 no errors —there may be warnings, though
+    0   no errors —there may be warnings, though
+    1   errors found
+    2   reserved
+    3   aborted by user
 
-1 errors found
+These return codes may be checked within batch processors (such as the “make” utility).
 
-2 reserved
-
-3 aborted by user
-
-These return codes may be checked within batch processors (such as the “make”
-utility).
-
-• Error categories
+### • Error categories
 
 Errors are separated into three classes:
 
-Errors Describe situations where the compiler is unable to
-generate
-appropriate code. Errors messages are numbered from 1 to 99.
-
-Fatal errors Fatal errors describe errors from which the compiler cannot
-re-
-cover. Parsing is aborted. Fatal error messages are numbered
-from 100 to 199.
-
-Warnings Warnings are displayed for unintended compiler assumptions
-and common mistakes. Warning messages are numbered from
-200 to 299.
-
-• Errors
-
-001 expected token: token, but found token
-
-A required token is omitted.
-
-002 only a single statement (or expression) can follow each
-
-“case”
-
-Every case in a switch statement can hold exactly one statement. To
-put multiple statements in a case, enclose these statements between
-braces (which creates a combound statement).
-
-003 declaration of a local variable must appear in a compound
-block
-
-The declaration of a local variable must appear between braces
-(“{. . . }”) at the active scope level.
-
-When the parser flags this error, a variable declaration appears as
-the only statement of a function or the only statement below an if,
-else, for, while or do statement. Note that, since local variables
-are accessible only from (or below) the scope that their declaration
-appears in, having a variable declaration as the only statement at
-any scope is useless.
-
-004 function name is not implemented
-
-There is no implementation for the designated function. The function
-may have been “forwardly” declared —or prototyped— but the full
-function definition including a statement, or statement block, is
-missing.
-
-005 function may not have arguments
-
-The function main() is the program entry point. It may not have
-arguments.
-
-006 must be assigned to an array
-
-String literals or arrays must be assigned to an array. This error
-message may also indicate a missing index (or indices) at the array
-on the right side of the “=” sign.
-
-007 operator cannot be redefined
-
-Only a select set of operators may be redefined, this operator is not
-one of them. See page 86 for details.
-
-Pitfalls: 134
-
-Compound state-
-ment: 112
-
-Compound state-
-ment: 112
-
-Forward declaration:
-82
-
-008 must be a constant expression; assumed zero
-
-The size of arrays and the parameters of most directives must be
-constant values.
-
-009 invalid array size (negative or zero)
-
-The number of elements of an array must always be 1 or more.
-
-010 illegal function or declaration
-
-The compiler expects a declaration of a global variable or of a
-function at the current location, but it cannot interpret it as such.
-
-011 invalid outside functions
-
-The instruction or statement is invalid at a global level. Local labels
-and (compound) statements are only valid if used within functions.
-
-012 invalid function call, not a valid address
-
-The symbol is not a function.
-
-013 no entry point (no public functions)
-
-The file does not contain a main function or any public function. The
-compiled file thereby does not have a starting point for the execution.
-
-014 invalid statement; not in switch
-
-The statements case and default are only valid inside a switch
-
-statement.
-
-015 “default” must be the last clause in switch statement
-
-pawn requires the default clause to be the last clause in a switch
-
-statement.
-
-016 multiple defaults in “switch”
-
-Each switch statement may only have one default clause.
-
-017 undefined symbol symbol
-
-The symbol (variable, constant or function) is not declared.
-
-018 initialization data exceeds declared size
-
-Initialization: 65 An array with an explicit  
-size is initialized, but the number of
-
-initiallers exceeds the number of elements specified. For example, in
-“arr[3]={1,2,3,4};” the array is specified to have three elements,
-but there are four initiallers.
-
-019 not a label: name
-
-A goto statement branches to a symbol that is not a label.
-
-020 invalid symbol name
-
-A symbol may start with a letter, an underscore or an “at” sign
-(“@”) and may be followed by a series of letters, digits, underscore
-characters and “@” characters.
-
-021 symbol already defined: identifier
-
-The symbol was already defined at the current level.
-
-022 must be lvalue (non-constant)
-
-The symbol that is altered (incremented, decremented, assigned a
-value, etc.) must be a variable that can be modified (this kind
-of variable is called an lvalue). Functions, string literals, arrays
-and constants are no lvalues. Variables declared with the “const”
-attribute are no lvalues either.
-
-023 array assignment must be simple assignment
-
-When assigning one array to another, you cannot combine an
-arithmetic operation with the assignment (e.g., you cannot use the
-“+=” operator).
-
-024 “break” or “continue” is out of context
-
-The statements break and continue are only valid inside the
-context of a loop (a do, for or while statement). Unlike the
-languages C/C⁺⁺ and Java, break does not jump out of a switch
-statement.
-
-025 function heading differs from prototype
-
-The number of arguments given at a previous declaration of the
-function does not match the number of arguments given at the
-current declaration.
-
-026 no matching “#if...”
-
-The directive #else or #endif was encountered, but no matching
-
-#if directive was found.
-
-027 invalid character constant
-
-One likely cause for this error is the occurrence of an unknown
-escape sequence, like “\x”. Putting multiple characters between
-single quotes, as in ’abc’ also issues this error message. A third
-cause for this error is a situation where a character constant was
-expected, but none (or a non-character expression) were provided.
-
-Symbol name syn-
-tax: 97
-
-Escape sequence: 99
-
-Empty compound
-block: 112
-
-028 invalid subscript (not an array or too many subscripts):
-
-identifier
-
-The subscript operators “[” and “]” are only valid with arrays.
-The number of square bracket pairs may not exceed the number of
-dimensions of the array.
-
-029 invalid expression, assumed zero
-
-The compiler could not interpret the expression.
-
-030 compound statement not closed at the end of file
-
-An unexpected end of file occurred. One or more compound
-statements are still unfinished (i.e. the closing brace “ ” has not
-been found).
-
-031 unknown directive
-
-The character “#” appears first at a line, but no valid directive was
-specified.
-
-032 array index out of bounds
-
-The array index is larger than the highest valid entry of the array.
-
-033 array must be indexed (variable name)
-
-An array as a whole cannot be used in a expression; you must
-indicate an element of the array between square brackets.
-
-034 argument does not have a default value (argument index )
-You can only use the argument placeholder when the function
-definition specifies a default value for the argument.
-
-035 argument type mismatch (argument index )
-
-The argument that you pass is different from the argument that
-the function expects, and the compiler cannot convert the passed-in
-argument to the required type. For example, you cannot pass the
-literal value “1” as an argument when the function expects an array
-or a reference.
-
-036 empty statement
-
-The line contains a semicolon that is not preceded by an expression.
-pawn does not support a semicolon as an empty statement, use an
-empty compound block instead.
-
-037 invalid string (possibly non-terminated string)
-
-A string was not well-formed; for example, the final quote that ends
-a string is missing, or the filename for the #include directive was
-not enclosed in double quotes or angle brackets.
-
-038 extra characters on line
-
-There were trailing characters on a line that contained a directive (a
-directive starts with a # symbol, see page 117).
-
-039 constant symbol has no size
-
-A variable has a size (measured in a number of cells), a constant
-has no size. That is, you cannot use a (symbolic) constant with the
-sizeof operator, for example.
-
-040 duplicate “case” label (value value)
-
-A preceding “case label” in the list of the switch statement evaluates
-to the same value.
-
-041 invalid ellipsis, array size is not known
-
-You used a syntax like “arr[] = { 1, ... };”, which is invalid,
-because the compiler cannot deduce the size of the array from the
-declaration.
-
-042 invalid combination of class specifiers
-
-A function or variable is denoted as both “public” and “native”,
-which is unsupported. Other compinations may also be unsupported;
-for example, a function cannot be both “public” and “stock” (a
-variable may be declared both “public” and “stock”).
-
-043 character constant exceeds range for packed string
-
-Usually an attempt to store a Unicode character in a packed string
-where a packed character is 8-bits.
-
-044 mixing named and positional parameters
-
-You must either use named parameters or positional parameters for
-all parameters of the function.
-
-045 too many function arguments
-
-The maximum number of function arguments is currently limited to 64.
-
-046 unknown array size (variable name)
-
-For array assignment, the size of both arrays must be explicitly
-defined, also if they are passed as function arguments.
-
-Single line comment:
-97
-
-047 array sizes do not match, or destination array is too  
-small
-For array assignment, the arrays on the left and the right side of the
-assignment operator must have the same number of dimensions. In
-addition:
-
-for multi-dimensional arrays, both arrays must have the same size;
-for single arrays with a single dimension, the array on the left side
-of the assignment operator must have a size that is equal or bigger
-than the one on the right side.
-
-When passing arrays to a function argument, these rules also hold for
-the array that is passed to the function (in the function call) versus
-the array declared in the function definition.
-
-When a function returns an array, all return statements must specify
-an array with the same size and dimensions.
-
-048 array dimensions do not match
-
-For an array assignment, the dimensions of the arrays on both sides
-of the “=” sign must match; when passing arrays to a function
-argument, the arrays passed to the function (in the function call)
-must match with the definition of the function arguments.
-
-When a function returns an array, all return statements must specify
-an array with the same size and dimensions.
-
-049 invalid line continuation
-
-A line continuation character (a backslash at the end of a line) is at
-an invalid position, for example at the end of a file or in a single line
-comment.
-
-050 invalid range
-
-A numeric range with the syntax “n1 .. n2”, where n1 and n2 are
-numeric constants, is invalid. Either one of the values in not a valid
-number, or n1 is not smaller than n2.
-
-051 invalid subscript, use “[ ]” operators on major dimensions
-You can use the “array character index” operator (braces: “{ }”
-only for the last dimension. For other dimensions, you must use the
-cell index operator (square brackets: “[ ]”).
-
-052 multi-dimensional arrays must be fully initialized
-
-If an array with more than one dimension is initialized at its
-declaration, then there must be equally many literal vectors/sub-
-
-arrays at the right of the equal sign (“=”) as specified for the major
-dimension(s) of the array.
-
-053 exceeding maximum number of dimensions
-
-The current implementation of the pawn compiler only supports
-arrays with one or two dimensions.
-
-054 unmatched closing brace
-
-A closing brace (“}”) was found without matching opening brace
-(“{”).
-
-055 start of function body without function header
-
-An opening brace (“{”) was found outside the scope of a function.
-This may be caused by a semicolon at the end of a preceding function
-header.
-
-056 local variables and function arguments cannot be public
-A local variable or a function argument starts with the character
-“@”, which is invalid.
-
-057 Unfinished expression before compiler directive
-
-Compiler directives may only occur between statements, not inside a
-statement. This error typically occurs when an expression statement
-is split over multiple lines and a compiler directive appears between
-the start and the end of the expression. This is not supported.
-
-058 duplicate argument; same argument is passed twice
-
-In the function call, the same argument appears twice, possibly
-through a mixture of named and positional parameters.
-
-059 function argument may not have a default value (variable
-
-name)
-
-All arguments of public functions must be passed explicitly. Public
-functions are typically called from the host application, who has
-no knowledge of the default parameter values. Arguments of user
-defined operators are implied from the expression and cannot be
-inferred from the default value of an argument.
-
-060 multiple “#else” directives between “#if . . . #endif
-
-Two or more #else directives appear in the body between the
-matching #if and #endif.
-
-Named versus po-
-sitional parameters:
-74
-
-061 “#elseif” directive follows an “#else” directive
-
-All #elseif directives must appear before the #else directive. This
-error may also indicate that an #endif directive for a higher level is
-missing.
-
-062 number of operands does not fit the operator
-
-When redefining an operator, the number of operands that the
-operator has (1 for unary operators and 2 for binary operators) must
-be equal to the number of arguments of the operator function.
-
-063 operator requires that the function result has a “bool” tag
-Logical and relational operators are defined as having a result that is
-either true (1) or false (0) and having a “bool” tag. A user defined
-operator should adhere to this definition.
-
-064 cannot change predefined operators
-
-One cannot define operators to work on untagged values, for example,
-because pawn already defines this operation.
-
-065 function argument may only have a single tag (argument
-
-number)
-
-In a user defined operator, a function argument may not have
-multiple tags.
-
-066 function argument may not be a reference argument or an
-array (argument number)
-
-In a user defined operator, all arguments must be cells (non-arrays)
-that are passed “by value”.
-
-067 variable cannot be both a reference and an array (variable
-
-name)
-
-A function argument may be denoted as a “reference” or as an array,
-but not as both.
-
-068 invalid rational number precision in #pragma
-
-The precision was negative or too high. For floating point rational
-numbers, the precision specification should be omitted.
-
-069 rational number format already defined
-
-This #pragma conflicts with an earlier #pragma that specified a
-different format.
-
-070 rational number support was not enabled
-
-A rational literal number was encountered, but the format for rational
-numbers was not specified.
-
-#pragma rational:
-121
-
-071 user-defined operator must be declared before use (function
-
-name)
-
-Like a variable, a user-defined operator must be declared before its
-first use. This message indicates that prior to the declaration of
-the user-defined operator, an instance where the operator was used
-on operands with the same tags occurred. This may either indicate
-that the program tries to make mixed use of the default operator
-and a user-defined operator (which is unsupported), or that the
-user-defined operator must be “forwardly declared”.
-
-072 “sizeof ” operator is invalid on “function” symbols
-
-You used something like “sizeof MyCounter” where the symbol
-“MyCounter” is not a variable, but a function. You cannot request
-the size of a function.
-
-073 function argument must be an array (argument name)
-
-The function argument is a constant or a simple variable, but the
-function requires that you pass an array.
-
-074 #define pattern must start with an alphabetic character
-Any pattern for the #define directive must start with a letter, an
-underscore (“\_”) or an “@”-character. The pattern is the first word
-that follows the #define keyword.
-
-075 input line too long (after substitutions)
-
-Either the source file contains a very long line, or text substitutions
-make a line that was initially of acceptable length grow beyond
-its bounds. This may be caused by a text substitution that
-causes recursive substitution (the pattern matching a portion of the
-replacement text, so that this part of the replacement text is also
-matched and replaced, and so forth).
-
-076 syntax error in the expression, or invalid function call
-
-The expression statement was not recognized as a valid statement
-(so it is a “syntax error”). From the part of the string that was
-parsed, it looks as if the source line contains a function call in a
-“procedure call” syntax (omitting the parentheses), but the function
-result is used —assigned to a variable, passed as a parameter, used
-
-Forward declaration:
-
-82
-
-in an expession. . .
-
-077 malformed UTF-8 encoding, or corrupted file: filename
-
-The file starts with an UTF-8 signature, but it contains encodings
-that are invalid UTF-8. If the source file was created by an
-editor or converter that supports UTF-8, the UTF-8 support is
-non-conforming.
-
-078 function uses both “return” and “return ¡value¿”
-
-The function returns both with and without a return value. The
-function should be consistent in always returning with a function
-result, or in never returning a function result.
-
-079 inconsistent return types (array & non-array)
-
-The function returns both values and arrays, which is not allowed.
-If a function returns an array, all return statements must specify an
-array (of the same size and dimensions).
-
-080 unknown symbol, or not a constant symbol (symbol name)
-Where a constant value was expected, an unknown symbol or a
-non-constant symbol (variable) was found.
-
-081 cannot take a tag as a default value for an indexed array
-parameter (symbol name)
-
-The tagof operator was used on an array parameter where the array
-also had an index. This is unsupported.
-
-082 user-defined operators and native functions may not have
-states
-
-Only standard and public functions may have states.
-
-083 a function or variable may only belong to a single automaton
-(symbol name)
-
-There are multiple automatons in the state declaration for the
-indicated function or variable, which is not supported. In the case
-of a function: all instances of the function must belong to the same
-automaton. In the case of a variable: it is allowed to have several
-variables with the same name belonging to different automatons, but
-only in separate declarations —these are distinct variables.
-
-084 state conflict: one of the states is already assigned  
-to
-
-State specifiers: 83 another implementation (symbol
-name)
-
-The specified state appears in the state specifier of two implementa-
-tions of the same function.
-
-085 no states are defined for symbol name
-
-When this error occurs on a function, this function has a fall-back
-implementation, but no other states. If the error refers to a variable,
-this variable does not have a list of states between the < and >
-characters. Use a state-less function ir variable instead.
-
-086 unknown automaton name
-
-The “state” statement refers to an unknown automaton.
-
-087 unknown state name for automaton name
-
-The “state” statement refers to an unknown state (for the specified
-automaton).
-
-088 public variables and local variables may not have states
-(symbol name)
-
-Only standard (global) variables may have a list of states (and an
-automaton) at the end of a declaration.
-
-089 state variables may not be initialized (symbol name)
-Variables with a state list attached may not have initializers. State
-variables should always be explicitly initialized, as their initial value
-is indeterminate.
-
-090 public functions may not return arrays (symbol name)
-
-A public function may not return an array. Returning arrays is
-allowed only for normal functions.
-
-• Fatal Errors
-
-100 cannot read from file: filename
-
-The compiler cannot find the specified file or does not have access to
-it.
-
-101 cannot write to file: filename
-
-The compiler cannot write to the specified output file, probably
-caused by insufficient disk space or restricted access rights (the file
-could be read-only, for example).
-
-Fall-back: 83
-
-102 table overflow: table name
-
-An internal table in the pawn parser is too small to hold the required
-data. Some tables are dynamically growable, which means that there
-was insufficient memory to resize the table. The “table name” is one
-of the following:
-
-“staging buffer”: the staging buffer holds the code generated for
-an expression before it is passed to the peephole optimizer. The
-staging buffer grows dynamically, so an overflow of the staging buffer
-basically is an “out of memory” error.
-
-“loop table”: the loop table is a stack used with nested do, for, and
-while statements. The table allows nesting of these statements up
-to 24 levels.
-
-“literal table”: this table keeps the literal constants (numbers,
-strings) that are used in expressions and as initiallers for arrays. The
-literal table grows dynamically, so an overflow of the literal table
-basically is an “out of memory” error.
-
-“compiler stack”: the compiler uses a stack to store temporary
-information it needs while parsing. An overflow of this stack is
-probably caused by deeply nested (or recursive) file inclusion. The
-compiler stack grows dynamically, so an overflow of the compiler
-stack basically is an “out of memory” error.
-
-“option table”: in case that there are more options on the command
-line or in the response file than the compiler can cope with.
-
-103 insufficient memory
-
-General “out of memory” error.
-
-104 invalid assembler instruction symbol
-
-An invalid opcode in an #emit directive.
-
-105 numeric overflow, exceeding capacity
-
-A numeric constant, notably a dimension of an array, is too large
-for the compiler to handle. For example, when compiled as a 16-bit
-application, the compiler cannot handle arrays with more than 32767
-elements.
-
-                                  106         compiled  script  exceeds  the
-
-maximum memory size (number
-
-See also #pragma
-
-amxlimit on page
-119
-
-bytes)
-
-The memory size for the abstract machine that is needed to run the
-script exceeds the value set with #pragma amxlimit. This means
-that the script is too large to be supported by the host. You might
-try reducing the script’s memory requirements by:
-
-setting a smaller stack/heap area —see #pragma dynamic at page
-121;
-
-using packed strings instead of unpacked strings —see pages 99
-and 137;
-
-putting repeated code in separate functions;
-
-putting repeated data (strings) in global variables;
-
-trying to find more compact algorithms to perform the same task.
-
-107 too many error/warning messages on one line
-
-A single line that causes several error/warning messages is often an
-indication that the pawn parser is unable to “recover” from an earlier
-error. In this situation, the parser is unlikely to make any sense of
-
-the source code that follows —producing only (more) inappropriate
-error messages. Therefore, compilation is halted.
-
-108 codepage mapping file not found
-
-The file for the codepage translation that was specified with the -c
-compiler option or the #pragma codepage directive could not be
-loaded.
-
-109 invalid path: path name
-
-A path, for example for include files or codepage files, is invalid.
-
-110 assertion failed: expression
-
-Compile-time assertion failed.
-
-111 user error: message
-
-The parser fell on an #error directive.
-
-• Warnings
-
-200 symbol is truncated to number characters
-
-The symbol is longer than the maximum symbol length. The
-maximum length of a symbol depends on wether the symbol is
-native, public or neither. Truncation may cause different symbol
-names to become equal, which may cause error 021 or warning 219.
-
-#pragma codepage:
-120
-
-#assert directive:
-117
-
-#error directive: 117
-
-User-defined opera-
-tors: 86
-
-Forward declaration:
-82
-
-201 redefinition of constant/macro (symbol name)
-
-The symbol was previously defined to a different value, or the text
-substitution macro that starts with the prefix name was redefined
-with a different substitution text.
-
-202 number of arguments does not match definition
-
-At a function call, the number of arguments passed to the function
-(actual arguments) differs from the number of formal arguments
-declared in the function heading. To declare functions with variable
-argument lists, use an ellipsis (...) behind the last known argument
-in the function heading; for example: print(formatstring,...);
-(see page 80).
-
-203 symbol is never used: identifier
-
-A symbol is defined but never used. Public functions are excluded
-from the symbol usage check (since these may be called from the
-outside).
-
-204 symbol is assigned a value that is never used: identifier
-
-A value is assigned to a symbol, but the contents of the symbol are
-never accessed.
-
-205 redundant code: constant expression is zero
-
-Where a conditional expression was expected, a constant expression
-with the value zero was found, e.g. “while (0)” or “if (0)”.
-
-The the conditional code below the test is never executed, and it is
-therefore redundant.
-
-206 redundant test: constant expression is non-zero
-
-Where a conditional expression was expected, a constant expression
-with a non-zero value was found, e.g. if (1). The test is redundant,
-because the conditional code is always executed.
-
-207 unknown “#pragma”
-
-The compiler ignores the pragma. The #pragma directives may
-change between compilers of different vendors and between different
-versions of a compiler of the same version.
-
-208 function with tag result used before definition, forcing
-reparse
-
-When a function is “used” (invoked) before being declared, and that
-function returns a value with a tag name, the parser must make
-an extra pass over the source code, because the presence of the tag
-
-name may change the interpretation of operators (in the presence of
-user-defined operators). You can speed up the parsing/compilation
-process by declaring the relevant functions before using them.
-
-209 function should return a value
-
-The function does not have a return statement, or it does not have
-an expression behind the return statement, but the function’s result
-is used in a expression.
-
-210 possible use of symbol before initialization: identifier
-
-A local (uninitialized) variable appears to be read before a value is
-assigned to it. The compiler cannot determine the actual order of
-reading from and storing into variables and bases its assumption of
-the execution order on the physical appearance order of statements
-an expressions in the source file.
-
-211 possibly unintended assignment
-
-Where a conditional expression was expected, the assignment
-operator (=) was found instead of the equality operator (==). As this
-is a frequent mistake, the compiler issues a warning. To avoid this
-message, put parentheses around the expression, e.g. if ( (a=2) ).
-
-212 possibly unintended bitwise operation
-
-Where a conditional expression was expected, a bitwise operator
-(& or |) was found instead of a Boolean operator (&& or ||). In
-situations where a bitwise operation seems unlikely, the compiler
-issues this warning. To avoid this message, put parentheses around
-the expression.
-
-213 tag mismatch
-
-A tag mismatch occurs when:
-
-assigning to a tagged variable a value that is untagged or that has
-a different tag
-
-the expressions on either side of a binary operator have different
-tags
-
-in a function call, passing an argument that is untagged or that
-has a different tag than what the function argument was defined
-with
-
-indexing an array which requires a tagged index with no tag or a
-wrong tag name
-
-Tags are discussed
-on page 68
-
-214 possibly a “const” array argument was intended: identifier
-Arrays are always passed by reference. If a function does not modify
-the array argument, however, the compiler can sometimes generate
-more compact and quicker code if the array argument is specifically
-marked as “const”.
-
-215 expression has no effect
-
-The result of the expression is apparently not stored in a variable or
-used in a test. The expression or expression statement is therefore
-redundant.
-
-216 nested comment
-
-pawn does not support nested comments.
-
-217 loose indentation
-
-Statements at the same logical level do not start in the same column;
-that is, the indents of the statements are different. Although pawn
-is a free format language, loose indentation frequently hides a logical
-error in the control flow.
-
-The compiler can also incorrectly assume loose indentation if the
-tab size with which you indented the source code differs from the
-assumed size, see #pragma tabsize on page 122 or the compiler
-option -t on page 169.
-
-218 old style prototypes used with optional semicolon
-
-When using “optional semicolons”, it is preferred to explicitly declare
-forward functions with the forward keyword than using terminating
-semicolon.
-
-219 local variable identifier shadows a symbol at a preceding level
-A local variable has the same name as a global variable, a function,
-a function argument, or a local variable at a lower precedence level.
-This is called “shadowing”, as the new local variable makes the
-previously defined function or variable inaccessible.
-
-Note: if there are also error messages further on in the script about
-missing variables (with these same names) or brace level problems,
-it could well be that the shadowing warnings are due to these
-syntactical and sematical errors. Fix the errors first before looking
-at the shadowing warnings.
-
-220 expression with tag override must appear between paren-
-theses
-
-In a case statement and in expressions in the conditional operator (“
-
-? : ”), any expression that has a tag override should be enclosed
-between parentheses, to avoid the colon to be misinterpreted as
-
-a separator of the case statement or as part of the conditional
-operator.
-
-221 label name identifier shadows tag name
-
-A code label (for the goto instruction) has the same name as a
-previously defined tag. This may indicate a faultily applied tag
-override; a typical case is an attempt to apply a tag override on the
-variable on the left of the = operator in an assignment statement.
-
-222 number of digits exceeds rational number precision
-
-A literal rational number has more decimals in its fractional part
-than the precision of a rational number supports. The remaining
-decimals are ignored.
-
-223 redundant “sizeof ”: argument size is always 1 (symbol
-
-name)
-
-A function argument has a as its default value the size of another
-argument of the same function. The “sizeof” default value is only
-useful when the size of the referred argument is unspecified in the
-declaration of the function; i.e., if the referred argument is an array.
-
-224 indeterminate array size in “sizeof ” expression (symbol
-
-name)
-
-The operand of the sizeof operator is an array with an unspecified
-size. That is, the size of the variable cannot be determined at
-compile time. If used in an “if” instruction, consider a conditionally
-compiled section, replacing if by #if.
-
-225 unreachable code
-
-The indicated code will never run, because an instruction before
-(above) it causes a jump out of the function, out of a loop or
-elsewhere. Look for return, break, continue and goto instructions
-above the indicated line.
-
-226 a variable is assigned to itself (symbol name)
-
-There is a statement like “x = x” in the code. The parser checks for
-self assignments after performing any text and constant substitutions,
-so the left and right sides of an assignment may appear to be different
-at first sight. For example, if the symbol “TWO” is a constant with
-
-#if . . . #else . . .
-
-#endif: 117
-
-the value 2, then “var[TWO] = var[2]” is also a self-assignment.
-
-Self-assignments are, of course, redundant, and they may hide an
-error (assignment to the wrong variable, error in declaring constants).
-
-Note that the pawn parser is limited to performing “static checks”
-only. In this case it means that it can only compare array assignments
-for self-assignment with constant array indices.
-
-227 more initiallers than enum fields
-
-An array whose size is declared with an enum symbol contains more
-values/fields as initiallers than the enumeration defines.
-
-228 length of initialler exceeds size of the enum field
-
-An array whose size is declared with an enum symbol, and the
-relevant enumeration field has a size. The initialler in the array
-contains more values than the size of the enumeration field allows.
-
-229 index tag mismatch (symbol name)
-
-When indexing an array, the expression used as the index has a
-different tag than what the one in the declaration of the array. See
-pages 29 and 68 for an explanation and examples.
-
-230 no implementation for state name in function name, no
-fall-back
-
-A function is lacking an implementation for the indicated state. The
-compiler cannot (statically) check whether the function will ever be
-called in that state, and therefore it issues this warning. When the
-function would be called for the state for which no implementation
-exists, the abstract machine aborts with a run time error.
-
-See page 83 on how to specify a fall-back function, and page 44 for a
-description and an example.
-
-231 state specification on forward declaration is ignored
-
-State specifiers: 83 A state specification is
-redundant on forward declarations. The func-
-tion signature must be equal for all states. Only the implementations
-
-of the function are state-specific.
-
-232 compaction buffer overflow
-
-Compact encoding may in some particular cases result in files that
-would actually be bigger than the non-compact encoding. The
-abstract machine cannot handle this, as it unpacks the P-code “in
-place”. When the compiler deticts this situation, it re-builds the file
-
-with compact encoding switched off. To avoid this warning, force
-building the file with plain (“non-compact”) encoding —see page 120.
-
-233 state variable name shadows a global variable
-
-The state variable has the same name as a global variable (without
-state specifiers). This means that the global variable is inaccessible
-for a function with one of the same states as those of the variable.
-
-234 function is depricated (symbol name)
-
-The script uses a function which as marked as “depricated”. The
-host application can mark (native) functions as depricated when
-better alternatives for the function are available or if the function
-may not be supported in future versions of the host application.
-
-235 call to undeclared public function (symbol name)
-
-The script defines a public function, but no forward declaration of
-this function is present. Possibly the function name was written
-incorrectly. The requirement for forward declarations of public
-functions guards against a common error.
-
-236 unknown parameter in substitution (incorrect #define
-pattern)
-
-A #define pattern contains a parameter in the replacement (e.g.
-“%1”, but one in the match pattern. See page 93 for the preprocessor
-syntax.
-
-168
-
-The compiler
-
-appendix b
-
-Packed/unpacked
-strings: 99
-Character constants:
-99
-
-Many applications that embed the pawn scripting language use the stand-
-alone compiler that comes with the pawn toolkit. The pawn compiler is a
+| Type         | Description                                                                                                                                 |
+|--------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| Errors       | Describe situations where the compiler is unable to generate appropriate code. Errors messages are numbered from 1 to 99.                   |
+| Fatal errors | Fatal errors describe errors from which the compiler cannot recover. Parsing is aborted. Fatal error messages are numbered from 100 to 199. |
+| Warnings     | Warnings are displayed for unintended compiler assumptions and common mistakes. Warning messages are numbered from 200 to 299.              |
+
+### • Errors
+
+| Number | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 001    | __expected token:__ _token_, __but found__ _token_                                                                                                                                                                                                                                                                                                                                                                                                                |
+|        | A required token is omitted.                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| 002    | __only a single statement (or expression) can follow each “case”__                                                                                                                                                                                                                                                                                                                                                                                                |
+|        | Every case in a switch statement can hold exactly one statement. To put multiple statements in a case, enclose these statements between braces (which creates a combound statement).                                                                                                                                                                                                                                                                              |
+| 003    | __declaration of a local variable must appear in a compound block__                                                                                                                                                                                                                                                                                                                                                                                               |
+|        | The declaration of a local variable must appear between braces (“{. . . }”) at the active scope level.                                                                                                                                                                                                                                                                                                                                                            |
+|        | When the parser flags this error, a variable declaration appears as the only statement of a function or the only statement below an if, else, for, while or do statement. Note that, since local variables are accessible only from (or below) the scope that their declaration appears in, having a variable declaration as the only statement at any scope is useless.                                                                                          |
+| 004    | __function__ _name_ __is not implemented__                                                                                                                                                                                                                                                                                                                                                                                                                        |
+|        | There is no implementation for the designated function. The function may have been “forwardly” declared —or prototyped— but the full function definition including a statement, or statement block, is missing.                                                                                                                                                                                                                                                   |
+| 005    | __function may not have arguments__                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|        | The function main() is the program entry point. It may not have arguments.                                                                                                                                                                                                                                                                                                                                                                                        |
+| 006    | __must be assigned to an array__                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|        | String literals or arrays must be assigned to an array. This error message may also indicate a missing index (or indices) at the array on the right side of the “=” sign.                                                                                                                                                                                                                                                                                         |
+| 007    | __operator cannot be redefined__                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|        | Only a select set of operators may be redefined, this operator is not one of them. See page 86 for details.                                                                                                                                                                                                                                                                                                                                                       |
+| 008    | __must be a constant expression; assumed zero__                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|        | The size of arrays and the parameters of most directives must be constant values.                                                                                                                                                                                                                                                                                                                                                                                 |
+| 009    | __invalid array size (negative or zero)__                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|        | The number of elements of an array must always be 1 or more.                                                                                                                                                                                                                                                                                                                                                                                                      |
+| 010    | __illegal function or declaration__                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|        | The compiler expects a declaration of a global variable or of a function at the current location, but it cannot interpret it as such.                                                                                                                                                                                                                                                                                                                             |
+| 011    | __invalid outside functions__                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|        | The instruction or statement is invalid at a global level. Local labels and (compound) statements are only valid if used within functions.                                                                                                                                                                                                                                                                                                                        |
+| 012    | __invalid function call, not a valid address__                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|        | The symbol is not a function.                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| 013    | __no entry point (no public functions)__                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|        | The file does not contain a main function or any public function. The compiled file thereby does not have a starting point for the execution.                                                                                                                                                                                                                                                                                                                     |
+| 014    | __invalid statement; not in switch__                                                                                                                                                                                                                                                                                                                                                                                                                              |
+|        | The statements case and default are only valid inside a switch statement.                                                                                                                                                                                                                                                                                                                                                                                         |
+| 015    | __“default” must be the last clause in switch statement__                                                                                                                                                                                                                                                                                                                                                                                                         |
+|        | pawn requires the default clause to be the last clause in a switch statement.                                                                                                                                                                                                                                                                                                                                                                                     |
+| 016    | __multiple defaults in “switch”__                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|        | Each switch statement may only have one default clause.                                                                                                                                                                                                                                                                                                                                                                                                           |
+| 017    | __undefined symbol__ _symbol_                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|        | The symbol (variable, constant or function) is not declared.                                                                                                                                                                                                                                                                                                                                                                                                      |
+| 018    | __initialization data exceeds declared size__                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|        | Initialization: 65 An array with an explicit size is initialized, but the number of initiallers exceeds the number of elements specified. For example, in “arr[3]={1,2,3,4};” the array is specified to have three elements, but there are four initiallers.                                                                                                                                                                                                      |
+| 019    | __not a label:__ _name_                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+|        | A goto statement branches to a symbol that is not a label.                                                                                                                                                                                                                                                                                                                                                                                                        |
+| 020    | __invalid symbol name__                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+|        | A symbol may start with a letter, an underscore or an “at” sign (“@”) and may be followed by a series of letters, digits, underscore characters and “@” characters.                                                                                                                                                                                                                                                                                               |
+| 021    | __symbol already defined:__ _identifier_                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|        | The symbol was already defined at the current level.                                                                                                                                                                                                                                                                                                                                                                                                              |
+| 022    | __must be lvalue (non-constant)__                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|        | The symbol that is altered (incremented, decremented, assigned a value, etc.) must be a variable that can be modified (this kind of variable is called an lvalue). Functions, string literals, arrays and constants are no lvalues. Variables declared with the “const” attribute are no lvalues either.                                                                                                                                                          |
+| 023    | __array assignment must be simple assignment__                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|        | When assigning one array to another, you cannot combine an arithmetic operation with the assignment (e.g., you cannot use the “+=” operator).                                                                                                                                                                                                                                                                                                                     |
+| 024    | __“break” or “continue” is out of context__                                                                                                                                                                                                                                                                                                                                                                                                                       |
+|        | The statements break and continue are only valid inside the context of a loop (a do, for or while statement). Unlike the languages C/C⁺⁺ and Java, break does not jump out of a switch statement.                                                                                                                                                                                                                                                                 |
+| 025    | __function heading differs from prototype__                                                                                                                                                                                                                                                                                                                                                                                                                       |
+|        | The number of arguments given at a previous declaration of the function does not match the number of arguments given at the current declaration.                                                                                                                                                                                                                                                                                                                  |
+| 026    | __no matching “#if...”__                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|        | The directive #else or #endif was encountered, but no matching #if directive was found.                                                                                                                                                                                                                                                                                                                                                                           |
+| 027    | __invalid character constant__                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|        | One likely cause for this error is the occurrence of an unknown escape sequence, like “\x”. Putting multiple characters between single quotes, as in ’abc’ also issues this error message. A third cause for this error is a situation where a character constant was expected, but none (or a non-character expression) were provided.                                                                                                                           |
+| 028    | __invalid subscript (not an array or too many subscripts):__ _identifier_                                                                                                                                                                                                                                                                                                                                                                                         |
+|        | The subscript operators “[” and “]” are only valid with arrays. The number of square bracket pairs may not exceed the number of dimensions of the array.                                                                                                                                                                                                                                                                                                          |
+| 029    | __invalid expression, assumed zero__                                                                                                                                                                                                                                                                                                                                                                                                                              |
+|        | The compiler could not interpret the expression.                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| 030    | __compound statement not closed at the end of file__                                                                                                                                                                                                                                                                                                                                                                                                              |
+|        | An unexpected end of file occurred. One or more compound statements are still unfinished (i.e. the closing brace “ ” has not been found).                                                                                                                                                                                                                                                                                                                         |
+| 031    | __unknown directive__                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|        | The character “#” appears first at a line, but no valid directive was specified.                                                                                                                                                                                                                                                                                                                                                                                  |
+| 032    | __array index out of bounds__                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|        | The array index is larger than the highest valid entry of the array.                                                                                                                                                                                                                                                                                                                                                                                              |
+| 033    | __array must be indexed__ (__variable__ _name_)                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|        | An array as a whole cannot be used in a expression; you must indicate an element of the array between square brackets.                                                                                                                                                                                                                                                                                                                                            |
+| 034    | __argument does not have a default value__ (__argument__ _index_)                                                                                                                                                                                                                                                                                                                                                                                                 |
+|        | You can only use the argument placeholder when the function definition specifies a default value for the argument.                                                                                                                                                                                                                                                                                                                                                |
+| 035    | __argument type mismatch__ (__argument__ _index_)                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|        | The argument that you pass is different from the argument that the function expects, and the compiler cannot convert the passed-in argument to the required type. For example, you cannot pass the literal value “1” as an argument when the function expects an array or a reference.                                                                                                                                                                            |
+| 036    | __empty statement__                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|        | The line contains a semicolon that is not preceded by an expression. pawn does not support a semicolon as an empty statement, use an empty compound block instead.                                                                                                                                                                                                                                                                                                |
+| 037    | __invalid string (possibly non-terminated string)__                                                                                                                                                                                                                                                                                                                                                                                                               |
+|        | A string was not well-formed; for example, the final quote that ends a string is missing, or the filename for the #include directive was not enclosed in double quotes or angle brackets.                                                                                                                                                                                                                                                                         |
+| 038    | __extra characters on line__                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+|        | There were trailing characters on a line that contained a directive (a directive starts with a # symbol, see page 117).                                                                                                                                                                                                                                                                                                                                           |
+| 039    | __constant symbol has no size__                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|        | A variable has a size (measured in a number of cells), a constant has no size. That is, you cannot use a (symbolic) constant with the sizeof operator, for example.                                                                                                                                                                                                                                                                                               |
+| 040    | __duplicate “case” label__ (__value__ _value_)                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|        | A preceding “case label” in the list of the switch statement evaluates to the same value.                                                                                                                                                                                                                                                                                                                                                                         |
+| 041    | __invalid ellipsis, array size is not known__                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|        | You used a syntax like “arr[] = { 1, ... };”, which is invalid, because the compiler cannot deduce the size of the array from the declaration.                                                                                                                                                                                                                                                                                                                    |
+| 042    | __invalid combination of class specifiers__                                                                                                                                                                                                                                                                                                                                                                                                                       |
+|        | A function or variable is denoted as both “public” and “native”, which is unsupported. Other compinations may also be unsupported; for example, a function cannot be both “public” and “stock” (a variable may be declared both “public” and “stock”).                                                                                                                                                                                                            |
+| 043    | __character constant exceeds range for packed string__                                                                                                                                                                                                                                                                                                                                                                                                            |
+|        | Usually an attempt to store a Unicode character in a packed string where a packed character is 8-bits.                                                                                                                                                                                                                                                                                                                                                            |
+| 044    | __mixing named and positional parameters__                                                                                                                                                                                                                                                                                                                                                                                                                        |
+|        | You must either use named parameters or positional parameters for all parameters of the function.                                                                                                                                                                                                                                                                                                                                                                 |
+| 045    | __too many function arguments__                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|        | The maximum number of function arguments is currently limited to 64.                                                                                                                                                                                                                                                                                                                                                                                              |
+| 046    | __unknown array size__ (__variable__ _name_)                                                                                                                                                                                                                                                                                                                                                                                                                      |
+|        | For array assignment, the size of both arrays must be explicitly defined, also if they are passed as function arguments.                                                                                                                                                                                                                                                                                                                                          |
+| 047    | __array sizes do not match, or destination array is too small__                                                                                                                                                                                                                                                                                                                                                                                                   |
+|        | For array assignment, the arrays on the left and the right side of the assignment operator must have the same number of dimensions. In addition:                                                                                                                                                                                                                                                                                                                  |
+|        | - for multi-dimensional arrays, both arrays must have the same size;                                                                                                                                                                                                                                                                                                                                                                                              |
+|        | - for single arrays with a single dimension, the array on the left side of the assignment operator must have a size that is equal or bigger than the one on the right side.                                                                                                                                                                                                                                                                                       |
+|        | When passing arrays to a function argument, these rules also hold for the array that is passed to the function (in the function call) versus the array declared in the function definition.                                                                                                                                                                                                                                                                       |
+|        | When a function returns an array, all return statements must specify an array with the same size and dimensions.                                                                                                                                                                                                                                                                                                                                                  |
+| 048    | __array dimensions do not match__                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|        | For an array assignment, the dimensions of the arrays on both sides of the “=” sign must match; when passing arrays to a function argument, the arrays passed to the function (in the function call) must match with the definition of the function arguments.                                                                                                                                                                                                    |
+|        | When a function returns an array, all return statements must specify an array with the same size and dimensions.                                                                                                                                                                                                                                                                                                                                                  |
+| 049    | __invalid line continuation__                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|        | A line continuation character (a backslash at the end of a line) is at an invalid position, for example at the end of a file or in a single line comment.                                                                                                                                                                                                                                                                                                         |
+| 050    | __invalid range__                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|        | A numeric range with the syntax “n1 .. n2”, where n1 and n2 are numeric constants, is invalid. Either one of the values in not a valid number, or n1 is not smaller than n2.                                                                                                                                                                                                                                                                                      |
+| 051    | __invalid subscript, use “[ ]” operators on major dimensions__                                                                                                                                                                                                                                                                                                                                                                                                    |
+|        | You can use the “array character index” operator (braces: “{ }” only for the last dimension. For other dimensions, you must use the cell index operator (square brackets: “[ ]”).                                                                                                                                                                                                                                                                                 |
+| 052    | __multi-dimensional arrays must be fully initialized__                                                                                                                                                                                                                                                                                                                                                                                                            |
+|        | If an array with more than one dimension is initialized at its declaration, then there must be equally many literal vectors/subarrays at the right of the equal sign (“=”) as specified for the major dimension(s) of the array.                                                                                                                                                                                                                                  |
+| 053    | __exceeding maximum number of dimensions__                                                                                                                                                                                                                                                                                                                                                                                                                        |
+|        | The current implementation of the pawn compiler only supports arrays with one or two dimensions.                                                                                                                                                                                                                                                                                                                                                                  |
+| 054    | __unmatched closing brace__                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+|        | A closing brace (“}”) was found without matching opening brace (“{”).                                                                                                                                                                                                                                                                                                                                                                                             |
+| 055    | __start of function body without function header__                                                                                                                                                                                                                                                                                                                                                                                                                |
+|        | An opening brace (“{”) was found outside the scope of a function. This may be caused by a semicolon at the end of a preceding function header.                                                                                                                                                                                                                                                                                                                    |
+| 056    | __local variables and function arguments cannot be public__                                                                                                                                                                                                                                                                                                                                                                                                       |
+|        | A local variable or a function argument starts with the character “@”, which is invalid.                                                                                                                                                                                                                                                                                                                                                                          |
+| 057    | __Unfinished expression before compiler directive__                                                                                                                                                                                                                                                                                                                                                                                                               |
+|        | Compiler directives may only occur between statements, not inside a statement. This error typically occurs when an expression statement is split over multiple lines and a compiler directive appears between the start and the end of the expression. This is not supported.                                                                                                                                                                                     |
+| 058    | __duplicate argument; same argument is passed twice__                                                                                                                                                                                                                                                                                                                                                                                                             |
+|        | In the function call, the same argument appears twice, possibly through a mixture of named and positional parameters.                                                                                                                                                                                                                                                                                                                                             |
+| 059    | __function argument may not have a default value__ (__variable__ _name_)                                                                                                                                                                                                                                                                                                                                                                                          |
+|        | All arguments of public functions must be passed explicitly. Public functions are typically called from the host application, who has no knowledge of the default parameter values. Arguments of user defined operators are implied from the expression and cannot be inferred from the default value of an argument.                                                                                                                                             |
+| 060    | __multiple “#else” directives between “#if . . . #endif__                                                                                                                                                                                                                                                                                                                                                                                                         |
+|        | Two or more #else directives appear in the body between the matching #if and #endif.                                                                                                                                                                                                                                                                                                                                                                              |
+| 061    | __“#elseif” directive follows an “#else” directive__                                                                                                                                                                                                                                                                                                                                                                                                              |
+|        | All #elseif directives must appear before the #else directive. This error may also indicate that an #endif directive for a higher level is missing.                                                                                                                                                                                                                                                                                                               |
+| 062    | __number of operands does not fit the operator__                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|        | When redefining an operator, the number of operands that the operator has (1 for unary operators and 2 for binary operators) must be equal to the number of arguments of the operator function.                                                                                                                                                                                                                                                                   |
+| 063    | __operator requires that the function result has a “bool” tag__                                                                                                                                                                                                                                                                                                                                                                                                   |
+|        | Logical and relational operators are defined as having a result that is either true (1) or false (0) and having a “bool” tag. A user defined operator should adhere to this definition.                                                                                                                                                                                                                                                                           |
+| 064    | __cannot change predefined operators__                                                                                                                                                                                                                                                                                                                                                                                                                            |
+|        | One cannot define operators to work on untagged values, for example, because pawn already defines this operation.                                                                                                                                                                                                                                                                                                                                                 |
+| 065    | __function argument may only have a single tag__ (__argument__ _number_)                                                                                                                                                                                                                                                                                                                                                                                          |
+|        | In a user defined operator, a function argument may not have multiple tags.                                                                                                                                                                                                                                                                                                                                                                                       |
+| 066    | __function argument may not be a reference argument or an array__ (__argument__ _number_)                                                                                                                                                                                                                                                                                                                                                                         |
+|        | In a user defined operator, all arguments must be cells (non-arrays) that are passed “by value”.                                                                                                                                                                                                                                                                                                                                                                  |
+| 067    | __variable cannot be both a reference and an array__ (__variable__ _name_)                                                                                                                                                                                                                                                                                                                                                                                        |
+|        | A function argument may be denoted as a “reference” or as an array, but not as both.                                                                                                                                                                                                                                                                                                                                                                              |
+| 068    | __invalid rational number precision in #pragma__                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|        | The precision was negative or too high. For floating point rational numbers, the precision specification should be omitted.                                                                                                                                                                                                                                                                                                                                       |
+| 069    | __rational number format already defined__                                                                                                                                                                                                                                                                                                                                                                                                                        |
+|        | This #pragma conflicts with an earlier #pragma that specified a different format.                                                                                                                                                                                                                                                                                                                                                                                 |
+| 070    | __rational number support was not enabled__                                                                                                                                                                                                                                                                                                                                                                                                                       |
+|        | A rational literal number was encountered, but the format for rational numbers was not specified.                                                                                                                                                                                                                                                                                                                                                                 |
+| 071    | u__ser-defined operator must be declared before use__ (__function__ _name_)                                                                                                                                                                                                                                                                                                                                                                                       |
+|        | Like a variable, a user-defined operator must be declared before its first use. This message indicates that prior to the declaration of the user-defined operator, an instance where the operator was used on operands with the same tags occurred. This may either indicate that the program tries to make mixed use of the default operator and a user-defined operator (which is unsupported), or that the user-defined operator must be “forwardly declared”. |
+| 072    | __“sizeof ” operator is invalid on “function” symbols__                                                                                                                                                                                                                                                                                                                                                                                                           |
+|        | You used something like “sizeof MyCounter” where the symbol “MyCounter” is not a variable, but a function. You cannot request the size of a function.                                                                                                                                                                                                                                                                                                             |
+| 073    | __function argument must be an array__ (__argument__ _name_)                                                                                                                                                                                                                                                                                                                                                                                                      |
+|        | The function argument is a constant or a simple variable, but the function requires that you pass an array.                                                                                                                                                                                                                                                                                                                                                       |
+| 074    | __#define pattern must start with an alphabetic character__                                                                                                                                                                                                                                                                                                                                                                                                       |
+|        | Any pattern for the #define directive must start with a letter, an underscore (“_”) or an “@”-character. The pattern is the first word that follows the #define keyword.                                                                                                                                                                                                                                                                                          |
+| 075    | __input line too long (after substitutions)__                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|        | Either the source file contains a very long line, or text substitutions make a line that was initially of acceptable length grow beyond its bounds. This may be caused by a text substitution that causes recursive substitution (the pattern matching a portion of the replacement text, so that this part of the replacement text is also matched and replaced, and so forth).                                                                                  |
+| 076    | __syntax error in the expression, or invalid__ _function call_                                                                                                                                                                                                                                                                                                                                                                                                    |
+|        | The expression statement was not recognized as a valid statement (so it is a “syntax error”). From the part of the string that was parsed, it looks as if the source line contains a function call in a “procedure call” syntax (omitting the parentheses), but the function result is used —assigned to a variable, passed as a parameter, used in an expession. . .                                                                                             |
+| 077    | __malformed UTF-8 encoding, or corrupted file: filename__                                                                                                                                                                                                                                                                                                                                                                                                         |
+|        | The file starts with an UTF-8 signature, but it contains encodings that are invalid UTF-8. If the source file was created by an editor or converter that supports UTF-8, the UTF-8 support is non-conforming.                                                                                                                                                                                                                                                     |
+| 078    | __function uses both “return” and “return ¡value¿”__                                                                                                                                                                                                                                                                                                                                                                                                              |
+|        | The function returns both with and without a return value. The function should be consistent in always returning with a function result, or in never returning a function result.                                                                                                                                                                                                                                                                                 |
+| 079    | __inconsistent return types (array & non-array)__                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|        | The function returns both values and arrays, which is not allowed. If a function returns an array, all return statements must specify an array (of the same size and dimensions).                                                                                                                                                                                                                                                                                 |
+| 080    | __unknown symbol, or not a constant symbol__ (__symbol__ _name_)                                                                                                                                                                                                                                                                                                                                                                                                  |
+|        | Where a constant value was expected, an unknown symbol or a non-constant symbol (variable) was found.                                                                                                                                                                                                                                                                                                                                                             |
+| 081    | __cannot take a tag as a default value for an indexed array parameter__ (__symbol__ _name_)                                                                                                                                                                                                                                                                                                                                                                       |
+|        | The tagof operator was used on an array parameter where the array also had an index. This is unsupported.                                                                                                                                                                                                                                                                                                                                                         |
+| 082    | __user-defined operators and native functions may not havestates__                                                                                                                                                                                                                                                                                                                                                                                                |
+|        | Only standard and public functions may have states.                                                                                                                                                                                                                                                                                                                                                                                                               |
+| 083    | __a function or variable may only belong to a single automaton__ (__symbol__ _name_)                                                                                                                                                                                                                                                                                                                                                                              |
+|        | There are multiple automatons in the state declaration for the indicated function or variable, which is not supported. In the case of a function: all instances of the function must belong to the same automaton. In the case of a variable: it is allowed to have several variables with the same name belonging to different automatons, but only in separate declarations —these are distinct variables.                                                      |
+| 084    | __state conflict: one of the states is already assigned to another implementation__ (__symbol__ _name_)                                                                                                                                                                                                                                                                                                                                                           |
+|        | The specified state appears in the state specifier of two implementations of the same function.                                                                                                                                                                                                                                                                                                                                                                   |
+| 085    | __no states are defined for symbol name__                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|        | When this error occurs on a function, this function has a fall-back implementation, but no other states. If the error refers to a variable, this variable does not have a list of states between the < and > characters. Use a state-less function ir variable instead.                                                                                                                                                                                           |
+| 086    | __unknown automaton name__                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+|        | The “state” statement refers to an unknown automaton.                                                                                                                                                                                                                                                                                                                                                                                                             |
+| 087    | __unknown state name for automaton name__                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|        | The “state” statement refers to an unknown state (for the specified automaton).                                                                                                                                                                                                                                                                                                                                                                                   |
+| 088    | __public variables and local variables may not have states__ (__symbol__ _name_)                                                                                                                                                                                                                                                                                                                                                                                  |
+|        | Only standard (global) variables may have a list of states (and an automaton) at the end of a declaration.                                                                                                                                                                                                                                                                                                                                                        |
+| 089    | __state variables may not be initialized__ (__symbol__ _name_)                                                                                                                                                                                                                                                                                                                                                                                                    |
+|        | Variables with a state list attached may not have initializers. State variables should always be explicitly initialized, as their initial value is indeterminate.                                                                                                                                                                                                                                                                                                 |
+| 090    | __public functions may not return arrays__ (__symbol__ _name_)                                                                                                                                                                                                                                                                                                                                                                                                    |
+|        | A public function may not return an array. Returning arrays is allowed only for normal functions.                                                                                                                                                                                                                                                                                                                                                                 |
+
+### • Fatal Errors
+
+| Number | Description                                                                                                                                                                                                                                                                                                                           |
+|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 100    | __cannot read from file:__ _filename_                                                                                                                                                                                                                                                                                                 |
+|        | The compiler cannot find the specified file or does not have access to it.                                                                                                                                                                                                                                                            |
+| 101    | __cannot write to file:__ _filename_                                                                                                                                                                                                                                                                                                  |
+|        | The compiler cannot write to the specified output file, probably caused by insufficient disk space or restricted access rights (the file could be read-only, for example).                                                                                                                                                            |
+| 102    | __table overflow:__ _table name_                                                                                                                                                                                                                                                                                                      |
+|        | An internal table in the pawn parser is too small to hold the required data. Some tables are dynamically growable, which means that there was insufficient memory to resize the table. The “table name” is one of the following:                                                                                                      |
+|        | “staging buffer”: the staging buffer holds the code generated for an expression before it is passed to the peephole optimizer. The staging buffer grows dynamically, so an overflow of the staging buffer basically is an “out of memory” error.                                                                                      |
+|        | “loop table”: the loop table is a stack used with nested do, for, and while statements. The table allows nesting of these statements up to 24 levels.                                                                                                                                                                                 |
+|        | “literal table”: this table keeps the literal constants (numbers, strings) that are used in expressions and as initiallers for arrays. The literal table grows dynamically, so an overflow of the literal table basically is an “out of memory” error.                                                                                |
+|        | “compiler stack”: the compiler uses a stack to store temporary information it needs while parsing. An overflow of this stack is probably caused by deeply nested (or recursive) file inclusion. The compiler stack grows dynamically, so an overflow of the compiler stack basically is an “out of memory” error.                     |
+|        | “option table”: in case that there are more options on the command line or in the response file than the compiler can cope with.                                                                                                                                                                                                      |
+| 103    | __insufficient memory__                                                                                                                                                                                                                                                                                                               |
+|        | General “out of memory” error.                                                                                                                                                                                                                                                                                                        |
+| 104    | __invalid assembler instruction symbol__                                                                                                                                                                                                                                                                                              |
+|        | An invalid opcode in an #emit directive.                                                                                                                                                                                                                                                                                              |
+| 105    | __numeric overflow, exceeding capacity__                                                                                                                                                                                                                                                                                              |
+|        | A numeric constant, notably a dimension of an array, is too large for the compiler to handle. For example, when compiled as a 16-bit application, the compiler cannot handle arrays with more than 32767 elements.                                                                                                                    |
+| 106    | __compiled script exceeds the maximum memory size__ (_number_ __bytes__)                                                                                                                                                                                                                                                              |
+|        | The memory size for the abstract machine that is needed to run the script exceeds the value set with #pragma amxlimit. This means that the script is too large to be supported by the host. You might try reducing the script’s memory requirements by:                                                                               |
+|        | - setting a smaller stack/heap area —see #pragma dynamic at page 121;                                                                                                                                                                                                                                                                 |
+|        | - using packed strings instead of unpacked strings —see pages 99 and 137;                                                                                                                                                                                                                                                             |
+|        | - putting repeated code in separate functions;                                                                                                                                                                                                                                                                                        |
+|        | - putting repeated data (strings) in global variables;                                                                                                                                                                                                                                                                                |
+|        | - trying to find more compact algorithms to perform the same task.                                                                                                                                                                                                                                                                    |
+| 107    | __too many error/warning messages on one line__                                                                                                                                                                                                                                                                                       |
+|        | A single line that causes several error/warning messages is often an indication that the pawn parser is unable to “recover” from an earlier error. In this situation, the parser is unlikely to make any sense of the source code that follows —producing only (more) inappropriate error messages. Therefore, compilation is halted. |
+| 108    | __codepage mapping file not found__                                                                                                                                                                                                                                                                                                   |
+|        | The file for the codepage translation that was specified with the -c compiler option or the #pragma codepage directive could not be loaded.                                                                                                                                                                                           |
+| 109    | __invalid path:__ _path name_                                                                                                                                                                                                                                                                                                         |
+|        | A path, for example for include files or codepage files, is invalid.                                                                                                                                                                                                                                                                  |
+| 110    | __assertion failed:__ _expression_                                                                                                                                                                                                                                                                                                    |
+|        | Compile-time assertion failed.                                                                                                                                                                                                                                                                                                        |
+| 111    | __user error:__ _message_                                                                                                                                                                                                                                                                                                             |
+|        | The parser fell on an #error directive.                                                                                                                                                                                                                                                                                               |
+
+### • Warnings
+
+| Number | Description                                                                                                                                                                                                                                                                                                                                                                                                    |
+|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 200    | __symbol is truncated to__ _number_ __characters__                                                                                                                                                                                                                                                                                                                                                             |
+|        | The symbol is longer than the maximum symbol length. The maximum length of a symbol depends on wether the symbol is native, public or neither. Truncation may cause different symbol names to become equal, which may cause error 021 or warning 219.                                                                                                                                                          |
+| 201    | __redefinition of constant/macro__ (__symbol__ _name_)                                                                                                                                                                                                                                                                                                                                                         |
+|        | The symbol was previously defined to a different value, or the text substitution macro that starts with the prefix name was redefined with a different substitution text.                                                                                                                                                                                                                                      |
+| 202    | __number of arguments does not match definition__                                                                                                                                                                                                                                                                                                                                                              |
+|        | At a function call, the number of arguments passed to the function (actual arguments) differs from the number of formal arguments declared in the function heading. To declare functions with variable argument lists, use an ellipsis (...) behind the last known argument in the function heading; for example: print(formatstring,...); (see page 80).                                                      |
+| 203    | __symbol is never used:__ _identifier_                                                                                                                                                                                                                                                                                                                                                                         |
+|        | A symbol is defined but never used. Public functions are excluded from the symbol usage check (since these may be called from the outside).                                                                                                                                                                                                                                                                    |
+| 204    | __symbol is assigned a value that is never used:__ _identifier_                                                                                                                                                                                                                                                                                                                                                |
+|        | A value is assigned to a symbol, but the contents of the symbol are never accessed.                                                                                                                                                                                                                                                                                                                            |
+| 205    | __redundant code: constant expression is zero__                                                                                                                                                                                                                                                                                                                                                                |
+|        | Where a conditional expression was expected, a constant expression with the value zero was found, e.g. “while (0)” or “if (0)”.                                                                                                                                                                                                                                                                                |
+|        | The the conditional code below the test is never executed, and it is therefore redundant.                                                                                                                                                                                                                                                                                                                      |
+| 206    | __redundant test: constant expression is non-zero__                                                                                                                                                                                                                                                                                                                                                            |
+|        | Where a conditional expression was expected, a constant expression with a non-zero value was found, e.g. if (1). The test is redundant, because the conditional code is always executed.                                                                                                                                                                                                                       |
+| 207    | __unknown “#pragma”__                                                                                                                                                                                                                                                                                                                                                                                          |
+|        | The compiler ignores the pragma. The #pragma directives may change between compilers of different vendors and between different versions of a compiler of the same version.                                                                                                                                                                                                                                    |
+| 208    | __function with tag result used before definition, forcing reparse__                                                                                                                                                                                                                                                                                                                                           |
+|        | When a function is “used” (invoked) before being declared, and that function returns a value with a tag name, the parser must make an extra pass over the source code, because the presence of the tag name may change the interpretation of operators (in the presence of user-defined operators). You can speed up the parsing/compilation process by declaring the relevant functions before using them.    |
+| 209    | __function should return a value__                                                                                                                                                                                                                                                                                                                                                                             |
+|        | The function does not have a return statement, or it does not have an expression behind the return statement, but the function’s result is used in a expression.                                                                                                                                                                                                                                               |
+| 210    | __possible use of symbol before initialization:__ _identifier_                                                                                                                                                                                                                                                                                                                                                 |
+|        | A local (uninitialized) variable appears to be read before a value is assigned to it. The compiler cannot determine the actual order of reading from and storing into variables and bases its assumption of the execution order on the physical appearance order of statements an expressions in the source file.                                                                                              |
+| 211    | __possibly unintended assignment__                                                                                                                                                                                                                                                                                                                                                                             |
+|        | Where a conditional expression was expected, the assignment operator (=) was found instead of the equality operator (==). As this is a frequent mistake, the compiler issues a warning. To avoid this message, put parentheses around the expression, e.g. if ( (a=2) ).                                                                                                                                       |
+| 212    | __possibly unintended bitwise operation__                                                                                                                                                                                                                                                                                                                                                                      |
+|        | Where a conditional expression was expected, a bitwise operator (& or \|) was found instead of a Boolean operator (&& or \|\|). In situations where a bitwise operation seems unlikely, the compiler issues this warning. To avoid this message, put parentheses around the expression.                                                                                                                        |
+| 213    | __tag mismatch__                                                                                                                                                                                                                                                                                                                                                                                               |
+|        | A tag mismatch occurs when:                                                                                                                                                                                                                                                                                                                                                                                    |
+|        | - assigning to a tagged variable a value that is untagged or that has a different tag                                                                                                                                                                                                                                                                                                                          |
+|        | - the expressions on either side of a binary operator have different tags                                                                                                                                                                                                                                                                                                                                      |
+|        | - in a function call, passing an argument that is untagged or that has a different tag than what the function argument was defined with                                                                                                                                                                                                                                                                        |
+|        | - indexing an array which requires a tagged index with no tag or a wrong tag name                                                                                                                                                                                                                                                                                                                              |
+| 214    | __possibly a “const” array argument was intended:__ _identifier_                                                                                                                                                                                                                                                                                                                                               |
+|        | Arrays are always passed by reference. If a function does not modify the array argument, however, the compiler can sometimes generate more compact and quicker code if the array argument is specifically marked as “const”.                                                                                                                                                                                   |
+| 215    | __expression has no effect__                                                                                                                                                                                                                                                                                                                                                                                   |
+|        | The result of the expression is apparently not stored in a variable or used in a test. The expression or expression statement is therefore redundant.                                                                                                                                                                                                                                                          |
+| 216    | __nested comment__                                                                                                                                                                                                                                                                                                                                                                                             |
+|        | PAWN does not support nested comments.                                                                                                                                                                                                                                                                                                                                                                         |
+| 217    | __loose indentation__                                                                                                                                                                                                                                                                                                                                                                                          |
+|        | Statements at the same logical level do not start in the same column; that is, the indents of the statements are different. Although pawn is a free format language, loose indentation frequently hides a logical error in the control flow.                                                                                                                                                                   |
+|        | The compiler can also incorrectly assume loose indentation if the tab size with which you indented the source code differs from the assumed size, see #pragma tabsize on page 122 or the compiler option -t on page 169.                                                                                                                                                                                       |
+| 218    | __old style prototypes used with optional semicolon__                                                                                                                                                                                                                                                                                                                                                          |
+|        | When using “optional semicolons”, it is preferred to explicitly declare forward functions with the forward keyword than using terminating semicolon.                                                                                                                                                                                                                                                           |
+| 219    | __local variable identifier shadows a symbol at a preceding level__                                                                                                                                                                                                                                                                                                                                            |
+|        | A local variable has the same name as a global variable, a function, a function argument, or a local variable at a lower precedence level. This is called “shadowing”, as the new local variable makes the previously defined function or variable inaccessible.                                                                                                                                               |
+|        | Note: if there are also error messages further on in the script about missing variables (with these same names) or brace level problems, it could well be that the shadowing warnings are due to these syntactical and sematical errors. Fix the errors first before looking at the shadowing warnings.                                                                                                        |
+| 220    | __expression with tag override must appear between parentheses__                                                                                                                                                                                                                                                                                                                                               |
+|        | In a case statement and in expressions in the conditional operator (“ ? : ”), any expression that has a tag override should be enclosed between parentheses, to avoid the colon to be misinterpreted as a separator of the case statement or as part of the conditional operator.                                                                                                                              |
+| 221    | __label name identifier shadows tag name__                                                                                                                                                                                                                                                                                                                                                                     |
+|        | A code label (for the goto instruction) has the same name as a previously defined tag. This may indicate a faultily applied tag override; a typical case is an attempt to apply a tag override on the variable on the left of the = operator in an assignment statement.                                                                                                                                       |
+| 222    | __number of digits exceeds rational number precision__                                                                                                                                                                                                                                                                                                                                                         |
+|        | A literal rational number has more decimals in its fractional part than the precision of a rational number supports. The remaining decimals are ignored.                                                                                                                                                                                                                                                       |
+| 223    | __redundant “sizeof ”: argument size is always 1__ (__symbol__ _name_)                                                                                                                                                                                                                                                                                                                                         |
+|        | A function argument has a as its default value the size of another argument of the same function. The “sizeof” default value is only useful when the size of the referred argument is unspecified in the declaration of the function; i.e., if the referred argument is an array.                                                                                                                              |
+| 224    | __indeterminate array size in “sizeof ” expression__ (__symbol__ _name_)                                                                                                                                                                                                                                                                                                                                       |
+|        | The operand of the sizeof operator is an array with an unspecified size. That is, the size of the variable cannot be determined at compile time. If used in an “if” instruction, consider a conditionally compiled section, replacing if by #if.                                                                                                                                                               |
+| 225    | __unreachable code__                                                                                                                                                                                                                                                                                                                                                                                           |
+|        | The indicated code will never run, because an instruction before (above) it causes a jump out of the function, out of a loop or elsewhere. Look for return, break, continue and goto instructions above the indicated line.                                                                                                                                                                                    |
+| 226    | __a variable is assigned to itself__ (__symbol__ _name_)                                                                                                                                                                                                                                                                                                                                                       |
+|        | There is a statement like “x = x” in the code. The parser checks for self assignments after performing any text and constant substitutions, so the left and right sides of an assignment may appear to be different at first sight. For example, if the symbol “TWO” is a constant with the value 2, then “var[TWO] = var[2]” is also a self-assignment.                                                       |
+|        | Self-assignments are, of course, redundant, and they may hide an error (assignment to the wrong variable, error in declaring constants).                                                                                                                                                                                                                                                                       |
+|        | Note that the pawn parser is limited to performing “static checks” only. In this case it means that it can only compare array assignments for self-assignment with constant array indices.                                                                                                                                                                                                                     |
+| 227    | __more initiallers than enum fields__                                                                                                                                                                                                                                                                                                                                                                          |
+|        | An array whose size is declared with an enum symbol contains more values/fields as initiallers than the enumeration defines.                                                                                                                                                                                                                                                                                   |
+| 228    | __length of initialler exceeds size of the enum field__                                                                                                                                                                                                                                                                                                                                                        |
+|        | An array whose size is declared with an enum symbol, and the relevant enumeration field has a size. The initialler in the array contains more values than the size of the enumeration field allows.                                                                                                                                                                                                            |
+| 229    | __index tag mismatch__ (__symbol__ _name_)                                                                                                                                                                                                                                                                                                                                                                     |
+|        | When indexing an array, the expression used as the index has a different tag than what the one in the declaration of the array. See pages 29 and 68 for an explanation and examples.                                                                                                                                                                                                                           |
+| 230    | __no implementation for state__ _name_ __in function__ _name_ __, no fall-back__                                                                                                                                                                                                                                                                                                                               |
+|        | A function is lacking an implementation for the indicated state. The compiler cannot (statically) check whether the function will ever be called in that state, and therefore it issues this warning. When the function would be called for the state for which no implementation exists, the abstract machine aborts with a run time error.                                                                   |
+|        | See page 83 on how to specify a fall-back function, and page 44 for a description and an example.                                                                                                                                                                                                                                                                                                              |
+| 231    | __state specification on forward declaration is ignored__                                                                                                                                                                                                                                                                                                                                                      |
+|        | A state specification is redundant on forward declarations. The function signature must be equal for all states. Only the implementations of the function are state-specific.                                                                                                                                                                                                                                  |
+| 232    | __compaction buffer overflow__                                                                                                                                                                                                                                                                                                                                                                                 |
+|        | Compact encoding may in some particular cases result in files that would actually be bigger than the non-compact encoding. The abstract machine cannot handle this, as it unpacks the P-code “in place”. When the compiler deticts this situation, it re-builds the file with compact encoding switched off. To avoid this warning, force building the file with plain (“non-compact”) encoding —see page 120. |
+| 233    | __state variable name shadows a global variable__                                                                                                                                                                                                                                                                                                                                                              |
+|        | The state variable has the same name as a global variable (without state specifiers). This means that the global variable is inaccessible for a function with one of the same states as those of the variable.                                                                                                                                                                                                 |
+| 234    | __function is depricated__ (__symbol__ _name_)                                                                                                                                                                                                                                                                                                                                                                 |
+|        | The script uses a function which as marked as “depricated”. The host application can mark (native) functions as depricated when better alternatives for the function are available or if the function may not be supported in future versions of the host application.                                                                                                                                         |
+| 235    | __call to undeclared public function__ (__symbol__ _name_)                                                                                                                                                                                                                                                                                                                                                     |
+|        | The script defines a public function, but no forward declaration of this function is present. Possibly the function name was written incorrectly. The requirement for forward declarations of public functions guards against a common error.                                                                                                                                                                  |
+| 236    | __unknown parameter in substitution (incorrect #define pattern)__                                                                                                                                                                                                                                                                                                                                              |
+|        | A #define pattern contains a parameter in the replacement (e.g. “%1”, but one in the match pattern. See page 93 for the preprocessor syntax.                                                                                                                                                                                                                                                                   |
+</div>
+
+<hr>
+
+<div align="right">
+
+`Pitfalls: 134`
+
+`Compound statement: 112`
+
+`Compound statement: 112`
+
+`Forward declaration: 82`
+
+`Symbol name syntax: 97`
+
+`Escape sequence: 99`
+
+`Empty compound block: 112`
+
+`Single line comment: 97`
+
+`Named versus positional parameters: 74`
+
+`#pragma rational: 121`
+
+`Forward declaration: 82`
+
+`State specifiers: 83`
+
+`Fall-back: 83`
+
+`See also #pragma`
+
+`amxlimit on page 119`
+
+`#pragma codepage: 120`
+
+`#assert directive: 117`
+
+`#error directive: 117`
+
+`User-defined operators: 86`
+
+`Forward declaration: 82`
+
+`Tags are discussed on page 68`
+
+`#if . . . #else . . . #endif: 117`
+
+`State specifiers: 83 `
+
+<hr>
+
+</div>
+
+<div align="center">
+
+# The compiler
+
+---
+
+</div>
+
+<div align="left">
+
+Many applications that embed the PAWN scripting language use the stand-
+alone compiler that comes with the PAWN toolkit. The PAWN compiler is a
 command-line utility, meaning that you must run it from a “console window”,
-a terminal/shell, or a “DOS box” (depending on how your operating system
-calls it).
+a terminal/shell, or a “DOS box” (depending on how your operating system calls it).
 
-• Usage
+### • Usage
 
-Assuming that the command-line pawn compiler is called “pawncc” (Unix/
-Linux) or “pawncc.exe” (DOS/Windows), the command line syntax is:
+Assuming that the command-line PAWN compiler is called “_pawncc_” (Unix/
+Linux) or “_pawncc.exe_” (DOS/Windows), the command line syntax is:
 
-pawncc <filename> [more filenames...] [options]
+    pawncc <filename> [more filenames...] [options]
 
-The input file name is any legal filename. If no extension is given, “.pawn”
+The input file name is any legal filename. If no extension is given, “_.pawn_”
 or “.p” is assumed. The compiler creates an output file with, by default, the
 same name as the input file and the extension “.amx”.
 
 After switching to the directory with the sample programs, the command:
 
-pawncc hello
+    pawncc hello
 
 should compile the very first “hello world” example (page 5). Should, because
 the command implies that:
 
-the operating system can locate the “pawncc” program —you may need to
-add it to the search path;
+- the operating system can locate the “_pawncc_” program —you may need to add it to the search path;
 
-the pawn compiler is able to determine its own location in the file system so
-that it can locate the include files —a few operating systems do not support
-this and require that you use the -i option (see below).
+- the PAWN compiler is able to determine its own location in the file system so that it can locate the include files —a few operating systems do not support this and require that you use the -i option (see below).
 
-• Input file
+### • Input file
 
-The input file for the pawn compiler, the “source code” file for the  
-script/
-program, must be a plain text file. All reserved words and all symbol names
+The input file for the PAWN compiler, the “source code” file for the  
+script/program, must be a plain text file. All reserved words and all symbol names
 (names for variables, functions, symbolic constants, tags, . . . ) must  
-use the
-ascii character set. Literal strings, i.e text between quotes, may be in
-extended
-ascii, such as one of the sets standardized in the ISO 8859 norm —ISO 8859-1
+use the ascii character set. Literal strings, i.e text between quotes, may be in
+extended ascii, such as one of the sets standardized in the ISO 8859 norm —ISO 8859-1
 is the well known “Latin 1” set.
 
-The pawn compiler also supports UTF-8 encoded text files, which are practical
-in an environment based on Unicode or UCS-4. The pawn compiler only
-
+The PAWN compiler also supports UTF-8 encoded text files, which are practical
+in an environment based on Unicode or UCS-4. The PAWN compiler only
 recognizes UTF-8 encoded characters inside unpacked strings and character
 constants. The compiler interprets the syntax rules for UTF-8 files  
-strictly;
-non-conforming UTF-8 files are not recognized. The input file may have, but
+strictly; non-conforming UTF-8 files are not recognized. The input file may have, but
 does not require, a “Byte Order Mark” signature; the compiler
-recognizes the
-UTF-8 format based on the file’s content.
+recognizes the UTF-8 format based on the file’s content.
 
-• Options
+### • Options
 
 Options start with a dash (“-”) or, on Microsoft Windows and DOS, with a
 forward slash (“/”). In other words, all platforms accept an option written
 as “-a” (see below for the purpose of this option) and the  
-DOS/Windows
-platforms accept “/a” as an alternative way to write “-a”.
+DOS/Windows platforms accept “/a” as an alternative way to write “-a”.
 
 All options should be separated by at least one space.
 
@@ -9307,320 +8101,182 @@ separated from the option letter by a colon or an equal sign (a “:” and a �
 respectively), or the value may be glued to the option letter. Three equivalent
 options to set the debug level to two are thus:
 
--d2
+- -d2
 
--d:2
+- -d:2
 
--d=2
+- -d=2
 
 The options are:
 
--a Assembler: generate a text file with the pseudo-assembler
-code
-for the pawn abstract machine, instead of binary code.
+| Option     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -a         | Assembler: generate a text file with the pseudo-assembler code for the PAWN abstract machine, instead of binary code.                                                                                                                                                                                                                                                                                                                                                            |
+| -C+/-      | Compact encoding of the binary file, which reduces the size a the output file typically to less than half the original size. Use -C+ to enable it and -C- to revert to “plain” encoding. The option -C (without + or − suffix) toggles the current setting.                                                                                                                                                                                                                      |
+| -cname     | Codepage: set the codepage for translating the source file from extended ascii to Unicode/UCS-4. The default is no translation. The name parameter can specify a full path to a “mapping file” or just the identifier of the codepage —in the latter case, the compiler prefixes the identifier with the letters “cp”, appends the extension “.txt” and loads the mapping file from a system directory.                                                                          |
+| -Dpath     | Directory: the “active” directory, where the compiler should search for its input files and store its output files.                                                                                                                                                                                                                                                                                                                                                              |
+|            | This option is not supported on every platform. To verify whether the PAWN compiler supports this option, run the compiler without any option or filename on the command line. The compiler will then list its usage syntax and all available options in alphabetical order. If the -D switch is absent, the option is not available.                                                                                                                                            |
+| -dlevel    | Debug level: 0 = none, 1 = bounds checking and assertions only, 2 = full symbolic information, 3 = full symbolic information and optimizations disabled (same as the combination -d2 and -O0).                                                                                                                                                                                                                                                                                   |
+|            | When the debug level is 2 or 3, the PAWN compiler also prints the estimated number of stack/heap space required for the program.                                                                                                                                                                                                                                                                                                                                                 |
+| -efilename | Error file: set the name of the file into which the compiler must write any warning and error messages; when set, there is no output to the screen.                                                                                                                                                                                                                                                                                                                              |
+| -Hvalue    | “HWND” (Microsoft Windows version only): the compiler can optionally post a message to the specified window handle upon completion of the P-code generation. Host applications that invoke the PAWN compiler can wait for the arrival of this message or signal the user of the completion of the compile.                                                                                                                                                                       |
+|            | The message number that is sent to the window is created with the Microsoft Windows SDK function RegisterWindowMessage using the name “PawnNotify”. The wParam of the message holds the compiler return code: 0 = success, 1 = warnings, 2 = errors (plus possibly warnings), 3 = compilation aborted by the user.                                                                                                                                                               |
+| -ipathname | Include path: set the path where the compiler can find the include files. This option may appear multiple times at the command line, to allow you to set several include paths.                                                                                                                                                                                                                                                                                                  |
+| -l         | Listing: perform only the file reading and preprocessing steps; for example, to verify the effect of the text substitution macros and the conditionally compiled/skipped sections.                                                                                                                                                                                                                                                                                               |
+| -Olevel    | Optimization level: 0 = no optimizations; 1 = JIT compatible optimizations only (JIT = “Just In Time” compiler, a high performance abstract machine); 2 = full optimizations.                                                                                                                                                                                                                                                                                                    |
+| -ofilename | Output file: set the name and path of the binary output file.                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| -pfilename | Prefix file: the name of the “prefix file”, this is a file that is parsed before the input file (as a kind of implicit “include file”). If used, this option overrides the default include file “default.inc”. The -p option on its own (without a filename) disables the processing of any implicit include file.                                                                                                                                                               |
+| -rfilename | Report: enable the creation of the report and optionally set the filename to which the extracted documentation and a crossreference report will be written.                                                                                                                                                                                                                                                                                                                      |
+|            | The report is in “XML” format. The filename parameter is optional; if not specified, the report file has the same name as the input file with the extension “.XML”.                                                                                                                                                                                                                                                                                                              |
+| -Svalue    | Stack size: the size of the stack and the heap in cells.                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| -svalue    | Skip count: the number of lines to skip in the input file before starting to compile; for example, to skip a “header” in the source file which is not in a valid PAWN syntax.                                                                                                                                                                                                                                                                                                    |
+| -tvalue    | tab size: the number of space characters to use for a tab character. When set to zero (i.e. option -t0) the compiler will no longer issue warning 217 (loose indentation).                                                                                                                                                                                                                                                                                                       |
+| -vvalue    | Verbose: display imformational messages during the compilation. The value can be 0 (zero) for “quiet” compile, 1 (one) for the normal output and 2 for a code/data/stack usage report.                                                                                                                                                                                                                                                                                           |
+| -wvalue+/- | Warning control: the warning number following the “-w” is enabled or disabled, depending on whether a “+” or a “-” follows the number. When a “+” or “-” is absent, the warning status is toggled. For example, -w225- disables the warning for “unreachable code”, -w225+ enables it and -w225 toggles between enabled/disabled.                                                                                                                                                |
+|            | Only warnings can be disabled (errors and fatal errors cannot be disabled). By default, all warnings are enabled.                                                                                                                                                                                                                                                                                                                                                                |
+| -Xvalue    | Limit for the abstract machine: the maximum memory requirements that a compiled script may have, in bytes. This value is is useful for (embedded) environments where the maximum size of a script is bound to a hard upper limit. If there is no setting for the amount of RAM for the data and stack, this refers to the total memory requirements; if the amount of RAM is explicitly set, this value only goves the amount of memory needed for the code and the static data. |
+| -XDvalue   | RAM limit for the abstract machine: the maximum memory requirements for data and stack that a compiled script may have, in bytes. This value is is useful for (embedded) environments where the maximum data size of a script is bound to a hard upper limit. Especially in the case where the PAWN script runs from ROM, the sizes for the code and data sections need both to be set.                                                                                          |
+| -\         | Control characters start with “\” (for the sake of similarity with C, C++ and Java)                                                                                                                                                                                                                                                                                                                                                                                              |
+| -^         | Control characters start with “ˆ” (for compatibility with earlier versions of pawn).                                                                                                                                                                                                                                                                                                                                                                                             |
+| -;+/-      | With -;+ every statement is required to end with a semicolon; with -;-, semicolons are optional to end a statement if the statement is the last on the line. The option -; (without + or − suffix) toggles the current setting.                                                                                                                                                                                                                                                  |
+| sym=value  | define constant “sym” with the given (numeric) value, the value is optional;                                                                                                                                                                                                                                                                                                                                                                                                     |
+| @filename  | read (more) options from the specified “response file”.                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
--C+/- Compact encoding of the binary file, which reduces the
-size a
-the output file typically to less than half the original size. Use
-
--C+ to enable it and -C- to revert to “plain” encoding. The
-option -C (without + or − suffix) toggles the current setting.
-
--cname Codepage: set the codepage for translating the source file
-from
-extended ascii to Unicode/UCS-4. The default is no transla-
-tion. The name parameter can specify a full path to a “mapping
-file” or just the identifier of the codepage —in the latter case,
-the compiler prefixes the identifier with the letters “cp”, ap-
-
-pends the extension “.txt” and loads the mapping file from a
-system directory.
-
--Dpath Directory: the “active” directory, where the  
-compiler should
-search for its input files and store its output files.
-
-This option is not supported on every platform. To verify
-whether the pawn compiler supports this option, run the com-
-piler without any option or filename on the command line. The
-
-compiler will then list its usage syntax and all available options
-in alphabetical order. If the -D switch is absent, the option is
-not available.
-
--dlevel Debug level: 0 = none, 1 = bounds checking and
-assertions only,
-2 = full symbolic information, 3 = full symbolic information and
-optimizations disabled (same as the combination -d2 and -O0).
-
-When the debug level is 2 or 3, the pawn compiler also prints the
-estimated number of stack/heap space required for the program.
-
--efilename Error file: set the name of the file into which the compiler
-must
-write any warning and error messages; when set, there is no
-output to the screen.
-
--Hvalue “HWND” (Microsoft Windows version only): the  
-compiler can
-optionally post a message to the specified window handle upon
-completion of the P-code generation. Host applications that
-
-invoke the pawn compiler can wait for the arrival of this message
-or signal the user of the completion of the compile.
-
-The message number that is sent to the window is created with
-the Microsoft Windows SDK function RegisterWindowMessage
-using the name “PawnNotify”. The wParam of the message holds
-the compiler return code: 0 = success, 1 = warnings, 2 = errors
-(plus possibly warnings), 3 = compilation aborted by the user.
-
--ipathname Include path: set the path where the compiler can  
-find the
-include files. This option may appear multiple times at the
-command line, to allow you to set several include paths.
-
--l Listing: perform only the file reading and preprocessing
-steps;
-for example, to verify the effect of the text substitution macros
-and the conditionally compiled/skipped sections.
-
--Olevel Optimization level: 0 = no optimizations; 1 = JIT
-compatible
-optimizations only (JIT = “Just In Time” compiler, a high-
-performance abstract machine); 2 = full optimizations.
-
--ofilename Output file: set the name and path of the binary output
-file.
-
--pfilename Prefix file: the name of the “prefix file”, this is
-a file that
-is parsed before the input file (as a kind of implicit “include
-file”). If used, this option overrides the default include file “de-
-fault.inc”. The -p option on its own (without a filename)
-disables the processing of any implicit include file.
-
--rfilename Report: enable the creation of the report and  
-optionally set
-the filename to which the extracted documentation and a cross-
-reference report will be written.
-
-The report is in “XML” format. The filename parameter is
-optional; if not specified, the report file has the same name as
-the input file with the extension “.XML”.
-
--Svalue Stack size: the size of the stack and the heap in cells.
-
--svalue Skip count: the number of lines to skip in the input file
-before
-starting to compile; for example, to skip a “header” in the source
-file which is not in a valid pawn syntax.
-
--tvalue tab size: the number of space characters to use for a tab
-char-
-acter. When set to zero (i.e. option -t0) the compiler will no
-longer issue warning 217 (loose indentation).
-
--vvalue Verbose: display imformational messages during the  
-compila-
-tion. The value can be 0 (zero) for “quiet” compile, 1 (one) for
-the normal output and 2 for a code/data/stack usage report.
-
-#pragma dynamic:
-121
-
--wvalue+/- Warning control: the warning number following the “-w” is en-
-
-abled or disabled, depending on whether a “+” or a “-” follows
-the number. When a “+” or “-” is absent, the warning status
-is toggled. For example, -w225- disables the warning for “un-
-reachable code”, -w225+ enables it and -w225 toggles between
-enabled/disabled.
-
-Only warnings can be disabled (errors and fatal errors cannot
-be disabled). By default, all warnings are enabled.
-
--Xvalue Limit for the abstract machine: the maximum memory
-require-
-ments that a compiled script may have, in bytes. This value is
-is useful for (embedded) environments where the maximum size
-of a script is bound to a hard upper limit. If there is no setting
-
-Warnings: 161
-
-See also #pragma
-amxlimit on page
-119
-
-See also #pragma
-amxram on page
-120
-
-for the amount of RAM for the data and stack, this refers to the
-total memory requirements; if the amount of RAM is explicitly
-set, this value only goves the amount of memory needed for the
-code and the static data.
-
--XDvalue RAM limit for the abstract machine: the maximum memory re-
-quirements for data and stack that a compiled script may have,
-in bytes. This value is is useful for (embedded) environments
-where the maximum data size of a script is bound to a hard
-upper limit. Especially in the case where the pawn script runs
-
-from ROM, the sizes for the code and data sections need both
-
-to be set.
-
--                   Control characters start with “  ” (for the sake of
-  similarity with
-  C, C⁺⁺ and Java).
-
--^ Control characters start with “ˆ” (for compatibility with
-earlier
-versions of pawn).
-
--;+/- With -;+ every statement is required to end with a
-semicolon;
-with -;-, semicolons are optional to end a statement if the
-statement is the last on the line. The option -; (without + or
-
-− suffix) toggles the current setting.
-
-sym=value define constant “sym” with the given (numeric) value, the
-value
-
-is optional;
-
-@filename read (more) options from the specified “response file”.
-
-• Response file
+### • Response file
 
 To support operating systems with a limited command line length (e.g., Mi-
-crosoft DOS), the pawn compiler supports “response files”. A response
-file
-is a text file that contains the options that you would otherwise put at the
+crosoft DOS), the PAWN compiler supports “response files”. A response
+file is a text file that contains the options that you would otherwise put at the
 command line. With the command:
 
-pawncc @opts.txt prog.pawn
+    pawncc @opts.txt prog.pawn
 
-the pawn compiler compiles the file “prog.pawn” using the options that are
+the PAWN compiler compiles the file “prog.pawn” using the options that are
 listed in the response file “opts.txt”.
 
-• Configuration file
+### • Configuration file
 
 On platforms that support it (currently Microsoft DOS, Microsoft Windows
-and Linux), the compiler reads the options in a “configuration file” on
-startup.
+and Linux), the compiler reads the options in a “configuration file” on startup.
 
 The configuration file must have the name “pawn.cfg” and it must reside in
 the same directory as the compiler executable program.
 
 In a sense, the configuration file is an implicit response file. Options
-specified
-on the command line may overrule those in the configuration file.
+specified on the command line may overrule those in the configuration file.
 
-174
+</div>
 
-Rationale
+<hr>
 
-appendix c
+<div align="right">
 
-The first issue in the presentation of a new computer language should be: why
-a new language at all?
+`Packed/unpacked strings: 99`
+
+`Character constants: 99`
+
+`#pragma dynamic: 121`
+
+`Warnings: 161`
+
+`See also #pragma amxlimit on page 119`
+
+`See also #pragma amxram on page 120`
+
+<hr>
+
+</div>
+
+<div align="center">
+
+# Rationale
+
+---
+
+</div>
+
+<div align="left">
+
+_The first issue in the presentation of a new computer language should be: why
+a new language at all?_
 
 Indeed, I did look at several existing languages before I designed  
-my own.
-Many little languages were aimed at scripting the command shell (TCL, Perl,
+my own. Many little languages were aimed at scripting the command shell (TCL, Perl,
 Python). Other languages were not designed as extension languages, and put
 the burden to embedding solely on the host application.
 
 As I initially attempted to use Java as an extension language (rather than build
-my own, as I have done now), the differences between pawn and Java are illus-
+my own, as I have done now), the differences between PAWN and Java are illus-
 trative for the almost reciprocal design goals of both languages. For example,
 
 Java promotes distributed computing where “packages” reside on diverse ma-
-chines, pawn is designed so that the compiled applets can be easily stored in
+chines, PAWN is designed so that the compiled applets can be easily stored in
 a compound file together with other data. Java is furthermore designed to be
-architecture neutral and application independent, inversely pawn is designed
+architecture neutral and application independent, inversely PAWN is designed
 to be tightly coupled with an application; native functions are a taboo to some
 extent in Java (at least, it is considered “impure”), whereas native functions
-are “the reason to be” for pawn. From the viewpoint of pawn, the intended
+are “the reason to be” for PAWN. From the viewpoint of PAWN, the intended
 use of Java is upside down: native functions are seen as an auxiliary library
-that the application —in Java— uses; in pawn, native functions are part of
-“the application” and the pawn program itself is a set of auxiliary functions
+that the application —in Java— uses; in PAWN, native functions are part of
+“the application” and the PAWN program itself is a set of auxiliary functions
 that the application uses.
 
-A language for scripting applications: pawn is targeted as an exten-
+__A language for scripting applications:__ PAWN is targeted as an exten-
 sion language, meant to write application-specific macros or subprograms with.
-pawn is not the appropriate language for implementing business applications
-or operating systems in. pawn is designed to be easily integrated with, and
+PAWN is not the appropriate language for implementing business applications
+or operating systems in. PAWN is designed to be easily integrated with, and
 embedded in, other systems/applications.
 
-As an extension language, pawn programs typically manipulate objects of
-the host application. In an animation system, pawn scripts deal with sprites,
-events and time intervals; in a communication application, pawn scripts handle
+As an extension language, PAWN programs typically manipulate objects of
+the host application. In an animation system, PAWN scripts deal with sprites,
+events and time intervals; in a communication application, PAWN scripts handle
 packets and connections. I assume that the host application will make
-(a
-
-subset of) its resources and functionality available via functions, handles,
-magic
-cookies. . . in a similar way that a contemporary operating system
-provides
-an interface to processes written in C/C++ —e.g., the Win32 API (“handles
-everywhere”) or GNU/Linux’ “glibc”. To that end, pawn has a simple and
-
-efficient interface to the “native” functions of the host application. A pawn
-
+(a subset of) its resources and functionality available via functions, handles,
+magic cookies. . . in a similar way that a contemporary operating system
+provides an interface to processes written in C/C++ —e.g., the Win32 API (“handles
+everywhere”) or GNU/Linux’ “glibc”. To that end, PAWN has a simple and
+efficient interface to the “native” functions of the host application. A PAWN
 script manipulates data objects in the host application through function calls,
 but it cannot access the data of the host application directly.
 
-The first and foremost criterions for the pawn language were execution speed
-and reliability. Reliability in the sense that a pawn program should not be
+The first and foremost criterions for the PAWN language were execution speed
+and reliability. Reliability in the sense that a PAWN program should not be
 able to crash the application or tool in which it is embedded —at least, not
 easily. Although this limits the capabilities of the language significantly,
-the
-advantages are twofold:
+the advantages are twofold:
 
-the application vendor can rest assured that its application will not crash
-due to user additions or macros,
+- the application vendor can rest assured that its application will not crash due to user additions or macros,
 
-the user is free to experiment with the language with no (or little) risk of
-damaging the application files.
+- the user is free to experiment with the language with no (or little) risk of damaging the application files.
 
-Speed is essential: pawn programs would probably run in an abstract ma-
+__Speed is essential:__ PAWN programs would probably run in an abstract ma-
 chine, and abstract machines are notoriously slow. I had to make a language
 that has low overhead and a language for which a fast abstract machine can be
-written. Speed should also be reliable, in the sense that a pawn script should
+written. Speed should also be reliable, in the sense that a PAWN script should
 not slow down over time or have an occasional performance hiccup. Conse-
-quently, pawn excludes any required “background process”, such as garbage
+quently, PAWN excludes any required “background process”, such as garbage
 collection, and the core of the abstract machine does not implicitly
-allocate
-any system or application resources while it runs. That is, pawn does
-not
-allocate memory or open files, not without the help of a native function that
+allocate any system or application resources while it runs. That is, PAWN does
+not allocate memory or open files, not without the help of a native function that
 the script calls explicitly.
 
 As Dennis Ritchie said, by intent the C language confines itself to facilities
-that
-can be mapped relatively efficiently and directly to machine instructions. The
-same is true for pawn, and this is also a partial explication why pawn looks
-so much like C. Even though pawn runs on an abstract machine, the goal is to
-keep that abstract machine small and quick. pawn is used in tiny embedded
+that can be mapped relatively efficiently and directly to machine instructions. The
+same is true for PAWN, and this is also a partial explication why PAWN looks
+so much like C. Even though PAWN runs on an abstract machine, the goal is to
+keep that abstract machine small and quick. PAWN is used in tiny embedded
 systems with ram sizes of 32 kiB or less, as well as in high-performance games
 that need every processor cycle for their graphics engine and game-play.  
-In
-both environments, a heavy-weight scripting support is difficult to swallow.
+In both environments, a heavy-weight scripting support is difficult to swallow.
 
 A brief analysis showed that the instruction decoding logic for an abstract ma-
 chine would quickly become the bottleneck in the performance of the abstract
 machine. To keep the decoding simple, each opcode should have the  
-same
-size (excluding operands), and the opcode should fully specify the instruction
+same size (excluding operands), and the opcode should fully specify the instruction
 (including the addressing methods, size of the operands, etc.). That meant
 that for each operation on a variable, the abstract machine needed a separate
 opcode for every combination of variable type, storage class and access method
 (direct, or dereferenced). For even three types (int, char and unsigned int),
-
 two storage classes (global and local) and three access methods (direct, indi-
 rect or indexed), a total of 18 opcodes (3*2*3) are needed to simply fetch the
 value of a variable.
@@ -9628,120 +8284,91 @@ value of a variable.
 At the same time, to keep the abstract machine small and manageable, I set the
 goal at approximately 100 instructions.∗ With 18 opcodes to load a variable
 in a register, 18 more to store a register into a variable, another 18 to get
-the
-address of a variable, etc. . . I was quickly exceeding my self-imposed limit
-of
-a hundred opcodes.
+the address of a variable, etc. . . I was quickly exceeding my self-imposed limit
+of a hundred opcodes.
 
 The languages bob and rexx inspired me to design a typeless language. This
 saved me a lot of opcodes. At the same time, the language could no longer be
 called a “subset of C”. I was changing the language. Why, then, not go a foot
-further in changing the language? This is where a few more design guidelines
+further in changing the language? This is where a few more design guidelines came into play:
 
-came into play:
+- give the programmer a general purpose tool, not a special purpose solution
 
-give the programmer a general purpose tool, not a special purpose solution
+- avoid error prone language constructs; promote error checking
 
-avoid error prone language constructs; promote error checking
+- be pragmatic
 
-be pragmatic
-
-A general purpose tool: pawn is targeted as an extension language, with-
+__A general purpose tool:__ PAWN is targeted as an extension language, with-
 out specifying exactly what it will extent. Typically, the application or  
-the
-tool that uses pawn for its extension language will provide many, optimized
+the tool that uses PAWN for its extension language will provide many, optimized
 routines or commands to operate on its native objects, be it text, database
 records or animated sprites. The extension language exists to permit the user
 to do what the application developer forgot, or decided not to include. Rather
 than providing a comprehensive library of functions to sort data, match reg-
-ular expressions, or draw cubic B´ezier splines, pawn should supply a (general
+ular expressions, or draw cubic B´ezier splines, PAWN should supply a (general
 purpose) means to use, extend and combine the specific (“native”) functions
 that an application provides.
 
-pawn lacks a comprehensive standard library. By intent, pawn also lacks fea-
+PAWN lacks a comprehensive standard library. By intent, PAWN also lacks fea-
 tures like pointers, dynamic memory allocation, direct access to the operating
 system or to the hardware, that are needed to remain competitive in the field of
 general purpose application or system programming. You cannot build linked
-lists or dynamic tree data structures in pawn, and neither can you access any
+lists or dynamic tree data structures in PAWN, and neither can you access any
 memory beyond the boundaries of the abstract machine. That is not to say
-
-∗ 136 Opcodes are defined at this writing, plus 20 “macro” opcodes.
-To exploit performance
-gains by forcing proper alignment of memory words (essential on ARM
-microprocessors), the
-current abstract machine uses 32-bit opcodes. There is no technical  
-limit on the number of
-opcodes, but in the interest of a small footprint, the number of opcodes
-should be restricted.
-
-that a pawn program can never use dynamic, sorted symbol tables, or change
+that a PAWN program can never use dynamic, sorted symbol tables, or change
 a parameter in the operating system; it can do that, but it needs  
-to do so
-by calling a “native” function that an application provides to the  
-abstract
-machine.
+to do so by calling a “native” function that an application provides to the abstract machine.
+
+---
+
+###### ∗ 136 Opcodes are defined at this writing, plus 20 “macro” opcodes. To exploit performance gains by forcing proper alignment of memory words (essential on ARM microprocessors), the current abstract machine uses 32-bit opcodes. There is no technical   limit on the number of opcodes, but in the interest of a small footprint, the number of opcodes should be restricted.
+
+---
 
 In other words, if an application chooses to implement the well known peek and
-poke functions (from BASIC) in the abstract machine, a pawn program can
+poke functions (from BASIC) in the abstract machine, a PAWN program can
 access any byte in memory, insofar the operating system permits this. Likewise,
-
 an application can provide native functions that insert, delete or search
-symbols
-in a table and allows several operations on them. The proposed core functions
+symbols in a table and allows several operations on them. The proposed core functions
 getproperty and setproperty are an example of native functions that build
 a linked list in the background.
 
-Promote error checking: As you may have noticed, one of the foremost
+__Promote error checking:__ As you may have noticed, one of the foremost
 design criterions of the C language, “trust the programmer”, is absent from
 my list of design criterions. Users of script languages may not be experienced
-programmers; and even if they are, pawn will probably not be their primary
-language. Most pawn programmers will keep learning the language as they
+programmers; and even if they are, PAWN will probably not be their primary
+language. Most PAWN programmers will keep learning the language as they
 go, and will even after years not have become experts. Enough reason, hence,
 to replace error prone elements from the C language (pointers) with  
-saver,
-albeit less general, constructs (references).† References are copied from C++.
+saver, albeit less general, constructs (references).† References are copied from C++.
 They are nothing else than pointers in disguise, but they are  
-restricted in
-
-various, mostly useful, ways. Turn to a C⁺⁺ book to find more justification
-for references.
+restricted in various, mostly useful, ways. Turn to a C⁺⁺ book to find more justification for references.
 
 I find it sad that many, even modern, programming languages have so  
-lit-
-tle built-in, or easy to use, support for confirming that programs do  
-as the
-programmer intended. I am not referring to theoretical correctness (which is
+little built-in, or easy to use, support for confirming that programs do  
+as the programmer intended. I am not referring to theoretical correctness (which is
 too costly to achieve for anything bigger than toy programs), but  
-practical,
-easy to use, verification mechanisms as a help to the programmer. pawn pro-
-
-vides both compile time and execution time assertions to use for preconditions,
-
-postconditions and invariants.
+practical, easy to use, verification mechanisms as a help to the programmer.
+PAWN provides both compile time and execution time assertions to use for preconditions, postconditions and invariants.
 
 The typing mechanism that most programming languages use is also an auto-
 matic “catcher” of a whole class of bugs. By virtue of being a typeless
-language,
-pawn lacked these error checking abilities. This was clearly a weakness, and I
-
-† You should see this remark in the context of my earlier  
-assertion that many “Pawn” pro-
-grammers will be novice programmers. In my (teaching) experience,  
-novice programmers
-make many pointer errors, as opposed to experienced C/C++ programmers.
-
+language, PAWN lacked these error checking abilities. This was clearly a weakness, and I
 created the “tag” mechanism as an equivalent for verifying function parameter
 passing, array indexing and other operations.
+
+---
+
+###### † You should see this remark in the context of my earlier assertion that many “PAWN” programmers will be novice programmers. In my (teaching) experience, novice programmers make many pointer errors, as opposed to experienced C/C++ programmers.
+
+---
 
 The quality of the tools: the compiler and the abstract machine, also have a
 great impact on the robustness of code —whatever the language. Although
 this is only very loosely related to the design of the language, I set out to
-build
-the tools such that they promote error checking. The warning system of pawn
+build the tools such that they promote error checking. The warning system of PAWN
 goes a step beyond simply reporting where the parser fails to  
-interpret the
-
-data according to the language grammar. At several occasions, the compiler
+interpret the data according to the language grammar. At several occasions, the compiler
 runs checks that are completely unrelated to generating code and that are im-
 plemented specifically to catch possible errors. Likewise, the “debugger hook”
 is designed right into the abstract machine, it is not an add-on implemented
@@ -9754,50 +8381,37 @@ other hand, contemporary object-oriented languages leave you struggling with
 the language as much as with the task at hand. Object-oriented languages are
 attractive mainly because of the comprehensive class libraries that they come
 with —but leaning on a standard library goes against one of the design goal
-for pawn. Object-oriented programming is not a solution for a  
-non-expert
+for PAWN. Object-oriented programming is not a solution for a  
+non-expert programmer with little patience for artificial complexity. The criterion
+“be pragmatic” is a reminder to seek solutions, not elegancy.
 
-programmer with little patience for artificial complexity. The criterion
-“be
+### • Practical design criterions
 
-pragmatic” is a reminder to seek solutions, not elegancy.
-
-• Practical design criterions
-
-The fact that pawn looks so much like C cannot be a coincidence, and it isn’t.
-pawn started as a C dialect and stayed that way, because C has a proven track
+The fact that PAWN looks so much like C cannot be a coincidence, and it isn’t.
+PAWN started as a C dialect and stayed that way, because C has a proven track
 record. The changes from C were mostly born out of necessity after rubbing
 out the features of C that I did not want in a scripting language: no pointers
 and no “typing” system.
 
-pawn, being a typeless language, needed a different means to declare variables.
+PAWN, being a typeless language, needed a different means to declare variables.
 In the course of modifying this, I also dropped the C requirement  
-that all
-variables should be declared at the top of a compound statement. pawn is a
+that all variables should be declared at the top of a compound statement. PAWN is a
 little more like C⁺⁺ in this respect.
 
 C language functions can pass “output values” via pointer arguments. The
 standard function scanf, for example, stores the values or strings that it reads
 from the console into its arguments. You can design a function in C so that
-
 it optionally returns a value through a pointer argument; if the caller of the
 function does not care for the return value, it passes NULL as the pointer
-value.
-The standard function strtol is an example of a function that does this. This
+value. The standard function strtol is an example of a function that does this. This
 technique frequently saves you from declaring and passing dummy variables.
-pawn replaces pointers with references, but references cannot be NULL. Thus,
-
-pawn needed a different technique to “drop” the values that a function returns
-
+PAWN replaces pointers with references, but references cannot be NULL. Thus,
+PAWN needed a different technique to “drop” the values that a function returns
 via references. Its solution is the use of an “argument placeholder”
-that is
-
-written as an underscore character (“ ”); Prolog programmers will recognize
+that is written as an underscore character (“ ”); Prolog programmers will recognize
 it as a similar feature in that language. The argument placeholder  
-reserves
-a temporary anonymous data object (a “cell” or an array of cells)  
-that is
-automatically destroyed after the function call.
+reserves a temporary anonymous data object (a “cell” or an array of cells)  
+that is automatically destroyed after the function call.
 
 The temporary cell for the argument placeholder should still have a value, be-
 cause the function may see a reference parameters as input/output. Therefore,
@@ -9809,61 +8423,71 @@ default values from the right was copied from C++.
 
 When speaking of BCPL and B, Dennis Ritchie said that C was invented in part
 to provide a plausible way of dealing with character strings when one begins
-with a word-oriented language. pawn provides two options for working with
+with a word-oriented language. PAWN provides two options for working with
 strings, packed and unpacked strings. In an unpacked string, every character
 
 fits in a cell. The overhead for a typical 32-bit implementation is large: one
 character would take four bytes. Packed strings store up to four characters
 in one cell, at the cost of being significantly more difficult  
-to handle if you
-could only access full cells. Modern BCPL implementations provide two array
+to handle if you could only access full cells. Modern BCPL implementations provide two array
 indexing methods: one to get a word from an array and one to get a character
-
-from an array. pawn copies this concept, although the syntax differs from that
+from an array. PAWN copies this concept, although the syntax differs from that
 of BCPL. The packed string feature also led to the new operator char.
 
 Unicode applications often have to deal with two characters sets:  
-8-bit for
-legacy file formats and standardized transfer formats (like many of the Internet
+8-bit for legacy file formats and standardized transfer formats (like many of the Internet
 protocols) and the 16-bit Unicode character set (or the 31-bit UCS-4 character
-
-set). Although the pawn compiler has an option that makes characters 16-bit
+set). Although the PAWN compiler has an option that makes characters 16-bit
 (so only two characters fit in a 32-bit cell), it is usually more
-convenient to
-store single-byte character strings in packed strings and multi-byte strings in
-unpacked strings. This turns a weakness in pawn —the need to distinguish
-packed strings from unpacked strings— into a strength: pawn can make that
-
-Support for Unicode
-string literals: 139
+convenient to store single-byte character strings in packed strings and multi-byte strings in
+unpacked strings. This turns a weakness in PAWN —the need to distinguish
+packed strings from unpacked strings— into a strength: PAWN can make that
 
 distinction quite easily. And instead of needing two implementations for every
 function that deals with strings (an ascii version and a Unicode version —look
-at the Win32 API, or even the standard C library), pawn enables functions to
+at the Win32 API, or even the standard C library), PAWN enables functions to
 handle both packed and unpacked strings with ease.
 
 Notwithstanding the above mentioned changes, plus those in the chapter “Pit-
-falls: differences from C” (page 134), I have tried to keep pawn close to C. A
+falls: differences from C” (page 134), I have tried to keep PAWN close to C. A
 final point, which is unrelated to language design, but important nonetheless,
-is the license: pawn is distributed under a liberal license allowing you to use
+is the license: PAWN is distributed under a liberal license allowing you to use
 and/or adapt the code with a minimum of restrictions —see appendix D.
 
-License
+</div>
 
-appendix d
+<hr>
 
-The software toolkit “pawn” (the compiler, the abstract machine and  
-the
-documentation) are copyright c 1997–2006 by ITB CompuPhase. The Intel
+<div align="right">
+
+`Support for Unicode string literals: 139`
+
+<hr>
+
+</div>
+
+<div align="center">
+
+# License
+
+---
+
+</div>
+
+<div align="left">
+
+The software toolkit “PAWN” (the compiler, the abstract machine and  
+the documentation) are copyright c 1997–2006 by ITB CompuPhase. The Intel
 assembler implementation of the abstract machine and the just-in-time com-
 piler (specifically the files amxexec.asm, amxjitr.asm and amxjits.asm)
 are copyright c 1998-2003 Marc Peter. The file amxjitsn.asm is translated
 from amxjits.asm and is partially c 2004 G.W.M. Vissers. The file amxex-
-ecn.asm is translated from amxexec.asm and is partially c 2004–2005 ITB
-CompuPhase.
+ecn.asm is translated from amxexec.asm and is partially c 2004–2005 ITB CompuPhase.
 
-pawn is distributed under the “zLib/libpng” license, which is reproduced be-
+PAWN is distributed under the “zLib/libpng” license, which is reproduced be-
 low:
+
+---
 
 This software is provided “as-is”, without any express or implied warranty. In
 no event will the authors be held liable for any damages arising from the use
@@ -9871,736 +8495,20 @@ of this software.
 
 Permission is granted to anyone to use this software for any purpose, including
 commercial applications, and to alter it and redistribute it freely, subject
-to
-the following restrictions:
+to the following restrictions:
 
-1 The origin of this software must not be misrepresented; you must not claim
-that you wrote the original software. If you use this software in a product,
-an acknowledgment in the product documentation would be appreciated
-but is not required.
+1  The origin of this software must not be misrepresented; you must not claim
+   that you wrote the original software. If you use this software in a product,
+   an acknowledgment in the product documentation would be appreciated
+   but is not required.
 
-2 Altered source versions must be plainly marked as such, and must not be
-misrepresented as being the original software.
+2  Altered source versions must be plainly marked as such, and must not be
+   misrepresented as being the original software.
 
-3 This notice may not be removed or altered from any source distribution.
+3  This notice may not be removed or altered from any source distribution.
 
-The zLib/libpng license has been approved by the “Open Source Initiative”
-organization.
+---
 
-182 License
-
-Index
-
-Names of persons (not products) are in italics.
-
-Function names, constants and compiler reserved words are in typewriter
-font.
-
-! Automata theory, 42, 45
-
-#assert, 117
-
-#define, 93, 95, 117, 135
-
-#emit, 117
-
-#endinput, 117
-
-#error, 117
-
-#file, 117
-
-#if, 117
-
-#include, 118
-
-#line, 118
-
-#pragma, 119
-
-#section, 122
-
-#tryinclude, 123
-
-#undef, 95, 123
-
-@-symbol, 63, 84
-
-. . . considered harmful, 6
-
-A Actual parameter, 18, 69
-
-Algebraic notation, 28
-
-Automaton, See State automaton,
-39, 83
-
-anonymous, 114
-
-anonymous ~, 42
-
-B Basic Multilingual Plane, 140
-BCPL, 179
-
-Big Endian, 100
-
-Binary arithmetic, 27
-Binary Coded Decimals, 103
-Binary radix, 98, 134
-
-Bisection, 79
-
-Bit shifting increment, 27
-
-bitcount, 27
-
-Bitwise operators, 25
-
-BOB, 176
-
-Byte Order Mark, 169
-Bytecode, See P-code
-
-Alias, See External name
-
-Alignment (variables), 119
-
-Anno Domini, 13
-
-APL, 28
-
-Argument placeholder, 75
-Array
-
-enumerated ~, 21, 31, 66
-
-Array assignment, 106, 134
-
-Arrays, 66
-
-Progressive initiallers, 65
-
-ASCII, 139, 141, 168, 169
-
-Assertions, 11, 50, 103, 177
-
-C Cain, Ron, 3
-
-Call by reference, 15, 18, 80
-
-Call by value, 14, 18, 71, 89
-
-calldll, 132
-
-Callee (functions), 73
-
-Celsius, 16
-
-Chained relational operators, 19,
-107
-
-char, 135
-
-Character constants, 99
-
-clamp, 124
-
-clreol, 130
-
-clrscr, 130
-
-Codepage, 120, 139, 141, 142, 169
-
-Coercion rules, 81
-
-Comments, 97
-
-documentation ~, 52, 97
-
-Commutative operators, 89
-
-Compact encoding, 120, 169
-
-Compiler options, 169
-Compound literals, See Literal
-
-array
-
-Conditional goto, 134
-
-Configuration file, 172
-Constants
-
-“const” variables, 64
-
-literals, 98
-
-predefined ~, 102
-
-symbolic ~, 101
-
-Counting bits, 27
-
-Cross-reference, 52, 171
-
-D Data declarations, 62–67
-arrays, 66
-
-default initialization, 65
-
-global ~, 62
-
-local ~, 62
-
-public ~, 63
-
-stock ~, 63
-Date
-
-~ arithmetic, 15
-
-functions, 131
-
-Debug level, 103
-
-Default arguments, 75
-
-Default initialization, 65
-
-deleteproperty, 129
-Design by contract, 50
-
-Diagnostic, see also Errors and
-Warnings, 31, 69, 79, 142
-
-Directives, 95, 117–123
-
-Documentation comments, 52, 97
-
-Documentation tags, 171
-Dr. Dobb’s Journal, 3
-Dynamic tree, 176
-
-E Eiffel, 51
-
-Ellipsis operator, 65, 72, 80
-
-enum, 21, 101
-
-Enumerated array, 21, 31, 66
-
-Eratosthenes, 9
-
-Error, see also Diagnostic
-Errors, 60, 148–161
-
-Escape sequences, 99, 100
-
-Euclides, 7
-
-Event-driven programming model,
-34, 37, 38
-
-existproperty, 129
-
-Extended ASCII, 139, 168
-
-External name, 86, 89
-
-F Faculty, 71
-
-faculty, 71
-
-Fahrenheit, 16
-
-Fall-back (state functions), 44, 83
-
-Fibonacci, 10
-
-fibonacci, 11
-
-Fibonacci numbers, 11
-
-File input/output, 131
-
-Fixed point arithmetic, 79, 90, 131
-
-Floating point arithmetic, 90, 98,
-
-131, 134
-
-Floyd, Robert, 77
-
-Forbidden user-defined operators,
-92
-
-Formal parameter, 69, 70
-
-Forward declaration, 70, 82
-
-freedll, 133
-
-FSM, See Automaton (State)
-
-funcidx, 124
-
-Function library, 124
-
-Functions, 70–86
-
-call by reference, 15, 18, 71
-
-call by value, 14, 18, 71, 89
-
-callee, 73
-
-caller, 73
-
-coercion rules, 81
-
-default arguments, 75
-
-forward declaration, 70, 82
-
-~ index, 124
-
-latent ~, 114
-
-native ~, 11, 85
-
-public ~, 83
-
-standard library ~, 124
-state classifier, 83
-
-state entry ~, 42, 62
-
-static ~, 84
-
-stock ~, 84
-
-variable arguments, 80
-
-G G¨odel, Escher, Bach, 147
-
-gcd, 7
-
-getarg, 125
-
-getchar, 129
-
-getproperty, 128
-
-getstring, 129
-
-getvalue, 129
-
-Global variables, 62
-
-Golden ratio, 12
-
-gotoxy, 130
-
-Greatest Common Divisor, 7
-Gregorian calendar, 12
-
-H Hamblin, Charles, 28
-Hanoi, the Towers of ~, 81
-heapspace, 125
-
-Hendrix, James, 3
-
-Hexadecimal radix, 98, 134
-
-Hofstadter, Douglas R., 147
-
-Host application, 63, 64, 85, 113,
-
-114, 124, 142, 174
-
-I Identifiers, 97
-
-Implicit conversions, See coercion
-rules
-
-Index tag, 31, 69
-
-Indiction Cycle, 12
-
-Infinite loop, 20
-
-Infix notation, See Algebraic ~
-
-Internationalization, 139
-
-Internet, 179
-
-intersection, 79
-
-Intersection (sets), 24
-
-ISO 8859, 100, 139, 168
-
-ISO/IEC 10646-1, 140, 141
-
-ISO/IEC 8824 (date format), 74
-
-ispacked, 137
-
-iswin32, 133
-
-J Jacquard Loom, 39
-Java, 174
-
-JIT, 170
-
-Julian Day number, 12
-
-K Keywords, See reserved words
-
-L Latent function, 114
-Latin-1, See ISO 8859
-Leap year, 70
-
-leapyear, 70
-Leonardo of Pisa, 10
-Library functions, 84
-
-License, 181
-
-Lineal programming model, 34, 37
-Linear congruential generator, 126
-Linked lists, 176
-
-Linux, 141, 174
-
-LISP, 35
-
-Literal array, 72
-Literals, See Constants
-loaddll, 132
-
-Local variables, 62
-
-Logo (programming language), 35
-
-Lukasiewicz, Jan, 28
-
-lvalue, 69, 104, 144
-
-M Macro, 93, 117
-
-~ prefix, 95, 123
-
-max, 125
-
-Mealy automata, 45
-
-Metonic Cycle, 12
-
-Meyer, Bertrand, 51
-
-Microsoft Windows, 141
-
-min, 126
-
-MIRT, 46
-
-Moore automata, 45
-
-Multiplicative increment, 27
-
-N Named parameters, 74
-Native functions, 11, 85
-
-external name, 86, 89
-
-Newton-Raphson, 79
-
-numargs, 126
-
-P P-code, 93, 120, 166
-
-Packed string, 100, 137, 179
-Parameter
-
-actual ~, 18, 69
-
-formal ~, 69, 70
-
-Parser, 6
-
-Placeholder, See Argument ~
-
-Plain encoding, 169
-
-Plain strings, 100
-
-Plural tag names, 145, 146
-
-Positional parameters, 74
-
-power, 70
-
-Precedence table, 110
-
-Prefix file, 171
-
-Preprocessor, 93–96
-
-~ macro, 93, 117
-
-Prime numbers, 9
-
-print, 130
-
-printf, 17, 130
-
-Priority queue, 23
-Procedure call syntax, 73
-Progressive initiallers, 65
-
-Proleptic Gregorian calendar, 12
-Pseudo-random numbers, 126
-Public
-
-~ functions, 83, 124
-
-~ variables, 63
-
-                                              Q  Quine, 147
-
-O Octal radix, 134
-
-Operator precedence, 110
-
-Operators, 104–110
-
-commutative ~, 89
-
-user-defined ~, 86, 143
-
-Optional semicolons, 97
-Options
-
-compiler ~, 169
-
-R random, 126
-
-Random sample, 77
-
-Rational numbers, 16, 31, 98
-
-Recursive functions, 81
-
-Reference arguments, 15, 71, 80
-
-Report, 171
-
-Reserved words, 97
-
-Response file, 172
-
-Reverse Polish Notation, 28
-REXX, 176
-
-Ritchie, Dennis, 135, 175, 179
-
-rot13, 17
-
-ROT13 encryption, 17
-
-S Scaliger, Josephus, 12
-Semicolons, optional, 97
-
-Set operations, 24
-
-setarg, 126
-
-setattr, 130
-
-setproperty, 129
-
-Shadowing, 164
-
-Shift-JIS, 140
-
-sieve, 9
-
-Single line comment, 97
-sizeof operator, 109
-
-~ in function argument, 77, 78
-
-Small C, 3
-
-Solar Cycle, 12
-
-sqroot, 79
-
-Square root, 79
-
-Standard function library, 124
-State
-
-~ classifier, 42, 47, 62
-
-classifier~ classifier, 42, 82, 83
-
-conditional ~, 41
-
-~ diagram, 39, 50
-
-~ entry function, 42, 62
-
-fall-back ~, 44, 83
-
-~ notation, 50
-
-unconditional ~, 45
-
-~ variables, 62
-
-State variables, 45
-
-Statements, 112–116
-
-States, 39, 40
-
-~ operator, 109
-
-Static
-
-~ functions, 84
-
-~ variables, 63
-Stock
-
-~ functions, 84
-
-~ variables, 63
-String
-
-packed ~, 100, 137, 179
-
-plain ~, 100
-
-unpacked ~, 100, 137, 179
-
-String manipulation, 131
-
-strtok, 19
-
-Structures, see also Enumerated
-arrays, 21
-
-strupper, 138
-
-Surrogate pair, 140, 142
-
-swap, 71
-
-swapchars, 127
-
-Symbolic constants, 101
-
-Symbolic information, 170
-
-Syntax rules, 97
-
-T Tag name, 16, 32, 68, 142
-
-~ and enum, 102
-array index, 31, 69
-
-~ operator, 146
-
-~ override, 69, 109, 144
-
-plural tags, 145, 146
-
-predefined ~, 103
-
-strong ~, 69, 144
-
-~ syntax, 103
-
-untag override, 145
-
-weak ~, 69, 143
-
-Tag names, 177
-
-tagof operator, 109
-
-Text substitution, 93, 117
-The Towers of Hanoi, 81
-Time
-
-functions, 131
-
-tolower, 127
-
-toupper, 128
-
-Transition (state), 39
-
-Turtle graphics, 36
-
-U UCS-4, 100, 140, 141, 168
-
-Unicode, 100, 140, 141, 168, 169,
-
-179
-
-Union (sets), 24
-
-UNIX, 141
-
-Unpacked string, 100, 137, 179
-
-Untag override, 145
-
-User error, 117
-
-User-defined operators, 86, 143
-
-forbidden ~, 92
-
-UTF-8, 141, 142, 158, 168
-
-V
-
-Variables, See Data declarations
-state ~, 45
-
-VETAG, 46
-
-Virtual Machine, See Abstract ~
-
-W Warning, see also Diagnostic
-Warnings, 161–167, 171
-
-weekday, 74, 115
-
-White space, 97
-
-Whitesmith’s style, 6
-
-Wide character, 141
-
-Word count, 19
-
-X XML, 52, 171
-
-XSLT, 52
-
-Y Year zero, 13
-
-Van Orman Quine, Willard, 147
-
-Variable arguments, 80
-
-Z Zeller, 74
+The zLib/libpng license has been approved by the “Open Source Initiative” organization.
 
 </div>
