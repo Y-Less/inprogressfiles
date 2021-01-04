@@ -101,16 +101,16 @@ size of 11 points.
 
 [Assorted tips](12-Assorted-tips.md) - Page 137-148
 
-[Appendices](13-Appendices.md) - Page 148-183
+---
 
-   ∟ [Error and warning messages](14-Error-and-warning-messages.md) - Page 148-168
-   
-   ∟ [The compiler](15-The-compiler.md) - Page 168-174
-   
-   ∟ [Rationale](16-Rationale.md) - Page 174-181
-   
-   ∟ [License](17-License.md) - Page 181-183
+### Appendices
 
-[Index](18-Appendices.md) - Page 183
+   ∟ [Error and warning messages](13-Error-and-warning-messages.md) - Page 148-168
+   
+   ∟ [The compiler](14-The-compiler.md) - Page 168-174
+   
+   ∟ [Rationale](15-Rationale.md) - Page 174-181
+   
+   ∟ [License](16-License.md) - Page 181-183
 
 </div>
