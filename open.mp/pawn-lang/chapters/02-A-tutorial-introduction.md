@@ -1,4 +1,3 @@
-<div align="right">5</div>
 <div align="center">
 
 # A tutorial introduction
@@ -60,8 +59,6 @@ the string, because a string may not wrap over multiple lines.
 
 </div>
 <div align="left">
-
-##### 6 ♙ A tutorial introduction
 
 ---
 
@@ -125,8 +122,6 @@ available by the host application and be “declared” to the pawn parser.
 <hr>
 
 <div align="left">
-
-##### 7 ♙ A tutorial introduction
 
 ---
 
@@ -193,8 +188,6 @@ to assign a value to the variable already at the moment of its creation.
 
 <div align="left">
 
-##### 8 ♙ A tutorial introduction
-
 ---
 
 Variables must be declared before they are used in an expression.
@@ -238,8 +231,6 @@ The loop condition for the while loop is “(a != b)”; the symbol != is the
 “not equal to” operator. That is, the if–else instruction is repeated  
 until “a” equals “b”. It is good practice to indent the instructions that run under
 control of another statement, as is done in the preceding example.
-
-##### 9 ♙ A tutorial introduction
 
 ---
 
@@ -308,8 +299,6 @@ main()
 
 ```
 
-##### 10 ♙ A tutorial introduction
-
 ---
 
 When a program or sub-program has some fixed limit built-in, it is good prac-
@@ -374,8 +363,6 @@ the sequence was to describe the growth of a population of (idealized) rabbits;
 and the sequence is 1, 1, 2, 3, 5, 8, 13, 21,. . .
 (every next value is the sum of its two predecessors).
 
-##### 11 ♙ A tutorial introduction
-
 Listing: fib.p
 
 ```c
@@ -436,8 +423,6 @@ It need not appear at the very end of the function; early exits are permitted.
 
 <div align="left">
 
-##### 12 ♙ A tutorial introduction
-
 ---
 
 The main function of the Fibonacci example calls predefined “native” functions,
@@ -487,8 +472,6 @@ embraced it to calculate intervals between two events more easily.
 </div>
 
 <div align="left">
-
-##### 13 ♙ A tutorial introduction
 
 ---
 
@@ -576,8 +559,6 @@ JulianToDate(jdn,  &day,  &month,  &year)
 
 ```
 
-##### 14 ♙ A tutorial introduction
-
 ---
 
 Function main starts with creating variables to hold the day, month and year,
@@ -613,8 +594,6 @@ perfectly valid in pawn.
 </div>
 
 <div align="left">
-
-##### 15 ♙ A tutorial introduction
 
 ---
 
@@ -652,11 +631,7 @@ output via a reference argument and an error code in its return value.
 
 As an aside, many desktop application use conversions to and from  
 Julian Day numbers (or varieties of it) to conveniently calculate the number of days
-between to dates or to calculate the date that is 90 days from now —for example.
-
-##### 16 ♙ A tutorial introduction
-
----
+between to dates or to calculate the date that is 90 days from now —for example.---
 
 ### • Rational numbers
 
@@ -724,9 +699,6 @@ case for rational numbers, its memory lay-out.
 <hr>
 
 <div align="left">
-
-##### 17 ♙ A tutorial introduction
-
 ---
 
 The Rational: tag tells the pawn parser that the variables Celsius and Fahrenheit
@@ -774,9 +746,6 @@ is most widely used in public electronic forums (BBSes, Usenet) to hide texts
 from casual reading, such as the solution to puzzles or riddles. ROT13 simply
 “rotates” the alphabet by half its length, i.e. 13 characters. It is a symmetric
 operation: applying it twice on the same text reveals the original.
-
-##### 18 ♙ A tutorial introduction
-
 ---
 
 Listing: rot13.p
@@ -845,9 +814,6 @@ them by value requires a copy of this data structure to be made, taking both mem
 </div>
 
 <div align="left">
-
-##### 19 ♙ A tutorial introduction
-
 ---
 
 Due to this rule, function rot13 can modify its function
@@ -932,9 +898,6 @@ strtok(const  string[],  &index)
 </div>
 
 <div align="left">
-
-##### 20 ♙ A tutorial introduction
-
 ---
 
 Function main first displays a message and retrieves a string that  
@@ -968,9 +931,6 @@ the same name from C/C++, but it does not modify the source string. Instead
 
 it copies characters from the source string, word for word, into a local array,
 which it then returns.
-
-##### 21 ♙ A tutorial introduction
-
 ---
 
 ### • Arrays and enumerations (structured data)
@@ -983,9 +943,6 @@ other languages implement with “structures” or “records”.
 The example to illustrate enumerations and arrays is longer than  
 previous pawn programs, and it also displays a few other features, such as global
 variables and named parameters.
-
-##### 22 ♙ A tutorial introduction
-
 Listing: queue.p
 
 ```c
@@ -1085,9 +1042,6 @@ extract(item[message])
 </div>
 
 <div align="left">
-
-##### 23 ♙ A tutorial introduction
-
 ---
 
 Near the top of the program listing is the declaration of the enumeration mes-
@@ -1153,9 +1107,6 @@ declared
 outside the scope of any function. Variables must still be declared before they
 are used, so main cannot access variables queue and queueitems, but both
 insert and extract can.
-
-##### 24 ♙ A tutorial introduction
-
 ---
 
 Function extract returns the messages with the highest priority via its func-
@@ -1202,9 +1153,6 @@ setting the result set equal to the next_step set for the departure point. Now
 we have in the result set all points that one can reach in one step. Then, for
 every point in our result set, we create a union of the result set and the
 next_step set for that point. This process is iterated for a specified number of loops.
-
-##### 25 ♙ A tutorial introduction
-
 ---
 
 An example may clarify the procedure outlined above. When the departure
@@ -1243,9 +1191,6 @@ lower case letter for an element from that set.
 | complement   | A                     | ~A              |
 | empty set    | ε                     | 0               |
 | membership   | x ∈ A                 | (1 << x ) & A   |
-
-##### 26 ♙ A tutorial introduction
-
 ---
 
 To test for membership —that is, to query whether a set holds a particular
@@ -1312,9 +1257,6 @@ findtargets(source,  steps,  nextstep[],  numpoints  =  sizeof  nextstep)
 }
 
 ```
-
-##### 27 ♙ A tutorial introduction
-
 ---
 
 The enum statement just below the header of the main function declares the
@@ -1390,9 +1332,6 @@ bitcount(set)
 <hr>
 
 <div align="left">
-
-##### 28 ♙ A tutorial introduction
-
 ---
 
 ### • A simple RPN calculator
@@ -1445,7 +1384,7 @@ proposed later to put operators behind the operands, calling it the “Reverse P
 
 <div align="left">
 	
-##### 29 ♙ A tutorial introduction
+
 ***
 
 The advantage of reversing the order is that the operators
@@ -1498,9 +1437,6 @@ main()
 }
 
 ```
-
-##### 30 ♙ A tutorial introduction
-
 ---
 
 The main program contains very little code itself; instead it includes the re-
@@ -1591,10 +1527,7 @@ gettoken(const  string[],  &index)
 
 }
 
-```
-
-##### 31 ♙ A tutorial introduction
-***
+```***
 
 The rpn calculator uses rational number support and rpnparse.inc includes
 the “rational” file for that purpose. Almost all of the operations on rational
@@ -1634,7 +1567,7 @@ where the format code %s expects a string —a zero-terminated array.
 
 <div align="left">
 	
-##### 32 ♙ A tutorial introduction
+
 ***
 
 If you know C/C⁺⁺  or Java, you may want to look at the switch statement.
@@ -1701,7 +1634,7 @@ strtok(const string[], &index)
 
 <div align="left">
 	
-##### 33 ♙ A tutorial introduction
+
 ***
 
 Function strtok is the same as the one used in the wcount.p example. It is
@@ -1765,10 +1698,7 @@ clearstack()
 
 <hr>
 
-<div align="left">
-
-##### 34 ♙ A tutorial introduction
-***
+<div align="left">***
 
 The file stack.inc includes the file rational again. This is technically not
 necessary (rpnparse.inc already included the definitions for rational number
@@ -1808,10 +1738,7 @@ and a second task/thread that sits in a loop continuously requesting user input.
 This is a heavy-weight solution, however. A more light-weight implementation
 of a responsive system is what is called the “event-driven” programming model.
 
-<hr>
-
-##### 35 ♙ A tutorial introduction
-***
+<hr>***
 
 In the event-driven programming model, a program or script decomposes any
 lengthy (background) task into short manageable blocks and in between, it is
@@ -1877,10 +1804,7 @@ to create drawings by properly programming the turtle —it became known as turt
 
 <hr>
 
-<div align="left">
-
-##### 36 ♙ A tutorial introduction
-***
+<div align="left">***
 
 The term “turtle graphics” was also used for drawing inter-
 actively with the arrow keys on the keyboard and a “turtle” for the current
@@ -1937,10 +1861,7 @@ Support for function keys and other special keys (e.g. the arrow keys) is highly
 system-dependent. On ANSI terminals, these keys produce different codes
 than in a Windows “DOS box”.
 
-<hr>
-
-##### 37 ♙ A tutorial introduction
-***
+<hr>***
 
 In the spirit of keeping the example program
 portable, I have used common letters (“u” for up, “l” for left, etc.). This
@@ -1973,10 +1894,7 @@ line or using TCP/IP, the host application may decide itself. The tools in the
 standard pawn distribution push the messages over the TCP/IP network, and
 allow for a “broadcast” mode so that more than two people can chat with each other.
 
-<hr>
-
-##### 38 ♙ A tutorial introduction
-***
+<hr>***
 
 Listing: chat.p
 
@@ -2042,10 +1960,7 @@ other signals that take part in the protocol.
 
 ###### ∗ As this script makes no attempt to separate received messages from typed messages (for example, in two different scrollable regions), the terminal/console will look confusing when this happens. With an improved user-interface, this simple script could indeed be a nice message-base chat program. 
 
-<hr>
-
-##### 39 ♙ A tutorial introduction
-***
+<hr>***
 
 For the stream of events (and the data packets that they carry) to make sense,
 the event-driven program must follow a precise hand-shaking protocol.
@@ -2085,10 +2000,7 @@ In a state diagram, the states are usually represented as circles or
 rounded rectangles and the arrows represent the transitions. As transitions are
 the response of the automaton to events, an arrow may also be seen as an event “that does something”.
 
-<hr>
-
-##### 40 ♙ A tutorial introduction
-***
+<hr>***
 
 An event/transition that is not defined in a particular
 state is assumed to have no effect —it is silently ignored. A filled dot
@@ -2168,10 +2080,7 @@ printchar(ch, colour)
 
 ###### ∗ With the exception of “native functions” and user-defined operators.
 
-<hr>
-
-##### 41 ♙ A tutorial introduction
-***
+<hr>***
 
 Function main sets the starting state to main and exits; all logic  
 is eventdriven. when a key arrives in state plain, the program checks for  
@@ -2193,10 +2102,7 @@ is declared at all in this script. The information about a character being held
 back is “hidden” in the state of the automaton.
 
 As is apparent in the script, state changes may be conditional. The condition
-is optional, and you can also use the common if–else construct to change states.
-
-##### 42 ♙ A tutorial introduction
-***
+is optional, and you can also use the common if–else construct to change states.***
 
 Being state-dependent is not reserved for the event functions. Other functions
 may have state declarations as well, as the echo function demonstrates. When
@@ -2239,10 +2145,7 @@ when actions (output) were tied to the states rather than to the events (input).
 
 ###### * A function that has the same implementation for all states, does not need a state classifierat all —see printchar.
 
-<hr>
-
-##### 43 ♙ A tutorial introduction
-***
+<hr>***
 
 </div>
 
@@ -2284,10 +2187,7 @@ green/wait, because the pedestrians that are busy crossing the road at
 that moment need some time to clear the road —the state red/wait
 allows for this.
 
-<hr>
-
-##### 44 ♙ A tutorial introduction
-***
+<hr>***
 
 For purpose of demonstration, this pedestrian crossing has the added
 functionality that when a pedestrian pushes the button while the light for the
@@ -2353,10 +2253,7 @@ entry() <red_wait>
 
 ```
 
-<hr>
-
-##### 45 ♙ A tutorial introduction
-***
+<hr>***
 
 This example program has an additional dependency on the host application/
 environment: in addition to the “@keypressed” event function, the host must
@@ -2401,10 +2298,7 @@ control is the mirt system (Mobile Infra-Red Transmitter) but not de facto
 standard exists —the Netherlands use a radiographic system called vetag for
 instance.
 
-<hr>
-
-##### 46 ♙ A tutorial introduction
-***
+<hr>***
 
 The new state diagram for the pedestrian crossing light has two more states,
 but more importantly: it needs to save data across events and share it between
@@ -2436,10 +2330,7 @@ the ones listed). Apart from the state classifier, the declaration of a state
 variable is similar to that of a global variable. The declaration of the
 variable button_memo in the next listing illustrates the concept.
 
-<hr>
-
-##### 47 ♙ A tutorial introduction
-***
+<hr>***
 
 Listing: traffic2.p
 
@@ -2531,10 +2422,7 @@ entry() <mirt_override>
 
 ```
 
-<hr>
-
-##### 48 ♙ A tutorial introduction
-***
+<hr>***
 
 If a pedestrian pushes the button during mirt activity, that button press
 is
@@ -2559,10 +2447,7 @@ known riddle of the man that must move a cabbage, a sheep and a wolf across a ri
 ∗ the states are obvious —the trick of the riddle is to avoid the forbidden
 states. But now that we are seeing states everywhere, the task is not to overdo it.
 
-<hr>
-
-##### 49 ♙ A tutorial introduction
-***
+<hr>***
 
 For example, in the second implementation of a pedestrian crossing light, see
 page 47, I used a variable (button_memo) to hold a criterion for a decision made
@@ -2611,10 +2496,7 @@ in the state diagrams —in part because it is in line with the usual notation.
 For a state, the rounded rectangle holds the name of the state and optionally
 a brief description of what the state entry function does. The  
 arrow for a transition contains the name of the event (or pseudo-event), an  
-optional condition between square brackets and an optional action behind a slash (“/”).
-
-##### 50 ♙ A tutorial introduction
-***
+optional condition between square brackets and an optional action behind a slash (“/”).***
 
 • Program verification
 
@@ -2644,10 +2526,7 @@ execute the function. In addition, the function may also specify any conditions
 that hold true after it completes its operation. This is the “contract” of the
 function.
 
-<hr>
-
-##### 51 ♙ A tutorial introduction
-***
+<hr>***
 
 The name “design by contract” was coined by Bertrand Meyer and its princi-
 ples trace back to predicate logic and algorithmic analysis.
@@ -2697,10 +2576,7 @@ application requires for correct operation.
 	
 <hr>
 
-<div align="left">
-
-##### 52 ♙ A tutorial introduction
-***
+<div align="left">***
 
 This does have the effect, however, that assertions never fire in a  
 bug-free program: they just make the code fatter and slower, without any user-visible
@@ -2757,7 +2633,6 @@ The report file contains a reference to the “smalldoc.xsl” stylesheet.
 
 <hr>
 
-##### 53-56 ♙ A tutorial introduction
 ***
 
 The example below illustrates documentation comments in a simple script that
@@ -3080,7 +2955,6 @@ function/variable/constant. The parser also generates few tags of its own:
 
 <hr>
 
-##### 57 ♙ A tutorial introduction
 ***
 
 </div>
@@ -3103,7 +2977,6 @@ function/variable/constant. The parser also generates few tags of its own:
 
 <hr>
 
-##### 58 ♙ A tutorial introduction
 ***
 
 All text in the documentation comment(s) is also copied to each  
@@ -3134,7 +3007,6 @@ processors usually do. The pawn toolkit comes with an example XSLT file
 
 <hr>
 
-##### 58 ♙ A tutorial introduction
 ***
 
 The following additional HTML tags are supported for general purpose formatting text inside any of the above sections:
@@ -3151,7 +3023,6 @@ The following additional HTML tags are supported for general purpose formatting 
 
 <hr>
 
-##### 59 ♙ A tutorial introduction
 ***
 
 As stated, there is one exception in the processing of documentation  
@@ -3181,7 +3052,6 @@ between all systems:
 
 <hr>
 
-##### 60 ♙ A tutorial introduction
 ***
 
    • Mistakes happen and the pawn parser tries to catch as many of them as it
@@ -3199,7 +3069,6 @@ may on occasion be rather difficult for you to see why the code is erroneous
 
 <hr>
 
-##### 61 ♙ A tutorial introduction
 ***
 
 ### • In closing
