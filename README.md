@@ -7,7 +7,7 @@ This repository is about the files that I'm currently editing / creating.
 
 ### Statuses
 
-🔃 **./open.mp/pawn-lang/pawn-lang.md**               /  42%
+🔃 **./open.mp/pawn-lang/pawn-lang.md**               /  63%
 
    └ chapter 00 - "Contents"                       /  100%
       
@@ -22,3 +22,9 @@ This repository is about the files that I'm currently editing / creating.
    └ chapter 05 - "The-preprocessor"               /  100%
    
    └ chapter 06 - "General-syntax"                 /  100%
+   
+   └ chapter 07 - "Operators and expressions"      /  100%
+   
+   └ chapter 08 - "Statements"                     /  100%
+   
+   └ chapter 09 - "Directives"                     /  100%
