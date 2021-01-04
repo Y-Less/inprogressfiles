@@ -103,7 +103,7 @@ size of 11 points.
 
 ---
 
-### Appendices
+### Appendices:
 
    ∟ [Error and warning messages](13-Error-and-warning-messages.md) - Page 148-168
    
