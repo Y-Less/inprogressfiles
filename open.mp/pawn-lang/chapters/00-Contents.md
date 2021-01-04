@@ -67,7 +67,6 @@ size of 11 points.
 <br/><br/>
 <hr>
 <hr>
-<div align="right">1-2</div>
 <div align="center">
 
 # Table of contents
